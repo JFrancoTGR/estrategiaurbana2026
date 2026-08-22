@@ -1,17 +1,17 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeHero from "../components/sections/HomeHero.astro";
 
+import heroImage from "../assets/img/home/hero-banner-og.png";
+import heroMark from "../assets/img/logos/logo-marca.svg"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Estrategia Urbana"
+  description="Desarrollos inmobiliarios de Estrategia Urbana."
+>
+  <HomeHero
+    image={heroImage}
+    mark={heroMark}
+  />
+</BaseLayout>

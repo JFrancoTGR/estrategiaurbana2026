@@ -1,0 +1,51 @@
+/*
+ * Horizontal content boundary
+ *
+ * Limita únicamente el ancho del contenido.
+ * No introduce padding, margen ni safe area vertical.
+ */
+.page-shell {
+  width: min(
+    calc(100% - (var(--page-gutter) * 2)),
+    var(--content-max)
+  );
+
+  margin-inline: auto;
+}
+
+
+/*
+ * Primary layout grid
+ *
+ * Desktop:
+ * 12 columnas como base del sistema.
+ */
+.layout-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+
+/*
+ * Mobile
+ *
+ * La retícula se simplifica a 4 columnas.
+ */
+@media (max-width: 767px) {
+  .layout-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+/*
+ * Tablet
+ *
+ * 8 columnas como punto intermedio.
+ */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .layout-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}

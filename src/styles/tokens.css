@@ -1,0 +1,67 @@
+:root {
+  /* ---------------------------------
+     Typography
+  --------------------------------- */
+
+  --font-primary: 'Archivo', Arial, sans-serif;
+  --font-editorial: 'Newsreader', Georgia, serif;
+
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---------------------------------
+     Colors
+  --------------------------------- */
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --color-text: #111111;
+  --color-background: #ffffff;
+
+  --color-red: #c31522;
+
+  /* ---------------------------------
+     Layout
+  --------------------------------- */
+
+  /*
+   * Ancho máximo del contenido estructurado.
+   * Es provisional hasta medir la retícula
+   * definitiva directamente desde Figma.
+   */
+  --content-max: 1440px;
+
+  /*
+   * Safe area exclusivamente horizontal.
+   * clamp() permite que el gutter crezca
+   * progresivamente sin descontrolarse.
+   */
+  --page-gutter: clamp(20px, 4vw, 64px);
+
+  /*
+   * Separación entre columnas de la retícula.
+   */
+  --grid-gap: clamp(16px, 2vw, 32px);
+
+  /* ---------------------------------
+     Motion
+  --------------------------------- */
+
+  --duration-fast: 150ms;
+  --duration-medium: 300ms;
+  --duration-slow: 500ms;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Header */
+  --header-height: 96px;
+  --header-height-scrolled: 82.56px;
+
+  --header-brand-nav-gap: clamp(138px, 11vw, 194px);
+}

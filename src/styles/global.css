@@ -1,0 +1,36 @@
+html {
+  min-height: 100%;
+
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+
+  color: var(--color-text);
+  background-color: var(--color-background);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ---------------------------------
+   Typography utilities
+--------------------------------- */
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+  font-optical-sizing: auto;
+}
