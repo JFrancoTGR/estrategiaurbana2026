@@ -18,13 +18,26 @@
      Colors
   --------------------------------- */
 
-  --color-black: #000000;
-  --color-white: #ffffff;
+  --color-black: #141414;
+  --color-white: #f0f0f0;
 
-  --color-text: #111111;
-  --color-background: #ffffff;
+  --color-text: #141414;
+  --color-background: #f0efef;
+
+  --selection-light: #971717;
+  --selection-dark: #949494;
 
   --color-red: #c31522;
+
+  /* ----------------------------------
+   Selection
+   --------------------------------- */
+
+   ::selection {
+      color: var(--selection-light);
+      background: var(--selection-dark);
+   }
+
 
   /* ---------------------------------
      Layout

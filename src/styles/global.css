@@ -34,3 +34,12 @@ body {
   font-family: var(--font-editorial);
   font-optical-sizing: auto;
 }
+
+/* ---------------------------------
+    Hide header
+--------------------------------- */
+
+.motion-preload [data-motion-preload] {
+  opacity: 0;
+  visibility: hidden;
+}

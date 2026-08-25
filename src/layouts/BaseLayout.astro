@@ -1,51 +1,59 @@
 ---
-import MainNavbar from "../components/global/MainNavbar.astro";
+import MainNavbar from '../components/global/MainNavbar.astro';
 
-import "../styles/reset.css";
-import "../styles/tokens.css";
-import "../styles/layout.css";
-import "../styles/global.css";
+import '../styles/reset.css';
+import '../styles/tokens.css';
+import '../styles/layout.css';
+import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const {
-  title = "Título del sitio",
-  description = "Descripción del sitio",
-} = Astro.props;
+const { title = 'Título del sitio', description = 'Descripción del sitio' } =
+  Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang='es'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
 
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name='description' content={description} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin='anonymous'
     />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
-      rel="stylesheet"
+      href='https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap'
+      rel='stylesheet'
     />
+
+    <script is:inline>
+      document.documentElement.classList.add('motion-preload');
+    </script>
   </head>
 
   <body>
-      <MainNavbar />
+    <MainNavbar />
 
-  <main>
-    <slot />
-  </main>
+    <main>
+      <slot />
+    </main>
+
+    <script>
+      import { initMotion } from '../scripts/motion';
+
+      initMotion();
+    </script>
   </body>
 </html>

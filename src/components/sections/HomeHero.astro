@@ -10,32 +10,41 @@ interface Props {
 const { image, mark } = Astro.props;
 ---
 
-<section class='home-hero'>
+<section id='home-hero' class='home-hero' data-motion='home-hero'>
   <Image
     src={image}
     alt=''
     class='home-hero__image'
     loading='eager'
     fetchpriority='high'
+    data-anim='media'
   />
 
   <div class='home-hero__content page-shell layout-grid'>
     <div class='home-hero__copy'>
-      <img src={mark.src} alt='' class='home-hero__mark' aria-hidden='true' />
+      <img
+        src={mark.src}
+        alt=''
+        class='home-hero__mark'
+        aria-hidden='true'
+        data-anim='mark'
+      />
 
-      <h1 class='home-hero__title font-editorial'>
+      <h1 class='home-hero__title font-editorial' data-anim='title'>
         <span>Valor inmobiliario desarrollado</span>
         <span>con criterio.</span>
       </h1>
 
-      <p class='home-hero__description'>
+      <p class='home-hero__description' data-anim='description'>
         Estrategia Urbana es una desarrolladora inmobiliaria impulsada por el
         diseño, la tecnología, los procesos y la confianza. Nuestros proyectos
         se construyen con una visión clara: el valor debe planearse, diseñarse,
         construirse y entregarse.
       </p>
 
-      <a href='/contacto' class='home-hero__cta'> Agenda una cita </a>
+      <a href='/contacto' class='home-hero__cta' data-anim='cta'>
+        Agenda una cita
+      </a>
     </div>
   </div>
 </section>
@@ -120,6 +129,12 @@ const { image, mark } = Astro.props;
     font-weight: var(--font-weight-light);
     line-height: 0.95;
     letter-spacing: -0.035em;
+
+    text-shadow:
+      0 1px 3px rgb(0 0 0 / 76%),
+      0 2px 12px rgb(0 0 0 / 76%);
+
+    transition: text-shadow var(--duration-fast) var(--ease-premium);
   }
 
   .home-hero__title span {
@@ -135,6 +150,12 @@ const { image, mark } = Astro.props;
     font-size: 1rem;
     font-weight: var(--font-weight-regular);
     line-height: 1.6;
+
+    text-shadow:
+      0 1px 3px rgb(0 0 0 / 86%),
+      0 2px 12px rgb(0 0 0 / 86%);
+
+    transition: text-shadow var(--duration-fast) var(--ease-premium);
   }
 
   .home-hero__cta {

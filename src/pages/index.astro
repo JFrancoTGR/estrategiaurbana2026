@@ -1,17 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HomeHero from "../components/sections/HomeHero.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/sections/HomeHero.astro';
 
-import heroImage from "../assets/img/home/hero-banner-og.png";
-import heroMark from "../assets/img/logos/logo-marca.svg"
+import heroImage from '../assets/img/home/hero-banner.webp';
+import heroMark from '../assets/img/logos/logo-marca.svg';
 ---
 
 <BaseLayout
-  title="Estrategia Urbana"
-  description="Desarrollos inmobiliarios de Estrategia Urbana."
+  title='Estrategia Urbana'
+  description='Desarrollos inmobiliarios de Estrategia Urbana.'
 >
-  <HomeHero
-    image={heroImage}
-    mark={heroMark}
-  />
+  <HomeHero image={heroImage} mark={heroMark} />
+
+  
 </BaseLayout>
