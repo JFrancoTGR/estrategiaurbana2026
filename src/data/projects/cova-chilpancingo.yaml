@@ -1,0 +1,21 @@
+name: COVA CHILPANCINGO
+
+status: en-construccion
+
+commercial:
+  available: true
+
+location:
+  label: Condesa, CDMX
+
+price:
+  from: 9000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/cova-chilpancingo/card.webp
+  alt: Vista exterior de COVA CHILPANCINGO
+
+home:
+  visible: true
+  order: 3

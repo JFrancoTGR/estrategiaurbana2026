@@ -1,0 +1,21 @@
+name: Sennse Hamburgo
+
+status: fase-proyecto
+
+commercial:
+  available: true
+
+location:
+  label: Juárez, CDMX
+
+price:
+  from: 3000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/sennse-hamburgo/card.webp
+  alt: Vista exterior de Sennse Hamburgo
+
+home:
+  visible: true
+  order: 6

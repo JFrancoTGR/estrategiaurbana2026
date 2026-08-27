@@ -1,0 +1,21 @@
+name: Sennse Tabacalera
+
+status: entregado
+
+commercial:
+  available: true
+
+location:
+  label: Tabacalera, CDMX
+
+price:
+  from: 6000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/sennse-tabacalera/card.webp
+  alt: Vista exterior de Sennse tabacalera
+
+home:
+  visible: true
+  order: 9

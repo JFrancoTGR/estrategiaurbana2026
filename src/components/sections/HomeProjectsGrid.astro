@@ -1,0 +1,210 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '../cards/ProjectCard.astro';
+
+const INITIAL_DESKTOP_COUNT = 8;
+const MOBILE_COUNT = 8;
+
+const homeProjects = (
+  await getCollection(
+    'projects',
+    ({ data }) =>
+      data.commercial.available &&
+      data.home.visible,
+  )
+).sort(
+  (a, b) =>
+    a.data.home.order -
+    b.data.home.order,
+);
+
+const hasMoreHomeProjects =
+  homeProjects.length > INITIAL_DESKTOP_COUNT;
+---
+
+<section
+  id="home-projects-grid"
+  class="home-projects-grid"
+  data-projects-grid
+  data-reveal-batch="4"
+>
+  <div class="page-shell">
+    <div
+      id="home-projects-list"
+      class="home-projects-grid__list"
+    >
+      {
+        homeProjects.map((project, index) => (
+          <div
+            class="home-projects-grid__item"
+            data-project-card
+            data-reveal-hidden={
+              index >= INITIAL_DESKTOP_COUNT
+                ? ''
+                : undefined
+            }
+            data-mobile-hidden={
+              index >= MOBILE_COUNT
+                ? ''
+                : undefined
+            }
+          >
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="home-projects-grid__actions">
+      {
+        hasMoreHomeProjects && (
+          <button
+            type="button"
+            class="home-projects-grid__more"
+            data-projects-more
+            aria-controls="home-projects-list"
+          >
+            Ver más
+          </button>
+        )
+      }
+
+      <a
+        href="/proyectos-en-venta"
+        class="home-projects-grid__all"
+      >
+        Ver todos los proyectos
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-projects-grid {
+    width: 100%;
+
+    padding-block:
+      clamp(52px, 5vw, 84px)
+      clamp(72px, 6vw, 104px);
+
+    background-color: var(--color-surface-muted);
+  }
+
+  .home-projects-grid__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap:
+      clamp(24px, 2.4vw, 38px)
+      clamp(10px, 1.2vw, 18px);
+  }
+
+  .home-projects-grid__actions {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 36px;
+  }
+
+  .home-projects-grid__more,
+  .home-projects-grid__all {
+    min-width: 126px;
+
+    padding: 12px 22px;
+
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: var(--color-white);
+    background-color: var(--color-black);
+    border: 0;
+
+    cursor: pointer;
+  }
+
+  .home-projects-grid__all {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    [data-reveal-hidden] {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .home-projects-grid__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-projects-grid {
+      padding-block: 48px 72px;
+    }
+
+    .home-projects-grid__list {
+      display: flex;
+
+      gap: 16px;
+
+      overflow-x: auto;
+
+      margin-inline:
+        calc(var(--page-gutter) * -1);
+
+      padding-inline:
+        var(--page-gutter);
+
+      scroll-padding-inline:
+        var(--page-gutter);
+
+      scroll-snap-type: x mandatory;
+
+      scrollbar-width: none;
+
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .home-projects-grid__list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-projects-grid__item {
+      flex: 0 0 min(86vw, 360px);
+
+      scroll-snap-align: start;
+    }
+
+    [data-mobile-hidden] {
+      display: none;
+    }
+
+    .home-projects-grid__more {
+      display: none;
+    }
+
+    .home-projects-grid__all {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  import { initProjectsGrid } from '../../scripts/ui/projects-grid';
+
+  const grids =
+    document.querySelectorAll<HTMLElement>(
+      '[data-projects-grid]',
+    );
+
+  grids.forEach((grid) => {
+    initProjectsGrid(grid);
+  });
+</script>

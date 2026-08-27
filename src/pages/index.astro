@@ -1,6 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 import HomeHero from '../components/sections/HomeHero.astro';
+import HomeProjectsIntro from '../components/sections/HomeProjectsIntro.astro';
+import HomeProjectsGrid from '../components/sections/HomeProjectsGrid.astro';
+import HomeFloatingCTA from '../components/ui/HomeFloatingCTA.astro';
 
 import heroImage from '../assets/img/home/hero-banner.webp';
 import heroMark from '../assets/img/logos/logo-marca.svg';
@@ -12,5 +16,7 @@ import heroMark from '../assets/img/logos/logo-marca.svg';
 >
   <HomeHero image={heroImage} mark={heroMark} />
 
-  
+  <HomeProjectsIntro />
+  <HomeProjectsGrid />
+  <HomeFloatingCTA slot='fixed-ui' />
 </BaseLayout>

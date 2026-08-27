@@ -1,0 +1,21 @@
+name: COVA NUEVO LEON 219
+
+status: entregado
+
+commercial:
+  available: true
+
+location:
+  label: Condesa, CDMX
+
+price:
+  from: 7000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/cova-nuevoleon/card.webp
+  alt: Vista exterior de COVA NUEVO LEON 219
+
+home:
+  visible: true
+  order: 4

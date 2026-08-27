@@ -1,0 +1,21 @@
+name: PORTTICA
+
+status: en-construccion
+
+commercial:
+  available: true
+
+location:
+  label: Tijuana, Baja California
+
+price:
+  from: 4000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/porttica/card.webp
+  alt: Vista exterior de COVA NUEVO LEON 219
+
+home:
+  visible: true
+  order: 5

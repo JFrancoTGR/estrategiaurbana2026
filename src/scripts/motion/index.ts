@@ -1,4 +1,5 @@
-import { motionRegistry } from "./resgistry";
+import { motionRegistry } from "./registry";
+import { initSmoothScroll } from "./global/smooth-scroll";
 
 let cleanups: Array<() => void> = [];
 
@@ -9,6 +10,12 @@ export function destroyMotion() {
 
 export function initMotion() {
   destroyMotion();
+
+  const smoothCleanup = initSmoothScroll();
+
+  if (typeof smoothCleanup === "function") {
+    cleanups.push(smoothCleanup);
+  }
 
   const roots =
     document.querySelectorAll<HTMLElement>("[data-motion]");
@@ -29,5 +36,7 @@ export function initMotion() {
     }
   });
 
-  document.documentElement.classList.remove("motion-preload");
+  document.documentElement.classList.remove(
+    "motion-preload",
+  );
 }

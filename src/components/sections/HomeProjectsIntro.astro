@@ -1,0 +1,109 @@
+<section
+  id="home-projects-intro"
+  class="home-projects-intro"
+  aria-labelledby="home-projects-intro-title"
+>
+  <div class="page-shell layout-grid">
+    <div class="home-projects-intro__content">
+      <p class="home-projects-intro__eyebrow">
+        Proyectos en venta
+      </p>
+
+      <h2
+        id="home-projects-intro-title"
+        class="home-projects-intro__title font-editorial"
+      >
+        Desarrollos que convierten <br />
+        <span>
+           ubicación, diseño
+          y ejecución en valor.
+        </span>
+      </h2>
+
+      <p class="home-projects-intro__description">
+        Nuestros proyectos en venta integran zonas con potencial,
+        arquitectura con criterio, calidad constructiva y una visión clara
+        de largo plazo. Cada desarrollo está pensado para generar valor
+        patrimonial, funcionalidad y confianza desde la compra hasta la entrega.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-projects-intro {
+    width: 100%;
+
+    padding-block:
+      clamp(112px, 8vw, 156px)
+      clamp(120px, 9vw, 172px);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  .home-projects-intro__content {
+    grid-column: 2 / 12;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .home-projects-intro__eyebrow {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .home-projects-intro__title {
+    max-width: 1000px;
+
+    margin-top: clamp(32px, 3vw, 46px);
+
+    font-size: clamp(2.5rem, 3.4vw, 4rem);
+    font-weight: var(--font-weight-light);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+  }
+
+  .home-projects-intro__title span {
+    color: var(--color-red);
+  }
+
+  .home-projects-intro__description {
+    max-width: 900px;
+
+    margin-top: clamp(28px, 2.6vw, 40px);
+
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.42;
+  }
+
+  @media (max-width: 767px) {
+    .home-projects-intro {
+      padding-block: 104px 96px;
+    }
+
+    .home-projects-intro__content {
+      grid-column: 1 / -1;
+    }
+
+    .home-projects-intro__title {
+      font-size: clamp(2.25rem, 10vw, 3.5rem);
+    }
+
+    .home-projects-intro__title br {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,21 @@
+name: THE WAVVE
+
+status: en-construccion
+
+commercial:
+  available: true
+
+location:
+  label: Playas de Tijuana, Baja California
+
+price:
+  from: 5000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/the-wavve/card.webp
+  alt: Vista exterior de The WAVVE
+
+home:
+  visible: true
+  order: 1

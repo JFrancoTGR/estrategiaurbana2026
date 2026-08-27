@@ -1,0 +1,21 @@
+name: NAOS RESORT LIVING
+
+status: fase-proyecto
+
+commercial:
+  available: true
+
+location:
+  label: Playas de Tijuana, Baja California
+
+price:
+  from: 4000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/naos-resort-living/card.webp
+  alt: Vista exterior de NAOS Resort Living
+
+home:
+  visible: true
+  order: 2

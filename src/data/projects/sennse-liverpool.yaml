@@ -1,0 +1,21 @@
+name: Sennse Liverpool
+
+status: en-construccion
+
+commercial:
+  available: true
+
+location:
+  label: Juárez, CDMX
+
+price:
+  from: 3000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/sennse-liverpool/card.webp
+  alt: Vista exterior de Sennse Liverpool
+
+home:
+  visible: true
+  order: 8

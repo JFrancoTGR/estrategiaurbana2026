@@ -1,0 +1,162 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+import ProjectStatusBadge from '../ui/ProjectStatusBadge.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+
+const { name, location, price, card } = project.data;
+
+const formattedPrice = price
+  ? new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: price.currency,
+      maximumFractionDigits: 0,
+    }).format(price.from)
+  : null;
+---
+
+<article class='project-card'>
+  <div class='project-card__media'>
+    <a
+      href={`/proyectos/${project.id}`}
+      class='project-card__media-link'
+      aria-label={`Ver desarrollo ${name}`}
+    >
+      <Image
+        src={card.image}
+        alt={card.alt}
+        class='project-card__image'
+        loading='lazy'
+      />
+    </a>
+
+    <div class='project-card__status'>
+      <ProjectStatusBadge status={project.data.status} />
+    </div>
+  </div>
+
+  <div class='project-card__body'>
+    <h3 class='project-card__title'>
+      {name}
+    </h3>
+
+    <p class='project-card__location'>
+      {location.label}
+    </p>
+
+    {
+      formattedPrice && (
+        <p class='project-card__price'>
+          <span>Desde:</span>
+          <strong>
+            {formattedPrice} {price?.currency}
+          </strong>
+        </p>
+      )
+    }
+
+    <a href={`/proyectos/${project.id}`} class='project-card__cta'>
+      Ver desarrollo
+    </a>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    min-width: 0;
+
+    background-color: var(--color-white);
+  }
+
+  .project-card__media-link {
+    display: block;
+    overflow: hidden;
+  }
+
+  .project-card__image {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 4.45;
+
+    object-fit: cover;
+  }
+
+  .project-card__media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card__status {
+    position: absolute;
+    z-index: 2;
+
+    top: 0;
+    right: 0;
+  }
+
+  .project-card__body {
+    padding: 20px 22px 22px;
+  }
+
+  .project-card__title {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+
+    text-transform: uppercase;
+  }
+
+  .project-card__location {
+    margin-top: 3px;
+
+    font-size: 0.75rem;
+    line-height: 1.3;
+
+    color: rgb(20 20 20 / 55%);
+  }
+
+  .project-card__price {
+    display: flex;
+    gap: 4px;
+
+    margin-top: 12px;
+
+    font-size: 0.8125rem;
+    line-height: 1.2;
+  }
+
+  .project-card__price strong {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+  }
+
+  .project-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 16px;
+    padding: 10px 14px;
+
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+
+    color: var(--color-white);
+    background-color: var(--color-red);
+  }
+
+  .project-card__cta:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-in-out;
+  }
+</style>

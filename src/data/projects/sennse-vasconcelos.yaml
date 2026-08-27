@@ -1,0 +1,21 @@
+name: Sennse Vasconcelos
+
+status: fase-proyecto
+
+commercial:
+  available: true
+
+location:
+  label: Condesa, CDMX
+
+price:
+  from: 4000000
+  currency: MXN
+
+card:
+  image: ../../assets/img/projects/sennse-vasconcelos/card.webp
+  alt: Vista exterior de Sennse vasconcelos
+
+home:
+  visible: true
+  order: 10

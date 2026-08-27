@@ -24,20 +24,12 @@
   --color-text: #141414;
   --color-background: #f0efef;
 
+  --color-red: #c31522;
+
   --selection-light: #971717;
   --selection-dark: #949494;
 
-  --color-red: #c31522;
-
-  /* ----------------------------------
-   Selection
-   --------------------------------- */
-
-   ::selection {
-      color: var(--selection-light);
-      background: var(--selection-dark);
-   }
-
+  --color-surface-muted: #d4d4d4;
 
   /* ---------------------------------
      Layout
@@ -66,9 +58,9 @@
      Motion
   --------------------------------- */
 
-  --duration-fast: 150ms;
-  --duration-medium: 300ms;
-  --duration-slow: 500ms;
+  --duration-fast: 200ms;
+  --duration-medium: 350ms;
+  --duration-slow: 550ms;
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 

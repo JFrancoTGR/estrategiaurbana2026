@@ -46,9 +46,13 @@ const { title = 'Título del sitio', description = 'Descripción del sitio' } =
   <body>
     <MainNavbar />
 
-    <main>
-      <slot />
-    </main>
+    <div id='smooth-wrapper' data-smooth-wrapper>
+      <main id='smooth-content' data-smooth-content>
+        <slot />
+      </main>
+    </div>
+
+    <slot name='fixed-ui' />
 
     <script>
       import { initMotion } from '../scripts/motion';

@@ -21,7 +21,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-
 /* ---------------------------------
    Typography utilities
 --------------------------------- */
@@ -33,6 +32,15 @@ body {
 .font-editorial {
   font-family: var(--font-editorial);
   font-optical-sizing: auto;
+}
+
+/* ----------------------------------
+   Selection
+   --------------------------------- */
+
+::selection {
+  color: var(--selection-light);
+  background: var(--selection-dark);
 }
 
 /* ---------------------------------
