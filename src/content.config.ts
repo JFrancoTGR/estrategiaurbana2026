@@ -43,6 +43,35 @@ const projects = defineCollection({
     }),
 });
 
+const partners = defineCollection({
+  loader: glob({
+    pattern: '**/*.{yaml,yml}',
+    base: './src/data/partners',
+  }),
+
+  schema: ({ image }) =>
+    z.object({
+      partner: z.string(),
+
+      experience: z.string(),
+
+      company: z.string().optional(),
+
+      portrait: z.object({
+        image: image(),
+        alt: z.string(),
+      }),
+
+      description: z.string().optional(),
+
+      home: z.object({
+        visible: z.boolean().default(false),
+        order: z.number().int().nonnegative(),
+      }),
+    }),
+});
+
 export const collections = {
   projects,
+  partners,
 };

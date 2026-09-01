@@ -1,0 +1,13 @@
+partner: Kalinka Mikel
+experience: Interiorismo
+company: Kalinka Mikel Interior Design
+
+portrait:
+  image: ../../assets/img/partners/kalinka-mikel/portrait.webp
+  alt: Kalinka Mikel
+description: >
+  Kalinka Mikel concibe cada proyecto como una propuesta hecha a la medida de cada cliente, donde diseño y atención al detalle van de la mano. Su trabajo se distingue por lograr un equilibrio entre estética y funcionalidad, creando espacios sofisticados, personalizados y pensados para vivirlos plenamente.
+
+home:
+  visible: true
+  order: 7

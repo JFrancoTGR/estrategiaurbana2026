@@ -21,6 +21,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* * {
+  border: 1px solid yellow;
+} */
+
 /* ---------------------------------
    Typography utilities
 --------------------------------- */

@@ -1,0 +1,13 @@
+partner: Roberto Ransom
+experience: Paisajismo
+company: TEPETL
+
+portrait:
+  image: ../../assets/img/partners/roberto-ransom/portrait.webp
+  alt: Roberto Ransom
+description: >
+  Estudio de arquitectura de paisaje fundado por Roberto Ransom en Ciudad de México. Su práctica se centra en la investigación, el territorio y el diseño contemporáneo, integrando paisaje, urbanismo y contexto cultural en proyectos de distintas escalas. Su visión busca conectar naturaleza, ciudad y comunidad a través de espacios con identidad.
+
+home:
+  visible: true
+  order: 8

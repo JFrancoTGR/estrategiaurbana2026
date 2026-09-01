@@ -1,0 +1,13 @@
+partner: Arturo Acosta
+experience: Arquitectura
+company: HACER
+
+portrait:
+  image: ../../assets/img/partners/arturo-acosta/portrait.webp
+  alt: Arturo Acosta
+description: >
+  Despacho de arquitectura fundado por Diego Belden y Arturo Acosta. Especializados en el diseño de desarrollos de vivienda, con proyectos en construcción en las principales ciudades de México. Creen que la arquitectura tiene el poder de elevar la experiencia de vivir y que una buena vivienda no solo transforma a quienes la habitan, sino que enriquece el tejido urbano y contribuye a construir mejores ciudades.
+
+home:
+  visible: true
+  order: 3

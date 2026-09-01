@@ -1,0 +1,14 @@
+partner: Alejandra Bustillos
+experience: Arquitectura
+company: Factor Neutral
+
+portrait:
+  image: ../../assets/img/partners/alejandra-bustillos/portrait.webp
+  alt: Alejandra Bustillos
+
+description: >
+  Factor Neutral, firma liderada por la arquitecta regiomontana Alejandra Bustillos, desarrolla proyectos residenciales y comerciales con un interiorismo único. Su trabajo combina materiales naturales, textiles de alta gama y diseño detallado.
+
+home:
+  visible: true
+  order: 1

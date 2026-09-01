@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  partner: CollectionEntry<'partners'>;
+}
+
+const { partner } = Astro.props;
+const { data } = partner;
+---
+
+<article class='partner-card'>
+  <figure class='partner-card__media'>
+    <Image
+      src={data.portrait.image}
+      alt={data.portrait.alt}
+      class='partner-card__image'
+      loading='lazy'
+    />
+  </figure>
+
+  <p class='partner-card__caption'>
+    <span>{data.partner}</span>
+
+    {
+      data.company && (
+        <>
+          <span aria-hidden='true'> - </span>
+          <span>{data.company}</span>
+        </>
+      )
+    }
+  </p>
+</article>
+
+<style>
+  .partner-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .partner-card__media {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .partner-card__image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .partner-card__caption {
+    margin-top: 12px;
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+
+    color: var(--color-text);
+  }
+</style>

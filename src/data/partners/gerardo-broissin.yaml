@@ -1,0 +1,13 @@
+partner: Gerardo Broissin
+experience: Arquitectura
+company: BROISSIN Arquitectos
+
+portrait:
+  image: ../../assets/img/partners/gerardo-broissin/portrait.webp
+  alt: Gerardo Broissin
+description: >
+  BROISSIN es una firma especializada en arquitectura, interiorismo y construcción, con más de 20 años de experiencia y más de 400,000 m² diseñados en todo México. Con oficinas en Ciudad de México, San Luis Potosí y Tijuana, desarrolla proyectos innovadores y funcionales, siempre enfocados en las necesidades de cada cliente.
+
+home:
+  visible: true
+  order: 6

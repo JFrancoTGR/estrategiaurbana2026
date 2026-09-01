@@ -29,7 +29,7 @@ export function initSmoothScroll() {
     wrapper,
     content,
 
-    smooth: 1.2,
+    smooth: 1.7,
 
     effects: false,
 

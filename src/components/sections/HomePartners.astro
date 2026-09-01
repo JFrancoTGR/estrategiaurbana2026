@@ -1,0 +1,269 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+import PartnerCard from '../cards/PartnerCard.astro';
+
+import backgroundImage from '../../assets/img/home/partners-background.webp';
+
+import 'swiper/css';
+
+const partners = (await getCollection('partners'))
+  .filter(({ data }) => data.home.visible)
+  .sort((a, b) => a.data.home.order - b.data.home.order);
+
+const partnersHref =
+  `${import.meta.env.BASE_URL}socios-estrategicos`;
+---
+
+<section
+  id='home-partners'
+  class='home-partners'
+  data-motion='home-partners'
+  data-home-partners
+>
+  <div
+    class='home-partners__background'
+    data-anim='background'
+    aria-hidden='true'
+  >
+    <Image
+      src={backgroundImage}
+      alt=''
+      class='home-partners__background-image'
+      loading='lazy'
+    />
+  </div>
+
+  <div class='home-partners__foreground'>
+    <div class='page-shell layout-grid'>
+      <div
+        class='home-partners__intro'
+        data-anim='intro'
+      >
+        <p
+          class='home-partners__eyebrow'
+          data-anim='eyebrow'
+        >
+          SOCIOS ESTRATÉGICOS
+        </p>
+
+        <h2
+          class='home-partners__title font-editorial'
+          data-anim='title'
+        >
+          Colaboraciones que fortalecen
+          <span>el valor de cada proyecto.</span>
+        </h2>
+
+        <p
+          class='home-partners__description'
+          data-anim='description'
+        >
+          Trabajamos con arquitectos, interioristas,
+          paisajistas, ingenieros y especialistas que
+          aportan criterio técnico, visión creativa y
+          experiencia en cada etapa del desarrollo.
+        </p>
+      </div>
+    </div>
+
+    <div class='page-shell home-partners__slider-shell'>
+      <div
+        class='swiper home-partners__slider'
+        data-partners-slider
+      >
+        <div class='swiper-wrapper'>
+          {
+            partners.map((partner) => (
+              <div class='swiper-slide'>
+                <PartnerCard partner={partner} />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class='home-partners__actions'>
+      <a
+        href={partnersHref}
+        class='home-partners__cta'
+      >
+        VER MÁS
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initPartnersSlider } from '../../scripts/ui/partners-slider';
+
+  const root =
+    document.querySelector<HTMLElement>('[data-home-partners]');
+
+  if (root) {
+    initPartnersSlider(root);
+  }
+</script>
+
+<style>
+  .home-partners {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    overflow: hidden;
+
+    color: var(--color-text);
+    background-color: var(--color-surface-muted);
+
+    padding-block:
+      clamp(112px, 8vw, 156px)
+      clamp(88px, 7vw, 128px);
+  }
+
+  .home-partners__background {
+    position: absolute;
+    z-index: 0;
+
+    inset: -6% 0;
+
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .home-partners__background-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+  }
+
+  .home-partners__foreground {
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-partners__intro {
+    grid-column: 2 / 12;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .home-partners__eyebrow {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  .home-partners__title {
+    max-width: 1000px;
+
+    margin-top: clamp(32px, 3vw, 46px);
+
+    font-size: clamp(2.5rem, 3.4vw, 4rem);
+    font-weight: var(--font-weight-light);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  .home-partners__title span {
+    display: block;
+    color: var(--color-red);
+  }
+
+  .home-partners__description {
+    max-width: 880px;
+
+    margin-top: clamp(28px, 2.6vw, 40px);
+
+    font-family: var(--font-primary);
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.42;
+  }
+
+  .home-partners__slider-shell {
+    margin-top: clamp(60px, 5vw, 82px);
+  }
+
+  .home-partners__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .home-partners__actions {
+    display: flex;
+    justify-content: center;
+
+    margin-top: clamp(42px, 4vw, 62px);
+  }
+
+  .home-partners__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 126px;
+
+    padding: 12px 22px;
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    color: var(--color-white);
+    background-color: var(--color-black);
+
+    transition:
+      transform var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-partners__cta:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-partners {
+      padding-block: 104px 80px;
+    }
+
+    .home-partners__intro {
+      grid-column: 1 / -1;
+    }
+
+    .home-partners__title {
+      font-size: clamp(2.25rem, 10vw, 3.5rem);
+    }
+
+    .home-partners__slider-shell {
+      margin-top: 56px;
+    }
+
+    .home-partners__background {
+      opacity: 0.1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-partners__cta {
+      transition: none;
+    }
+  }
+</style>

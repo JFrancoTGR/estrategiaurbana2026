@@ -1,0 +1,13 @@
+partner: David Rocha
+experience: Artista Gráfico
+company: Muralista
+
+portrait:
+  image: ../../assets/img/partners/david-rocha/portrait.webp
+  alt: David Rocha
+description: >
+  Artista gráfico de Guadalajara, México, reconocido por una obra centrada en identidad cultural y temas sociales. Para SENNSE Tabacalera creó una propuesta visual inspirada en símbolos nacionales, integrando arte, comunidad y sentido de pertenencia en espacios comunes del proyecto.
+
+home:
+  visible: true
+  order: 5
