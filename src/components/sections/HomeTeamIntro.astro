@@ -1,0 +1,110 @@
+---
+
+---
+
+<section
+  id='home-team-intro'
+  class='home-team-intro'
+  data-motion='home-team-intro'
+>
+  <div class='page-shell layout-grid'>
+    <div class='home-team-intro__content'>
+      <p class='home-team-intro__eyebrow' data-anim='eyebrow'>NUESTRO EQUIPO</p>
+
+      <h2co class='home-team-intro__title font-editorial' data-anim='title'>
+        Un equipo diseñado para
+        <span>hacer avanzar los proyectos.</span>
+      </h2co>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-team-intro {
+    width: 100%;
+
+    padding-block: clamp(108px, 8vw, 150px);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  .home-team-intro__content {
+    grid-column: 2 / 12;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .home-team-intro__eyebrow {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  .home-team-intro__title {
+    max-width: 900px;
+
+    margin-top: clamp(30px, 3vw, 42px);
+
+    font-size: clamp(2.5rem, 3.4vw, 4rem);
+    font-weight: var(--font-weight-light);
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+  }
+
+  .home-team-intro__title span {
+    display: block;
+
+    color: var(--color-red);
+  }
+
+  .home-team-intro [data-anim] {
+    opacity: 0;
+    transform: translateY(12px);
+
+    transition:
+      opacity 700ms var(--ease-premium),
+      transform 700ms var(--ease-premium);
+  }
+
+  .home-team-intro__title[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  .home-team-intro [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-team-intro [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-team-intro {
+      padding-block: 96px;
+    }
+
+    .home-team-intro__content {
+      grid-column: 1 / -1;
+    }
+
+    .home-team-intro__title {
+      font-size: clamp(2.2rem, 10vw, 3.25rem);
+    }
+  }
+</style>

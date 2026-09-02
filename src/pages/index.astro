@@ -5,7 +5,9 @@ import HomeHero from '../components/sections/HomeHero.astro';
 import HomeProjectsIntro from '../components/sections/HomeProjectsIntro.astro';
 import HomeProjectsGrid from '../components/sections/HomeProjectsGrid.astro';
 import HomeFloatingCTA from '../components/ui/HomeFloatingCTA.astro';
-import HomePartners from "../components/sections/HomePartners.astro";
+import HomePartners from '../components/sections/HomePartners.astro';
+import HomeTeamIntro from '../components/sections/HomeTeamIntro.astro';
+import HomeManifesto from '../components/sections/HomeManifesto.astro';
 
 import heroImage from '../assets/img/home/hero-banner.webp';
 import heroMark from '../assets/img/logos/logo-marca.svg';
@@ -20,5 +22,7 @@ import heroMark from '../assets/img/logos/logo-marca.svg';
   <HomeProjectsIntro />
   <HomeProjectsGrid />
   <HomePartners />
+  <HomeTeamIntro />
+  <HomeManifesto />
   <HomeFloatingCTA slot='fixed-ui' />
 </BaseLayout>
