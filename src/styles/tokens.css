@@ -21,10 +21,12 @@
   --color-black: #141414;
   --color-white: #f0f0f0;
 
+  --dialog-background: rgba(0,0,0,0.25);
+
   --color-text: #141414;
   --color-background: #f0efef;
 
-  --color-red: #c31522;
+  --color-red: #c31422;
 
   --selection-light: #971717;
   --selection-dark: #949494;

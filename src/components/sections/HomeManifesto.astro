@@ -4,12 +4,15 @@ const FRAME_COUNT = 185;
 const sequenceBase = `${import.meta.env.BASE_URL}media/home/manifesto/sequence/desktop`;
 
 const posterSrc = `${sequenceBase}/frame-0001.webp`;
+
+const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifesto-1080.mp4`;
 ---
 
 <section
   id='home-manifesto'
   class='home-manifesto'
   data-motion='home-manifesto'
+  data-home-manifesto
   data-frame-count={FRAME_COUNT}
   data-sequence-base={sequenceBase}
 >
@@ -28,8 +31,61 @@ const posterSrc = `${sequenceBase}/frame-0001.webp`;
       class='home-manifesto__canvas'
       data-sequence-canvas
       aria-hidden='true'></canvas>
+
+    <div class='home-manifesto__cta' data-manifesto-cta>
+      <button
+        class='home-manifesto__cta-button'
+        type='button'
+        data-manifesto-video-open
+      >
+        <svg
+          class='home-manifesto__cta-icon'
+          viewBox='0 0 16 16'
+          aria-hidden='true'
+        >
+          <path d='M5 3.25 12 8l-7 4.75V3.25Z'></path>
+        </svg>
+
+        <span>VIDEO COMPLETO</span>
+      </button>
+    </div>
   </div>
+
+  <dialog
+    class='manifesto-video'
+    data-manifesto-video-dialog
+    data-video-src={videoSrc}
+    aria-label='Manifiesto de Estrategia Urbana'
+  >
+    <div class='manifesto-video__surface'>
+      <video
+        class='manifesto-video__player'
+        controls
+        playsinline
+        preload='none'
+        data-manifesto-video></video>
+
+      <button
+        class='manifesto-video__close'
+        type='button'
+        data-manifesto-video-close
+        aria-label='Cerrar manifiesto'
+      >
+        CERRAR
+      </button>
+    </div>
+  </dialog>
 </section>
+
+<script>
+  import { initManifestoVideo } from '../../scripts/ui/manifesto-video';
+
+  const root = document.querySelector<HTMLElement>('[data-home-manifesto]');
+
+  if (root) {
+    initManifestoVideo(root);
+  }
+</script>
 
 <style>
   .home-manifesto {
@@ -83,13 +139,202 @@ const posterSrc = `${sequenceBase}/frame-0001.webp`;
     opacity: 0;
   }
 
+  /* CTA */
+
+  .home-manifesto__cta {
+    position: absolute;
+    z-index: 3;
+
+    left: 50%;
+    bottom: clamp(34px, 5vh, 64px);
+
+    opacity: 0;
+    transform: translate(-50%, 12px);
+
+    pointer-events: none;
+
+    transition:
+      opacity 450ms var(--ease-premium),
+      transform 450ms var(--ease-premium);
+  }
+
+  .home-manifesto.is-cta-visible .home-manifesto__cta {
+    opacity: 1;
+    transform: translate(-50%, 0);
+
+    pointer-events: auto;
+  }
+
+  .home-manifesto__cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 48px;
+
+    padding: 12px 20px;
+
+    border: 1px solid rgb(240 240 240 / 42%);
+
+    color: var(--color-white);
+    background-color: rgb(20 20 20 / 42%);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.11em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+      transform var(--duration-fast) var(--ease-premium),
+      background-color var(--duration-fast) var(--ease-premium);
+  }
+
+  .home-manifesto__cta-icon {
+    width: 14px;
+    height: 14px;
+
+    flex: 0 0 auto;
+
+    fill: currentColor;
+  }
+
+  /* VIDEO */
+
+  :global(.site-header) {
+    transition:
+      opacity 200ms var(--ease-premium),
+      visibility 200ms;
+  }
+
+  .manifesto-video {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    max-width: none;
+
+    height: 100dvh;
+    max-height: none;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background-color: var(--dialog-background);
+    
+    z-index: 2000;
+  }
+
+  .manifesto-video::backdrop {
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__surface {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__player {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__close {
+    position: absolute;
+    z-index: 2001;
+
+    top: clamp(20px, 3vw, 42px);
+    right: var(--page-gutter);
+
+    padding: 10px 0;
+
+    border: 0;
+
+    color: var(--color-white);
+    background: transparent;
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    cursor: pointer;
+  }
+
+  :global(html.manifesto-video-open),
+  :global(html.manifesto-video-open body) {
+    overflow: hidden;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-manifesto__cta-button:hover {
+      transform: translateY(-2px);
+
+      background-color: rgb(20 20 20 / 58%);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .home-manifesto__fallback {
+    .home-manifesto__fallback,
+    .home-manifesto__cta,
+    .home-manifesto__cta-button {
       transition: none;
     }
 
     .home-manifesto__canvas {
       display: none;
+    }
+
+    /*
+     * Sin secuencia animada todavía
+     * debemos permitir ver el video.
+     */
+    .home-manifesto__cta {
+      opacity: 1;
+      transform: translate(-50%, 0);
+
+      pointer-events: auto;
+    }
+  }
+
+  @media (max-width: 834px) {
+    /*
+     * Hasta desarrollar la secuencia mobile,
+     * queda fallback estático + CTA.
+     */
+    .home-manifesto__cta {
+      opacity: 1;
+      transform: translate(-50%, 0);
+
+      pointer-events: auto;
     }
   }
 </style>

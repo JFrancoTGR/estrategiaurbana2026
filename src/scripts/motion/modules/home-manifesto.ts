@@ -8,7 +8,9 @@ type FrameAsset = ImageBitmap | HTMLImageElement;
 const BUFFER_RADIUS = 4;
 const CACHE_LIMIT = 24;
 
-const SCROLL_DISTANCE = 3.9;
+const SCROLL_DISTANCE = 6.7;
+
+const CTA_REVEAL_PROGRESS = 0.72;
 
 export function init(root: HTMLElement) {
   const canvas = root.querySelector<HTMLCanvasElement>(
@@ -40,6 +42,8 @@ export function init(root: HTMLElement) {
 
   let desiredFrame = 0;
   let renderedFrame = -1;
+
+  let ctaVisible = false;
 
   let frameRequest = 0;
   let drawQueued = false;
@@ -101,7 +105,7 @@ export function init(root: HTMLElement) {
 
       root.classList.add('is-canvas-ready');
 
-    //   console.log('DRAW', renderedFrame, 'TARGET', desiredFrame);
+      //   console.log('DRAW', renderedFrame, 'TARGET', desiredFrame);
     });
   };
 
@@ -402,6 +406,16 @@ export function init(root: HTMLElement) {
 
         onUpdate: () => {
           requestFrame(Math.round(playhead.frame));
+
+          const progress = playhead.frame / (frameCount - 1);
+
+          const shouldShowCTA = progress >= CTA_REVEAL_PROGRESS;
+
+          if (shouldShowCTA !== ctaVisible) {
+            ctaVisible = shouldShowCTA;
+
+            root.classList.toggle('is-cta-visible', shouldShowCTA);
+          }
         },
 
         scrollTrigger: {
@@ -447,6 +461,7 @@ export function init(root: HTMLElement) {
         cache.clear();
 
         root.classList.remove('is-canvas-ready');
+        ctaVisible = false;
       };
     },
   );
