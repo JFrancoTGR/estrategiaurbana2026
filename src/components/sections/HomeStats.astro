@@ -1,0 +1,285 @@
+---
+type Stat = {
+  value: number;
+  label: string;
+
+  prefix?: string;
+  suffix?: string;
+
+  minimumIntegerDigits?: number;
+  minimumFractionDigits?: number;
+  maximumFractionDigits?: number;
+
+  useGrouping?: boolean;
+
+  accent?: boolean;
+};
+
+/*
+ * Información provisional.
+ *
+ * value siempre se mantiene como número.
+ * Su representación visual se controla
+ * independientemente mediante Intl.NumberFormat.
+ */
+const stats: Stat[] = [
+  {
+    value: 16,
+    label: 'Personas',
+
+    minimumIntegerDigits: 2,
+    maximumFractionDigits: 0,
+
+    useGrouping: false,
+  },
+  {
+    value: 3,
+    label: 'Oficinas',
+
+    minimumIntegerDigits: 2,
+    maximumFractionDigits: 0,
+
+    useGrouping: false,
+  },
+  {
+    value: 16,
+    label: 'Años de práctica',
+
+    minimumIntegerDigits: 2,
+    maximumFractionDigits: 0,
+
+    useGrouping: false,
+
+    accent: true,
+  },
+  {
+    value: 16,
+    label: 'Ciudades',
+
+    minimumIntegerDigits: 2,
+    maximumFractionDigits: 0,
+
+    useGrouping: false,
+  },
+];
+
+const formatInitialValue = (stat: Stat) => {
+  return new Intl.NumberFormat('es-MX', {
+    minimumIntegerDigits:
+      stat.minimumIntegerDigits ?? 1,
+
+    minimumFractionDigits:
+      stat.minimumFractionDigits ?? 0,
+
+    maximumFractionDigits:
+      stat.maximumFractionDigits ?? 0,
+
+    useGrouping:
+      stat.useGrouping ?? true,
+  }).format(stat.value);
+};
+---
+
+<section
+  id='home-stats'
+  class='home-stats'
+  data-home-stats
+>
+  <div class='page-shell'>
+    <dl class='home-stats__grid'>
+      {
+        stats.map((stat) => (
+          <div
+            class:list={[
+              'home-stats__item',
+              {
+                'home-stats__item--accent':
+                  stat.accent,
+              },
+            ]}
+          >
+            <dd class='home-stats__value'>
+              {
+                stat.prefix && (
+                  <span class='home-stats__prefix'>
+                    {stat.prefix}
+                  </span>
+                )
+              }
+
+              <span
+                class='home-stats__number'
+                data-stat-value
+                data-value={stat.value}
+                data-minimum-integer-digits={
+                  stat.minimumIntegerDigits ?? 1
+                }
+                data-minimum-fraction-digits={
+                  stat.minimumFractionDigits ?? 0
+                }
+                data-maximum-fraction-digits={
+                  stat.maximumFractionDigits ?? 0
+                }
+                data-use-grouping={
+                  stat.useGrouping ?? true
+                }
+              >
+                {formatInitialValue(stat)}
+              </span>
+
+              {
+                stat.suffix && (
+                  <span class='home-stats__suffix'>
+                    {stat.suffix}
+                  </span>
+                )
+              }
+            </dd>
+
+            <dt class='home-stats__label'>
+              {stat.label}
+            </dt>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<script>
+  import {
+    initStatsCounter,
+  } from '../../scripts/ui/stats-counter';
+
+  const root =
+    document.querySelector<HTMLElement>(
+      '[data-home-stats]',
+    );
+
+  if (root) {
+    initStatsCounter(root);
+  }
+</script>
+
+<style>
+  .home-stats {
+    width: 100%;
+
+    padding-block:
+      clamp(70px, 7vw, 108px);
+
+    background-color:
+      var(--color-surface-muted);
+  }
+
+  .home-stats__grid {
+    display: grid;
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-stats__item {
+    min-width: 0;
+
+    text-align: center;
+  }
+
+  .home-stats__value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+    margin: 0;
+
+    color: var(--color-black);
+
+    font-family: var(--font-editorial);
+    font-size:
+      clamp(4rem, 5.7vw, 5.5rem);
+    font-weight:
+      var(--font-weight-regular);
+    line-height: 0.82;
+
+    font-variant-numeric:
+      tabular-nums lining-nums;
+  }
+
+  .home-stats__item--accent
+  .home-stats__value {
+    color: var(--color-red);
+  }
+
+  .home-stats__prefix,
+  .home-stats__suffix {
+    font: inherit;
+    line-height: inherit;
+  }
+
+  /*
+   * Separación discreta para sufijos
+   * lingüísticos como K, M, etc.
+   *
+   * Si posteriormente necesitamos %
+   * completamente pegado al número,
+   * podremos controlarlo por variante.
+   */
+  .home-stats__suffix {
+    margin-left: 0.1em;
+  }
+
+  .home-stats__label {
+    margin:
+      clamp(10px, 1vw, 14px)
+      0
+      0;
+
+    color: rgb(20 20 20 / 52%);
+
+    font-family: var(--font-editorial);
+    font-size:
+      clamp(1rem, 1.3vw, 1.25rem);
+    font-weight:
+      var(--font-weight-regular);
+    line-height: 1.1;
+  }
+
+  @media (max-width: 834px) {
+    .home-stats {
+      padding-block:
+        clamp(64px, 10vw, 88px);
+    }
+
+    .home-stats__grid {
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      row-gap:
+        clamp(52px, 9vw, 78px);
+    }
+
+    .home-stats__value {
+      font-size:
+        clamp(3.7rem, 11vw, 5rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .home-stats__grid {
+      column-gap: 16px;
+    }
+
+    .home-stats__value {
+      font-size:
+        clamp(3.25rem, 16vw, 4.25rem);
+    }
+
+    .home-stats__label {
+      font-size: 1rem;
+    }
+  }
+</style>

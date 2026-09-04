@@ -27,6 +27,8 @@ export function initManifestoVideo(root: HTMLElement) {
    * Lo sacamos de ese stacking context para
    * que fullscreen → dialog sea estable.
    */
+  const dialogOrigin = dialog.parentElement;
+
   document.body.append(dialog);
 
   let sourceAttached = false;
@@ -103,7 +105,6 @@ export function initManifestoVideo(root: HTMLElement) {
 
   document.addEventListener('fullscreenchange', handleFullscreenChange);
 
-  document.removeEventListener('fullscreenchange', handleFullscreenChange);
   /*
    * También cubre cierre nativo con Escape.
    */
@@ -124,5 +125,9 @@ export function initManifestoVideo(root: HTMLElement) {
     sourceAttached = false;
 
     document.documentElement.classList.remove('manifesto-video-open');
+
+    document.removeEventListener('fullscreenchange', handleFullscreenChange);
+
+    dialogOrigin?.append(dialog);
   };
 }

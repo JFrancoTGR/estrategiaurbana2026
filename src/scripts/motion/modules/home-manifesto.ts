@@ -460,7 +460,7 @@ export function init(root: HTMLElement) {
 
         cache.clear();
 
-        root.classList.remove('is-canvas-ready');
+        root.classList.remove('is-canvas-ready', 'is-cta-visible');
         ctaVisible = false;
       };
     },
