@@ -1,0 +1,309 @@
+<section
+  id='contacto'
+  class='home-contact'
+>
+  <div class='page-shell home-contact__layout'>
+    <div class='home-contact__intro'>
+      <p class='home-contact__eyebrow'>
+        CONTÁCTANOS
+      </p>
+
+      <h2 class='home-contact__title font-editorial'>
+        Empecemos la
+        <strong>conversación</strong>
+        <strong>correcta.</strong>
+      </h2>
+
+      <p class='home-contact__description'>
+        Ya sea que estés interesado en uno de nuestros proyectos,
+        explorando una oportunidad de inversión, buscando desarrollar
+        una propiedad o construyendo una alianza estratégica, queremos
+        escucharte.
+      </p>
+    </div>
+
+    <form
+      class='home-contact__form'
+      aria-label='Formulario de contacto'
+    >
+      <div class='home-contact__field'>
+        <label for='contact-name'>
+          NOMBRE
+        </label>
+
+        <input
+          id='contact-name'
+          name='name'
+          type='text'
+          autocomplete='name'
+        />
+      </div>
+
+      <div class='home-contact__field'>
+        <label for='contact-email'>
+          CORREO
+        </label>
+
+        <input
+          id='contact-email'
+          name='email'
+          type='email'
+          autocomplete='email'
+        />
+      </div>
+
+      <div class='home-contact__field'>
+        <label for='contact-project'>
+          PROYECTO DE INTERÉS
+        </label>
+
+        <input
+          id='contact-project'
+          name='project'
+          type='text'
+        />
+      </div>
+
+      <button
+        class='home-contact__submit'
+        type='button'
+      >
+        ENVIAR MENSAJE
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .home-contact {
+    width: 100%;
+
+    color: var(--color-white);
+    background-color: var(--color-red);
+  }
+
+  .home-contact__layout {
+    min-height: 700px;
+
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    column-gap: clamp(72px, 8vw, 140px);
+
+    align-items: center;
+
+    padding-block:
+      clamp(100px, 9vw, 148px);
+  }
+
+  /* =========================
+     INTRO
+  ========================= */
+
+  .home-contact__intro {
+    max-width: 590px;
+  }
+
+  .home-contact__eyebrow {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.8125rem, 0.9vw, 0.9375rem);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.1em;
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  .home-contact__title {
+    margin:
+      clamp(42px, 4vw, 56px)
+      0
+      0;
+
+    max-width: 570px;
+
+    font-size: clamp(3.75rem, 4.7vw, 5rem);
+    font-weight: var(--font-weight-light);
+    letter-spacing: -0.035em;
+    line-height: 0.88;
+  }
+
+  .home-contact__title strong {
+    display: block;
+
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .home-contact__description {
+    max-width: 590px;
+
+    margin:
+      clamp(34px, 3vw, 44px)
+      0
+      0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(1.125rem, 1.4vw, 1.5rem);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.22;
+  }
+
+  /* =========================
+     FORM
+  ========================= */
+
+  .home-contact__form {
+    width: 100%;
+    max-width: 520px;
+
+    justify-self: end;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-contact__field {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 34px;
+  }
+
+  .home-contact__field label {
+    margin-bottom: 16px;
+
+    font-family: var(--font-primary);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.2em;
+    line-height: 1;
+
+    color: var(--color-white);
+
+    text-transform: uppercase;
+  }
+
+  .home-contact__field input {
+    width: 100%;
+    height: 28px;
+
+    padding: 0;
+
+    border: 0;
+    border-bottom: 1px solid rgb(240 240 240 / 88%);
+    border-radius: 0;
+    outline: 0;
+
+    color: var(--color-white);
+    background: transparent;
+
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: var(--font-weight-regular);
+  }
+
+  .home-contact__field input:focus {
+    border-bottom-color: var(--color-white);
+  }
+
+  .home-contact__submit {
+    width: fit-content;
+
+    margin-top: 20px;
+    padding: 13px 17px;
+
+    border: 1px solid var(--color-white);
+
+    color: var(--color-red);
+    background-color: var(--color-white);
+
+    font-family: var(--font-primary);
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.1em;
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+      color var(--duration-fast) var(--ease-premium),
+      background-color var(--duration-fast) var(--ease-premium),
+      transform var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-contact__submit:hover {
+      color: var(--color-white);
+      background-color: transparent;
+
+      transform: translateY(-2px);
+    }
+  }
+
+  /* =========================
+     TABLET / MOBILE
+  ========================= */
+
+  @media (max-width: 900px) {
+    .home-contact__layout {
+      min-height: 0;
+
+      grid-template-columns: 1fr;
+
+      row-gap: 80px;
+
+      padding-block: 96px;
+    }
+
+    .home-contact__intro {
+      max-width: 680px;
+    }
+
+    .home-contact__form {
+      max-width: 680px;
+
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-contact__layout {
+      row-gap: 68px;
+
+      padding-block: 84px 96px;
+    }
+
+    .home-contact__title {
+      margin-top: 36px;
+
+      font-size: clamp(3.25rem, 14vw, 4.5rem);
+    }
+
+    .home-contact__description {
+      margin-top: 34px;
+
+      font-size: 1.0625rem;
+      line-height: 1.35;
+    }
+
+    .home-contact__field {
+      margin-bottom: 30px;
+    }
+
+    .home-contact__submit {
+      margin-top: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-contact__submit {
+      transition: none;
+    }
+  }
+</style>

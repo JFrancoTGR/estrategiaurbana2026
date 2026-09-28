@@ -1,0 +1,118 @@
+---
+
+---
+
+<section
+  id='home-zones-intro'
+  class='home-zones-intro'
+  data-motion='home-zones-intro'
+>
+  <div class='page-shell layout-grid'>
+    <div class='home-zones-intro__content'>
+      <p
+        class='home-zones-intro__eyebrow'
+        data-anim='eyebrow'
+      >
+        ZONAS
+      </p>
+
+      <h2
+        class='home-zones-intro__title font-editorial'
+        data-anim='title'
+      >
+        Conoce la ubicación de
+        <span>nuestros desarrollos.</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-zones-intro {
+    width: 100%;
+
+    padding-block: clamp(108px, 8vw, 150px);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  .home-zones-intro__content {
+    grid-column: 2 / 12;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .home-zones-intro__eyebrow {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.12em;
+    line-height: 1;
+
+    text-transform: uppercase;
+  }
+
+  .home-zones-intro__title {
+    max-width: 900px;
+
+    margin-top: clamp(30px, 3vw, 42px);
+
+    font-size: clamp(2.5rem, 3.4vw, 4rem);
+    font-weight: var(--font-weight-light);
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+  }
+
+  .home-zones-intro__title span {
+    display: block;
+
+    color: var(--color-red);
+  }
+
+  .home-zones-intro [data-anim] {
+    opacity: 0;
+    transform: translateY(12px);
+
+    transition:
+      opacity 700ms var(--ease-premium),
+      transform 700ms var(--ease-premium);
+  }
+
+  .home-zones-intro__title[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  .home-zones-intro [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-zones-intro [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-zones-intro {
+      padding-block: 96px;
+    }
+
+    .home-zones-intro__content {
+      grid-column: 1 / -1;
+    }
+
+    .home-zones-intro__title {
+      font-size: clamp(2.2rem, 10vw, 3.25rem);
+    }
+  }
+</style>

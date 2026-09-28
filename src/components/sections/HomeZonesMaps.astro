@@ -1,0 +1,60 @@
+<section class='home-zones-map'>
+  <div
+    class='home-zones-map__canvas'
+    data-zones-map
+    aria-label='Mapa de Ciudad de México'
+  ></div>
+</section>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  const element = document.querySelector<HTMLElement>(
+    '[data-zones-map]',
+  );
+
+  if (element) {
+    const map = L.map(element, {
+      center: [19.4117, -99.1693],
+      zoom: 16,
+
+      scrollWheelZoom: false,
+      zoomControl: true,
+      attributionControl: true,
+    });
+
+    L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution:
+          '&copy; OpenStreetMap contributors',
+      },
+    ).addTo(map);
+  }
+</script>
+
+<style>
+  .home-zones-map {
+    width: 100%;
+
+    background-color: var(--color-background);
+  }
+
+  .home-zones-map__canvas {
+    width: 100%;
+    height: clamp(520px, 65vh, 760px);
+  }
+
+  :global(.leaflet-container) {
+    font-family: var(--font-primary);
+
+    background-color: var(--color-surface-muted);
+  }
+
+  @media (max-width: 767px) {
+    .home-zones-map__canvas {
+      height: 520px;
+    }
+  }
+</style>

@@ -5,6 +5,7 @@ import { init as initHomeProjectsGrid } from './modules/home-projects-grid';
 import { init as initHomePartners } from './modules/home-partners';
 import { init as initHomeTeamIntro } from './modules/home-team-intro';
 import { init as initHomeManifesto } from './modules/home-manifesto';
+import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
 
 export type MotionInitializer = (root: HTMLElement) => void | (() => void);
 
@@ -16,4 +17,6 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'home-partners': initHomePartners,
   'home-team-intro': initHomeTeamIntro,
   'home-manifesto': initHomeManifesto,
+  'home-delivered-projects': initHomeDeliveredProjects,
+  'home-zones-intro': initHomeTeamIntro,
 };

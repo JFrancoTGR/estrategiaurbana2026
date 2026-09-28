@@ -1,0 +1,207 @@
+---
+import EventCard from '../cards/EventCard.astro';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const events = [
+  {
+    title: 'Recorrido guiado - Cova Chilpancingo',
+    type: 'Open House',
+    startsAt: '2026-09-15T11:00:00-06:00',
+    endsAt: '2026-09-15T14:00:00-06:00',
+    zone: 'Condesa',
+    city: 'CDMX',
+    href: '#proximos-eventos',
+  },
+  {
+    title: 'Inauguración Departamento Muestra Juárez',
+    type: 'Inauguración',
+    startsAt: '2026-10-08T17:30:00-06:00',
+    endsAt: '2026-10-08T21:00:00-06:00',
+    zone: 'Juárez',
+    city: 'CDMX',
+    href: '#proximos-eventos',
+  },
+  {
+    title: 'Recorrido privado - Sennse Liverpool',
+    type: 'Open House',
+    startsAt: '2026-11-17T11:00:00-06:00',
+    endsAt: '2026-11-17T14:00:00-06:00',
+    zone: 'Juárez',
+    city: 'CDMX',
+    href: '#proximos-eventos',
+  },
+  {
+    title: 'Invitational Surf Exhibition - The WAVVE',
+    type: 'Invitational',
+    startsAt: '2026-12-06T11:00:00-06:00',
+    endsAt: '2026-12-06T14:00:00-06:00',
+    zone: 'Juárez',
+    city: 'CDMX',
+    href: '#proximos-eventos',
+  },
+];
+
+const hasSlider = events.length > 1;
+---
+
+<section
+  id='proximos-eventos'
+  class='home-upcoming-events'
+  data-home-upcoming-events
+  data-event-count={events.length}
+>
+  <div class='page-shell'>
+    <header class='home-upcoming-events__header'>
+      <h2 class='home-upcoming-events__title font-editorial'>
+        Próximos
+        <span>eventos</span>
+      </h2>
+    </header>
+
+    {
+      hasSlider ? (
+        <>
+          <div class='swiper home-upcoming-events__slider' data-events-slider>
+            <div class='swiper-wrapper'>
+              {events.map((event) => (
+                <div class='swiper-slide'>
+                  <EventCard event={event} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div
+            class='home-upcoming-events__pagination'
+            data-events-pagination
+            hidden
+          />
+        </>
+      ) : (
+        <div class='home-upcoming-events__single'>
+          <EventCard event={events[0]} />
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  import { initUpcomingEventsSlider } from '../../scripts/ui/upcoming-events-slider';
+
+  const root = document.querySelector<HTMLElement>(
+    '[data-home-upcoming-events]',
+  );
+
+  if (root) {
+    initUpcomingEventsSlider(root);
+  }
+</script>
+
+<style>
+  .home-upcoming-events {
+    width: 100%;
+
+    padding-block: clamp(64px, 6vw, 96px) clamp(72px, 7vw, 112px);
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  .home-upcoming-events__header {
+    min-height: clamp(180px, 16vw, 250px);
+  }
+
+  .home-upcoming-events__title {
+    max-width: 420px;
+
+    margin: 0;
+
+    font-size: clamp(3rem, 4.3vw, 5rem);
+    font-weight: var(--font-weight-light);
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+
+  .home-upcoming-events__title span {
+    display: block;
+
+    color: var(--color-red);
+  }
+
+  .home-upcoming-events__slider {
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  .home-upcoming-events__slider .swiper-slide {
+    height: auto;
+  }
+
+  .home-upcoming-events__slider .swiper-slide > * {
+    height: 100%;
+  }
+
+  .home-upcoming-events__single {
+    width: min(100%, 460px);
+  }
+
+  .home-upcoming-events__pagination {
+    margin-top: clamp(28px, 3vw, 40px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .home-upcoming-events__pagination[hidden] {
+    display: none;
+  }
+
+  .home-upcoming-events__pagination :global(.swiper-pagination-bullet) {
+    width: 7px;
+    height: 7px;
+
+    margin: 0 !important;
+
+    border-radius: 50%;
+
+    opacity: 1;
+
+    background-color: rgb(20 20 20 / 20%);
+
+    transition:
+      transform var(--duration-fast) var(--ease-premium),
+      background-color var(--duration-fast) var(--ease-premium);
+  }
+
+  .home-upcoming-events__pagination :global(.swiper-pagination-bullet-active) {
+    transform: scale(1.25);
+
+    background-color: var(--color-red);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-upcoming-events__pagination :global(.swiper-pagination-bullet) {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-upcoming-events {
+      padding-block: 72px 80px;
+    }
+
+    .home-upcoming-events__header {
+      min-height: 160px;
+    }
+
+    .home-upcoming-events__title {
+      font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+  }
+</style>

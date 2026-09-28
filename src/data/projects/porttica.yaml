@@ -18,4 +18,4 @@ card:
 
 home:
   visible: true
-  order: 5
+  order: 10
