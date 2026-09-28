@@ -4,7 +4,7 @@ type StatCounter = {
   formatter: Intl.NumberFormat;
 };
 
-const DURATION = 1100;
+const DURATION = 1400;
 
 const easeOutCubic = (
   progress: number,
