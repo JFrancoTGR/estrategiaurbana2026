@@ -7,6 +7,8 @@ import { init as initHomeTeamIntro } from './modules/home-team-intro';
 import { init as initHomeManifesto } from './modules/home-manifesto';
 import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
 
+import { init as initSectionHero } from './modules/section-hero';
+
 export type MotionInitializer = (root: HTMLElement) => void | (() => void);
 
 export const motionRegistry: Record<string, MotionInitializer> = {
@@ -19,4 +21,6 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'home-manifesto': initHomeManifesto,
   'home-delivered-projects': initHomeDeliveredProjects,
   'home-zones-intro': initHomeTeamIntro,
+
+  'section-hero': initSectionHero,
 };

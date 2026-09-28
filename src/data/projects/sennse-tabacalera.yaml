@@ -6,6 +6,7 @@ commercial:
   available: true
 
 location:
+  zone: cdmx
   label: Tabacalera, CDMX
 
 price:
@@ -19,3 +20,8 @@ card:
 home:
   visible: true
   order: 1
+
+detail:
+  hero:
+    image: ../../assets/img/projects/sennse-tabacalera/hero.webp
+    alt: Vista principal de Sennse Tabacalera

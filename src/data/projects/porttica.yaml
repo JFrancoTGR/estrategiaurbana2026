@@ -6,6 +6,7 @@ commercial:
   available: true
 
 location:
+  zone: tijuana
   label: Tijuana, Baja California
 
 price:
@@ -14,8 +15,13 @@ price:
 
 card:
   image: ../../assets/img/projects/porttica/card.webp
-  alt: Vista exterior de COVA NUEVO LEON 219
+  alt: Vista exterior de PORTTICA
 
 home:
   visible: true
   order: 10
+
+detail:
+  hero:
+    image: ../../assets/img/projects/porttica/hero.webp
+    alt: Vista principal de PORTTICA

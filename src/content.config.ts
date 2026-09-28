@@ -21,6 +21,7 @@ const projects = defineCollection({
       }),
 
       location: z.object({
+        zone: z.enum(['cdmx', 'tijuana']),
         label: z.string(),
       }),
 
@@ -39,6 +40,13 @@ const projects = defineCollection({
       home: z.object({
         visible: z.boolean().default(false),
         order: z.number().int().nonnegative(),
+      }),
+
+      detail: z.object({
+        hero: z.object({
+          image: image(),
+          alt: z.string(),
+        }),
       }),
     }),
 });

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHero from '../components/sections/SectionHero.astro';
+
+import heroImage from '../assets/img/sections/projects/hero.webp';
+---
+
+<BaseLayout
+  title="Proyectos en Venta | Estrategia Urbana"
+  description="Conoce los desarrollos inmobiliarios de Estrategia Urbana."
+>
+  <SectionHero
+    image={heroImage}
+    title={[
+      'Conoce nuestros',
+      'desarrollos',
+    ]}
+    cta={{
+      label: 'Agenda una cita',
+      href: '/contacto',
+    }}
+  />
+</BaseLayout>

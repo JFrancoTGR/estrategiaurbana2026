@@ -6,6 +6,7 @@ commercial:
   available: true
 
 location:
+  zone: cdmx
   label: Juárez, CDMX
 
 price:
@@ -19,3 +20,8 @@ card:
 home:
   visible: true
   order: 3
+
+detail:
+  hero:
+    image: ../../assets/img/projects/sennse-hamburgo/hero.webp
+    alt: Vista principal de Sennse Hamburgo
