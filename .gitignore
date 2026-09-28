@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # SOURCE / DESIGN RESOURCES
 /recursos/
+
+# Carpeta de videos
+/public/media/home/manifesto/video

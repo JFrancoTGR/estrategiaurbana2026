@@ -1,0 +1,303 @@
+---
+const posterSrc = `${import.meta.env.BASE_URL}media/home/video/poster.webp`;
+
+const posterLoopWebm = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.webm`;
+const posterLoopMp4 = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.mp4`;
+
+const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifesto-1080.mp4`;
+---
+
+<section id='home-video' class='home-video' data-home-video>
+  <button
+    class='home-video__trigger'
+    type='button'
+    data-manifesto-video-open
+    aria-label='Ver video completo'
+  >
+    <video
+      class='home-video__poster'
+      autoplay
+      muted
+      loop
+      playsinline
+      poster={posterSrc}
+      aria-hidden='true'
+    >
+      <source src={posterLoopWebm} type='video/webm' />
+
+      <source src={posterLoopMp4} type='video/mp4' />
+    </video>
+
+    <span class='home-video__overlay' aria-hidden='true'></span>
+
+    <span class='home-video__cta'>
+      <span class='home-video__play' aria-hidden='true'>
+        <svg viewBox='0 0 16 16'>
+          <path d='M5 3.25 12 8l-7 4.75V3.25Z'></path>
+        </svg>
+      </span>
+
+      <span class='home-video__label'> VER VIDEO COMPLETO </span>
+    </span>
+  </button>
+
+  <dialog
+    class='manifesto-video'
+    data-manifesto-video-dialog
+    data-video-src={videoSrc}
+    aria-label='Video de Estrategia Urbana'
+  >
+    <div class='manifesto-video__surface'>
+      <video
+        class='manifesto-video__player'
+        controls
+        playsinline
+        preload='none'
+        data-manifesto-video></video>
+
+      <button
+        class='manifesto-video__close'
+        type='button'
+        data-manifesto-video-close
+        aria-label='Cerrar video'
+      >
+        CERRAR
+      </button>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  import { initManifestoVideo } from '../../scripts/ui/manifesto-video';
+
+  const root = document.querySelector<HTMLElement>('[data-home-video]');
+
+  if (root) {
+    initManifestoVideo(root);
+  }
+</script>
+
+<style>
+  .home-video {
+    position: relative;
+
+    width: 100%;
+
+    background-color: var(--color-black);
+  }
+
+  .home-video__trigger {
+    position: relative;
+
+    width: 100%;
+    height: 540px;
+
+    display: block;
+
+    padding: 0;
+    border: 0;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background-color: var(--color-black);
+
+    cursor: pointer;
+  }
+
+  .home-video__poster {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+
+    pointer-events: none;
+
+    transition: transform 900ms var(--ease-premium);
+  }
+
+  .home-video__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      180deg,
+      rgb(0 0 0 / 5%) 0%,
+      rgb(0 0 0 / 12%) 45%,
+      rgb(0 0 0 / 34%) 100%
+    );
+
+    transition: background-color var(--duration-fast) var(--ease-premium);
+  }
+
+  .home-video__cta {
+    position: absolute;
+    z-index: 2;
+
+    left: 50%;
+    top: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .home-video__play {
+    width: 68px;
+    height: 68px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgb(255 255 255 / 55%);
+    border-radius: 50%;
+
+    background-color: rgb(10 10 10 / 25%);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+      transform 350ms var(--ease-premium),
+      background-color 350ms var(--ease-premium);
+  }
+
+  .home-video__play svg {
+    width: 18px;
+    height: 18px;
+
+    margin-left: 2px;
+
+    fill: currentColor;
+  }
+
+  .home-video__label {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  /* VIDEO */
+
+  .manifesto-video {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    max-width: none;
+
+    height: 100dvh;
+    max-height: none;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+    background-color: var(--dialog-background);
+
+    z-index: 2000;
+  }
+
+  .manifesto-video::backdrop {
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__surface {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__player {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    background-color: var(--dialog-background);
+  }
+
+  .manifesto-video__close {
+    position: absolute;
+    z-index: 2001;
+
+    top: clamp(20px, 3vw, 42px);
+    right: var(--page-gutter);
+
+    padding: 10px 0;
+
+    border: 0;
+
+    color: var(--color-white);
+    background: transparent;
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+
+    cursor: pointer;
+  }
+
+  :global(html.manifesto-video-open),
+  :global(html.manifesto-video-open body) {
+    overflow: hidden;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-video__trigger:hover .home-video__poster {
+      transform: scale(1.025);
+    }
+
+    .home-video__trigger:hover .home-video__play {
+      transform: scale(1.08);
+
+      background-color: rgb(10 10 10 / 42%);
+    }
+  }
+
+  @media (max-width: 834px) {
+    .home-video__trigger {
+      height: clamp(360px, 70vw, 520px);
+    }
+
+    .home-video__play {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-video__poster,
+    .home-video__play {
+      transition: none;
+    }
+  }
+</style>
