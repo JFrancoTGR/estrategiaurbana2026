@@ -1,37 +1,22 @@
+---
+import 'leaflet/dist/leaflet.css';
+---
+
 <section class='home-zones-map'>
   <div
     class='home-zones-map__canvas'
     data-zones-map
     aria-label='Mapa de Ciudad de México'
-  ></div>
+  >
+  </div>
 </section>
 
 <script>
-  import L from 'leaflet';
-  import 'leaflet/dist/leaflet.css';
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
 
-  const element = document.querySelector<HTMLElement>(
-    '[data-zones-map]',
-  );
+  import { initZonesMap } from '../../scripts/ui/zones-map';
 
-  if (element) {
-    const map = L.map(element, {
-      center: [19.4117, -99.1693],
-      zoom: 16,
-
-      scrollWheelZoom: false,
-      zoomControl: true,
-      attributionControl: true,
-    });
-
-    L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        attribution:
-          '&copy; OpenStreetMap contributors',
-      },
-    ).addTo(map);
-  }
+  mountPageUI('[data-zones-map]', initZonesMap);
 </script>
 
 <style>

@@ -8,6 +8,7 @@ import { init as initHomeManifesto } from './modules/home-manifesto';
 import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
 
 import { init as initSectionHero } from './modules/section-hero';
+import { init as initProjectsGrid} from './modules/projects-grid';
 
 export type MotionInitializer = (root: HTMLElement) => void | (() => void);
 
@@ -23,4 +24,5 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'home-zones-intro': initHomeTeamIntro,
 
   'section-hero': initSectionHero,
+  'projects-grid': initProjectsGrid,
 };

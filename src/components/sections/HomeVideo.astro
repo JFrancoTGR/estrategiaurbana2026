@@ -1,9 +1,6 @@
 ---
-const posterSrc = `${import.meta.env.BASE_URL}media/home/video/poster.webp`;
-
 const posterLoopWebm = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.webm`;
 const posterLoopMp4 = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.mp4`;
-
 const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifesto-1080.mp4`;
 ---
 
@@ -20,7 +17,6 @@ const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifest
       muted
       loop
       playsinline
-      poster={posterSrc}
       aria-hidden='true'
     >
       <source src={posterLoopWebm} type='video/webm' />
@@ -68,13 +64,11 @@ const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifest
 </section>
 
 <script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
   import { initManifestoVideo } from '../../scripts/ui/manifesto-video';
 
-  const root = document.querySelector<HTMLElement>('[data-home-video]');
-
-  if (root) {
-    initManifestoVideo(root);
-  }
+  mountPageUI('[data-home-video]', initManifestoVideo);
 </script>
 
 <style>

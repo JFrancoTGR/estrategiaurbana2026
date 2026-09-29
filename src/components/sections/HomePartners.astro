@@ -12,8 +12,7 @@ const partners = (await getCollection('partners'))
   .filter(({ data }) => data.home.visible)
   .sort((a, b) => a.data.home.order - b.data.home.order);
 
-const partnersHref =
-  `${import.meta.env.BASE_URL}socios-estrategicos`;
+const partnersHref = `${import.meta.env.BASE_URL}socios-estrategicos`;
 ---
 
 <section
@@ -37,42 +36,26 @@ const partnersHref =
 
   <div class='home-partners__foreground'>
     <div class='page-shell layout-grid'>
-      <div
-        class='home-partners__intro'
-        data-anim='intro'
-      >
-        <p
-          class='home-partners__eyebrow'
-          data-anim='eyebrow'
-        >
+      <div class='home-partners__intro' data-anim='intro'>
+        <p class='home-partners__eyebrow' data-anim='eyebrow'>
           SOCIOS ESTRATÉGICOS
         </p>
 
-        <h2
-          class='home-partners__title font-editorial'
-          data-anim='title'
-        >
+        <h2 class='home-partners__title font-editorial' data-anim='title'>
           Colaboraciones que fortalecen
           <span>el valor de cada proyecto.</span>
         </h2>
 
-        <p
-          class='home-partners__description'
-          data-anim='description'
-        >
-          Trabajamos con arquitectos, interioristas,
-          paisajistas, ingenieros y especialistas que
-          aportan criterio técnico, visión creativa y
+        <p class='home-partners__description' data-anim='description'>
+          Trabajamos con arquitectos, interioristas, paisajistas, ingenieros y
+          especialistas que aportan criterio técnico, visión creativa y
           experiencia en cada etapa del desarrollo.
         </p>
       </div>
     </div>
 
     <div class='page-shell home-partners__slider-shell'>
-      <div
-        class='swiper home-partners__slider'
-        data-partners-slider
-      >
+      <div class='swiper home-partners__slider' data-partners-slider>
         <div class='swiper-wrapper'>
           {
             partners.map((partner) => (
@@ -86,25 +69,17 @@ const partnersHref =
     </div>
 
     <div class='home-partners__actions'>
-      <a
-        href={partnersHref}
-        class='home-partners__cta'
-      >
-        VER MÁS
-      </a>
+      <a href={partnersHref} class='home-partners__cta'> VER MÁS </a>
     </div>
   </div>
 </section>
 
 <script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
   import { initPartnersSlider } from '../../scripts/ui/partners-slider';
 
-  const root =
-    document.querySelector<HTMLElement>('[data-home-partners]');
-
-  if (root) {
-    initPartnersSlider(root);
-  }
+  mountPageUI('[data-home-partners]', initPartnersSlider);
 </script>
 
 <style>
@@ -117,9 +92,7 @@ const partnersHref =
     color: var(--color-text);
     background-color: var(--color-surface-muted);
 
-    padding-block:
-      clamp(112px, 8vw, 156px)
-      clamp(88px, 7vw, 128px);
+    padding-block: clamp(112px, 8vw, 156px) clamp(88px, 7vw, 128px);
   }
 
   .home-partners__background {
@@ -229,8 +202,7 @@ const partnersHref =
     color: var(--color-white);
     background-color: var(--color-black);
 
-    transition:
-      transform var(--duration-fast) var(--ease-premium);
+    transition: transform var(--duration-fast) var(--ease-premium);
   }
 
   @media (hover: hover) and (pointer: fine) {

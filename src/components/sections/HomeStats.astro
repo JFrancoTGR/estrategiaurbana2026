@@ -24,7 +24,7 @@ type Stat = {
  */
 const stats: Stat[] = [
   {
-    value: 16,
+    value: 120,
     label: 'Personas',
 
     minimumIntegerDigits: 2,
@@ -43,7 +43,7 @@ const stats: Stat[] = [
   },
   {
     value: 16,
-    label: 'Años de práctica',
+    label: 'Años de experiencia',
 
     minimumIntegerDigits: 2,
     maximumFractionDigits: 0,
@@ -53,7 +53,7 @@ const stats: Stat[] = [
     accent: true,
   },
   {
-    value: 16,
+    value: 3,
     label: 'Ciudades',
 
     minimumIntegerDigits: 2,
@@ -65,26 +65,18 @@ const stats: Stat[] = [
 
 const formatInitialValue = (stat: Stat) => {
   return new Intl.NumberFormat('es-MX', {
-    minimumIntegerDigits:
-      stat.minimumIntegerDigits ?? 1,
+    minimumIntegerDigits: stat.minimumIntegerDigits ?? 1,
 
-    minimumFractionDigits:
-      stat.minimumFractionDigits ?? 0,
+    minimumFractionDigits: stat.minimumFractionDigits ?? 0,
 
-    maximumFractionDigits:
-      stat.maximumFractionDigits ?? 0,
+    maximumFractionDigits: stat.maximumFractionDigits ?? 0,
 
-    useGrouping:
-      stat.useGrouping ?? true,
+    useGrouping: stat.useGrouping ?? true,
   }).format(stat.value);
 };
 ---
 
-<section
-  id='home-stats'
-  class='home-stats'
-  data-home-stats
->
+<section id='home-stats' class='home-stats' data-home-stats>
   <div class='page-shell'>
     <dl class='home-stats__grid'>
       {
@@ -93,52 +85,33 @@ const formatInitialValue = (stat: Stat) => {
             class:list={[
               'home-stats__item',
               {
-                'home-stats__item--accent':
-                  stat.accent,
+                'home-stats__item--accent': stat.accent,
               },
             ]}
           >
             <dd class='home-stats__value'>
-              {
-                stat.prefix && (
-                  <span class='home-stats__prefix'>
-                    {stat.prefix}
-                  </span>
-                )
-              }
+              {stat.prefix && (
+                <span class='home-stats__prefix'>{stat.prefix}</span>
+              )}
 
               <span
                 class='home-stats__number'
                 data-stat-value
                 data-value={stat.value}
-                data-minimum-integer-digits={
-                  stat.minimumIntegerDigits ?? 1
-                }
-                data-minimum-fraction-digits={
-                  stat.minimumFractionDigits ?? 0
-                }
-                data-maximum-fraction-digits={
-                  stat.maximumFractionDigits ?? 0
-                }
-                data-use-grouping={
-                  stat.useGrouping ?? true
-                }
+                data-minimum-integer-digits={stat.minimumIntegerDigits ?? 1}
+                data-minimum-fraction-digits={stat.minimumFractionDigits ?? 0}
+                data-maximum-fraction-digits={stat.maximumFractionDigits ?? 0}
+                data-use-grouping={stat.useGrouping ?? true}
               >
                 {formatInitialValue(stat)}
               </span>
 
-              {
-                stat.suffix && (
-                  <span class='home-stats__suffix'>
-                    {stat.suffix}
-                  </span>
-                )
-              }
+              {stat.suffix && (
+                <span class='home-stats__suffix'>{stat.suffix}</span>
+              )}
             </dd>
 
-            <dt class='home-stats__label'>
-              {stat.label}
-            </dt>
+            <dt class='home-stats__label'>{stat.label}</dt>
           </div>
         ))
       }
@@ -147,35 +120,25 @@ const formatInitialValue = (stat: Stat) => {
 </section>
 
 <script>
-  import {
-    initStatsCounter,
-  } from '../../scripts/ui/stats-counter';
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
 
-  const root =
-    document.querySelector<HTMLElement>(
-      '[data-home-stats]',
-    );
+  import { initStatsCounter } from '../../scripts/ui/stats-counter';
 
-  if (root) {
-    initStatsCounter(root);
-  }
+  mountPageUI('[data-home-stats]', initStatsCounter);
 </script>
 
 <style>
   .home-stats {
     width: 100%;
 
-    padding-block:
-      clamp(70px, 7vw, 108px);
+    padding-block: clamp(70px, 7vw, 108px);
 
-    background-color:
-      var(--color-surface-muted);
+    background-color: var(--color-surface-muted);
   }
 
   .home-stats__grid {
     display: grid;
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 
     align-items: center;
 
@@ -199,18 +162,14 @@ const formatInitialValue = (stat: Stat) => {
     color: var(--color-black);
 
     font-family: var(--font-editorial);
-    font-size:
-      clamp(4rem, 5.7vw, 5.5rem);
-    font-weight:
-      var(--font-weight-regular);
+    font-size: clamp(4rem, 5.7vw, 5.5rem);
+    font-weight: var(--font-weight-regular);
     line-height: 0.82;
 
-    font-variant-numeric:
-      tabular-nums lining-nums;
+    font-variant-numeric: tabular-nums lining-nums;
   }
 
-  .home-stats__item--accent
-  .home-stats__value {
+  .home-stats__item--accent .home-stats__value {
     color: var(--color-red);
   }
 
@@ -233,38 +192,29 @@ const formatInitialValue = (stat: Stat) => {
   }
 
   .home-stats__label {
-    margin:
-      clamp(10px, 1vw, 14px)
-      0
-      0;
+    margin: clamp(10px, 1vw, 14px) 0 0;
 
     color: rgb(20 20 20 / 52%);
 
     font-family: var(--font-editorial);
-    font-size:
-      clamp(1rem, 1.3vw, 1.25rem);
-    font-weight:
-      var(--font-weight-regular);
+    font-size: clamp(1rem, 1.3vw, 1.25rem);
+    font-weight: var(--font-weight-regular);
     line-height: 1.1;
   }
 
   @media (max-width: 834px) {
     .home-stats {
-      padding-block:
-        clamp(64px, 10vw, 88px);
+      padding-block: clamp(64px, 10vw, 88px);
     }
 
     .home-stats__grid {
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      row-gap:
-        clamp(52px, 9vw, 78px);
+      row-gap: clamp(52px, 9vw, 78px);
     }
 
     .home-stats__value {
-      font-size:
-        clamp(3.7rem, 11vw, 5rem);
+      font-size: clamp(3.7rem, 11vw, 5rem);
     }
   }
 
@@ -274,8 +224,7 @@ const formatInitialValue = (stat: Stat) => {
     }
 
     .home-stats__value {
-      font-size:
-        clamp(3.25rem, 16vw, 4.25rem);
+      font-size: clamp(3.25rem, 16vw, 4.25rem);
     }
 
     .home-stats__label {

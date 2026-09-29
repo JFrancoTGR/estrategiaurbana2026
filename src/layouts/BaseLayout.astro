@@ -1,10 +1,15 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 import MainNavbar from '../components/global/MainNavbar.astro';
 
 import '../styles/reset.css';
 import '../styles/tokens.css';
 import '../styles/layout.css';
 import '../styles/global.css';
+import '../styles/page-transitions.css';
+
+import Footer from '../components/global/Footer.astro';
 
 interface Props {
   title?: string;
@@ -13,20 +18,45 @@ interface Props {
 
 const { title = 'Título del sitio', description = 'Descripción del sitio' } =
   Astro.props;
+
+const pageFade = {
+  old: {
+    name: 'eu-page-fade-out',
+    duration: '270ms',
+    easing: 'ease-in',
+    fillMode: 'both',
+  },
+
+  new: {
+    name: 'eu-page-fade-in',
+    delay: '290ms',
+    duration: '350ms',
+    easing: 'ease-out',
+    fillMode: 'both',
+  },
+};
+
+const pageTransition = {
+  forwards: pageFade,
+  backwards: pageFade,
+};
 ---
 
 <!doctype html>
-<html lang='es'>
+<html lang='es' transition:name='page' transition:animate={pageTransition}>
   <head>
     <meta charset='UTF-8' />
+
     <meta name='viewport' content='width=device-width, initial-scale=1' />
 
     <title>{title}</title>
+
     <meta name='description' content={description} />
 
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 
     <link rel='preconnect' href='https://fonts.googleapis.com' />
+
     <link
       rel='preconnect'
       href='https://fonts.gstatic.com'
@@ -38,6 +68,8 @@ const { title = 'Título del sitio', description = 'Descripción del sitio' } =
       rel='stylesheet'
     />
 
+    <ClientRouter />
+
     <script is:inline>
       document.documentElement.classList.add('motion-preload');
     </script>
@@ -47,17 +79,27 @@ const { title = 'Título del sitio', description = 'Descripción del sitio' } =
     <MainNavbar />
 
     <div id='smooth-wrapper' data-smooth-wrapper>
-      <main id='smooth-content' data-smooth-content>
-        <slot />
-      </main>
+      <div id='smooth-content' data-smooth-content>
+        <main>
+          <slot />
+        </main>
+
+        <Footer />
+      </div>
     </div>
 
     <slot name='fixed-ui' />
 
     <script>
-      import { initMotion } from '../scripts/motion';
+      import { destroyMotion, initMotion } from '../scripts/motion';
 
-      initMotion();
+      document.addEventListener('astro:before-swap', () => {
+        destroyMotion();
+      });
+
+      document.addEventListener('astro:page-load', () => {
+        initMotion();
+      });
     </script>
   </body>
 </html>

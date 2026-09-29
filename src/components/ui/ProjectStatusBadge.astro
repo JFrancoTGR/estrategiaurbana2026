@@ -175,7 +175,10 @@ const config = PROJECT_STATUS_META[status];
 </style>
 
 <script>
+  import { mountOnPageLoad } from '../../scripts/ui/page-lifecycle';
+
   import { initProjectStatusBadges } from '../../scripts/ui/project-status-badges';
 
-  initProjectStatusBadges();
+  mountOnPageLoad(() => initProjectStatusBadges());
 </script>
+

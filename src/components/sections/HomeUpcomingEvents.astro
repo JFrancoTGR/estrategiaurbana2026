@@ -89,15 +89,11 @@ const hasSlider = events.length > 1;
 </section>
 
 <script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
   import { initUpcomingEventsSlider } from '../../scripts/ui/upcoming-events-slider';
 
-  const root = document.querySelector<HTMLElement>(
-    '[data-home-upcoming-events]',
-  );
-
-  if (root) {
-    initUpcomingEventsSlider(root);
-  }
+  mountPageUI('[data-home-upcoming-events]', initUpcomingEventsSlider);
 </script>
 
 <style>

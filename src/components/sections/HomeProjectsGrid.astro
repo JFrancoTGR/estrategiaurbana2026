@@ -8,47 +8,29 @@ const MOBILE_COUNT = 8;
 const homeProjects = (
   await getCollection(
     'projects',
-    ({ data }) =>
-      data.commercial.available &&
-      data.home.visible,
+    ({ data }) => data.commercial.available && data.home.visible,
   )
-).sort(
-  (a, b) =>
-    a.data.home.order -
-    b.data.home.order,
-);
+).sort((a, b) => a.data.home.order - b.data.home.order);
 
-const hasMoreHomeProjects =
-  homeProjects.length > INITIAL_DESKTOP_COUNT;
+const hasMoreHomeProjects = homeProjects.length > INITIAL_DESKTOP_COUNT;
 ---
 
 <section
-  id="home-projects-grid"
-  class="home-projects-grid"
+  id='home-projects-grid'
+  class='home-projects-grid'
   data-projects-grid
-  data-motion="home-projects-grid"
-  data-reveal-batch="4"
+  data-motion='home-projects-grid'
+  data-reveal-batch='4'
 >
-  <div class="page-shell">
-    <div
-      id="home-projects-list"
-      class="home-projects-grid__list"
-    >
+  <div class='page-shell'>
+    <div id='home-projects-list' class='home-projects-grid__list'>
       {
         homeProjects.map((project, index) => (
           <div
-            class="home-projects-grid__item"
+            class='home-projects-grid__item'
             data-project-card
-            data-reveal-hidden={
-              index >= INITIAL_DESKTOP_COUNT
-                ? ''
-                : undefined
-            }
-            data-mobile-hidden={
-              index >= MOBILE_COUNT
-                ? ''
-                : undefined
-            }
+            data-reveal-hidden={index >= INITIAL_DESKTOP_COUNT ? '' : undefined}
+            data-mobile-hidden={index >= MOBILE_COUNT ? '' : undefined}
           >
             <ProjectCard project={project} />
           </div>
@@ -56,24 +38,21 @@ const hasMoreHomeProjects =
       }
     </div>
 
-    <div class="home-projects-grid__actions">
+    <div class='home-projects-grid__actions'>
       {
         hasMoreHomeProjects && (
           <button
-            type="button"
-            class="home-projects-grid__more"
+            type='button'
+            class='home-projects-grid__more'
             data-projects-more
-            aria-controls="home-projects-list"
+            aria-controls='home-projects-list'
           >
             Ver más
           </button>
         )
       }
 
-      <a
-        href="/proyectos-en-venta"
-        class="home-projects-grid__all"
-      >
+      <a href='/proyectos-en-venta' class='home-projects-grid__all'>
         Ver todos los proyectos
       </a>
     </div>
@@ -84,9 +63,7 @@ const hasMoreHomeProjects =
   .home-projects-grid {
     width: 100%;
 
-    padding-block:
-      clamp(52px, 5vw, 84px)
-      clamp(72px, 6vw, 104px);
+    padding-block: clamp(52px, 5vw, 84px) clamp(72px, 6vw, 104px);
 
     background-color: var(--color-surface-muted);
   }
@@ -95,9 +72,7 @@ const hasMoreHomeProjects =
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
-    gap:
-      clamp(24px, 2.4vw, 38px)
-      clamp(10px, 1.2vw, 18px);
+    gap: clamp(24px, 2.4vw, 38px) clamp(10px, 1.2vw, 18px);
   }
 
   .home-projects-grid__actions {
@@ -155,14 +130,11 @@ const hasMoreHomeProjects =
 
       overflow-x: auto;
 
-      margin-inline:
-        calc(var(--page-gutter) * -1);
+      margin-inline: calc(var(--page-gutter) * -1);
 
-      padding-inline:
-        var(--page-gutter);
+      padding-inline: var(--page-gutter);
 
-      scroll-padding-inline:
-        var(--page-gutter);
+      scroll-padding-inline: var(--page-gutter);
 
       scroll-snap-type: x mandatory;
 
@@ -198,14 +170,9 @@ const hasMoreHomeProjects =
 </style>
 
 <script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
   import { initProjectsGrid } from '../../scripts/ui/projects-grid';
 
-  const grids =
-    document.querySelectorAll<HTMLElement>(
-      '[data-projects-grid]',
-    );
-
-  grids.forEach((grid) => {
-    initProjectsGrid(grid);
-  });
+  mountPageUI('[data-projects-grid]', initProjectsGrid);
 </script>
