@@ -1,165 +1,63 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-interface Props {
-  partner: CollectionEntry<'partners'>;
-}
+import PartnerProfileCard from '../cards/PartnerProfileCard.astro';
 
-const { partner } = Astro.props;
-const { data } = partner;
+const partners = (await getCollection('partners')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
-<article class='partner-profile-card'>
-  <figure class='partner-profile-card__media'>
-    <Image
-      src={data.portrait.image}
-      alt={data.portrait.alt}
-      class='partner-profile-card__image'
-      loading='lazy'
-    />
-  </figure>
-
-  <div class='partner-profile-card__content'>
-    <p class='partner-profile-card__discipline'>
-      {data.discipline}
-    </p>
-
-    <h2 class='partner-profile-card__title font-editorial'>
-      <span>{data.partner}</span>
-
+<section class='partners-grid' data-motion='partners-grid'>
+  <div class='page-shell'>
+    <div class='partners-grid__list'>
       {
-        data.company && (
-          <>
-            <span class='partner-profile-card__separator' aria-hidden='true'>
-              {' - '}
-            </span>
-
-            <span>{data.company}</span>
-          </>
-        )
+        partners.map((partner) => (
+          <div class='partners-grid__item' data-partner-card>
+            <PartnerProfileCard partner={partner} />
+          </div>
+        ))
       }
-    </h2>
-
-    {
-      data.description && (
-        <p class='partner-profile-card__description'>{data.description}</p>
-      )
-    }
+    </div>
   </div>
-</article>
+</section>
 
 <style>
-  .partner-profile-card {
+  .partners-grid {
     width: 100%;
-    min-width: 0;
 
-    display: grid;
-    grid-template-columns:
-      minmax(0, 0.96fr)
-      minmax(0, 1.04fr);
+    padding-top: calc(var(--header-height) + clamp(36px, 4vw, 64px));
 
-    border: 1px solid rgb(20 20 20 / 14%);
+    padding-bottom: clamp(72px, 7vw, 112px);
 
     background-color: var(--color-background);
   }
 
-  .partner-profile-card__media {
+  .partners-grid__list {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: clamp(8px, 0.8vw, 14px);
+  }
+
+  .partners-grid__item {
     min-width: 0;
-    height: 100%;
-
-    overflow: hidden;
-
-    border-right: 1px solid rgb(20 20 20 / 14%);
   }
 
-  .partner-profile-card__image {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
+  @media (max-width: 1024px) {
+    .partners-grid__list {
+      grid-template-columns: 1fr;
 
-    display: block;
-
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .partner-profile-card__content {
-    min-width: 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: clamp(18px, 1.6vw, 28px) clamp(18px, 1.8vw, 30px);
-  }
-
-  .partner-profile-card__discipline {
-    margin: 0;
-
-    font-size: 0.625rem;
-    font-weight: var(--font-weight-medium);
-
-    line-height: 1;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-
-    color: var(--color-red);
-  }
-
-  .partner-profile-card__title {
-    margin: clamp(12px, 1.1vw, 18px) 0 0;
-
-    font-size: clamp(1.45rem, 1.8vw, 2rem);
-
-    font-weight: var(--font-weight-regular);
-
-    line-height: 0.98;
-    letter-spacing: -0.025em;
-
-    color: var(--color-black);
-  }
-
-  .partner-profile-card__description {
-    margin-top: clamp(24px, 2.5vw, 40px);
-
-    font-size: clamp(0.75rem, 0.8vw, 0.875rem);
-
-    line-height: 1.42;
-
-    color: var(--color-text);
-  }
-
-  @media (max-width: 1199px) {
-    .partner-profile-card__title {
-      font-size: 1.5rem;
-    }
-
-    .partner-profile-card__description {
-      margin-top: 20px;
+      gap: 14px;
     }
   }
 
   @media (max-width: 767px) {
-    .partner-profile-card {
-      grid-template-columns: 1fr;
-    }
+    .partners-grid {
+      padding-top: calc(var(--header-height-scrolled) + 28px);
 
-    .partner-profile-card__media {
-      aspect-ratio: 4 / 5;
-
-      border-right: 0;
-      border-bottom: 1px solid rgb(20 20 20 / 14%);
-    }
-
-    .partner-profile-card__content {
-      padding: 20px;
-    }
-
-    .partner-profile-card__description {
-      margin-top: 22px;
-
-      font-size: 0.8125rem;
+      padding-bottom: 72px;
     }
   }
 </style>

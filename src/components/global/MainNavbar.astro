@@ -255,10 +255,15 @@ const isActive = (href: string) => {
     background-color: var(--color-background);
   }
 
-  .site-header--light .navigation-link {
-    color: var(--color-black);
+  .site-header--light .navigation-link.active,
+  .site-header--light .navigation-link:focus-visible {
+    color: var(--color-white);
+  }
 
-    text-shadow: none;
+  @media (hover: hover) and (pointer: fine) {
+    .site-header--light .navigation-link:hover {
+      color: var(--color-white);
+    }
   }
 
   .site-header--light.is-scrolled {
