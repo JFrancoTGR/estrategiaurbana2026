@@ -61,9 +61,11 @@ const partners = defineCollection({
     z.object({
       partner: z.string(),
 
-      experience: z.string(),
+      discipline: z.string(),
 
       company: z.string().optional(),
+
+      order: z.number().int().nonnegative(),
 
       portrait: z.object({
         image: image(),
@@ -74,7 +76,6 @@ const partners = defineCollection({
 
       home: z.object({
         visible: z.boolean().default(false),
-        order: z.number().int().nonnegative(),
       }),
     }),
 });

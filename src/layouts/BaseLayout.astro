@@ -14,10 +14,15 @@ import Footer from '../components/global/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+
+  headerTheme?: 'overlay' | 'light';
 }
 
-const { title = 'Título del sitio', description = 'Descripción del sitio' } =
-  Astro.props;
+const {
+  title = 'Título del sitio',
+  description = 'Descripción del sitio',
+  headerTheme = 'overlay',
+} = Astro.props;
 
 const pageFade = {
   old: {
@@ -76,7 +81,7 @@ const pageTransition = {
   </head>
 
   <body>
-    <MainNavbar />
+    <MainNavbar theme="{headerTheme}"/>
 
     <div id='smooth-wrapper' data-smooth-wrapper>
       <div id='smooth-content' data-smooth-content>

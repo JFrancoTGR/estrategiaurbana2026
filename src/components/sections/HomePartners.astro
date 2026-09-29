@@ -10,7 +10,7 @@ import 'swiper/css';
 
 const partners = (await getCollection('partners'))
   .filter(({ data }) => data.home.visible)
-  .sort((a, b) => a.data.home.order - b.data.home.order);
+  .sort((a, b) => a.data.order - b.data.order);
 
 const partnersHref = `${import.meta.env.BASE_URL}socios-estrategicos`;
 ---

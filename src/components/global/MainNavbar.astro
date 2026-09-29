@@ -4,6 +4,12 @@ import marca from '../../assets/img/logos/logo-marca.svg';
 
 const pathname = Astro.url.pathname;
 
+interface Props {
+  theme?: 'overlay' | 'light';
+}
+
+const { theme = 'overlay' } = Astro.props;
+
 const navigation = [
   {
     label: 'Proyectos en Venta',
@@ -32,7 +38,16 @@ const isActive = (href: string) => {
 };
 ---
 
-<header class='site-header' data-site-header data-motion-preload>
+<header
+  class:list={[
+    'site-header',
+    {
+      'site-header--light': theme === 'light',
+    },
+  ]}
+  data-site-header
+  data-motion-preload
+>
   <div class='page-shell header-inner'>
     <a href='/' class='brand' aria-label='Estrategia Urbana — Inicio'>
       <img src={logo.src} alt='Estrategia Urbana' class='brand-logo' />
@@ -228,6 +243,38 @@ const isActive = (href: string) => {
 
     width: auto;
     height: 100%;
+  }
+
+  /* ------------------------------
+    Light Theme
+  ------------------------------ */
+
+  .site-header--light {
+    color: var(--color-black);
+
+    background-color: var(--color-background);
+  }
+
+  .site-header--light .navigation-link {
+    color: var(--color-black);
+
+    text-shadow: none;
+  }
+
+  .site-header--light.is-scrolled {
+    background-color: rgb(240 239 239 / 92%);
+
+    backdrop-filter: blur(18px) saturate(125%);
+
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+  }
+
+  .site-header--light .menu-toggle {
+    color: var(--color-black);
+  }
+
+  .site-header--light.menu-is-open .menu-toggle {
+    color: var(--color-white);
   }
 
   /* ------------------------------

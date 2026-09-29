@@ -1,13 +1,17 @@
 partner: Bibiana Davó
-experience: Paisajismo
+
+discipline: Paisajismo
+
 company: DEVAS Studio
+
+order: 3
 
 portrait:
   image: ../../assets/img/partners/bibiana-davo/portrait.webp
   alt: Bibiana Davó
+
 description: >
   DEVAS, firma fundada por Bibiana Davó Sayrols, concibe el paisaje como una nueva forma de conciencia donde naturaleza y arquitectura conviven en armonía. Cada proyecto se guía por el respeto al diseño arquitectónico, la esencia natural de cada lugar y una visión honesta y funcional para sus clientes.
 
 home:
   visible: true
-  order: 3

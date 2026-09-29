@@ -1,6 +1,10 @@
 partner: Alejandra Medina
-experience: Diseño Gráfico
+
+discipline: Diseño Gráfico
+
 company: Trama Studio
+
+order: 7
 
 portrait:
   image: ../../assets/img/partners/alejandra-medina/portrait.webp
@@ -11,4 +15,3 @@ description: >
 
 home:
   visible: true
-  order: 7

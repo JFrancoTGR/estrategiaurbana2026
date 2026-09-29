@@ -6,9 +6,10 @@ import { init as initHomePartners } from './modules/home-partners';
 import { init as initHomeTeamIntro } from './modules/home-team-intro';
 import { init as initHomeManifesto } from './modules/home-manifesto';
 import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
+import { init as initPartnersGrid } from './modules/partners-grid';
 
 import { init as initSectionHero } from './modules/section-hero';
-import { init as initProjectsGrid} from './modules/projects-grid';
+import { init as initProjectsGrid } from './modules/projects-grid';
 
 export type MotionInitializer = (root: HTMLElement) => void | (() => void);
 
@@ -25,4 +26,5 @@ export const motionRegistry: Record<string, MotionInitializer> = {
 
   'section-hero': initSectionHero,
   'projects-grid': initProjectsGrid,
+  'partners-grid': initPartnersGrid,
 };

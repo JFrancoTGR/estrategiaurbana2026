@@ -1,6 +1,10 @@
 partner: Alejandra Bustillos
-experience: Arquitectura
+
+discipline: Arquitectura
+
 company: Factor Neutral
+
+order: 8
 
 portrait:
   image: ../../assets/img/partners/alejandra-bustillos/portrait.webp
@@ -11,4 +15,3 @@ description: >
 
 home:
   visible: true
-  order: 8
