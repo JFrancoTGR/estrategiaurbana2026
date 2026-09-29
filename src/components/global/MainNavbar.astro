@@ -246,13 +246,17 @@ const isActive = (href: string) => {
   }
 
   /* ------------------------------
-    Light Theme
+   Light Theme
   ------------------------------ */
 
   .site-header--light {
     color: var(--color-black);
-
     background-color: var(--color-background);
+  }
+
+  .site-header--light .navigation-link {
+    color: var(--color-black);
+    text-shadow: none;
   }
 
   .site-header--light .navigation-link.active,
@@ -266,16 +270,17 @@ const isActive = (href: string) => {
     }
   }
 
-  .site-header--light.is-scrolled {
-    background-color: rgb(240 239 239 / 92%);
-
-    backdrop-filter: blur(18px) saturate(125%);
-
-    -webkit-backdrop-filter: blur(18px) saturate(125%);
+  /* Al hacer scroll, recupera el comportamiento oscuro global */
+  .site-header--light.is-scrolled .navigation-link {
+    color: var(--color-white);
   }
 
   .site-header--light .menu-toggle {
     color: var(--color-black);
+  }
+
+  .site-header--light.is-scrolled .menu-toggle {
+    color: var(--color-white);
   }
 
   .site-header--light.menu-is-open .menu-toggle {

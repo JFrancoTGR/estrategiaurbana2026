@@ -47,7 +47,7 @@ export function init(root: HTMLElement) {
       {
         threshold: 0.12,
 
-        rootMargin: '0px 0px -10% 0px',
+        rootMargin: '0px 0px -15% 0px',
       },
     );
 
