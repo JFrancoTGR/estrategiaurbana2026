@@ -12,6 +12,12 @@ const { project } = Astro.props;
 
 const { name, location, price, card } = project.data;
 
+if (!card) {
+  throw new Error(
+    `ProjectCard requiere card para el proyecto "${name}".`,
+  );
+}
+
 const formattedPrice = price
   ? new Intl.NumberFormat('es-MX', {
       style: 'currency',

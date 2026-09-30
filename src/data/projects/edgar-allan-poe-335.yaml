@@ -1,0 +1,31 @@
+name: EDGAR ALLAN POE 335
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 6
+
+  units: 14
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/edgar-allan-poe-335/delivered/cover.webp
+    alt: Vista exterior de Edgar Allan Poe 335
+
+  gallery:
+    - image: ../../assets/img/projects/edgar-allan-poe-335/gallery/01.webp
+      alt: Vista exterior de Edgar Allan Poe 335
+
+    - image: ../../assets/img/projects/edgar-allan-poe-335/gallery/02.webp
+      alt: Detalle arquitectónico de Edgar Allan Poe 335
+
+    - image: ../../assets/img/projects/edgar-allan-poe-335/gallery/03.webp
+      alt: Interior de Edgar Allan Poe 335

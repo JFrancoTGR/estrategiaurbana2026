@@ -1,0 +1,31 @@
+name: DR. BARRAGÁN 751
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Narvarte, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 4
+
+  units: 16
+  levels: 6
+
+  cover:
+    image: ../../assets/img/projects/dr-barragan-751/delivered/cover.webp
+    alt: Vista exterior de Dr. Barragán 751
+
+  gallery:
+    - image: ../../assets/img/projects/dr-barragan-751/gallery/01.webp
+      alt: Vista exterior de Dr. Barragán 751
+
+    - image: ../../assets/img/projects/dr-barragan-751/gallery/02.webp
+      alt: Detalle arquitectónico de Dr. Barragán 751
+
+    - image: ../../assets/img/projects/dr-barragan-751/gallery/03.webp
+      alt: Interior de Dr. Barragán 751

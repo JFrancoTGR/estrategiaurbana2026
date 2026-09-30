@@ -1,0 +1,31 @@
+name: SUDERMANN 222
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 13
+
+  units: 12
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/sudermann-222/delivered/cover.webp
+    alt: Vista exterior de Sudermann 222
+
+  gallery:
+    - image: ../../assets/img/projects/sudermann-222/gallery/01.webp
+      alt: Vista exterior de Sudermann 222
+
+    - image: ../../assets/img/projects/sudermann-222/gallery/02.webp
+      alt: Detalle arquitectónico de Sudermann 222
+
+    - image: ../../assets/img/projects/sudermann-222/gallery/03.webp
+      alt: Interior de Sudermann 222

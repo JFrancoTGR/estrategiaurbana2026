@@ -1,0 +1,31 @@
+name: GOLDSMITH 119
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 7
+
+  units: 9
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/goldsmith-119/delivered/cover.webp
+    alt: Vista exterior de Goldsmith 119
+
+  gallery:
+    - image: ../../assets/img/projects/goldsmith-119/gallery/01.webp
+      alt: Vista exterior de Goldsmith 119
+
+    - image: ../../assets/img/projects/goldsmith-119/gallery/02.webp
+      alt: Detalle arquitectónico de Goldsmith 119
+
+    - image: ../../assets/img/projects/goldsmith-119/gallery/03.webp
+      alt: Interior de Goldsmith 119

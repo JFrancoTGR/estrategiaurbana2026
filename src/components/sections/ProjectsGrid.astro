@@ -12,8 +12,17 @@ const INITIAL_COUNT = 8;
 const REVEAL_BATCH = 4;
 
 const projects = (
-  await getCollection('projects', ({ data }) => data.commercial.available)
-).sort((a, b) => a.data.name.localeCompare(b.data.name, 'es'));
+  await getCollection(
+    'projects',
+    ({ data }) => data.commercial.available && Boolean(data.card),
+  )
+).sort((a, b) => {
+  const orderA = a.data.home?.order ?? Number.MAX_SAFE_INTEGER;
+
+  const orderB = b.data.home?.order ?? Number.MAX_SAFE_INTEGER;
+
+  return orderA - orderB || a.data.name.localeCompare(b.data.name, 'es');
+});
 
 const hasMoreProjects = projects.length > INITIAL_COUNT;
 ---

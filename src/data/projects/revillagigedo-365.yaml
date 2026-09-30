@@ -1,0 +1,31 @@
+name: REVILLAGIGEDO 365
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Centro, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 10
+
+  units: 17
+  levels: 6
+
+  cover:
+    image: ../../assets/img/projects/revillagigedo-365/delivered/cover.webp
+    alt: Vista exterior de Revillagigedo 365
+
+  gallery:
+    - image: ../../assets/img/projects/revillagigedo-365/gallery/01.webp
+      alt: Vista exterior de Revillagigedo 365
+
+    - image: ../../assets/img/projects/revillagigedo-365/gallery/02.webp
+      alt: Detalle arquitectónico de Revillagigedo 365
+
+    - image: ../../assets/img/projects/revillagigedo-365/gallery/03.webp
+      alt: Interior de Revillagigedo 365

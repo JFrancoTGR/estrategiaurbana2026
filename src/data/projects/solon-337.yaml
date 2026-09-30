@@ -1,0 +1,31 @@
+name: SOLÓN 337
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 12
+
+  units: 12
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/solon-337/delivered/cover.webp
+    alt: Vista exterior de Solón 337
+
+  gallery:
+    - image: ../../assets/img/projects/solon-337/gallery/01.webp
+      alt: Vista exterior de Solón 337
+
+    - image: ../../assets/img/projects/solon-337/gallery/02.webp
+      alt: Detalle arquitectónico de Solón 337
+
+    - image: ../../assets/img/projects/solon-337/gallery/03.webp
+      alt: Interior de Solón 337

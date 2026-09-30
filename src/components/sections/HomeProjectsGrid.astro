@@ -8,9 +8,16 @@ const MOBILE_COUNT = 8;
 const homeProjects = (
   await getCollection(
     'projects',
-    ({ data }) => data.commercial.available && data.home.visible,
+    ({ data }) =>
+      data.commercial.available &&
+      data.home?.visible === true &&
+      Boolean(data.card),
   )
-).sort((a, b) => a.data.home.order - b.data.home.order);
+).sort(
+  (a, b) =>
+    (a.data.home?.order ?? Number.MAX_SAFE_INTEGER) -
+    (b.data.home?.order ?? Number.MAX_SAFE_INTEGER),
+);
 
 const hasMoreHomeProjects = homeProjects.length > INITIAL_DESKTOP_COUNT;
 ---

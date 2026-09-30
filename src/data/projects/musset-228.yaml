@@ -1,0 +1,31 @@
+name: MUSSET 228
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 8
+
+  units: 8
+  levels: 4
+
+  cover:
+    image: ../../assets/img/projects/musset-228/delivered/cover.webp
+    alt: Vista exterior de Musset 228
+
+  gallery:
+    - image: ../../assets/img/projects/musset-228/gallery/01.webp
+      alt: Vista exterior de Musset 228
+
+    - image: ../../assets/img/projects/musset-228/gallery/02.webp
+      alt: Detalle arquitectónico de Musset 228
+
+    - image: ../../assets/img/projects/musset-228/gallery/03.webp
+      alt: Interior de Musset 228

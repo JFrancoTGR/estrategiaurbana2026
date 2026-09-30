@@ -1,0 +1,31 @@
+name: PLINIO 340
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 9
+
+  units: 20
+  levels: 6
+
+  cover:
+    image: ../../assets/img/projects/plinio-340/delivered/cover.webp
+    alt: Vista exterior de Plinio 340
+
+  gallery:
+    - image: ../../assets/img/projects/plinio-340/gallery/01.webp
+      alt: Vista exterior de Plinio 340
+
+    - image: ../../assets/img/projects/plinio-340/gallery/02.webp
+      alt: Detalle arquitectónico de Plinio 340
+
+    - image: ../../assets/img/projects/plinio-340/gallery/03.webp
+      alt: Interior de Plinio 340

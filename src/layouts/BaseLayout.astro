@@ -16,12 +16,15 @@ interface Props {
   description?: string;
 
   headerTheme?: 'overlay' | 'light';
+
+  initialReveal?: boolean;
 }
 
 const {
   title = 'Título del sitio',
   description = 'Descripción del sitio',
   headerTheme = 'overlay',
+  initialReveal = false,
 } = Astro.props;
 
 const pageFade = {
@@ -48,7 +51,12 @@ const pageTransition = {
 ---
 
 <!doctype html>
-<html lang='es' transition:name='page' transition:animate={pageTransition}>
+<html
+  lang='es'
+  transition:name='page'
+  transition:animate={pageTransition}
+  data-initial-reveal={initialReveal ? 'true' : undefined}
+>
   <head>
     <meta charset='UTF-8' />
 
@@ -76,12 +84,31 @@ const pageTransition = {
     <ClientRouter />
 
     <script is:inline>
-      document.documentElement.classList.add('motion-preload');
+      const root = document.documentElement;
+
+      root.classList.add('motion-preload');
+
+      /*
+       * Este flag vive durante todo el documento actual.
+       * ClientRouter cambia páginas sin recrear window,
+       * por lo que el reveal no vuelve a ejecutarse.
+       */
+      if (!window.__euInitialLoadHandled) {
+        window.__euInitialLoadHandled = true;
+
+        if (root.dataset.initialReveal === 'true') {
+          root.classList.add('initial-page-reveal');
+
+          window.setTimeout(() => {
+            root.classList.remove('initial-page-reveal');
+          }, 850);
+        }
+      }
     </script>
   </head>
 
   <body>
-    <MainNavbar theme={headerTheme}/>
+    <MainNavbar theme={headerTheme} />
 
     <div id='smooth-wrapper' data-smooth-wrapper>
       <div id='smooth-content' data-smooth-content>

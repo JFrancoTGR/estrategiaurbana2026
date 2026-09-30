@@ -1,0 +1,31 @@
+name: EDGAR ALLAN POE 64
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: false
+  order: 5
+
+  units: 7
+  levels: 4
+
+  cover:
+    image: ../../assets/img/projects/edgar-allan-poe-64/delivered/cover.webp
+    alt: Vista exterior de Edgar Allan Poe 64
+
+  gallery:
+    - image: ../../assets/img/projects/edgar-allan-poe-64/gallery/01.webp
+      alt: Vista exterior de Edgar Allan Poe 64
+
+    - image: ../../assets/img/projects/edgar-allan-poe-64/gallery/02.webp
+      alt: Detalle arquitectónico de Edgar Allan Poe 64
+
+    - image: ../../assets/img/projects/edgar-allan-poe-64/gallery/03.webp
+      alt: Interior de Edgar Allan Poe 64

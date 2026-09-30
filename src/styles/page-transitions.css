@@ -1,4 +1,23 @@
 /* ---------------------------------
+   Initial home reveal
+--------------------------------- */
+
+.initial-page-reveal body {
+  animation:
+    eu-page-fade-in
+    850ms
+    ease-out
+    150ms
+    both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .initial-page-reveal body {
+    animation: none;
+  }
+}
+
+/* ---------------------------------
    Page transitions
 --------------------------------- */
 
