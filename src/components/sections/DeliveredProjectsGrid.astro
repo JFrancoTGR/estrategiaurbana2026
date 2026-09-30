@@ -1,0 +1,186 @@
+---
+import { getCollection } from 'astro:content';
+
+import DeliveredProjectCard from '../cards/DeliveredProjectCard.astro';
+
+const INITIAL_COUNT = 4;
+const REVEAL_BATCH = 4;
+
+const projects = (
+  await getCollection(
+    'projects',
+    ({ data }) =>
+      data.status === 'entregado' && data.delivered?.visible === true,
+  )
+).sort(
+  (a, b) =>
+    (a.data.delivered?.order ?? Number.MAX_SAFE_INTEGER) -
+    (b.data.delivered?.order ?? Number.MAX_SAFE_INTEGER),
+);
+
+const hasMoreProjects = projects.length > INITIAL_COUNT;
+---
+
+<section
+  class='delivered-projects'
+  data-delivered-projects
+  data-motion='projects-grid'
+  data-initial-count={INITIAL_COUNT}
+  data-reveal-batch={REVEAL_BATCH}
+>
+  <div class='page-shell'>
+    <div
+      id='delivered-projects-list'
+      class='delivered-projects__list'
+      data-delivered-projects-list
+    >
+      {
+        projects.map((project, index) => (
+          <div
+            class='delivered-projects__item'
+            data-delivered-project
+            data-project-card
+            data-reveal-hidden={index >= INITIAL_COUNT ? '' : undefined}
+          >
+            <DeliveredProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class='delivered-projects__actions'>
+      <button
+        type='button'
+        class='delivered-projects__more'
+        data-delivered-projects-more
+        aria-controls='delivered-projects-list'
+        hidden={!hasMoreProjects}
+      >
+        Ver más
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .delivered-projects {
+    width: 100%;
+
+    padding-block: clamp(52px, 5vw, 84px) clamp(72px, 6vw, 104px);
+
+    background-color: var(--color-surface-muted);
+  }
+
+  /* ------------------------------
+     Grid
+  ------------------------------ */
+
+  .delivered-projects__list {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: clamp(24px, 2.4vw, 38px) clamp(10px, 1.2vw, 18px);
+  }
+
+  .delivered-projects__item {
+    min-width: 0;
+  }
+
+  .delivered-projects__item[data-reveal-hidden] {
+    display: none;
+  }
+
+  /* ------------------------------
+     Actions
+  ------------------------------ */
+
+  .delivered-projects__actions {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 40px;
+  }
+
+  .delivered-projects__more {
+    min-width: 126px;
+
+    padding: 12px 22px;
+
+    font-family: var(--font-primary);
+
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1;
+    letter-spacing: 0.12em;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: var(--color-white);
+    background-color: var(--color-black);
+
+    border: 0;
+
+    cursor: pointer;
+
+    transition: transform var(--duration-fast) var(--ease-premium);
+  }
+
+  .delivered-projects__more[hidden] {
+    display: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .delivered-projects__more:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .delivered-projects__more:focus-visible {
+    outline: 1px solid var(--color-black);
+
+    outline-offset: 4px;
+  }
+
+  /* ------------------------------
+     Tablet
+  ------------------------------ */
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .delivered-projects__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: clamp(28px, 4vw, 42px) clamp(14px, 2vw, 22px);
+    }
+  }
+
+  /* ------------------------------
+     Mobile
+  ------------------------------ */
+
+  @media (max-width: 767px) {
+    .delivered-projects {
+      padding-block: 48px 72px;
+    }
+
+    .delivered-projects__list {
+      grid-template-columns: 1fr;
+
+      gap: 38px;
+    }
+
+    .delivered-projects__actions {
+      margin-top: 36px;
+    }
+  }
+</style>
+
+<script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
+  import { initDeliveredProjects } from '../../scripts/ui/delivered-projects';
+
+  mountPageUI('[data-delivered-projects]', initDeliveredProjects);
+</script>

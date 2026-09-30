@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import SectionHero from '../components/sections/SectionHero.astro';
+import DeliveredProjectsGrid from '../components/sections/DeliveredProjectsGrid.astro';
+
+/*
+ * Reutilizamos temporalmente el hero de proyectos.
+ * Cuando tengamos el arte específico de entregados,
+ * sólo tendremos que sustituir este import.
+ */
+import heroImage from '../assets/img/sections/projects/hero.webp';
+---
+
+<BaseLayout
+  title='Proyectos Entregados | Estrategia Urbana'
+  description='Conoce algunos de los proyectos entregados por Estrategia Urbana.'
+>
+  <SectionHero
+    image={heroImage}
+    title={['Proyectos', 'entregados']}
+    cta={{
+      label: 'Agenda una cita',
+      href: '/contacto',
+    }}
+  />
+
+  <DeliveredProjectsGrid />
+</BaseLayout>
