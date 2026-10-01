@@ -1,7 +1,5 @@
 import GLightbox from 'glightbox';
 
-import 'glightbox/dist/css/glightbox.min.css';
-
 const DEFAULT_REVEAL_BATCH = 4;
 
 interface GalleryItem {
@@ -121,7 +119,13 @@ export function initDeliveredProjects(root: HTMLElement) {
       return;
     }
 
-    openGallery(card);
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+
+    requestAnimationFrame(() => {
+      openGallery(card);
+    });
   };
 
   /* ------------------------------
