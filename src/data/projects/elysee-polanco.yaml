@@ -1,0 +1,34 @@
+name: ELYSEÉ
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 10
+
+  units: 23
+  levels: 12
+
+  cover:
+    image: ../../assets/img/projects/elysee/delivered/cover.webp
+    alt: Vista exterior de Elyseé
+
+  gallery:
+    - image: ../../assets/img/projects/elysee/gallery/01.webp
+      alt: Vista exterior de Elyseé
+
+    - image: ../../assets/img/projects/elysee/gallery/02.webp
+      alt: Detalle arquitectónico de Elyseé
+
+    - image: ../../assets/img/projects/elysee/gallery/03.webp
+      alt: Interior de Elyseé
+    
+    - image: ../../assets/img/projects/elysee/gallery/04.webp
+      alt: Interior de Elyseé

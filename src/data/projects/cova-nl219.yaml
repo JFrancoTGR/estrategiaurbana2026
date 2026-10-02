@@ -7,7 +7,7 @@ location:
   label: Condesa, CDMX
 
 commercial:
-  available: true
+  available: false
 
 price:
   from: 8000000

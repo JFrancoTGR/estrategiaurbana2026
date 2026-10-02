@@ -1,0 +1,31 @@
+name: SAN ANTONIO 88
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Nápoles, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 18
+
+  units: 32
+  levels: 8
+
+  cover:
+    image: ../../assets/img/projects/san-antonio-88/delivered/cover.webp
+    alt: Vista exterior de San Antonio 88
+
+  gallery:
+    - image: ../../assets/img/projects/san-antonio-88/gallery/01.webp
+      alt: Vista exterior de San Antonio 88
+
+    - image: ../../assets/img/projects/san-antonio-88/gallery/02.webp
+      alt: Detalle arquitectónico de San Antonio 88
+
+    - image: ../../assets/img/projects/san-antonio-88/gallery/03.webp
+      alt: Interior de San Antonio 88

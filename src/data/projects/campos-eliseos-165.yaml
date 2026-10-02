@@ -1,0 +1,31 @@
+name: CAMPOS ELISEOS 165
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 4
+
+  units: 5
+  levels: 3
+
+  cover:
+    image: ../../assets/img/projects/campos-eliseos-165/delivered/cover.webp
+    alt: Vista exterior de Campos Eliseos 165
+
+  gallery:
+    - image: ../../assets/img/projects/campos-eliseos-165/gallery/01.webp
+      alt: Vista exterior de Campos Eliseos 165
+
+    - image: ../../assets/img/projects/campos-eliseos-165/gallery/02.webp
+      alt: Detalle arquitectónico de Campos Eliseos 165
+
+    - image: ../../assets/img/projects/campos-eliseos-165/gallery/03.webp
+      alt: Interior de Campos Eliseos 165

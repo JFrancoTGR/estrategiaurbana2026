@@ -1,0 +1,31 @@
+name: GUANAJUATO 238
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Roma Norte, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: TRUE
+  order: 14
+
+  units: 5
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/guanajuato-238/delivered/cover.webp
+    alt: Vista exterior de Guanajuato 238
+
+  gallery:
+    - image: ../../assets/img/projects/guanajuato-238/gallery/01.webp
+      alt: Vista exterior de Guanajuato 238
+
+    - image: ../../assets/img/projects/guanajuato-238/gallery/02.webp
+      alt: Detalle arquitectónico de Guanajuato 238
+
+    - image: ../../assets/img/projects/guanajuato-238/gallery/03.webp
+      alt: Interior de Guanajuato 238

@@ -1,0 +1,31 @@
+name: GARDEN POLANCO
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Polanco, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 12
+
+  units: 39
+  levels: 6
+
+  cover:
+    image: ../../assets/img/projects/garden-polanco/delivered/cover.webp
+    alt: Vista exterior de Garden Polanco
+
+  gallery:
+    - image: ../../assets/img/projects/garden-polanco/gallery/01.webp
+      alt: Vista exterior de Garden Polanco
+
+    - image: ../../assets/img/projects/garden-polanco/gallery/02.webp
+      alt: Detalle arquitectónico de Garden Polanco
+
+    - image: ../../assets/img/projects/garden-polanco/gallery/03.webp
+      alt: Interior de Garden Polanco

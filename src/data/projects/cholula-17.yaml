@@ -1,0 +1,34 @@
+name: CHOLULA 17
+
+status: entregado
+
+location:
+  zone: cdmx
+  label: Hipódromo, CDMX
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 5
+
+  units: 18
+  levels: 5
+
+  cover:
+    image: ../../assets/img/projects/cholula-17/delivered/cover.webp
+    alt: Vista exterior de Cholula 17
+
+  gallery:
+    - image: ../../assets/img/projects/cholula-17/gallery/01.webp
+      alt: Vista exterior de Cholula 17
+
+    - image: ../../assets/img/projects/cholula-17/gallery/02.webp
+      alt: Detalle arquitectónico de Cholula 17
+
+    - image: ../../assets/img/projects/cholula-17/gallery/03.webp
+      alt: Interior de Cholula 17
+    
+    - image: ../../assets/img/projects/cholula-17/gallery/04.webp
+      alt: Interior de Cholula 17

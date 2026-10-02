@@ -7,7 +7,7 @@ location:
   label: Tabacalera, CDMX
 
 commercial:
-  available: true
+  available: false
 
 price:
   from: 3000000
