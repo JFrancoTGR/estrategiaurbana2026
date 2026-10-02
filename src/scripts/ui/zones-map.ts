@@ -1,59 +1,131 @@
-import { mapLocations } from '../../data/map/map-locations';
+/// <reference types="google.maps" />
 
-import { loadGoogleMaps } from '../lib/google-maps';
+import {
+  mapLocations,
+  type MapCategory,
+  type MapLocation,
+} from '../../data/map/map-locations';
 
-const DESKTOP_ZOOM = 16;
-const MOBILE_ZOOM = 15;
+import {
+  cacheGoogleMapsStyles,
+  loadGoogleMaps,
+  restoreGoogleMapsStyles,
+} from '../lib/google-maps';
+
+/* ---------------------------------
+   Map configuration
+--------------------------------- */
+
 const LOCATION_ZOOM = 16;
+
+const getInitialBoundsPadding = () => {
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+  if (isMobile) {
+    return {
+      top: 40,
+      right: 24,
+      bottom: 100,
+      left: 24,
+    };
+  }
+
+  return {
+    top: 60,
+    right: 60,
+    bottom: 60,
+    left: 70,
+  };
+};
+
+/* ---------------------------------
+   Google Maps visual style
+--------------------------------- */
 
 const MAP_STYLES: google.maps.MapTypeStyle[] = [
   {
     featureType: 'administrative.land_parcel',
     elementType: 'labels',
-    stylers: [{ visibility: 'off' }],
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
   },
   {
     featureType: 'landscape',
     elementType: 'geometry.fill',
-    stylers: [{ color: '#f4f0eb' }],
+    stylers: [
+      {
+        color: '#f4f0eb',
+      },
+    ],
   },
   {
     featureType: 'landscape.man_made',
     elementType: 'geometry.fill',
-    stylers: [{ visibility: 'simplified' }],
+    stylers: [
+      {
+        visibility: 'simplified',
+      },
+    ],
   },
   {
     featureType: 'poi',
     elementType: 'labels.text',
-    stylers: [{ visibility: 'off' }],
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
   },
   {
     featureType: 'road',
     elementType: 'geometry.fill',
-    stylers: [{ color: '#d6d6d6' }],
+    stylers: [
+      {
+        color: '#d6d6d6',
+      },
+    ],
   },
   {
     featureType: 'road',
     elementType: 'geometry.stroke',
-    stylers: [{ visibility: 'off' }],
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
   },
   {
     featureType: 'road.local',
     elementType: 'labels',
-    stylers: [{ visibility: 'off' }],
+    stylers: [
+      {
+        visibility: 'off',
+      },
+    ],
   },
   {
     featureType: 'water',
     elementType: 'geometry.fill',
-    stylers: [{ color: '#546772' }],
+    stylers: [
+      {
+        color: '#546772',
+      },
+    ],
   },
 ];
 
-const PIN_FILL = {
+/* ---------------------------------
+   Pin configuration
+--------------------------------- */
+
+const PIN_FILL: Record<MapCategory, string> = {
   venta: '#E32822',
   renta: '#5C100E',
   oficina: '#000000',
-} as const;
+};
 
 const PIN_PATH =
   'M32.0269 5.97648C26.4285 0.034966 18.0152 -1.72892 ' +
@@ -67,7 +139,27 @@ const PIN_PATH =
   'C34.8418 29.9592 36.562 25.2555 36.9373 20.1495' +
   'C37.3439 14.734 35.7801 9.99938 32.0269 6.00743V5.97648Z';
 
+/* ---------------------------------
+   Initializer
+--------------------------------- */
+
 export function initZonesMap(root: HTMLElement) {
+  const debugWindow = window as typeof window & {
+    __euZonesMapInstances?: number;
+  };
+
+  debugWindow.__euZonesMapInstances =
+    (debugWindow.__euZonesMapInstances ?? 0) + 1;
+
+  const instanceId = debugWindow.__euZonesMapInstances;
+
+  // console.log(`[ZonesMap #${instanceId}] INIT`, {
+  //   pathname: window.location.pathname,
+  //   root,
+  //   rootConnected: root.isConnected,
+  //   gmStyles: root.querySelectorAll('.gm-style').length,
+  // });
+
   const section = root.closest<HTMLElement>('[data-home-zones-map]');
 
   if (!section) {
@@ -81,6 +173,10 @@ export function initZonesMap(root: HTMLElement) {
 
     return;
   }
+
+  /* ---------------------------------
+     DOM references
+  --------------------------------- */
 
   const selector = section.querySelector<HTMLElement>('[data-map-selector]');
 
@@ -96,18 +192,58 @@ export function initZonesMap(root: HTMLElement) {
     section.querySelectorAll<HTMLButtonElement>('[data-map-category-trigger]'),
   );
 
-  const locationsById = new Map(
+  const categoryLists = Array.from(
+    section.querySelectorAll<HTMLElement>('[data-map-category-list]'),
+  );
+
+  /* ---------------------------------
+     Location lookup
+  --------------------------------- */
+
+  const locationsById = new Map<string, MapLocation>(
     mapLocations.map((location) => [location.id, location]),
   );
+
+  /* ---------------------------------
+     Runtime state
+  --------------------------------- */
 
   let disposed = false;
 
   let map: google.maps.Map | null = null;
 
-  let markers: google.maps.OverlayView[] = [];
+  let pins: google.maps.OverlayView[] = [];
+
+  let clearMapListeners: (() => void) | null = null;
+
+  const listAnimationTokens = new WeakMap<HTMLElement, number>();
+
+  const getNextListAnimationToken = (list: HTMLElement) => {
+    const token = (listAnimationTokens.get(list) ?? 0) + 1;
+
+    listAnimationTokens.set(list, token);
+
+    return token;
+  };
 
   /* ---------------------------------
-     Selector
+     Category fade
+  --------------------------------- */
+
+  const updateListFade = (list: HTMLElement) => {
+    const category = list.closest<HTMLElement>('[data-map-category]');
+
+    if (!category) return;
+
+    const canScroll = list.scrollHeight - list.clientHeight > 2;
+
+    const atEnd = list.scrollTop + list.clientHeight >= list.scrollHeight - 2;
+
+    category.classList.toggle('is-faded', canScroll && !atEnd);
+  };
+
+  /* ---------------------------------
+     Category accordion
   --------------------------------- */
 
   const closeCategory = (trigger: HTMLButtonElement) => {
@@ -119,15 +255,80 @@ export function initZonesMap(root: HTMLElement) {
 
     if (!list) return;
 
+    /*
+     * Si ya está cerrado no necesitamos
+     * disparar otra transición.
+     */
+    if (trigger.getAttribute('aria-expanded') !== 'true') {
+      trigger.setAttribute('aria-expanded', 'false');
+
+      list.setAttribute('aria-hidden', 'true');
+
+      list.setAttribute('inert', '');
+
+      list.style.height = '0px';
+      list.style.overflowY = 'hidden';
+
+      list.closest('[data-map-category]')?.classList.remove('is-faded');
+
+      return;
+    }
+
+    const token = getNextListAnimationToken(list);
+
+    /*
+     * Partimos de la altura que tiene
+     * realmente el panel en este momento.
+     */
+    const currentHeight = list.getBoundingClientRect().height;
+
+    list.style.height = `${currentHeight}px`;
+
+    list.style.overflowY = 'hidden';
+
+    /*
+     * Forzamos al navegador a registrar
+     * el estado inicial antes de pasar a 0.
+     */
+    list.getBoundingClientRect();
+
     trigger.setAttribute('aria-expanded', 'false');
 
-    list.hidden = true;
+    list.setAttribute('aria-hidden', 'true');
+
+    list.setAttribute('inert', '');
+
+    requestAnimationFrame(() => {
+      if (listAnimationTokens.get(list) !== token) {
+        return;
+      }
+
+      list.style.height = '0px';
+    });
+
+    const handleTransitionEnd = (event: TransitionEvent) => {
+      if (event.target !== list || event.propertyName !== 'height') {
+        return;
+      }
+
+      list.removeEventListener('transitionend', handleTransitionEnd);
+
+      if (listAnimationTokens.get(list) !== token) {
+        return;
+      }
+
+      list.style.height = '0px';
+
+      list.closest('[data-map-category]')?.classList.remove('is-faded');
+    };
+
+    list.addEventListener('transitionend', handleTransitionEnd);
   };
 
   const openCategory = (trigger: HTMLButtonElement) => {
-    categoryTriggers.forEach((categoryTrigger) => {
-      if (categoryTrigger !== trigger) {
-        closeCategory(categoryTrigger);
+    categoryTriggers.forEach((currentTrigger) => {
+      if (currentTrigger !== trigger) {
+        closeCategory(currentTrigger);
       }
     });
 
@@ -139,9 +340,61 @@ export function initZonesMap(root: HTMLElement) {
 
     if (!list) return;
 
+    const token = getNextListAnimationToken(list);
+
     trigger.setAttribute('aria-expanded', 'true');
 
-    list.hidden = false;
+    list.setAttribute('aria-hidden', 'false');
+
+    list.removeAttribute('inert');
+
+    /*
+     * Estado inicial cerrado.
+     */
+    list.style.height = '0px';
+    list.style.overflowY = 'hidden';
+
+    /*
+     * Registramos ese estado antes
+     * de calcular la altura abierta.
+     */
+    list.getBoundingClientRect();
+
+    requestAnimationFrame(() => {
+      if (listAnimationTokens.get(list) !== token) {
+        return;
+      }
+
+      /*
+       * scrollHeight nos entrega la altura
+       * real del contenido. max-height CSS
+       * sigue limitando visualmente a 400px.
+       */
+      list.style.height = `${list.scrollHeight}px`;
+    });
+
+    const handleTransitionEnd = (event: TransitionEvent) => {
+      if (event.target !== list || event.propertyName !== 'height') {
+        return;
+      }
+
+      list.removeEventListener('transitionend', handleTransitionEnd);
+
+      if (listAnimationTokens.get(list) !== token) {
+        return;
+      }
+
+      /*
+       * Una vez abierto dejamos que CSS
+       * controle la altura natural.
+       */
+      list.style.height = 'auto';
+      list.style.overflowY = 'auto';
+
+      updateListFade(list);
+    };
+
+    list.addEventListener('transitionend', handleTransitionEnd);
   };
 
   const toggleCategory = (trigger: HTMLButtonElement) => {
@@ -155,20 +408,53 @@ export function initZonesMap(root: HTMLElement) {
     openCategory(trigger);
   };
 
+  /* ---------------------------------
+     Mobile selector
+  --------------------------------- */
+
   const openSelector = () => {
-    selector?.classList.add('is-open');
+    if (!selector) return;
+
+    selector.classList.add('is-open');
 
     selectorOpen?.setAttribute('aria-expanded', 'true');
   };
 
   const closeSelector = () => {
-    selector?.classList.remove('is-open');
+    if (!selector) return;
+
+    selector.classList.remove('is-open');
 
     selectorOpen?.setAttribute('aria-expanded', 'false');
   };
 
   /* ---------------------------------
-     DOM events
+     Location navigation
+  --------------------------------- */
+
+  const showLocation = (locationId: string) => {
+    if (!map) return;
+
+    const location = locationsById.get(locationId);
+
+    if (!location) {
+      console.warn(`Ubicación no encontrada: ${locationId}`);
+
+      return;
+    }
+
+    map.panTo({
+      lat: location.lat,
+      lng: location.lng,
+    });
+
+    map.setZoom(LOCATION_ZOOM);
+
+    closeSelector();
+  };
+
+  /* ---------------------------------
+     DOM handlers
   --------------------------------- */
 
   const handleCategoryClick = (event: Event) => {
@@ -196,24 +482,9 @@ export function initZonesMap(root: HTMLElement) {
 
     const locationId = trigger.dataset.mapLocationId;
 
-    if (!locationId || !map) return;
+    if (!locationId) return;
 
-    const location = locationsById.get(locationId);
-
-    if (!location) {
-      console.warn(`Ubicación no encontrada: ${locationId}`);
-
-      return;
-    }
-
-    map.panTo({
-      lat: location.lat,
-      lng: location.lng,
-    });
-
-    map.setZoom(LOCATION_ZOOM);
-
-    closeSelector();
+    showLocation(locationId);
   };
 
   const handleSelectorOpen = () => {
@@ -224,8 +495,34 @@ export function initZonesMap(root: HTMLElement) {
     closeSelector();
   };
 
+  const handleListScroll = (event: Event) => {
+    const list = event.currentTarget;
+
+    if (!(list instanceof HTMLElement)) {
+      return;
+    }
+
+    updateListFade(list);
+  };
+
+  const handleKeydown = (event: KeyboardEvent) => {
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    closeSelector();
+  };
+
+  /* ---------------------------------
+     Bind UI
+  --------------------------------- */
+
   categoryTriggers.forEach((trigger) => {
     trigger.addEventListener('click', handleCategoryClick);
+  });
+
+  categoryLists.forEach((list) => {
+    list.addEventListener('scroll', handleListScroll);
   });
 
   section.addEventListener('click', handleLocationClick);
@@ -234,23 +531,38 @@ export function initZonesMap(root: HTMLElement) {
 
   selectorClose?.addEventListener('click', handleSelectorClose);
 
+  document.addEventListener('keydown', handleKeydown);
+
   /* ---------------------------------
      Google Maps
   --------------------------------- */
 
   const mountGoogleMap = async () => {
     try {
-      const googleMaps = await loadGoogleMaps(apiKey);
-
+      const { maps: mapsLibrary, core: coreLibrary } =
+        await loadGoogleMaps(apiKey);
+      restoreGoogleMapsStyles();
       /*
-       * El usuario pudo abandonar Home mientras
-       * el SDK estaba cargando.
+       * El usuario pudo abandonar Home
+       * mientras cargaban las librerías.
        */
       if (disposed || !root.isConnected) {
         return;
       }
 
-      const bounds = new googleMaps.maps.LatLngBounds();
+      /*
+       * Extraemos explícitamente las clases
+       * de las librerías ya cargadas.
+       */
+      const { Map: GoogleMap, OverlayView } = mapsLibrary;
+
+      const { LatLng, LatLngBounds, event: mapsEvent } = coreLibrary;
+
+      /* ---------------------------------
+         Calculate project bounds
+      --------------------------------- */
+
+      const bounds = new LatLngBounds();
 
       mapLocations.forEach((location) => {
         bounds.extend({
@@ -259,112 +571,169 @@ export function initZonesMap(root: HTMLElement) {
         });
       });
 
-      map = new googleMaps.maps.Map(root, {
+      /* ---------------------------------
+         Create map
+      --------------------------------- */
+
+      const googleMap = new GoogleMap(root, {
         center: bounds.getCenter(),
 
-        zoom: window.innerWidth > 768 ? DESKTOP_ZOOM : MOBILE_ZOOM,
-
+        /*
+         * Valor inicial de respaldo.
+         * fitBounds lo sustituye inmediatamente.
+         */
+        zoom: 12,
         styles: MAP_STYLES,
-
         mapTypeControl: false,
-        fullscreenControl: false,
+        fullscreenControl: true,
         streetViewControl: false,
-
+        cameraControl: true,
         clickableIcons: false,
 
         gestureHandling: 'cooperative',
       });
 
-      class NumberPin extends googleMaps.maps.OverlayView {
-        private readonly location: (typeof mapLocations)[number];
+      map = googleMap;
+
+      const styleCaptureListener = mapsEvent.addListenerOnce(
+        googleMap,
+        'idle',
+        () => {
+          cacheGoogleMapsStyles();
+        },
+      );
+
+      // requestAnimationFrame(() => {
+      //   console.log(`[ZonesMap #${instanceId}] MOUNTED`, {
+      //     gmStyles: root.querySelectorAll('.gm-style').length,
+
+      //     controls: root.querySelectorAll('.gm-control-active').length,
+      //   });
+      // });
+
+      /*
+       * Vista inicial:
+       * muestra las 34 ubicaciones
+       * respetando el espacio del selector.
+       */
+      googleMap.fitBounds(bounds, getInitialBoundsPadding());
+
+      clearMapListeners = () => {
+        mapsEvent.clearInstanceListeners(googleMap);
+      };
+
+      /* ---------------------------------
+         Custom Google overlay
+      --------------------------------- */
+
+      class NumberPin extends OverlayView {
+        private readonly location: MapLocation;
 
         private readonly number: number;
 
         private readonly position: google.maps.LatLng;
 
-        private div: HTMLDivElement | null = null;
+        private element: HTMLDivElement | null = null;
 
-        constructor(location: (typeof mapLocations)[number], number: number) {
+        constructor(location: MapLocation, number: number) {
           super();
 
           this.location = location;
+
           this.number = number;
 
-          this.position = new googleMaps.maps.LatLng(
-            location.lat,
-            location.lng,
-          );
+          this.position = new LatLng(location.lat, location.lng);
 
-          this.setMap(map);
+          this.setMap(googleMap);
         }
 
         onAdd() {
-          const div = document.createElement('div');
+          const element = document.createElement('div');
 
-          div.className = `map-pin map-pin--${this.location.category}`;
+          element.className = `map-pin map-pin--${this.location.category}`;
 
-          const fill = PIN_FILL[this.location.category];
+          /* Pin SVG */
 
-          div.innerHTML = `
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="37"
-              height="52"
-              viewBox="0 0 37 52"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="${PIN_PATH}"
-                fill="${fill}"
-              />
-            </svg>
+          const svg = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'svg',
+          );
 
-            <span class="map-pin__num">
-              ${this.number}
-            </span>
+          svg.setAttribute('viewBox', '0 0 37 52');
 
-            <span class="map-pin__label">
-              ${this.location.name}
-            </span>
-          `;
+          svg.setAttribute('aria-hidden', 'true');
 
-          this.div = div;
+          const path = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'path',
+          );
 
-          this.getPanes()?.overlayMouseTarget.appendChild(div);
+          path.setAttribute('d', PIN_PATH);
+
+          path.setAttribute('fill', PIN_FILL[this.location.category]);
+
+          svg.appendChild(path);
+
+          /* Number */
+
+          const number = document.createElement('span');
+
+          number.className = 'map-pin__num';
+
+          number.textContent = String(this.number);
+
+          /* Label */
+
+          const label = document.createElement('span');
+
+          label.className = 'map-pin__label';
+
+          label.textContent = this.location.name;
+
+          element.append(svg, number, label);
+
+          this.element = element;
+
+          this.getPanes()?.overlayMouseTarget.appendChild(element);
         }
 
         draw() {
-          if (!this.div) return;
+          if (!this.element) {
+            return;
+          }
 
           const projection = this.getProjection();
 
-          const position = projection.fromLatLngToDivPixel(this.position);
+          const point = projection.fromLatLngToDivPixel(this.position);
 
-          if (!position) return;
+          if (!point) return;
 
-          this.div.style.left = `${position.x}px`;
+          this.element.style.left = `${point.x}px`;
 
-          this.div.style.top = `${position.y}px`;
+          this.element.style.top = `${point.y}px`;
         }
 
         onRemove() {
-          this.div?.remove();
+          this.element?.remove();
 
-          this.div = null;
+          this.element = null;
         }
       }
 
-      const numbers = {
+      /* ---------------------------------
+         Create numbered pins
+      --------------------------------- */
+
+      const counters: Record<MapCategory, number> = {
         venta: 0,
         renta: 0,
         oficina: 0,
       };
 
-      markers = mapLocations.map((location) => {
-        numbers[location.category] += 1;
+      pins = mapLocations.map((location) => {
+        counters[location.category] += 1;
 
-        return new NumberPin(location, numbers[location.category]);
+        return new NumberPin(location, counters[location.category]);
       });
     } catch (error) {
       console.error('No fue posible inicializar el mapa:', error);
@@ -378,10 +747,23 @@ export function initZonesMap(root: HTMLElement) {
   --------------------------------- */
 
   return () => {
+    cacheGoogleMapsStyles();
+
+    // console.log(`[ZonesMap #${instanceId}] CLEANUP`, {
+    //   pathname: window.location.pathname,
+    //   rootConnected: root.isConnected,
+
+    //   gmStyles: root.querySelectorAll('.gm-style').length,
+    // });
+
     disposed = true;
 
     categoryTriggers.forEach((trigger) => {
       trigger.removeEventListener('click', handleCategoryClick);
+    });
+
+    categoryLists.forEach((list) => {
+      list.removeEventListener('scroll', handleListScroll);
     });
 
     section.removeEventListener('click', handleLocationClick);
@@ -390,17 +772,19 @@ export function initZonesMap(root: HTMLElement) {
 
     selectorClose?.removeEventListener('click', handleSelectorClose);
 
-    markers.forEach((marker) => {
-      marker.setMap(null);
+    document.removeEventListener('keydown', handleKeydown);
+
+    pins.forEach((pin) => {
+      pin.setMap(null);
     });
 
-    markers = [];
+    pins = [];
 
-    if (map) {
-      google.maps.event.clearInstanceListeners(map);
+    clearMapListeners?.();
 
-      map = null;
-    }
+    clearMapListeners = null;
+
+    map = null;
 
     root.replaceChildren();
   };

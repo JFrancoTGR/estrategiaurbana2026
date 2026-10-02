@@ -1,56 +1,94 @@
-declare global {
-  interface Window {
-    __euGoogleMapsPromise?: Promise<typeof google>;
-  }
+/// <reference types="google.maps" />
+
+import { importLibrary, setOptions } from '@googlemaps/js-api-loader';
+
+interface GoogleMapsLibraries {
+  maps: google.maps.MapsLibrary;
+  core: google.maps.CoreLibrary;
 }
 
-const SCRIPT_ID = 'eu-google-maps-sdk';
+let configured = false;
 
-export function loadGoogleMaps(apiKey: string): Promise<typeof google> {
-  if (window.google?.maps) {
-    return Promise.resolve(window.google);
+let configuredApiKey: string | null = null;
+
+export async function loadGoogleMaps(
+  apiKey: string,
+): Promise<GoogleMapsLibraries> {
+  if (!configured) {
+    setOptions({
+      key: apiKey,
+      v: 'weekly',
+      language: 'es',
+      region: 'MX',
+    });
+
+    configured = true;
+    configuredApiKey = apiKey;
+  } else if (configuredApiKey !== apiKey) {
+    throw new Error(
+      'Google Maps ya fue configurado con una API key diferente.',
+    );
   }
 
-  if (window.__euGoogleMapsPromise) {
-    return window.__euGoogleMapsPromise;
+  const [mapsLibrary, coreLibrary] = await Promise.all([
+    importLibrary('maps'),
+    importLibrary('core'),
+  ]);
+
+  return {
+    maps: mapsLibrary as google.maps.MapsLibrary,
+
+    core: coreLibrary as google.maps.CoreLibrary,
+  };
+}
+
+const GOOGLE_MAPS_STYLE_ATTRIBUTE = 'data-eu-google-maps-style';
+
+let googleMapsStyleCache: string[] = [];
+
+const getGoogleMapsStyles = () =>
+  Array.from(document.head.querySelectorAll<HTMLStyleElement>('style')).filter(
+    (style) => {
+      const css = style.textContent ?? '';
+
+      return (
+        css.includes('.gm-style') ||
+        css.includes('.gm-control') ||
+        css.includes('.gm-ui')
+      );
+    },
+  );
+
+export function cacheGoogleMapsStyles() {
+  const styles = getGoogleMapsStyles();
+
+  if (!styles.length) {
+    return;
   }
 
-  window.__euGoogleMapsPromise = new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+  googleMapsStyleCache = styles.map((style) => style.textContent ?? '');
+}
 
-    script.id = SCRIPT_ID;
-    script.src =
-      'https://maps.googleapis.com/maps/api/js' +
-      `?key=${encodeURIComponent(apiKey)}` +
-      '&loading=async';
+export function restoreGoogleMapsStyles() {
+  /*
+   * Google todavía conserva sus styles:
+   * no necesitamos hacer nada.
+   */
+  if (getGoogleMapsStyles().length > 0) {
+    return;
+  }
 
-    script.async = true;
+  if (googleMapsStyleCache.length === 0) {
+    return;
+  }
 
-    script.addEventListener(
-      'load',
-      () => {
-        if (window.google?.maps) {
-          resolve(window.google);
-          return;
-        }
+  googleMapsStyleCache.forEach((css) => {
+    const style = document.createElement('style');
 
-        reject(new Error('Google Maps cargó sin exponer window.google.maps.'));
-      },
-      { once: true },
-    );
+    style.setAttribute(GOOGLE_MAPS_STYLE_ATTRIBUTE, '');
 
-    script.addEventListener(
-      'error',
-      () => {
-        window.__euGoogleMapsPromise = undefined;
+    style.textContent = css;
 
-        reject(new Error('No fue posible cargar Google Maps.'));
-      },
-      { once: true },
-    );
-
-    document.head.appendChild(script);
+    document.head.appendChild(style);
   });
-
-  return window.__euGoogleMapsPromise;
 }

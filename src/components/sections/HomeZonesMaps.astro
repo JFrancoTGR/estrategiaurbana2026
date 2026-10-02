@@ -125,7 +125,8 @@ const categoryGroups = categories.map((category) => ({
               id={`map-category-${category.id}`}
               class='home-zones-map__locations'
               data-map-category-list
-              hidden
+              aria-hidden='true'
+              inert
             >
               {category.locations.map((location, index) => (
                 <li>
@@ -191,9 +192,9 @@ const categoryGroups = categories.map((category) => ({
 
   .home-zones-map__canvas {
     width: 100%;
-    height: 100dvh;
+    height: 800px;
 
-    min-height: 700px;
+    min-height: 800px;
 
     background-color: #f4f0eb;
   }
@@ -344,18 +345,41 @@ const categoryGroups = categories.map((category) => ({
   --------------------------------- */
 
   .home-zones-map__locations {
-    max-height: 400px;
+  height: 0;
+  max-height: 400px;
 
-    overflow-y: auto;
+  overflow: hidden;
 
-    padding: 8px 14px 12px;
+  padding: 0 14px;
 
-    scrollbar-width: thin;
-  }
+  opacity: 0;
+  visibility: hidden;
 
-  .home-zones-map__locations[hidden] {
-    display: none;
-  }
+  transform: translateY(-4px);
+
+  transition:
+    height var(--duration-medium) var(--ease-premium),
+    padding var(--duration-medium) var(--ease-premium),
+    opacity var(--duration-fast) ease,
+    transform var(--duration-medium) var(--ease-premium),
+    visibility 0s linear var(--duration-medium);
+}
+
+.home-zones-map__locations[aria-hidden='false'] {
+  padding: 8px 14px 12px;
+
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+
+  transition:
+    height var(--duration-medium) var(--ease-premium),
+    padding var(--duration-medium) var(--ease-premium),
+    opacity var(--duration-fast) ease,
+    transform var(--duration-medium) var(--ease-premium),
+    visibility 0s;
+}
 
   .home-zones-map__locations button {
     display: flex;
