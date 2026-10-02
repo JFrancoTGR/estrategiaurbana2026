@@ -1,12 +1,164 @@
 ---
-import 'leaflet/dist/leaflet.css';
+import { mapLocations } from '../../data/map/map-locations';
+
+import saleIcon from '../../assets/img/home/zones-map/sale.svg';
+import rentIcon from '../../assets/img/home/zones-map/rent.svg';
+import officeIcon from '../../assets/img/home/zones-map/office.svg';
+
+const categories = [
+  {
+    id: 'venta',
+    title: 'DEPARTAMENTOS',
+    subtitle: 'Residenciales en Venta',
+    icon: saleIcon,
+  },
+  {
+    id: 'renta',
+    title: 'DEPARTAMENTOS',
+    subtitle: 'Residenciales en Renta',
+    icon: rentIcon,
+  },
+  {
+    id: 'oficina',
+    title: 'OFICINAS',
+    subtitle: 'En Renta',
+    icon: officeIcon,
+  },
+] as const;
+
+const categoryGroups = categories.map((category) => ({
+  ...category,
+
+  locations: mapLocations.filter(
+    (location) => location.category === category.id,
+  ),
+}));
 ---
 
-<section class='home-zones-map'>
+<section class='home-zones-map' data-home-zones-map>
+  <!-- ---------------------------------
+       Mobile selector trigger
+  ---------------------------------- -->
+
+  <button
+    class='home-zones-map__mobile-toggle'
+    type='button'
+    data-map-selector-open
+    aria-controls='home-zones-map-selector'
+    aria-expanded='false'
+  >
+    <span>Ver ubicaciones</span>
+
+    <svg viewBox='0 0 24 24' aria-hidden='true'>
+      <path
+        d='M4 7h16M7 12h10M10 17h4'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='1.75'
+        stroke-linecap='round'></path>
+    </svg>
+  </button>
+
+  <!-- ---------------------------------
+       Location selector
+  ---------------------------------- -->
+
+  <nav
+    id='home-zones-map-selector'
+    class='home-zones-map__selector'
+    data-map-selector
+    aria-label='Ubicaciones de Estrategia Urbana'
+  >
+    <button
+      class='home-zones-map__selector-close'
+      type='button'
+      data-map-selector-close
+      aria-label='Cerrar selector de ubicaciones'
+    >
+      Cerrar
+    </button>
+
+    <ul class='home-zones-map__categories'>
+      {
+        categoryGroups.map((category) => (
+          <li
+            class={`home-zones-map__category home-zones-map__category--${category.id}`}
+            data-map-category={category.id}
+          >
+            <button
+              class='home-zones-map__category-trigger'
+              type='button'
+              data-map-category-trigger
+              aria-expanded='false'
+              aria-controls={`map-category-${category.id}`}
+            >
+              <img
+                class='home-zones-map__category-icon'
+                src={category.icon.src}
+                alt=''
+                aria-hidden='true'
+              />
+
+              <span class='home-zones-map__category-label'>
+                <strong>{category.title}</strong>
+
+                <span>{category.subtitle}</span>
+              </span>
+
+              <svg
+                class='home-zones-map__category-chevron'
+                viewBox='0 0 12 8'
+                aria-hidden='true'
+              >
+                <path
+                  d='M1 1.5 6 6.5l5-5'
+                  fill='none'
+                  stroke='currentColor'
+                  stroke-width='1.5'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                />
+              </svg>
+            </button>
+
+            <ul
+              id={`map-category-${category.id}`}
+              class='home-zones-map__locations'
+              data-map-category-list
+              hidden
+            >
+              {category.locations.map((location, index) => (
+                <li>
+                  <button
+                    type='button'
+                    data-map-location
+                    data-map-location-id={location.id}
+                    aria-label={`Ver ${location.name} en el mapa`}
+                  >
+                    <span class='home-zones-map__location-number'>
+                      {index + 1}.
+                    </span>
+
+                    <span>{location.name}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <!-- ---------------------------------
+       Google Maps canvas
+  ---------------------------------- -->
+
   <div
     class='home-zones-map__canvas'
     data-zones-map
-    aria-label='Mapa de Ciudad de México'
+    role='region'
+    aria-label='Mapa de ubicaciones de Estrategia Urbana'
   >
   </div>
 </section>
@@ -20,26 +172,457 @@ import 'leaflet/dist/leaflet.css';
 </script>
 
 <style>
+  /* ---------------------------------
+     Section
+  --------------------------------- */
+
   .home-zones-map {
+    position: relative;
+    isolation: isolate;
+
     width: 100%;
 
     background-color: var(--color-background);
   }
 
+  /* ---------------------------------
+     Google Maps canvas
+  --------------------------------- */
+
   .home-zones-map__canvas {
     width: 100%;
-    height: clamp(520px, 65vh, 760px);
+    height: 100dvh;
+
+    min-height: 700px;
+
+    background-color: #f4f0eb;
   }
 
-  :global(.leaflet-container) {
+  /* ---------------------------------
+     Selector
+  --------------------------------- */
+
+  .home-zones-map__selector {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+
+    z-index: 10;
+
+    width: 340px;
+
+    padding: 10px;
+
+    background-color: #fff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+  }
+
+  .home-zones-map__categories {
+    width: 100%;
+  }
+
+  /* ---------------------------------
+     Category
+  --------------------------------- */
+
+  .home-zones-map__category {
+    position: relative;
+
+    border-bottom: 1px dashed rgb(198 198 198);
+  }
+
+  .home-zones-map__category:last-child {
+    border-bottom: 0;
+  }
+
+  /*
+   * Se conserva para poder reproducir
+   * el fade inferior del módulo original
+   * cuando el listado tenga scroll.
+   */
+  .home-zones-map__category.is-faded::after {
+    content: '';
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 1;
+
+    height: 48px;
+
+    pointer-events: none;
+
+    background: linear-gradient(to bottom, rgb(255 255 255 / 0%), #fff);
+  }
+
+  /* ---------------------------------
+     Category trigger
+  --------------------------------- */
+
+  .home-zones-map__category-trigger {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 10px 24px 10px 14px;
+
+    cursor: pointer;
+
+    color: var(--color-text);
+
+    transition:
+      color var(--duration-medium) ease,
+      background-color var(--duration-medium) ease;
+  }
+
+  .home-zones-map__category-trigger:hover {
+    color: var(--color-red);
+    background-color: #f3f3f3;
+  }
+
+  .home-zones-map__category-icon {
+    flex: 0 0 auto;
+
+    width: 25px;
+    height: auto;
+  }
+
+  .home-zones-map__category-label {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    text-align: left;
+
+    line-height: 1.3;
+  }
+
+  .home-zones-map__category-label strong {
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    line-height: 16px;
+
+    letter-spacing: 0.02em;
+  }
+
+  .home-zones-map__category-label > span {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .home-zones-map__category-chevron {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+
+    width: 10px;
+    height: auto;
+
+    color: #757575;
+
+    transform: translateY(-50%);
+
+    transition: transform var(--duration-medium) var(--ease-premium);
+  }
+
+  .home-zones-map__category-trigger[aria-expanded='true']
+    .home-zones-map__category-chevron {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* ---------------------------------
+     Location list
+  --------------------------------- */
+
+  .home-zones-map__locations {
+    max-height: 400px;
+
+    overflow-y: auto;
+
+    padding: 8px 14px 12px;
+
+    scrollbar-width: thin;
+  }
+
+  .home-zones-map__locations[hidden] {
+    display: none;
+  }
+
+  .home-zones-map__locations button {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+
+    width: 100%;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    line-height: 26px;
+    text-align: left;
+
+    color: var(--color-black);
+
+    transition: color var(--duration-medium) ease;
+  }
+
+  .home-zones-map__locations button:hover {
+    color: var(--color-red);
+
+    text-decoration: underline;
+
+    text-underline-offset: 2px;
+  }
+
+  .home-zones-map__location-number {
+    flex: 0 0 28px;
+
+    color: var(--color-black);
+
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------------------------------
+     Focus
+  --------------------------------- */
+
+  .home-zones-map__category-trigger:focus-visible,
+  .home-zones-map__locations button:focus-visible,
+  .home-zones-map__mobile-toggle:focus-visible,
+  .home-zones-map__selector-close:focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 2px;
+  }
+
+  /* ---------------------------------
+     Mobile selector trigger
+  --------------------------------- */
+
+  .home-zones-map__mobile-toggle {
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
+
+    z-index: 9;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: min(300px, calc(100% - 20px));
+
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    color: var(--color-black);
+    background-color: #fff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 38px 30px rgb(0 0 0 / 20%);
+  }
+
+  .home-zones-map__mobile-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* ---------------------------------
+     Mobile selector close
+  --------------------------------- */
+
+  .home-zones-map__selector-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: none;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    color: #fff;
+    background-color: var(--color-black);
+
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* ---------------------------------
+     Google Maps custom pins
+  --------------------------------- */
+
+  :global(.map-pin) {
+    position: absolute;
+
+    width: 37px;
+    height: 52px;
+
+    margin-top: -52px;
+    margin-left: -18.5px;
+
+    cursor: pointer;
+
+    transform: scale(0.8);
+    transform-origin: bottom center;
+  }
+
+  :global(.map-pin:hover) {
+    z-index: 3;
+  }
+
+  :global(.map-pin svg) {
+    display: block;
+
+    width: 37px;
+    height: 52px;
+  }
+
+  :global(.map-pin__num) {
+    position: absolute;
+    top: 8px;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 24px;
+
+    pointer-events: none;
+
+    font-family: var(--font-editorial);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+
+    color: #fff;
+  }
+
+  :global(.map-pin__label) {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+
+    display: none;
+
+    width: max-content;
+
+    padding: 4px 8px;
+
+    pointer-events: none;
+
     font-family: var(--font-primary);
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: nowrap;
 
-    background-color: var(--color-surface-muted);
+    color: var(--color-black);
+    background-color: #fff;
+
+    border-radius: 4px;
+
+    box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+
+    transform: translateX(-50%);
   }
+
+  :global(.map-pin:hover .map-pin__label) {
+    display: block;
+  }
+
+  /* ---------------------------------
+     Responsive
+  --------------------------------- */
 
   @media (max-width: 767px) {
     .home-zones-map__canvas {
-      height: 520px;
+      min-height: 500px;
+    }
+
+    .home-zones-map__mobile-toggle {
+      display: flex;
+    }
+
+    .home-zones-map__selector {
+      top: 10px;
+      left: -100%;
+
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+
+      padding-top: 40px;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transform: scale(0);
+
+      background-color: rgb(255 255 255 / 94%);
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 10px 10px rgb(0 0 0 / 70%);
+
+      transition:
+        left var(--duration-medium) var(--ease-premium),
+        opacity var(--duration-medium) var(--ease-premium),
+        transform var(--duration-medium) var(--ease-premium),
+        visibility var(--duration-medium);
+    }
+
+    .home-zones-map__selector.is-open {
+      left: 10px;
+
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+
+      transform: scale(1);
+    }
+
+    .home-zones-map__selector-close {
+      display: block;
+    }
+
+    .home-zones-map__categories {
+      max-height: 100%;
+
+      overflow-y: auto;
+    }
+
+    .home-zones-map__locations {
+      max-height: min(400px, calc(100dvh - 250px));
+    }
+  }
+
+  /* ---------------------------------
+     Reduced motion
+  --------------------------------- */
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-zones-map__category-trigger,
+    .home-zones-map__category-chevron,
+    .home-zones-map__locations button,
+    .home-zones-map__selector {
+      transition: none;
     }
   }
 </style>

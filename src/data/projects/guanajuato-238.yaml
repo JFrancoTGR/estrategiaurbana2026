@@ -10,7 +10,7 @@ commercial:
   available: false
 
 delivered:
-  visible: TRUE
+  visible: true
   order: 14
 
   units: 5
