@@ -5,7 +5,7 @@ import ProjectCard from '../cards/ProjectCard.astro';
 
 import {
   PROJECT_STATUS_META,
-  PROJECT_STATUS_VALUES,
+  COMMERCIAL_PROJECT_STATUS_VALUES,
 } from '../../config/project-status';
 
 const INITIAL_COUNT = 8;
@@ -45,14 +45,12 @@ const hasMoreProjects = projects.length > INITIAL_COUNT;
           <div class='projects-grid__select-wrap'>
             <select
               class='projects-grid__select'
-              data-project-filter='zone'
-              aria-label='Filtrar proyectos por zona'
+              data-project-filter='market'
+              aria-label='Filtrar proyectos por mercado'
             >
-              <option value='all'> Todas </option>
-
-              <option value='cdmx'> CDMX </option>
-
-              <option value='tijuana'> Tijuana </option>
+              <option value='all'>Todas</option>
+              <option value='cdmx'>CDMX</option>
+              <option value='tijuana'>Tijuana</option>
             </select>
           </div>
         </label>
@@ -69,7 +67,7 @@ const hasMoreProjects = projects.length > INITIAL_COUNT;
               <option value='all'> Todos </option>
 
               {
-                PROJECT_STATUS_VALUES.map((status) => (
+                COMMERCIAL_PROJECT_STATUS_VALUES.map((status) => (
                   <option value={status}>
                     {PROJECT_STATUS_META[status].label}
                   </option>
@@ -87,7 +85,7 @@ const hasMoreProjects = projects.length > INITIAL_COUNT;
           <div
             class='projects-grid__item'
             data-project-card
-            data-zone={project.data.location.zone}
+            data-market={project.data.location.market}
             data-status={project.data.status}
             data-reveal-hidden={index >= INITIAL_COUNT ? '' : undefined}
           >

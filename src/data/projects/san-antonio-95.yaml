@@ -3,7 +3,8 @@ name: SAN ANTONIO 95
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: napoles
   label: Nápoles, CDMX
 
 commercial:

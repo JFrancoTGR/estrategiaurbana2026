@@ -6,6 +6,7 @@ commercial:
   available: true
 
 location:
+  market: tijuana
   zone: tijuana
   label: Playas de Tijuana, Baja California
 

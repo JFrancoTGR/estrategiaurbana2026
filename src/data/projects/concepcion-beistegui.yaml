@@ -3,7 +3,8 @@ name: CONCEPCIÓN BÉISTEGUI
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: narvarte
   label: Narvarte, CDMX
 
 commercial:

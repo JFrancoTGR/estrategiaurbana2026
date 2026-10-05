@@ -3,7 +3,8 @@ name: REVILLAGIGEDO 365
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: centro
   label: Centro, CDMX
 
 commercial:

@@ -2,8 +2,8 @@ const DEFAULT_INITIAL_COUNT = 8;
 const DEFAULT_REVEAL_BATCH = 4;
 
 export function initProjectsCatalog(root: HTMLElement) {
-  const zoneSelect = root.querySelector<HTMLSelectElement>(
-    '[data-project-filter="zone"]',
+  const marketSelect = root.querySelector<HTMLSelectElement>(
+    '[data-project-filter="market"]',
   );
 
   const statusSelect = root.querySelector<HTMLSelectElement>(
@@ -20,7 +20,7 @@ export function initProjectsCatalog(root: HTMLElement) {
     root.querySelectorAll<HTMLElement>('[data-project-card]'),
   );
 
-  if (!zoneSelect || !statusSelect || !moreButton) {
+  if (!marketSelect || !statusSelect || !moreButton) {
     return;
   }
 
@@ -39,18 +39,18 @@ export function initProjectsCatalog(root: HTMLElement) {
   };
 
   const applyFilters = () => {
-    const zone = zoneSelect.value;
+    const market = marketSelect.value;
 
     const status = statusSelect.value;
 
     const matchingCards: HTMLElement[] = [];
 
     cards.forEach((card) => {
-      const matchesZone = zone === 'all' || card.dataset.zone === zone;
+      const matchesMarket = market === 'all' || card.dataset.market === market;
 
       const matchesStatus = status === 'all' || card.dataset.status === status;
 
-      const matches = matchesZone && matchesStatus;
+      const matches = matchesMarket && matchesStatus;
 
       card.hidden = !matches;
 
@@ -80,7 +80,7 @@ export function initProjectsCatalog(root: HTMLElement) {
         detail: {
           cards: visibleCards,
 
-          zone,
+          market,
           status,
 
           visibleCount: visibleCards.length,
@@ -109,7 +109,7 @@ export function initProjectsCatalog(root: HTMLElement) {
     updateButton();
   };
 
-  zoneSelect.addEventListener('change', applyFilters);
+  marketSelect.addEventListener('change', applyFilters);
 
   statusSelect.addEventListener('change', applyFilters);
 
@@ -125,7 +125,7 @@ export function initProjectsCatalog(root: HTMLElement) {
   updateButton();
 
   return () => {
-    zoneSelect.removeEventListener('change', applyFilters);
+    marketSelect.removeEventListener('change', applyFilters);
 
     statusSelect.removeEventListener('change', applyFilters);
 

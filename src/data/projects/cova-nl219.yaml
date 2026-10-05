@@ -3,7 +3,8 @@ name: COVA NUEVO LEON 219
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: condesa
   label: Condesa, CDMX
 
 commercial:

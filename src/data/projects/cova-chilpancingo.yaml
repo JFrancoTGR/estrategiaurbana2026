@@ -6,7 +6,8 @@ commercial:
   available: true
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: condesa
   label: Condesa, CDMX
 
 price:

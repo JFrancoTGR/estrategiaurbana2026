@@ -3,7 +3,8 @@ name: Sennse Tabacalera
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: centro
   label: Tabacalera, CDMX
 
 commercial:

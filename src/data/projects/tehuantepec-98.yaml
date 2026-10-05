@@ -3,7 +3,8 @@ name: TEHUANTEPEC 98
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: roma
   label: Roma Sur, CDMX
 
 commercial:

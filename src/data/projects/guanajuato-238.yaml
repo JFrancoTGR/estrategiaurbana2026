@@ -3,7 +3,8 @@ name: GUANAJUATO 238
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: roma
   label: Roma Norte, CDMX
 
 commercial:

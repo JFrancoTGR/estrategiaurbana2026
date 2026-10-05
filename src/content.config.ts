@@ -21,8 +21,33 @@ const projects = defineCollection({
       }),
 
       location: z.object({
-        zone: z.enum(['cdmx', 'tijuana']),
-        label: z.string(),
+        /*
+         * Mercado comercial principal.
+         *
+         * Se utiliza para agrupaciones generales
+         * y filtros como CDMX / Tijuana.
+         */
+        market: z.enum(['cdmx', 'tijuana']),
+
+        /*
+         * Zona geográfica específica.
+         *
+         * Debe utilizar un slug normalizado:
+         * juarez, condesa, polanco, tijuana, etc.
+         */
+        zone: z
+          .string()
+          .trim()
+          .min(1)
+          .regex(
+            /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+            'location.zone debe utilizar formato slug',
+          ),
+
+        /*
+         * Texto humano utilizado en la interfaz.
+         */
+        label: z.string().trim().min(1),
       }),
 
       price: z
@@ -127,7 +152,7 @@ const projects = defineCollection({
           }),
         ])
         .optional(),
-        
+
       /*
        * Contexto página individual.
        *

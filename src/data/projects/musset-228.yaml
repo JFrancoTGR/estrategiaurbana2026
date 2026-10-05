@@ -3,7 +3,8 @@ name: MUSSET 228
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: polanco
   label: Polanco, CDMX
 
 commercial:

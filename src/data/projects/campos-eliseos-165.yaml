@@ -3,7 +3,8 @@ name: CAMPOS ELISEOS 165
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: polanco
   label: Polanco, CDMX
 
 commercial:

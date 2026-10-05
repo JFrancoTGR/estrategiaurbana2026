@@ -6,7 +6,8 @@ commercial:
   available: true
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: juarez
   label: Juárez, CDMX
 
 price:

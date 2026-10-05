@@ -3,7 +3,8 @@ name: EDGAR ALLAN POE 335
 status: entregado
 
 location:
-  zone: cdmx
+  market: cdmx
+  zone: polanco
   label: Polanco, CDMX
 
 commercial:

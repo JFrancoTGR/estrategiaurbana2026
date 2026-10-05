@@ -3,8 +3,9 @@ name: ARISTÓTLES 68
 status: entregado
 
 location:
-  zone: cdmx
-  label: Centro, CDMX
+  market: cdmx
+  zone: polanco
+  label: Polanco, CDMX
 
 commercial:
   available: false
