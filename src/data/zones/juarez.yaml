@@ -1,0 +1,35 @@
+name: Juárez
+
+market: cdmx
+
+navigation:
+  visible: true
+  order: 2
+
+seo:
+  title: Juárez | Estrategia Urbana
+  description: Conoce la zona Juárez y los desarrollos de Estrategia Urbana.
+
+hero:
+  title: La vida en Juárez
+  subtitle: Ciudad de México
+  image: ../../assets/img/zones/juarez/hero-zones.webp
+  alt: Juárez, Ciudad de México
+
+intro:
+  index: "01"
+  title: Contenido editorial pendiente
+  body:
+    - Texto editorial pendiente para la sección Juárez.
+  image: ../../assets/img/zones/juarez/hero-zones.webp
+  alt: Vida urbana en la Juárez
+
+map:
+  center:
+    lat: 19.4270
+    lng: -99.1630
+  zoom: 15
+
+gallery:
+  - image: ../../assets/img/zones/juarez/hero-zones.webp
+    alt: Juárez, Ciudad de México

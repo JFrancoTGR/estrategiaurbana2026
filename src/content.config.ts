@@ -199,7 +199,71 @@ const partners = defineCollection({
     }),
 });
 
+const zones = defineCollection({
+  loader: glob({
+    pattern: '**/*.{yaml,yml}',
+    base: './src/data/zones',
+  }),
+
+  schema: ({ image }) =>
+    z.object({
+      name: z.string().trim().min(1),
+
+      market: z.enum(['cdmx', 'tijuana']),
+
+      navigation: z.object({
+        visible: z.boolean().default(true),
+        order: z.number().int().nonnegative(),
+      }),
+
+      seo: z.object({
+        title: z.string().trim().min(1),
+        description: z.string().trim().min(1),
+      }),
+
+      hero: z.object({
+        title: z.string().trim().min(1),
+        subtitle: z.string().trim().min(1),
+
+        image: image(),
+
+        alt: z.string().trim().min(1),
+      }),
+
+      intro: z.object({
+        index: z.string().trim().min(1),
+
+        title: z.string().trim().min(1),
+
+        body: z.array(z.string().trim().min(1)).min(1),
+
+        image: image(),
+
+        alt: z.string().trim().min(1),
+      }),
+
+      map: z.object({
+        center: z.object({
+          lat: z.number().min(-90).max(90),
+          lng: z.number().min(-180).max(180),
+        }),
+
+        zoom: z.number().int().min(1).max(22),
+      }),
+
+      gallery: z
+        .array(
+          z.object({
+            image: image(),
+            alt: z.string().trim().min(1),
+          }),
+        )
+        .min(1),
+    }),
+});
+
 export const collections = {
   projects,
+  zones,
   partners,
 };
