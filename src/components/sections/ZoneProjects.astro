@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+
+import ProjectCard from '../cards/ProjectCard.astro';
+
+interface Props {
+  zoneId: string;
+  zoneName: string;
+}
+
+const { zoneId, zoneName } = Astro.props;
+
+const projects = (
+  await getCollection(
+    'projects',
+    ({ data }) =>
+      data.location.zone === zoneId &&
+      data.commercial.available &&
+      Boolean(data.card),
+  )
+).sort((a, b) => {
+  const orderA = a.data.home?.order ?? Number.MAX_SAFE_INTEGER;
+
+  const orderB = b.data.home?.order ?? Number.MAX_SAFE_INTEGER;
+
+  return orderA - orderB || a.data.name.localeCompare(b.data.name, 'es');
+});
+---
+
+{
+  projects.length > 0 && (
+    <section class='zone-projects'>
+      <div class='page-shell'>
+        <header class='zone-projects__header'>
+          <span class='zone-projects__eyebrow'>{zoneName}</span>
+
+          <h2 class='zone-projects__title font-editorial'>
+            Proyectos en venta
+          </h2>
+        </header>
+
+        <div class='zone-projects__grid'>
+          {projects.map((project) => (
+            <div class='zone-projects__item'>
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .zone-projects {
+    width: 100%;
+
+    padding-block: clamp(72px, 8vw, 120px) clamp(88px, 9vw, 140px);
+
+    background-color: var(--color-surface-muted);
+  }
+
+  .zone-projects__header {
+    margin-bottom: clamp(44px, 5vw, 72px);
+  }
+
+  .zone-projects__eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--color-red);
+  }
+
+  .zone-projects__title {
+    max-width: 760px;
+
+    margin: 0;
+
+    font-size: clamp(3rem, 5vw, 6rem);
+    font-weight: var(--font-weight-light);
+
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+  }
+
+  .zone-projects__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: clamp(24px, 2.4vw, 38px) clamp(10px, 1.2vw, 18px);
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .zone-projects__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .zone-projects {
+      padding-block: 64px 80px;
+    }
+
+    .zone-projects__grid {
+      grid-template-columns: 1fr;
+
+      gap: 28px;
+    }
+  }
+</style>

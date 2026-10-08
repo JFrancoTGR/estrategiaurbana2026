@@ -13,11 +13,11 @@ seo:
 hero:
   title: La vida en Juárez
   subtitle: Ciudad de México
-  image: ../../assets/img/zones/juarez/hero-zones.webp
+  image: ../../assets/img/zones/juarez/juarez-gallery-001.webp
   alt: Juárez, Ciudad de México
 
 intro:
-  index: "01"
+  index: '01'
   title: Contenido editorial pendiente
   body:
     - Texto editorial pendiente para la sección Juárez.
@@ -31,5 +31,17 @@ map:
   zoom: 15
 
 gallery:
-  - image: ../../assets/img/zones/juarez/hero-zones.webp
+  - image: ../../assets/img/zones/juarez/juarez-gallery-001.webp
+    alt: Juárez, Ciudad de México
+
+  - image: ../../assets/img/zones/juarez/juarez-gallery-002.webp
+    alt: Juárez, Ciudad de México
+
+  - image: ../../assets/img/zones/juarez/juarez-gallery-003.webp
+    alt: Juárez, Ciudad de México
+
+  - image: ../../assets/img/zones/juarez/juarez-gallery-004.webp
+    alt: Juárez, Ciudad de México
+
+  - image: ../../assets/img/zones/juarez/juarez-gallery-005.webp
     alt: Juárez, Ciudad de México

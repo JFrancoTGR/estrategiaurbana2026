@@ -1,0 +1,133 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  index: string;
+  title: string;
+  body: string[];
+  image: ImageMetadata;
+  alt: string;
+}
+
+const { index, title, body, image, alt } = Astro.props;
+---
+
+<section class='zone-intro'>
+  <div class='page-shell zone-intro__layout'>
+    <div class='zone-intro__media'>
+      <Image src={image} alt={alt} class='zone-intro__image' loading='lazy' />
+    </div>
+
+    <div class='zone-intro__content'>
+      <span class='zone-intro__index'>
+        {index}
+      </span>
+
+      <h2 class='zone-intro__title font-editorial'>
+        {title}
+      </h2>
+
+      <div class='zone-intro__body'>
+        {body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .zone-intro {
+    width: 100%;
+
+    padding-block: clamp(100px, 11vw, 180px);
+
+    background-color: var(--color-background);
+  }
+
+  .zone-intro__layout {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 5fr)
+      minmax(60px, 1fr)
+      minmax(0, 5fr);
+
+    align-items: center;
+  }
+
+  .zone-intro__media {
+    grid-column: 1;
+  }
+
+  .zone-intro__image {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+  }
+
+  .zone-intro__content {
+    grid-column: 3;
+
+    max-width: 620px;
+  }
+
+  .zone-intro__index {
+    display: block;
+
+    margin-bottom: 24px;
+
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    letter-spacing: 0.12em;
+  }
+
+  .zone-intro__title {
+    margin: 0;
+
+    font-size: clamp(3rem, 4.5vw, 5.4rem);
+    font-weight: var(--font-weight-light);
+
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .zone-intro__body {
+    display: grid;
+
+    gap: 18px;
+
+    margin-top: clamp(32px, 4vw, 56px);
+
+    max-width: 520px;
+  }
+
+  .zone-intro__body p {
+    margin: 0;
+
+    font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+    line-height: 1.65;
+
+    color: rgb(20 20 20 / 72%);
+  }
+
+  @media (max-width: 767px) {
+    .zone-intro {
+      padding-block: 80px;
+    }
+
+    .zone-intro__layout {
+      display: flex;
+      flex-direction: column;
+
+      gap: 56px;
+    }
+
+    .zone-intro__media,
+    .zone-intro__content {
+      width: 100%;
+    }
+  }
+</style>

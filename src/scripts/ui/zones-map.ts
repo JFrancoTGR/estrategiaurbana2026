@@ -160,10 +160,12 @@ export function initZonesMap(root: HTMLElement) {
   //   gmStyles: root.querySelectorAll('.gm-style').length,
   // });
 
-  const section = root.closest<HTMLElement>('[data-home-zones-map]');
+  const section = root.closest<HTMLElement>(
+    '[data-home-zones-map], [data-zone-map]',
+  );
 
   if (!section) {
-    throw new Error('initZonesMap requiere [data-home-zones-map].');
+    throw new Error('initZonesMap requiere un contenedor de mapa compatible.');
   }
 
   const apiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
@@ -173,6 +175,22 @@ export function initZonesMap(root: HTMLElement) {
 
     return;
   }
+
+  const centerLat = Number(root.dataset.mapCenterLat);
+  const centerLng = Number(root.dataset.mapCenterLng);
+  const requestedZoom = Number(root.dataset.mapZoom);
+
+  const hasCustomView =
+    Number.isFinite(centerLat) &&
+    Number.isFinite(centerLng) &&
+    Number.isFinite(requestedZoom);
+
+  const customCenter = hasCustomView
+    ? {
+        lat: centerLat,
+        lng: centerLng,
+      }
+    : null;
 
   /* ---------------------------------
      DOM references
@@ -576,14 +594,12 @@ export function initZonesMap(root: HTMLElement) {
       --------------------------------- */
 
       const googleMap = new GoogleMap(root, {
-        center: bounds.getCenter(),
+        center: customCenter ?? bounds.getCenter(),
 
-        /*
-         * Valor inicial de respaldo.
-         * fitBounds lo sustituye inmediatamente.
-         */
-        zoom: 12,
+        zoom: hasCustomView ? requestedZoom : 12,
+
         styles: MAP_STYLES,
+
         mapTypeControl: false,
         fullscreenControl: true,
         streetViewControl: false,
@@ -616,7 +632,9 @@ export function initZonesMap(root: HTMLElement) {
        * muestra las 34 ubicaciones
        * respetando el espacio del selector.
        */
-      googleMap.fitBounds(bounds, getInitialBoundsPadding());
+      if (!hasCustomView) {
+        googleMap.fitBounds(bounds, getInitialBoundsPadding());
+      }
 
       clearMapListeners = () => {
         mapsEvent.clearInstanceListeners(googleMap);

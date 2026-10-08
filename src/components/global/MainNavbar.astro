@@ -261,12 +261,12 @@ const isActive = (href: string) => {
 
   .site-header--light .navigation-link.active,
   .site-header--light .navigation-link:focus-visible {
-    color: var(--color-white);
+    color: var(--color-black);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .site-header--light .navigation-link:hover {
-      color: var(--color-white);
+      color: var(--color-black);
     }
   }
 
@@ -350,12 +350,12 @@ const isActive = (href: string) => {
     transform: scaleY(0);
     transform-origin: bottom;
 
-    transition: transform 360ms var(--ease-premium);
+    transition: transform 200ms var(--ease-premium);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .navigation-link:hover::before {
-      transform: scaleY(1);
+      transform: scaleY(0.05);
     }
 
     .navigation-link:hover {
@@ -365,7 +365,7 @@ const isActive = (href: string) => {
 
   .navigation-link:focus-visible::before,
   .navigation-link.active::before {
-    transform: scaleY(1);
+    transform: scaleY(0.05);
   }
 
   .navigation-link:focus-visible,

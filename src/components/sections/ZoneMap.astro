@@ -1,0 +1,135 @@
+---
+interface Props {
+  center: {
+    lat: number;
+    lng: number;
+  };
+
+  zoom: number;
+}
+
+const { center, zoom } = Astro.props;
+---
+
+<section class='zone-map' data-zone-map>
+  <div
+    class='zone-map__canvas'
+    data-zone-map-canvas
+    data-map-center-lat={center.lat}
+    data-map-center-lng={center.lng}
+    data-map-zoom={zoom}
+    role='region'
+    aria-label='Mapa de proyectos de Estrategia Urbana'
+  >
+  </div>
+</section>
+
+<script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
+  import { initZonesMap } from '../../scripts/ui/zones-map';
+
+  mountPageUI('[data-zone-map-canvas]', initZonesMap);
+</script>
+
+<style>
+  .zone-map {
+    width: 100%;
+
+    background-color: #f4f0eb;
+  }
+
+  .zone-map__canvas {
+    width: 100%;
+    height: 720px;
+
+    background-color: #f4f0eb;
+  }
+
+  /*
+   * Pins compartidos con Home.
+   * Los movemos a un stylesheet común en el siguiente paso.
+   */
+
+  :global(.map-pin) {
+    position: absolute;
+
+    width: 37px;
+    height: 52px;
+
+    margin-top: -52px;
+    margin-left: -18.5px;
+
+    cursor: pointer;
+
+    transform: scale(0.8);
+    transform-origin: bottom center;
+  }
+
+  :global(.map-pin:hover) {
+    z-index: 3;
+  }
+
+  :global(.map-pin svg) {
+    display: block;
+
+    width: 37px;
+    height: 52px;
+  }
+
+  :global(.map-pin__num) {
+    position: absolute;
+    top: 8px;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 24px;
+
+    pointer-events: none;
+
+    font-family: var(--font-editorial);
+    font-size: 18px;
+    font-weight: var(--font-weight-bold);
+
+    color: #fff;
+  }
+
+  :global(.map-pin__label) {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+
+    display: none;
+
+    width: max-content;
+
+    padding: 4px 8px;
+
+    pointer-events: none;
+
+    font-size: 13px;
+
+    color: var(--color-black);
+    background-color: #fff;
+
+    border-radius: 4px;
+
+    box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+
+    transform: translateX(-50%);
+  }
+
+  :global(.map-pin:hover .map-pin__label) {
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .zone-map__canvas {
+      height: 520px;
+    }
+  }
+</style>

@@ -13,7 +13,7 @@ seo:
 hero:
   title: La vida en Condesa
   subtitle: Ciudad de México
-  image: ../../assets/img/zones/condesa/hero-zones.webp
+  image: ../../assets/img/zones/condesa/condesa-gallery-001.webp
   alt: Condesa, Ciudad de México
 
 intro:
@@ -21,7 +21,7 @@ intro:
   title: Contenido editorial pendiente
   body:
     - Texto editorial pendiente para la sección Condesa.
-  image: ../../assets/img/zones/condesa/hero-zones.webp
+  image: ../../assets/img/zones/condesa/condesa-gallery-004.webp
   alt: Vida urbana en la Condesa
 
 map:
@@ -31,5 +31,17 @@ map:
   zoom: 15
 
 gallery:
-  - image: ../../assets/img/zones/condesa/hero-zones.webp
+  - image: ../../assets/img/zones/condesa/condesa-gallery-001.webp
+    alt: Condesa, Ciudad de México
+  
+  - image: ../../assets/img/zones/condesa/condesa-gallery-002.webp
+    alt: Condesa, Ciudad de México
+  
+  - image: ../../assets/img/zones/condesa/condesa-gallery-003.webp
+    alt: Condesa, Ciudad de México
+  
+  - image: ../../assets/img/zones/condesa/condesa-gallery-004.webp
+    alt: Condesa, Ciudad de México
+
+  - image: ../../assets/img/zones/condesa/condesa-gallery-005.webp
     alt: Condesa, Ciudad de México

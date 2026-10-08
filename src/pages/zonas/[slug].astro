@@ -5,6 +5,13 @@ import { getCollection, getEntry } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+import ZoneHero from '../../components/sections/ZoneHero.astro';
+import ZoneSwitcher from '../../components/sections/ZoneSwitcher.astro';
+import ZoneIntro from '../../components/sections/ZoneIntro.astro';
+import ZoneMap from '../../components/sections/ZoneMap.astro';
+import ZoneGallery from '../../components/sections/ZoneGallery.astro';
+import ZoneProjects from '../../components/sections/ZoneProjects.astro';
+
 export const getStaticPaths = (async () => {
   const zones = await getCollection('zones');
 
@@ -30,55 +37,37 @@ const zone = await getEntry('zones', zoneId);
 if (!zone) {
   throw new Error(`No se encontró la zona "${zoneId}".`);
 }
+
+const navigationZones = (
+  await getCollection('zones', ({ data }) => data.navigation.visible)
+).sort((a, b) => a.data.navigation.order - b.data.navigation.order);
 ---
 
 <BaseLayout
   title={zone.data.seo.title}
   description={zone.data.seo.description}
-  headerTheme='light'
+  headerTheme='overlay'
 >
-  <section class='zone-bootstrap'>
-    <div class='page-shell'>
-      <span class='zone-bootstrap__market'>
-        {zone.data.market.toUpperCase()}
-      </span>
+  <ZoneHero
+    image={zone.data.hero.image}
+    alt={zone.data.hero.alt}
+    title={zone.data.hero.title}
+    subtitle={zone.data.hero.subtitle}
+  />
 
-      <h1>{zone.data.hero.title}</h1>
+  <ZoneSwitcher zones={navigationZones} currentZoneId={zone.id} />
 
-      <p>{zone.data.hero.subtitle}</p>
-    </div>
-  </section>
+  <ZoneIntro
+    index={zone.data.intro.index}
+    title={zone.data.intro.title}
+    body={zone.data.intro.body}
+    image={zone.data.intro.image}
+    alt={zone.data.intro.alt}
+  />
+
+  <ZoneMap center={zone.data.map.center} zoom={zone.data.map.zoom} />
+
+  <ZoneGallery gallery={zone.data.gallery} />
+
+  <ZoneProjects zoneId={zone.id} zoneName={zone.data.name} />
 </BaseLayout>
-
-<style>
-  .zone-bootstrap {
-    min-height: 60vh;
-
-    display: flex;
-    align-items: center;
-
-    padding-block: 160px 96px;
-  }
-
-  .zone-bootstrap__market {
-    display: block;
-
-    margin-bottom: 16px;
-
-    font-size: 0.6875rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 0;
-
-    font-size: clamp(3rem, 7vw, 7rem);
-    font-weight: 400;
-    line-height: 0.95;
-  }
-
-  p {
-    margin-top: 20px;
-  }
-</style>
