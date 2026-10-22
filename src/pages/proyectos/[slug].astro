@@ -8,6 +8,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHero from '../../components/sections/ProjectHero.astro';
 import ProjectSubnav from '../../components/sections/ProjectSubnav.astro';
 
+import ProjectIntro from '../../components/sections/ProjectIntro.astro';
+
 export const getStaticPaths = (async () => {
   const projects = await getCollection(
     'projects',
@@ -45,7 +47,7 @@ if (!detail || detail.visible !== true) {
   );
 }
 
-const { hero } = detail;
+const { hero, metrics, intro } = detail;
 ---
 
 <BaseLayout
@@ -58,9 +60,20 @@ const { hero } = detail;
     alt={hero.alt}
     title={hero.title}
     eyebrow={hero.eyebrow}
-    stats={hero.stats}
+    stats={metrics}
     cta={hero.cta}
   />
 
   <ProjectSubnav />
+
+  <ProjectIntro
+    index={intro.index}
+    title={intro.title}
+    body={intro.body}
+    address={intro.address}
+    image={intro.image.image}
+    alt={intro.image.alt}
+    decoration={intro.decoration.image}
+    metrics={metrics}
+  />
 </BaseLayout>

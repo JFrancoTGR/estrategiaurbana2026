@@ -55,6 +55,17 @@ delivered:
 detail:
   visible: true
 
+  metrics:
+    - key: units
+      value: '30'
+      label: Departamentos
+      unit: unidades
+
+    - key: levels
+      value: '8'
+      label: Niveles
+      unit: niveles
+
   hero:
     image: ../../assets/img/projects/cova-nuevoleon/hero.webp
     alt: Vista principal de COVA NUEVO LEON 219
@@ -67,9 +78,22 @@ detail:
       primary: Entregado
       secondary: CDMX
 
-    stats:
-      - value: "30"
-        label: Departamentos
+  intro:
+    index: '01 / Overview'
 
-      - value: "8"
-        label: Niveles
+    title:
+      lead: Conoce los aspectos principales de
+      emphasis: COVA Nuevo León 219.
+
+    body:
+      - Contenido editorial pendiente de definir para el overview de COVA Nuevo León 219.
+
+    address:
+      - Condesa, CDMX
+
+    image:
+      image: ../../assets/img/projects/cova-nuevoleon/intro.webp
+      alt: Vista arquitectónica de COVA Nuevo León 219
+
+    decoration:
+      image: ../../assets/img/projects/cova-nuevoleon/intro-decoration.svg

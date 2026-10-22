@@ -172,12 +172,41 @@ const projects = defineCollection({
           /*
            * Proyecto con página individual pública.
            *
-           * Si visible=true, el hero debe cumplir
-           * completamente su contrato.
+           * Si visible=true, todos los datos y recursos
+           * requeridos por la ficha deben existir.
            */
           z.object({
             visible: z.literal(true),
 
+            /*
+             * Métricas compartidas por los diferentes
+             * módulos de la página.
+             */
+            metrics: z
+              .array(
+                z.object({
+                  key: z
+                    .string()
+                    .trim()
+                    .min(1)
+                    .regex(
+                      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                      'metrics.key debe utilizar formato slug',
+                    ),
+
+                  value: z.string().trim().min(1),
+
+                  label: z.string().trim().min(1),
+
+                  unit: z.string().trim().min(1),
+                }),
+              )
+              .min(1)
+              .max(4),
+
+            /*
+             * Hero principal del proyecto.
+             */
             hero: z.object({
               image: image(),
 
@@ -191,22 +220,45 @@ const projects = defineCollection({
                 secondary: z.string().trim().min(1).optional(),
               }),
 
-              stats: z
-                .array(
-                  z.object({
-                    value: z.string().trim().min(1),
-                    label: z.string().trim().min(1),
-                  }),
-                )
-                .min(1)
-                .max(3),
-
               cta: z
                 .object({
                   label: z.string().trim().min(1),
+
                   href: z.string().trim().min(1),
                 })
                 .optional(),
+            }),
+
+            /*
+             * Overview / introducción del proyecto.
+             */
+            intro: z.object({
+              index: z.string().trim().min(1),
+
+              title: z.object({
+                lead: z.string().trim().min(1),
+
+                emphasis: z.string().trim().min(1),
+              }),
+
+              body: z.array(z.string().trim().min(1)).min(1),
+
+              address: z.array(z.string().trim().min(1)).min(1),
+
+              image: z.object({
+                image: image(),
+
+                alt: z.string().trim().min(1),
+              }),
+
+              /*
+               * Recurso gráfico puramente decorativo.
+               * El componente deberá renderizarlo con
+               * alt="" y aria-hidden="true".
+               */
+              decoration: z.object({
+                image: image(),
+              }),
             }),
           }),
         ])

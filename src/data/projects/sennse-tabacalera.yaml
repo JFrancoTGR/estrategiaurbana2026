@@ -52,6 +52,17 @@ delivered:
 detail:
   visible: true
 
+  metrics:
+    - key: units
+      value: '130'
+      label: Departamentos
+      unit: unidades
+
+    - key: levels
+      value: '21'
+      label: Niveles
+      unit: niveles
+
   hero:
     image: ../../assets/img/projects/sennse-tabacalera/hero.webp
     alt: Vista principal de Sennse Tabacalera
@@ -64,9 +75,22 @@ detail:
       primary: Entregado
       secondary: CDMX
 
-    stats:
-      - value: "130"
-        label: Departamentos
+  intro:
+    index: '01 / Overview'
 
-      - value: "21"
-        label: Niveles
+    title:
+      lead: Conoce los aspectos principales de
+      emphasis: Sennse Tabacalera.
+
+    body:
+      - Contenido editorial pendiente de definir para el overview de Sennse Tabacalera.
+
+    address:
+      - Tabacalera, CDMX
+
+    image:
+      image: ../../assets/img/projects/sennse-tabacalera/intro.webp
+      alt: Vista arquitectónica de Sennse Tabacalera
+
+    decoration:
+      image: ../../assets/img/projects/sennse-tabacalera/intro-decoration.svg

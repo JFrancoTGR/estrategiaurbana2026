@@ -52,6 +52,14 @@ const navigation = [
   </div>
 </nav>
 
+<script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
+  import { initProjectSubnav } from '../../scripts/ui/project-subnav';
+
+  mountPageUI('[data-project-subnav]', initProjectSubnav);
+</script>
+
 <style>
   .project-subnav {
     --project-subnav-bg: var(--color-black);
@@ -59,6 +67,9 @@ const navigation = [
     --project-subnav-text-active: var(--color-white);
     --project-subnav-accent: var(--color-red);
     --project-subnav-border: rgb(240 240 240 / 10%);
+
+    position: relative;
+    z-index: 900;
 
     width: 100%;
     height: 72px;
@@ -207,9 +218,16 @@ const navigation = [
     }
 
     .project-subnav .page-shell {
+      height: 100%;
+
       overflow-x: auto;
+      overflow-y: hidden;
 
       scrollbar-width: none;
+
+      -webkit-overflow-scrolling: touch;
+
+      overscroll-behavior-x: contain;
     }
 
     .project-subnav .page-shell::-webkit-scrollbar {
@@ -218,14 +236,62 @@ const navigation = [
 
     .project-subnav__list {
       width: max-content;
+      min-width: 100%;
 
       justify-content: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    .project-subnav__item {
+      flex: 0 0 auto;
     }
 
     .project-subnav__link {
       padding-inline: 28px;
 
       white-space: nowrap;
+    }
+
+    .project-subnav::after {
+      content: '›';
+
+      position: absolute;
+      z-index: 5;
+
+      top: 0;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 48px;
+      height: 100%;
+
+      font-family: var(--font-primary);
+      font-size: 1.35rem;
+      font-weight: var(--font-weight-regular);
+
+      line-height: 1;
+
+      color: rgb(240 240 240 / 72%);
+
+      background: linear-gradient(
+        to right,
+        rgb(20 20 20 / 0%),
+        var(--color-black) 35%,
+        var(--color-black) 100%
+      );
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition: opacity var(--duration-fast) var(--ease-premium);
+    }
+
+    .project-subnav[data-can-scroll-right='true']::after {
+      opacity: 1;
     }
   }
 

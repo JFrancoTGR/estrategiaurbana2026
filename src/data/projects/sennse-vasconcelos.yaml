@@ -25,6 +25,17 @@ home:
 detail:
   visible: true
 
+  metrics:
+    - key: units
+      value: '140'
+      label: Departamentos
+      unit: unidades
+
+    - key: levels
+      value: '22'
+      label: Niveles
+      unit: niveles
+
   hero:
     image: ../../assets/img/projects/sennse-vasconcelos/hero.webp
     alt: Vista principal de Sennse Vasconcelos
@@ -37,13 +48,26 @@ detail:
       primary: En venta
       secondary: CDMX
 
-    stats:
-      - value: '140'
-        label: Departamentos
-
-      - value: '22'
-        label: Niveles
-
     cta:
       label: Agenda una cita
-      href: "#contacto"
+      href: '#contacto'
+
+  intro:
+    index: '01 / Overview'
+
+    title:
+      lead: Conoce los aspectos principales de
+      emphasis: Sennse Vasconcelos.
+
+    body:
+      - Contenido editorial pendiente de definir para el overview de Sennse Vasconcelos.
+
+    address:
+      - Condesa, CDMX
+
+    image:
+      image: ../../assets/img/projects/sennse-vasconcelos/intro.webp
+      alt: Vista arquitectónica de Sennse Vasconcelos
+
+    decoration:
+      image: ../../assets/img/projects/sennse-vasconcelos/intro-decoration.svg

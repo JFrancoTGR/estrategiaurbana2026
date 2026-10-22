@@ -25,6 +25,17 @@ home:
 detail:
   visible: true
 
+  metrics:
+    - key: units
+      value: '140'
+      label: Departamentos
+      unit: unidades
+
+    - key: levels
+      value: '22'
+      label: Niveles
+      unit: niveles
+
   hero:
     image: ../../assets/img/projects/sennse-hamburgo/hero.webp
     alt: Vista principal de Sennse Hamburgo
@@ -37,13 +48,26 @@ detail:
       primary: En venta
       secondary: CDMX
 
-    stats:
-      - value: '140'
-        label: Departamentos
-
-      - value: '22'
-        label: Niveles
-
     cta:
       label: Agenda una cita
-      href: "#contacto"
+      href: '#contacto'
+
+  intro:
+    index: '01 / Overview'
+
+    title:
+      lead: Conoce los aspectos principales de
+      emphasis: Sennse Hamburgo.
+
+    body:
+      - Contenido editorial pendiente de definir para el overview de Sennse Hamburgo.
+
+    address:
+      - Juárez, CDMX
+
+    image:
+      image: ../../assets/img/projects/sennse-hamburgo/intro.webp
+      alt: Vista arquitectónica de Sennse Hamburgo
+
+    decoration:
+      image: ../../assets/img/projects/sennse-hamburgo/intro-decoration.svg

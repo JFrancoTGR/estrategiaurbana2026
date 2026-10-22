@@ -1,0 +1,517 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface ProjectMetric {
+  key: string;
+  value: string;
+  label: string;
+  unit: string;
+}
+
+interface Props {
+  index: string;
+
+  title: {
+    lead: string;
+    emphasis: string;
+  };
+
+  body: string[];
+
+  address: string[];
+
+  image: ImageMetadata;
+  alt: string;
+
+  decoration: ImageMetadata;
+
+  metrics: ProjectMetric[];
+}
+
+const { index, title, body, address, image, alt, decoration, metrics } =
+  Astro.props;
+
+/*
+ * La información pertenece al proyecto, no al layout.
+ *
+ * El componente puede decidir el orden visual sin depender
+ * del orden declarado en el YAML.
+ */
+const preferredMetricOrder = ['levels', 'units'];
+
+const orderedMetrics = [
+  ...preferredMetricOrder.flatMap((key) =>
+    metrics.filter((metric) => metric.key === key),
+  ),
+
+  ...metrics.filter((metric) => !preferredMetricOrder.includes(metric.key)),
+];
+---
+
+<section class='project-intro'>
+  <div class='project-intro__content'>
+    <div class='project-intro__content-inner'>
+      <span class='project-intro__index'>
+        {index}
+      </span>
+
+      <h2 class='project-intro__title font-editorial'>
+        <span>{title.lead}</span>
+
+        <em>{title.emphasis}</em>
+      </h2>
+
+      <div class='project-intro__body'>
+        {body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <dl
+        class='project-intro__metrics'
+        aria-label='Datos principales del proyecto'
+      >
+        {
+          orderedMetrics.map((metric) => (
+            <div class='project-intro__metric'>
+              <dt class='project-intro__metric-label'>{metric.label}</dt>
+
+              <dd class='project-intro__metric-value'>
+                <strong class='font-editorial'>{metric.value}</strong>
+
+                <span>{metric.unit}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <address class='project-intro__address'>
+        <svg
+          class='project-intro__address-icon'
+          viewBox='0 0 24 24'
+          aria-hidden='true'
+        >
+          <path
+            d='M12 21s6-5.04 6-11a6 6 0 1 0-12 0c0 5.96 6 11 6 11Z'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='1.5'></path>
+
+          <circle
+            cx='12'
+            cy='10'
+            r='2.25'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='1.5'></circle>
+        </svg>
+
+        <span class='project-intro__address-copy'>
+          {address.map((line) => <span>{line}</span>)}
+        </span>
+      </address>
+    </div>
+
+    <Image
+      src={decoration}
+      alt=''
+      aria-hidden='true'
+      class='project-intro__decoration'
+      loading='lazy'
+    />
+  </div>
+
+  <div class='project-intro__media'>
+    <Image src={image} alt={alt} class='project-intro__image' loading='lazy' />
+  </div>
+</section>
+
+<style>
+  .project-intro {
+    /*
+     * Replica el borde izquierdo de .page-shell sin limitar
+     * el ancho total de la sección.
+     *
+     * Así el contenido respeta la retícula global mientras
+     * la imagen puede llegar completamente al borde derecho.
+     */
+    --project-intro-shell-edge: max(
+      var(--page-gutter),
+      calc((100vw - var(--content-max)) / 2)
+    );
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    width: 100%;
+    min-height: clamp(760px, 62vw, 940px);
+
+    background-color: var(--color-background);
+  }
+
+  /* =========================
+     CONTENT
+  ========================= */
+
+  .project-intro__content {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    padding: clamp(80px, 7vw, 112px) clamp(48px, 5vw, 88px)
+      clamp(80px, 7vw, 112px) var(--project-intro-shell-edge);
+  }
+
+  .project-intro__content-inner {
+    position: relative;
+    z-index: 1;
+
+    width: min(100%, 640px);
+  }
+
+  /* =========================
+     INDEX
+  ========================= */
+
+  .project-intro__index {
+    display: block;
+
+    margin-bottom: clamp(24px, 2.4vw, 34px);
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1;
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+
+    color: rgb(20 20 20 / 68%);
+  }
+
+  /* =========================
+     TITLE
+  ========================= */
+
+  .project-intro__title {
+    max-width: 650px;
+
+    margin: 0;
+
+    font-size: clamp(3.25rem, 4.4vw, 5.25rem);
+    font-weight: var(--font-weight-light);
+
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+
+    color: var(--color-black);
+  }
+
+  .project-intro__title span,
+  .project-intro__title em {
+    display: block;
+  }
+
+  .project-intro__title em {
+    margin-top: 0.04em;
+
+    font-weight: inherit;
+    font-style: italic;
+
+    color: var(--color-red);
+  }
+
+  /* =========================
+     BODY
+  ========================= */
+
+  .project-intro__body {
+    display: grid;
+
+    gap: 16px;
+
+    max-width: 540px;
+
+    margin-top: clamp(30px, 3vw, 42px);
+  }
+
+  .project-intro__body p {
+    margin: 0;
+
+    font-family: var(--font-primary);
+    font-size: clamp(0.9375rem, 1vw, 1.0625rem);
+
+    line-height: 1.65;
+
+    color: rgb(20 20 20 / 70%);
+  }
+
+  /* =========================
+     METRICS
+  ========================= */
+
+  .project-intro__metrics {
+    display: flex;
+    align-items: flex-start;
+
+    gap: clamp(44px, 5vw, 82px);
+
+    margin: clamp(38px, 3.8vw, 54px) 0 0;
+
+    padding: 0;
+  }
+
+  .project-intro__metric {
+    min-width: 120px;
+  }
+
+  .project-intro__metric-label {
+    margin: 0 0 9px;
+
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1.2;
+
+    color: rgb(20 20 20 / 58%);
+  }
+
+  .project-intro__metric-value {
+    display: flex;
+    align-items: baseline;
+
+    gap: 6px;
+
+    margin: 0;
+  }
+
+  .project-intro__metric-value strong {
+    font-size: clamp(1.65rem, 2vw, 2.1rem);
+    font-weight: var(--font-weight-regular);
+
+    line-height: 1;
+    letter-spacing: -0.025em;
+
+    color: var(--color-black);
+  }
+
+  .project-intro__metric-value span {
+    font-family: var(--font-primary);
+    font-size: 0.8125rem;
+
+    color: rgb(20 20 20 / 62%);
+  }
+
+  /* =========================
+     ADDRESS
+  ========================= */
+
+  .project-intro__address {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 13px;
+
+    max-width: 440px;
+
+    margin-top: clamp(34px, 3.5vw, 48px);
+
+    font-style: normal;
+  }
+
+  .project-intro__address-icon {
+    flex: 0 0 auto;
+
+    width: 19px;
+    height: 19px;
+
+    margin-top: 1px;
+
+    color: var(--color-red);
+  }
+
+  .project-intro__address-copy {
+    display: grid;
+
+    gap: 3px;
+
+    font-family: var(--font-primary);
+    font-size: 0.8125rem;
+
+    line-height: 1.5;
+
+    color: rgb(20 20 20 / 68%);
+  }
+
+  .project-intro__address-copy > span {
+    display: block;
+  }
+
+  /* =========================
+     DECORATION
+  ========================= */
+
+  .project-intro__decoration {
+    position: absolute;
+    z-index: 0;
+
+    right: clamp(24px, 4vw, 64px);
+    bottom: clamp(28px, 4vw, 60px);
+
+    width: clamp(130px, 14vw, 230px);
+    height: auto;
+
+    opacity: 0.14;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* =========================
+     MEDIA
+  ========================= */
+
+  .project-intro__media {
+    position: relative;
+
+    min-width: 0;
+    min-height: 100%;
+
+    overflow: hidden;
+
+    background-color: rgb(20 20 20 / 5%);
+  }
+
+  .project-intro__image {
+    position: absolute;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* =========================
+     TABLET
+  ========================= */
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .project-intro {
+      grid-template-columns:
+        minmax(0, 55%)
+        minmax(0, 45%);
+
+      min-height: 800px;
+    }
+
+    .project-intro__content {
+      padding: 72px clamp(36px, 4vw, 56px) 72px var(--page-gutter);
+    }
+
+    .project-intro__title {
+      font-size: clamp(3rem, 5.8vw, 4.25rem);
+    }
+
+    .project-intro__metrics {
+      gap: clamp(30px, 4vw, 52px);
+    }
+
+    .project-intro__decoration {
+      right: 28px;
+      bottom: 34px;
+
+      width: clamp(120px, 16vw, 180px);
+    }
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media (max-width: 767px) {
+    .project-intro {
+      display: flex;
+      flex-direction: column;
+
+      min-height: 0;
+    }
+
+    .project-intro__content {
+      min-height: 0;
+
+      padding: 72px var(--page-gutter) 84px;
+    }
+
+    .project-intro__content-inner {
+      width: 100%;
+    }
+
+    .project-intro__index {
+      margin-bottom: 22px;
+    }
+
+    .project-intro__title {
+      max-width: 100%;
+
+      font-size: clamp(3rem, 13vw, 4.25rem);
+    }
+
+    .project-intro__body {
+      margin-top: 30px;
+    }
+
+    .project-intro__metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 28px 20px;
+
+      margin-top: 38px;
+    }
+
+    .project-intro__metric {
+      min-width: 0;
+    }
+
+    .project-intro__metric-value {
+      flex-wrap: wrap;
+
+      gap: 5px;
+    }
+
+    .project-intro__address {
+      max-width: calc(100% - 90px);
+
+      margin-top: 36px;
+    }
+
+    .project-intro__decoration {
+      right: 18px;
+      bottom: 28px;
+
+      width: 112px;
+
+      opacity: 0.1;
+    }
+
+    .project-intro__media {
+      width: 100%;
+
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+    }
+  }
+</style>
