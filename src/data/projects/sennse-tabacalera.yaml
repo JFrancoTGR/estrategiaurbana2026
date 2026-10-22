@@ -50,6 +50,23 @@ delivered:
       alt: Vista principal de Sennse Tabacalera
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/sennse-tabacalera/hero.webp
     alt: Vista principal de Sennse Tabacalera
+
+    title:
+      - Sennse
+      - Tabacalera
+
+    eyebrow:
+      primary: Entregado
+      secondary: CDMX
+
+    stats:
+      - value: "130"
+        label: Departamentos
+
+      - value: "21"
+        label: Niveles

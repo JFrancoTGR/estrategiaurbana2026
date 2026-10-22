@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import { getCollection, getEntry } from 'astro:content';
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import ProjectHero from '../../components/sections/ProjectHero.astro';
+import ProjectSubnav from '../../components/sections/ProjectSubnav.astro';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection(
+    'projects',
+    ({ data }) => data.detail?.visible === true,
+  );
+
+  return projects.map((project) => ({
+    params: {
+      slug: project.id,
+    },
+
+    props: {
+      projectId: project.id,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  projectId: string;
+}
+
+const { projectId } = Astro.props;
+
+const project = await getEntry('projects', projectId);
+
+if (!project) {
+  throw new Error(`No se encontró el proyecto "${projectId}".`);
+}
+
+const { detail } = project.data;
+
+if (!detail || detail.visible !== true) {
+  throw new Error(
+    `El proyecto "${projectId}" no tiene una página de detalle pública.`,
+  );
+}
+
+const { hero } = detail;
+---
+
+<BaseLayout
+  title={`${project.data.name} | Estrategia Urbana`}
+  description={`Conoce ${project.data.name}, desarrollo de Estrategia Urbana.`}
+  headerTheme='overlay'
+>
+  <ProjectHero
+    image={hero.image}
+    alt={hero.alt}
+    title={hero.title}
+    eyebrow={hero.eyebrow}
+    stats={hero.stats}
+    cta={hero.cta}
+  />
+
+  <ProjectSubnav />
+</BaseLayout>

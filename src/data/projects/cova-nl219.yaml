@@ -53,6 +53,23 @@ delivered:
       alt: Detalle arquitectónico de COVA NUEVO LEON 219
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/cova-nuevoleon/hero.webp
     alt: Vista principal de COVA NUEVO LEON 219
+
+    title:
+      - COVA
+      - Nuevo León 219
+
+    eyebrow:
+      primary: Entregado
+      secondary: CDMX
+
+    stats:
+      - value: "30"
+        label: Departamentos
+
+      - value: "8"
+        label: Niveles

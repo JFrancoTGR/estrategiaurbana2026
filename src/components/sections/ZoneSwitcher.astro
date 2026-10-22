@@ -9,7 +9,7 @@ interface Props {
 const { zones, currentZoneId } = Astro.props;
 ---
 
-<nav class='zone-switcher' aria-label='Explorar zonas'>
+<nav class='zone-switcher' data-zone-switcher aria-label='Explorar zonas'>
   <div class='page-shell'>
     <ul class='zone-switcher__list'>
       {
@@ -38,8 +38,22 @@ const { zones, currentZoneId } = Astro.props;
   </div>
 </nav>
 
+<script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
+  import { initZoneSwitcher } from '../../scripts/ui/zone-switcher';
+
+  mountPageUI(
+    '[data-zone-switcher]',
+    initZoneSwitcher,
+  );
+</script>
+
 <style>
   .zone-switcher {
+    position: relative;
+    z-index: 900;
+
     width: 100%;
     height: 72px;
 
@@ -55,8 +69,10 @@ const { zones, currentZoneId } = Astro.props;
   .zone-switcher__list {
     display: flex;
     align-items: stretch;
-    justify-content: flex-end;
+    justify-content: flex-start;
+
     gap: 7px;
+
     height: 100%;
     margin: 0;
   }
@@ -66,6 +82,11 @@ const { zones, currentZoneId } = Astro.props;
   }
 
   .zone-switcher__link {
+    position: relative;
+
+    isolation: isolate;
+    overflow: hidden;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,24 +105,38 @@ const { zones, currentZoneId } = Astro.props;
 
     color: var(--color-black);
     background-color: transparent;
-
-    transition:
-      color var(--duration-medium) var(--ease-premium),
-      background-color var(--duration-medium) var(--ease-premium);
   }
 
-  .zone-switcher__link.is-active {
-    color: var(--color-white);
+  .zone-switcher__link::before {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+
     background-color: var(--color-red);
+
+    transform: scaleY(0);
+    transform-origin: bottom;
+
+    transition: transform 200ms var(--ease-premium);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .zone-switcher__link:hover {
-      color: var(--color-white);
-      background-color: var(--color-red);
+    .zone-switcher__link:hover::before {
+      transform: scaleY(0.05);
     }
   }
 
+  .zone-switcher__link.is-active::before,
+  .zone-switcher__link:focus-visible::before {
+    transform: scaleY(0.05);
+  }
+
+  .zone-switcher__link:focus-visible {
+    outline: 1px solid var(--color-black);
+    outline-offset: -3px;
+  }
   .zone-switcher__link:focus-visible {
     color: var(--color-white);
     background-color: var(--color-red);

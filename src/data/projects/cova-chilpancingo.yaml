@@ -23,6 +23,27 @@ home:
   order: 6
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/cova-chilpancingo/hero.webp
     alt: Vista principal de COVA CHILPANCINGO
+
+    title:
+      - COVA
+      - Chilpancingo
+
+    eyebrow:
+      primary: En venta
+      secondary: CDMX
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"

@@ -23,6 +23,26 @@ home:
   order: 9
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/the-wavve/hero.webp
     alt: Vista principal de THE WAVVE
+
+    title:
+      - THE WAVVE
+
+    eyebrow:
+      primary: En venta
+      secondary: Tijuana
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"

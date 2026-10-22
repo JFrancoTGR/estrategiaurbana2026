@@ -1,4 +1,6 @@
 ---
+import { getCollection } from 'astro:content';
+
 import logo from '../../assets/img/logos/logo-estrategia-urbana.svg';
 import marca from '../../assets/img/logos/logo-marca.svg';
 
@@ -7,6 +9,12 @@ const pathname = Astro.url.pathname;
 interface Props {
   theme?: 'overlay' | 'light';
 }
+
+const zones = (
+  await getCollection('zones', ({ data }) => data.navigation.visible)
+).sort((a, b) => a.data.navigation.order - b.data.navigation.order);
+
+const isZonesActive = pathname.startsWith('/zonas/');
 
 const { theme = 'overlay' } = Astro.props;
 
@@ -22,10 +30,6 @@ const navigation = [
   {
     label: 'Socios Estratégicos',
     href: '/socios-estrategicos',
-  },
-  {
-    label: 'Zonas',
-    href: '/zonas',
   },
   {
     label: 'Contacto',
@@ -56,7 +60,68 @@ const isActive = (href: string) => {
     <nav class='main-navigation' aria-label='Navegación principal'>
       <ul class='navigation-list'>
         {
-          navigation.map((item) => (
+          navigation.slice(0, 3).map((item) => (
+            <li class='navigation-item'>
+              <a
+                href={item.href}
+                class:list={[
+                  'navigation-link',
+                  {
+                    active: isActive(item.href),
+                  },
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+
+        <li class='navigation-item navigation-item--zones'>
+          <button
+            type='button'
+            class:list={[
+              'navigation-link',
+              'navigation-zones-trigger',
+              {
+                active: isZonesActive,
+              },
+            ]}
+            aria-haspopup='true'
+          >
+            Zonas
+          </button>
+
+          <ul class='navigation-dropdown' aria-label='Zonas'>
+            {
+              zones.map((zone) => {
+                const href = `/zonas/${zone.id}`;
+                const active = pathname === href;
+
+                return (
+                  <li>
+                    <a
+                      href={href}
+                      class:list={[
+                        'navigation-dropdown__link',
+                        {
+                          active,
+                        },
+                      ]}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      {zone.data.name}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </li>
+
+        {
+          navigation.slice(3).map((item) => (
             <li class='navigation-item'>
               <a
                 href={item.href}
@@ -99,7 +164,66 @@ const isActive = (href: string) => {
     <div class='page-shell mobile-navigation__inner'>
       <ul class='mobile-navigation__list'>
         {
-          navigation.map((item) => (
+          navigation.slice(0, 3).map((item) => (
+            <li class='mobile-navigation__item'>
+              <a
+                href={item.href}
+                class:list={[
+                  'mobile-navigation__link',
+                  {
+                    active: isActive(item.href),
+                  },
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+
+        <li class='mobile-navigation__item mobile-navigation__item--zones'>
+          <span
+            class:list={[
+              'mobile-navigation__link',
+              'mobile-navigation__zones-label',
+              {
+                active: isZonesActive,
+              },
+            ]}
+          >
+            Zonas
+          </span>
+
+          <ul class='mobile-navigation__zones'>
+            {
+              zones.map((zone) => {
+                const href = `/zonas/${zone.id}`;
+                const active = pathname === href;
+
+                return (
+                  <li class='mobile-navigation__zone-item'>
+                    <a
+                      href={href}
+                      class:list={[
+                        'mobile-navigation__zone-link',
+                        {
+                          active,
+                        },
+                      ]}
+                      aria-current={active ? 'page' : undefined}
+                    >
+                      {zone.data.name}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </li>
+
+        {
+          navigation.slice(3).map((item) => (
             <li class='mobile-navigation__item'>
               <a
                 href={item.href}
@@ -302,12 +426,119 @@ const isActive = (href: string) => {
 
     align-items: stretch;
 
+    gap: 7px;
+
     height: 100%;
     margin: 0;
   }
 
   .navigation-item {
     min-width: 0;
+  }
+
+  .navigation-item--zones {
+    position: relative;
+  }
+
+  .navigation-zones-trigger {
+    width: 100%;
+
+    border: 0;
+
+    font: inherit;
+
+    cursor: default;
+  }
+
+  .navigation-dropdown {
+    position: absolute;
+
+    z-index: 20;
+
+    top: 100%;
+    right: 0;
+
+    width: max-content;
+    min-width: 190px;
+
+    margin: 0;
+    padding: 8px 0;
+
+    background-color: var(--color-background);
+
+    box-shadow:
+      0 10px 28px rgb(0 0 0 / 8%),
+      0 2px 8px rgb(0 0 0 / 4%);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-6px);
+
+    transition:
+      opacity 180ms var(--ease-premium),
+      transform 220ms var(--ease-premium),
+      visibility 220ms;
+  }
+
+  .navigation-item--zones:hover .navigation-dropdown,
+  .navigation-item--zones:focus-within .navigation-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+  }
+
+  .navigation-dropdown__link {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 100%;
+
+    padding: 14px 22px;
+
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-medium);
+
+    text-align: center;
+    white-space: nowrap;
+
+    color: var(--color-black);
+  }
+
+  .navigation-dropdown__link::after {
+    content: '';
+
+    position: absolute;
+
+    right: 22px;
+    bottom: 8px;
+    left: 22px;
+
+    height: 4px;
+
+    background-color: var(--color-red);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 200ms var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .navigation-dropdown__link:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .navigation-dropdown__link.active::after,
+  .navigation-dropdown__link:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .navigation-link {

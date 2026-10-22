@@ -23,6 +23,27 @@ home:
   order: 2
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/sennse-juarez/hero.webp
     alt: Vista principal de Sennse Juárez
+
+    title:
+      - Sennse
+      - Juárez
+
+    eyebrow:
+      primary: En venta
+      secondary: CDMX
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"

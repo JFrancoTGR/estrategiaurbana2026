@@ -23,6 +23,26 @@ home:
   order: 10
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/porttica/hero.webp
     alt: Vista principal de PORTTICA
+
+    title:
+      - PORTTICA
+
+    eyebrow:
+      primary: En venta
+      secondary: Tijuana
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"

@@ -7,6 +7,7 @@ import { init as initHomeTeamIntro } from './modules/home-team-intro';
 import { init as initHomeManifesto } from './modules/home-manifesto';
 import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
 import { init as initPartnersGrid } from './modules/partners-grid';
+import { init as initProjectHero } from './modules/project-hero';
 
 import { init as initSectionHero } from './modules/section-hero';
 import { init as initProjectsGrid } from './modules/projects-grid';
@@ -27,4 +28,6 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'section-hero': initSectionHero,
   'projects-grid': initProjectsGrid,
   'partners-grid': initPartnersGrid,
+
+  'project-hero': initProjectHero,
 };

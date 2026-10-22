@@ -16,13 +16,34 @@ price:
 
 card:
   image: ../../assets/img/projects/sennse-vasconcelos/card.webp
-  alt: Vista exterior de Sennse vasconcelos
+  alt: Vista exterior de Sennse Vasconcelos
 
 home:
   visible: true
   order: 7
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/sennse-vasconcelos/hero.webp
     alt: Vista principal de Sennse Vasconcelos
+
+    title:
+      - Sennse
+      - Vasconcelos
+
+    eyebrow:
+      primary: En venta
+      secondary: CDMX
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"

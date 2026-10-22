@@ -160,12 +160,56 @@ const projects = defineCollection({
        * tendrán una página de detalle.
        */
       detail: z
-        .object({
-          hero: z.object({
-            image: image(),
-            alt: z.string(),
+        .discriminatedUnion('visible', [
+          /*
+           * Proyecto registrado en la colección pero sin
+           * página individual pública.
+           */
+          z.object({
+            visible: z.literal(false),
           }),
-        })
+
+          /*
+           * Proyecto con página individual pública.
+           *
+           * Si visible=true, el hero debe cumplir
+           * completamente su contrato.
+           */
+          z.object({
+            visible: z.literal(true),
+
+            hero: z.object({
+              image: image(),
+
+              alt: z.string().trim().min(1),
+
+              title: z.array(z.string().trim().min(1)).min(1).max(3),
+
+              eyebrow: z.object({
+                primary: z.string().trim().min(1),
+
+                secondary: z.string().trim().min(1).optional(),
+              }),
+
+              stats: z
+                .array(
+                  z.object({
+                    value: z.string().trim().min(1),
+                    label: z.string().trim().min(1),
+                  }),
+                )
+                .min(1)
+                .max(3),
+
+              cta: z
+                .object({
+                  label: z.string().trim().min(1),
+                  href: z.string().trim().min(1),
+                })
+                .optional(),
+            }),
+          }),
+        ])
         .optional(),
     }),
 });

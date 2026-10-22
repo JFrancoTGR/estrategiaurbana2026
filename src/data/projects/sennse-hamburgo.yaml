@@ -23,6 +23,27 @@ home:
   order: 3
 
 detail:
+  visible: true
+
   hero:
     image: ../../assets/img/projects/sennse-hamburgo/hero.webp
     alt: Vista principal de Sennse Hamburgo
+
+    title:
+      - Sennse
+      - Hamburgo
+
+    eyebrow:
+      primary: En venta
+      secondary: CDMX
+
+    stats:
+      - value: '140'
+        label: Departamentos
+
+      - value: '22'
+        label: Niveles
+
+    cta:
+      label: Agenda una cita
+      href: "#contacto"
