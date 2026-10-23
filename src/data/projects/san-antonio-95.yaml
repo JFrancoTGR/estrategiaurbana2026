@@ -7,6 +7,18 @@ location:
   zone: napoles
   label: Nápoles, CDMX
 
+  coordinates:
+    lat: 19.3851
+    lng: -99.1785
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 
@@ -30,6 +42,6 @@ delivered:
 
     - image: ../../assets/img/projects/san-antonio-95/gallery/03.webp
       alt: Interior de San Antonio 95
-    
+
     - image: ../../assets/img/projects/san-antonio-95/gallery/04.webp
       alt: Interior de San Antonio 95

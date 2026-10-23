@@ -1,10 +1,6 @@
 /// <reference types="google.maps" />
 
-import {
-  mapLocations,
-  type MapCategory,
-  type MapLocation,
-} from '../../data/map/map-locations';
+import type { MapCategory, MapLocation } from '../../data/map/map-locations';
 
 import {
   cacheGoogleMapsStyles,
@@ -168,6 +164,32 @@ export function initZonesMap(root: HTMLElement) {
     throw new Error('initZonesMap requiere un contenedor de mapa compatible.');
   }
 
+  /* ---------------------------------
+     Map locations
+  --------------------------------- */
+
+  const serializedLocations = root.dataset.mapLocations;
+
+  if (!serializedLocations) {
+    throw new Error('initZonesMap requiere data-map-locations.');
+  }
+
+  let locations: MapLocation[];
+
+  try {
+    const parsedLocations: unknown = JSON.parse(serializedLocations);
+
+    if (!Array.isArray(parsedLocations)) {
+      throw new Error('El dataset de ubicaciones no es un array.');
+    }
+
+    locations = parsedLocations as MapLocation[];
+  } catch (error) {
+    console.error('No fue posible leer las ubicaciones del mapa.', error);
+
+    return;
+  }
+
   const apiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
 
   if (!apiKey) {
@@ -219,7 +241,7 @@ export function initZonesMap(root: HTMLElement) {
   --------------------------------- */
 
   const locationsById = new Map<string, MapLocation>(
-    mapLocations.map((location) => [location.id, location]),
+    locations.map((location) => [location.id, location]),
   );
 
   /* ---------------------------------
@@ -582,7 +604,7 @@ export function initZonesMap(root: HTMLElement) {
 
       const bounds = new LatLngBounds();
 
-      mapLocations.forEach((location) => {
+      locations.forEach((location) => {
         bounds.extend({
           lat: location.lat,
           lng: location.lng,
@@ -748,7 +770,7 @@ export function initZonesMap(root: HTMLElement) {
         oficina: 0,
       };
 
-      pins = mapLocations.map((location) => {
+      pins = locations.map((location) => {
         counters[location.category] += 1;
 
         return new NumberPin(location, counters[location.category]);

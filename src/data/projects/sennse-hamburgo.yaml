@@ -10,6 +10,23 @@ location:
   zone: juarez
   label: Juárez, CDMX
 
+  address:
+    - Hamburgo 112
+    - Col. Juárez, CDMX
+
+  coordinates:
+    lat: 19.4255
+    lng: -99.165
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 3000000
   currency: MXN
@@ -62,12 +79,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de Sennse Hamburgo.
 
-    address:
-      - Juárez, CDMX
-
     image:
       image: ../../assets/img/projects/sennse-hamburgo/intro.webp
       alt: Vista arquitectónica de Sennse Hamburgo
 
     decoration:
       image: ../../assets/img/projects/sennse-hamburgo/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Una ubicación urbana dentro de
+      emphasis: la colonia Juárez.
+
+    body:
+      - Sennse Hamburgo se ubica en Hamburgo 112, dentro de la colonia Juárez, en Ciudad de México.
+      - La ubicación lo integra a un entorno consolidado de vivienda, comercio y servicios de la zona central.

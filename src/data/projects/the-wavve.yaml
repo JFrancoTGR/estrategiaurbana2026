@@ -10,6 +10,23 @@ location:
   zone: tijuana
   label: Playas de Tijuana, Baja California
 
+  address:
+    - Carretera Escénica Tijuana – Ensenada KM 18+483
+    - Col. Punta Bandera, Playas de Tijuana, Baja California
+
+  coordinates:
+    lat: 32.4506127
+    lng: -117.1126553
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 15
+
 price:
   from: 5000000
   currency: MXN
@@ -61,12 +78,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de THE WAVVE.
 
-    address:
-      - Playas de Tijuana, Baja California
-
     image:
       image: ../../assets/img/projects/the-wavve/intro.webp
       alt: Vista arquitectónica de THE WAVVE
 
     decoration:
       image: ../../assets/img/projects/the-wavve/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Una ubicación costera conectada con
+      emphasis: Playas de Tijuana, Rosarito y el sur de California.
+
+    body:
+      - THE WAVVE se ubica sobre la Carretera Escénica Tijuana–Ensenada, en Punta Bandera, Playas de Tijuana.
+      - Su posición dentro del corredor costero permite mantener conexión con Tijuana, Rosarito y los principales cruces hacia Estados Unidos.

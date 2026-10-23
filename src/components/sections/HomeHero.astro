@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
+import { withBase } from '../../utils/paths';
+
 interface Props {
   image: ImageMetadata;
   mark: ImageMetadata;
@@ -42,7 +44,11 @@ const { image, mark } = Astro.props;
         construirse y entregarse.
       </p>
 
-      <a href='/contacto' class='home-hero__cta' data-anim='cta'>
+      <a
+        href={withBase('/contacto')}
+        class='home-hero__cta'
+        data-anim='cta'
+      >
         Agenda una cita
       </a>
     </div>

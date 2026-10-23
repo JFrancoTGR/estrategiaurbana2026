@@ -1,4 +1,6 @@
 ---
+import { getMapLocations } from '../../data/map/get-map-locations';
+
 interface Props {
   center: {
     lat: number;
@@ -9,12 +11,15 @@ interface Props {
 }
 
 const { center, zoom } = Astro.props;
+
+const mapLocations = await getMapLocations();
 ---
 
 <section class='zone-map' data-zone-map>
   <div
     class='zone-map__canvas'
     data-zone-map-canvas
+    data-map-locations={JSON.stringify(mapLocations)}
     data-map-center-lat={center.lat}
     data-map-center-lng={center.lng}
     data-map-zoom={zoom}

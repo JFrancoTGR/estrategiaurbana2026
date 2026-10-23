@@ -1,6 +1,8 @@
 ---
 import logo from '../../assets/img/logos/logo-marca.svg';
 
+import { withBase } from '../../utils/paths';
+
 const navigation = [
   {
     label: 'Proyectos en Venta',
@@ -32,7 +34,7 @@ const currentYear = new Date().getFullYear();
     <div class='site-footer__main'>
       <div class='site-footer__brand'>
         <a
-          href='/'
+          href={withBase('/')}
           class='site-footer__brand-link'
           aria-label='Estrategia Urbana — Inicio'
         >
@@ -56,7 +58,10 @@ const currentYear = new Date().getFullYear();
           {
             navigation.map((item) => (
               <li>
-                <a href={item.href} class='site-footer__navigation-link'>
+                <a
+                  href={withBase(item.href)}
+                  class='site-footer__navigation-link'
+                >
                   {item.label}
                 </a>
               </li>
@@ -69,7 +74,10 @@ const currentYear = new Date().getFullYear();
         <div class='site-footer__contact-copy'>
           <span class='site-footer__eyebrow'> Contacto </span>
 
-          <a href='/contacto' class='site-footer__contact-link'>
+          <a
+            href={withBase('/contacto')}
+            class='site-footer__contact-link'
+          >
             Hablemos de tu próximo proyecto
           </a>
         </div>
@@ -129,7 +137,9 @@ const currentYear = new Date().getFullYear();
       </p>
 
       <div class='site-footer__legal'>
-        <a href='/aviso-de-privacidad'> Aviso de privacidad </a>        
+        <a href={withBase('/aviso-de-privacidad')}>
+          Aviso de privacidad
+        </a>
       </div>
     </div>
   </div>

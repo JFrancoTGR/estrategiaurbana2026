@@ -7,6 +7,18 @@ location:
   zone: napoles
   label: Nápoles, CDMX
 
+  coordinates:
+    lat: 19.3855
+    lng: -99.179
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 

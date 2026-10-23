@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import ProjectCard from '../cards/ProjectCard.astro';
 
+import { withBase } from '../../utils/paths';
+
 const INITIAL_DESKTOP_COUNT = 8;
 const MOBILE_COUNT = 8;
 
@@ -59,7 +61,10 @@ const hasMoreHomeProjects = homeProjects.length > INITIAL_DESKTOP_COUNT;
         )
       }
 
-      <a href='/proyectos-en-venta' class='home-projects-grid__all'>
+      <a
+        href={withBase('/proyectos-en-venta')}
+        class='home-projects-grid__all'
+      >
         Ver todos los proyectos
       </a>
     </div>

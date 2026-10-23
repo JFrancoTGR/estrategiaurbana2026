@@ -7,6 +7,19 @@ location:
   zone: centro
   label: Centro, CDMX
 
+  coordinates:
+    lat: 19.4346163
+    lng: -99.1559151
+
+  map:
+    home:
+      visible: true
+      category: venta
+      reconciled: false
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 

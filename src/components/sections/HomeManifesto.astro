@@ -1,11 +1,13 @@
 ---
+import { withBase } from '../../utils/paths';
+
 const FRAME_COUNT = 185;
 
-const sequenceBase = `${import.meta.env.BASE_URL}media/home/manifesto/sequence/desktop`;
+const sequenceBase = withBase('/media/home/manifesto/sequence/desktop');
 
 const posterSrc = `${sequenceBase}/frame-0001.webp`;
 
-const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifesto-1080.mp4`;
+const videoSrc = withBase('/media/home/manifesto/video/manifesto-1080.mp4');
 ---
 
 <section

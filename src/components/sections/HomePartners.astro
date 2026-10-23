@@ -6,13 +6,15 @@ import PartnerCard from '../cards/PartnerCard.astro';
 
 import backgroundImage from '../../assets/img/home/partners-background.webp';
 
+import { withBase } from '../../utils/paths';
+
 import 'swiper/css';
 
 const partners = (await getCollection('partners'))
   .filter(({ data }) => data.home.visible)
   .sort((a, b) => a.data.order - b.data.order);
 
-const partnersHref = `${import.meta.env.BASE_URL}socios-estrategicos`;
+const partnersHref = withBase('/socios-estrategicos');
 ---
 
 <section

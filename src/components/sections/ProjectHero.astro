@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
+import { withBase } from '../../utils/paths';
+
 interface ProjectHeroStat {
   value: string;
   label: string;
@@ -98,7 +100,11 @@ const hasFooter = stats.length > 0 || Boolean(cta);
             )}
 
             {cta && (
-              <a href={cta.href} class='project-hero__cta' data-anim='cta'>
+              <a
+                href={withBase(cta.href)}
+                class='project-hero__cta'
+                data-anim='cta'
+              >
                 {cta.label}
               </a>
             )}

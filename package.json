@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:staging": "cross-env ASTRO_SITE=https://estrategiaurbana.info ASTRO_BASE=/web2026/ astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -20,6 +21,11 @@
   },
   "devDependencies": {
     "@types/google.maps": "^3.66.5",
+    "@types/node": "^26.6.5",
+    "cross-env": "^10.1.0",
     "esbuild": "^0.28.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }

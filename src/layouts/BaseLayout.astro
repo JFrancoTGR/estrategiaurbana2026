@@ -13,6 +13,8 @@ import '../styles/page-transitions.css';
 
 import Footer from '../components/global/Footer.astro';
 
+import { withBase } from '../utils/paths';
+
 interface Props {
   title?: string;
   description?: string;
@@ -68,7 +70,11 @@ const pageTransition = {
 
     <meta name='description' content={description} />
 
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href={withBase('/favicon.svg')}
+    />
 
     <link rel='preconnect' href='https://fonts.googleapis.com' />
 

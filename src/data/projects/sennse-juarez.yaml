@@ -10,6 +10,23 @@ location:
   zone: juarez
   label: Juárez, CDMX
 
+  address:
+    - Nápoles 86
+    - Col. Juárez, CDMX
+
+  coordinates:
+    lat: 19.425
+    lng: -99.1589
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 4000000
   currency: MXN
@@ -62,12 +79,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de Sennse Juárez.
 
-    address:
-      - Juárez, CDMX
-
     image:
       image: ../../assets/img/projects/sennse-juarez/intro.webp
       alt: Vista arquitectónica de Sennse Juárez
 
     decoration:
       image: ../../assets/img/projects/sennse-juarez/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Una ubicación integrada a la vida urbana de
+      emphasis: la colonia Juárez.
+
+    body:
+      - Sennse Juárez se ubica en Nápoles 86, dentro de la colonia Juárez, en Ciudad de México.
+      - Su localización lo integra a uno de los entornos urbanos más consolidados de la zona central de la ciudad.

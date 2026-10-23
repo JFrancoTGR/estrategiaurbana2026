@@ -10,6 +10,23 @@ location:
   zone: juarez
   label: Juárez, CDMX
 
+  address:
+    - Liverpool 108
+    - Col. Juárez, CDMX
+
+  coordinates:
+    lat: 19.428
+    lng: -99.1563
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 3000000
   currency: MXN
@@ -62,12 +79,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de Sennse Liverpool.
 
-    address:
-      - Juárez, CDMX
-
     image:
       image: ../../assets/img/projects/sennse-liverpool/intro.webp
       alt: Vista arquitectónica de Sennse Liverpool
 
     decoration:
       image: ../../assets/img/projects/sennse-liverpool/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: En el corazón de
+      emphasis: la colonia Juárez.
+
+    body:
+      - Sennse Liverpool se ubica en Liverpool 108, dentro de la colonia Juárez, en Ciudad de México.
+      - Su entorno concentra actividad residencial, comercial y de servicios dentro de una zona central de la ciudad.

@@ -10,6 +10,23 @@ location:
   zone: condesa
   label: Condesa, CDMX
 
+  address:
+    - José Vasconcelos 154
+    - Col. Hipódromo Condesa, CDMX
+
+  coordinates:
+    lat: 19.4178
+    lng: -99.1783
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 4000000
   currency: MXN
@@ -62,12 +79,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de Sennse Vasconcelos.
 
-    address:
-      - Condesa, CDMX
-
     image:
       image: ../../assets/img/projects/sennse-vasconcelos/intro.webp
       alt: Vista arquitectónica de Sennse Vasconcelos
 
     decoration:
       image: ../../assets/img/projects/sennse-vasconcelos/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Sobre José Vasconcelos, en el entorno de
+      emphasis: Hipódromo Condesa.
+
+    body:
+      - Sennse Vasconcelos se ubica en José Vasconcelos 154, en Hipódromo Condesa, Ciudad de México.
+      - Su posición lo vincula directamente con la dinámica residencial y urbana de la zona Condesa.

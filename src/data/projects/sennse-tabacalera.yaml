@@ -7,6 +7,23 @@ location:
   zone: centro
   label: Tabacalera, CDMX
 
+  address:
+    - José María Iglesias 59
+    - Col. Tabacalera, CDMX
+
+  coordinates:
+    lat: 19.438067
+    lng: -99.1551206
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 commercial:
   available: false
 
@@ -85,12 +102,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de Sennse Tabacalera.
 
-    address:
-      - Tabacalera, CDMX
-
     image:
       image: ../../assets/img/projects/sennse-tabacalera/intro.webp
       alt: Vista arquitectónica de Sennse Tabacalera
 
     decoration:
       image: ../../assets/img/projects/sennse-tabacalera/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Una ubicación central dentro de
+      emphasis: la colonia Tabacalera.
+
+    body:
+      - Sennse Tabacalera se ubica en José María Iglesias 59, dentro de la colonia Tabacalera, Ciudad de México.
+      - Su localización lo integra al entorno urbano del centro de la capital y a su red de servicios y movilidad.

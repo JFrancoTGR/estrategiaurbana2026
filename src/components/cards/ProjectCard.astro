@@ -4,6 +4,8 @@ import type { CollectionEntry } from 'astro:content';
 
 import ProjectStatusBadge from '../ui/ProjectStatusBadge.astro';
 
+import { withBase } from '../../utils/paths';
+
 interface Props {
   project: CollectionEntry<'projects'>;
 }
@@ -11,6 +13,8 @@ interface Props {
 const { project } = Astro.props;
 
 const { name, location, price, card } = project.data;
+
+const projectHref = withBase(`/proyectos/${project.id}`);
 
 if (!card) {
   throw new Error(
@@ -30,7 +34,7 @@ const formattedPrice = price
 <article class='project-card'>
   <div class='project-card__media'>
     <a
-      href={`/proyectos/${project.id}`}
+      href={projectHref}
       class='project-card__media-link'
       aria-label={`Ver desarrollo ${name}`}
     >
@@ -67,7 +71,7 @@ const formattedPrice = price
       )
     }
 
-    <a href={`/proyectos/${project.id}`} class='project-card__cta'>
+    <a href={projectHref} class='project-card__cta'>
       Ver desarrollo
     </a>
   </div>

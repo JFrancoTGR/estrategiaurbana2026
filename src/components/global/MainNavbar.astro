@@ -4,7 +4,9 @@ import { getCollection } from 'astro:content';
 import logo from '../../assets/img/logos/logo-estrategia-urbana.svg';
 import marca from '../../assets/img/logos/logo-marca.svg';
 
-const pathname = Astro.url.pathname;
+import { withBase, withoutBase } from '../../utils/paths';
+
+const pathname = withoutBase(Astro.url.pathname);
 
 interface Props {
   theme?: 'overlay' | 'light';
@@ -53,7 +55,11 @@ const isActive = (href: string) => {
   data-motion-preload
 >
   <div class='page-shell header-inner'>
-    <a href='/' class='brand' aria-label='Estrategia Urbana — Inicio'>
+    <a
+      href={withBase('/')}
+      class='brand'
+      aria-label='Estrategia Urbana — Inicio'
+    >
       <img src={logo.src} alt='Estrategia Urbana' class='brand-logo' />
     </a>
 
@@ -63,7 +69,7 @@ const isActive = (href: string) => {
           navigation.slice(0, 3).map((item) => (
             <li class='navigation-item'>
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 class:list={[
                   'navigation-link',
                   {
@@ -102,7 +108,7 @@ const isActive = (href: string) => {
                 return (
                   <li>
                     <a
-                      href={href}
+                      href={withBase(href)}
                       class:list={[
                         'navigation-dropdown__link',
                         {
@@ -124,7 +130,7 @@ const isActive = (href: string) => {
           navigation.slice(3).map((item) => (
             <li class='navigation-item'>
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 class:list={[
                   'navigation-link',
                   {
@@ -167,7 +173,7 @@ const isActive = (href: string) => {
           navigation.slice(0, 3).map((item) => (
             <li class='mobile-navigation__item'>
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 class:list={[
                   'mobile-navigation__link',
                   {
@@ -204,7 +210,7 @@ const isActive = (href: string) => {
                 return (
                   <li class='mobile-navigation__zone-item'>
                     <a
-                      href={href}
+                      href={withBase(href)}
                       class:list={[
                         'mobile-navigation__zone-link',
                         {
@@ -226,7 +232,7 @@ const isActive = (href: string) => {
           navigation.slice(3).map((item) => (
             <li class='mobile-navigation__item'>
               <a
-                href={item.href}
+                href={withBase(item.href)}
                 class:list={[
                   'mobile-navigation__link',
                   {
@@ -243,7 +249,7 @@ const isActive = (href: string) => {
       </ul>
 
       <a
-        href='/'
+        href={withBase('/')}
         class='mobile-navigation__brand'
         aria-label='Estrategia Urbana — Inicio'
       >

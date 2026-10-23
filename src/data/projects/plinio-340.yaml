@@ -7,6 +7,18 @@ location:
   zone: polanco
   label: Polanco, CDMX
 
+  coordinates:
+    lat: 19.4331
+    lng: -99.2055
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 

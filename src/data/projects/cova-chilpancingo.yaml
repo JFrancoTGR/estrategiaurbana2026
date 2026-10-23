@@ -10,6 +10,23 @@ location:
   zone: condesa
   label: Condesa, CDMX
 
+  address:
+    - Chilpancingo 54
+    - Col. Hipódromo Condesa, CDMX
+
+  coordinates:
+    lat: 19.4105
+    lng: -99.1705
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 9000000
   currency: MXN
@@ -62,12 +79,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de COVA Chilpancingo.
 
-    address:
-      - Condesa, CDMX
-
     image:
       image: ../../assets/img/projects/cova-chilpancingo/intro.webp
       alt: Vista arquitectónica de COVA Chilpancingo
 
     decoration:
       image: ../../assets/img/projects/cova-chilpancingo/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: En una de las calles que conectan
+      emphasis: Hipódromo Condesa.
+
+    body:
+      - COVA Chilpancingo se ubica en Chilpancingo 54, en Hipódromo Condesa, Ciudad de México.
+      - Su ubicación lo integra al tejido residencial, comercial y de servicios característico de la zona.

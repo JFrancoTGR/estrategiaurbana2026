@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
+import { withBase } from '../../utils/paths';
+
 interface Props {
   zones: CollectionEntry<'zones'>[];
   currentZoneId: string;
@@ -19,7 +21,7 @@ const { zones, currentZoneId } = Astro.props;
           return (
             <li class='zone-switcher__item'>
               <a
-                href={`/zonas/${zone.id}`}
+                href={withBase(`/zonas/${zone.id}`)}
                 class:list={[
                   'zone-switcher__link',
                   {

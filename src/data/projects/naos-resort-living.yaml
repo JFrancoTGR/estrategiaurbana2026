@@ -10,6 +10,23 @@ location:
   zone: tijuana
   label: Playas de Tijuana, Baja California
 
+  address:
+    - Carretera Escénica Tijuana – Ensenada
+    - No. 2401, Tijuana, Baja California
+
+  coordinates:
+    lat: 32.3987931
+    lng: -117.090104
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 15
+
 price:
   from: 4000000
   currency: MXN
@@ -63,13 +80,20 @@ detail:
       - Concebido para ofrecer una experiencia de vida que combina lujo, confort y conexión directa con el entorno natural.
       - El proyecto integra una torre habitacional de 22 niveles con un enfoque en vistas panorámicas, diseño contemporáneo y amenidades de alto nivel.
 
-    address:
-      - Carretera Escénica Tijuana – Ensenada
-      - No. 2401, Tijuana, Baja California
-
     image:
       image: ../../assets/img/projects/naos-resort-living/intro.webp
       alt: Vista arquitectónica de NAOS Resort Living
 
     decoration:
       image: ../../assets/img/projects/naos-resort-living/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Caracterizada por su cercanía a
+      emphasis: Rosarito, Playas de Tijuana y el Valle de Guadalupe.
+
+    body:
+      - Ubicado sobre la Carretera Escénica Tijuana–Ensenada, el proyecto se sitúa en una de las zonas con mayor proyección de la región.
+      - La ubicación ofrece una combinación única de conectividad, entorno natural y acceso a oferta gastronómica y recreativa, consolidándose como un punto estratégico entre México y Estados Unidos.

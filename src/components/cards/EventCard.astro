@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../../utils/paths';
+
 interface Props {
   event: {
     title: string;
@@ -74,7 +76,7 @@ const formatTime = (date: Date) =>
 
     <a
       class='event-card__cta'
-      href={event.href}
+      href={withBase(event.href)}
     >
       RESERVAR LUGAR
       <span aria-hidden='true'>→</span>

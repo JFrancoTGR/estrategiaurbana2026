@@ -7,6 +7,19 @@ location:
   zone: polanco
   label: Polanco, CDMX
 
+  coordinates:
+    lat: 19.4283
+    lng: -99.1915
+
+  map:
+    home:
+      visible: true
+      category: venta
+      reconciled: false
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 
@@ -30,6 +43,6 @@ delivered:
 
     - image: ../../assets/img/projects/elysee/gallery/03.webp
       alt: Interior de Elyseé
-    
+
     - image: ../../assets/img/projects/elysee/gallery/04.webp
       alt: Interior de Elyseé

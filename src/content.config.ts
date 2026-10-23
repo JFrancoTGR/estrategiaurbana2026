@@ -11,259 +11,408 @@ const projects = defineCollection({
   }),
 
   schema: ({ image }) =>
-    z.object({
-      name: z.string(),
+    z
+      .object({
+        name: z.string(),
 
-      status: z.enum(PROJECT_STATUS_VALUES),
+        status: z.enum(PROJECT_STATUS_VALUES),
 
-      commercial: z.object({
-        available: z.boolean(),
-      }),
+        commercial: z.object({
+          available: z.boolean(),
+        }),
 
-      location: z.object({
-        /*
-         * Mercado comercial principal.
-         *
-         * Se utiliza para agrupaciones generales
-         * y filtros como CDMX / Tijuana.
-         */
-        market: z.enum(['cdmx', 'tijuana']),
-
-        /*
-         * Zona geográfica específica.
-         *
-         * Debe utilizar un slug normalizado:
-         * juarez, condesa, polanco, tijuana, etc.
-         */
-        zone: z
-          .string()
-          .trim()
-          .min(1)
-          .regex(
-            /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-            'location.zone debe utilizar formato slug',
-          ),
-
-        /*
-         * Texto humano utilizado en la interfaz.
-         */
-        label: z.string().trim().min(1),
-      }),
-
-      price: z
-        .object({
-          from: z.number().nonnegative(),
-          currency: z.enum(['MXN', 'USD']).default('MXN'),
-        })
-        .optional(),
-
-      /*
-       * Contexto comercial.
-       *
-       * Los proyectos históricos pueden no necesitar
-       * una ProjectCard comercial.
-       */
-      card: z
-        .object({
-          image: image(),
-          alt: z.string(),
-        })
-        .optional(),
-
-      /*
-       * Contexto Home.
-       *
-       * Sólo existe cuando el desarrollo participa
-       * en la composición del Home.
-       */
-      home: z
-        .object({
-          visible: z.boolean().default(false),
-          order: z.number().int().nonnegative(),
-        })
-        .optional(),
-
-      /*
-       * Contexto portfolio de proyectos entregados.
-       */
-      delivered: z
-        .discriminatedUnion('visible', [
+        location: z.object({
           /*
-           * Proyecto histórico registrado,
-           * pero todavía no publicable.
-           *
-           * Conservamos las rutas como texto:
-           * Astro NO intenta importar los archivos.
+           * Mercado comercial principal.
            */
-          z.object({
-            visible: z.literal(false),
+          market: z.enum(['cdmx', 'tijuana']),
 
-            order: z.number().int().nonnegative().optional(),
+          /*
+           * Zona geográfica específica.
+           */
+          zone: z
+            .string()
+            .trim()
+            .min(1)
+            .regex(
+              /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+              'location.zone debe utilizar formato slug',
+            ),
 
-            units: z.number().int().positive().optional(),
+          /*
+           * Nombre legible de la ubicación.
+           */
+          label: z.string().trim().min(1),
 
-            levels: z.number().int().positive().optional(),
+          /*
+           * Dirección física.
+           *
+           * Temporalmente opcional mientras migramos legacy.
+           * Para proyectos con detail.visible=true se exige
+           * posteriormente mediante superRefine.
+           */
+          address: z.array(z.string().trim().min(1)).min(1).optional(),
 
-            cover: z
-              .object({
-                image: z.string(),
-                alt: z.string(),
-              })
-              .optional(),
+          /*
+           * Coordenadas geográficas del proyecto.
+           *
+           * Si existen, ambas deben ser coordenadas válidas.
+           */
+          coordinates: z
+            .object({
+              lat: z.number().min(-90).max(90),
+              lng: z.number().min(-180).max(180),
+            })
+            .optional(),
 
-            gallery: z
-              .array(
+          /*
+           * Participación en los diferentes mapas del sitio.
+           *
+           * Temporalmente opcional mientras migramos legacy.
+           */
+          map: z
+            .object({
+              home: z.discriminatedUnion('visible', [
                 z.object({
+                  visible: z.literal(false),
+
+                  /*
+                   * Marca temporal de migración.
+                   * No participa en ninguna lógica.
+                   */
+                  reconciled: z.boolean().optional(),
+                }),
+
+                z.object({
+                  visible: z.literal(true),
+
+                  category: z.enum(['venta', 'renta', 'oficina']),
+
+                  /*
+                   * Marca temporal de migración.
+                   * No participa en ninguna lógica.
+                   */
+                  reconciled: z.boolean().optional(),
+                }),
+              ]),
+
+              detail: z.discriminatedUnion('visible', [
+                z.object({
+                  visible: z.literal(false),
+                }),
+
+                z.object({
+                  visible: z.literal(true),
+
+                  zoom: z.number().int().min(1).max(22),
+                }),
+              ]),
+            })
+            .optional(),
+        }),
+
+        price: z
+          .object({
+            from: z.number().nonnegative(),
+            currency: z.enum(['MXN', 'USD']).default('MXN'),
+          })
+          .optional(),
+
+        /*
+         * Contexto comercial.
+         *
+         * Los proyectos históricos pueden no necesitar
+         * una ProjectCard comercial.
+         */
+        card: z
+          .object({
+            image: image(),
+            alt: z.string(),
+          })
+          .optional(),
+
+        /*
+         * Contexto Home.
+         *
+         * Sólo existe cuando el desarrollo participa
+         * en la composición del Home.
+         */
+        home: z
+          .object({
+            visible: z.boolean().default(false),
+            order: z.number().int().nonnegative(),
+          })
+          .optional(),
+
+        /*
+         * Contexto portfolio de proyectos entregados.
+         */
+        delivered: z
+          .discriminatedUnion('visible', [
+            /*
+             * Proyecto histórico registrado,
+             * pero todavía no publicable.
+             *
+             * Conservamos las rutas como texto:
+             * Astro NO intenta importar los archivos.
+             */
+            z.object({
+              visible: z.literal(false),
+
+              order: z.number().int().nonnegative().optional(),
+
+              units: z.number().int().positive().optional(),
+
+              levels: z.number().int().positive().optional(),
+
+              cover: z
+                .object({
                   image: z.string(),
                   alt: z.string(),
-                }),
-              )
-              .optional(),
-          }),
-
-          /*
-           * Proyecto listo para publicarse.
-           *
-           * Aquí sí exigimos assets reales,
-           * porque el componente va a utilizarlos.
-           */
-          z.object({
-            visible: z.literal(true),
-
-            order: z.number().int().nonnegative(),
-
-            units: z.number().int().positive().optional(),
-
-            levels: z.number().int().positive().optional(),
-
-            cover: z.object({
-              image: image(),
-              alt: z.string(),
-            }),
-
-            gallery: z
-              .array(
-                z.object({
-                  image: image(),
-                  alt: z.string(),
-                }),
-              )
-              .min(1),
-          }),
-        ])
-        .optional(),
-
-      /*
-       * Contexto página individual.
-       *
-       * Los proyectos históricos no necesariamente
-       * tendrán una página de detalle.
-       */
-      detail: z
-        .discriminatedUnion('visible', [
-          /*
-           * Proyecto registrado en la colección pero sin
-           * página individual pública.
-           */
-          z.object({
-            visible: z.literal(false),
-          }),
-
-          /*
-           * Proyecto con página individual pública.
-           *
-           * Si visible=true, todos los datos y recursos
-           * requeridos por la ficha deben existir.
-           */
-          z.object({
-            visible: z.literal(true),
-
-            /*
-             * Métricas compartidas por los diferentes
-             * módulos de la página.
-             */
-            metrics: z
-              .array(
-                z.object({
-                  key: z
-                    .string()
-                    .trim()
-                    .min(1)
-                    .regex(
-                      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-                      'metrics.key debe utilizar formato slug',
-                    ),
-
-                  value: z.string().trim().min(1),
-
-                  label: z.string().trim().min(1),
-
-                  unit: z.string().trim().min(1),
-                }),
-              )
-              .min(1)
-              .max(4),
-
-            /*
-             * Hero principal del proyecto.
-             */
-            hero: z.object({
-              image: image(),
-
-              alt: z.string().trim().min(1),
-
-              title: z.array(z.string().trim().min(1)).min(1).max(3),
-
-              eyebrow: z.object({
-                primary: z.string().trim().min(1),
-
-                secondary: z.string().trim().min(1).optional(),
-              }),
-
-              cta: z
-                .object({
-                  label: z.string().trim().min(1),
-
-                  href: z.string().trim().min(1),
                 })
+                .optional(),
+
+              gallery: z
+                .array(
+                  z.object({
+                    image: z.string(),
+                    alt: z.string(),
+                  }),
+                )
                 .optional(),
             }),
 
             /*
-             * Overview / introducción del proyecto.
+             * Proyecto listo para publicarse.
+             *
+             * Aquí sí exigimos assets reales,
+             * porque el componente va a utilizarlos.
              */
-            intro: z.object({
-              index: z.string().trim().min(1),
+            z.object({
+              visible: z.literal(true),
 
-              title: z.object({
-                lead: z.string().trim().min(1),
+              order: z.number().int().nonnegative(),
 
-                emphasis: z.string().trim().min(1),
+              units: z.number().int().positive().optional(),
+
+              levels: z.number().int().positive().optional(),
+
+              cover: z.object({
+                image: image(),
+                alt: z.string(),
               }),
 
-              body: z.array(z.string().trim().min(1)).min(1),
+              gallery: z
+                .array(
+                  z.object({
+                    image: image(),
+                    alt: z.string(),
+                  }),
+                )
+                .min(1),
+            }),
+          ])
+          .optional(),
 
-              address: z.array(z.string().trim().min(1)).min(1),
+        /*
+         * Contexto página individual.
+         *
+         * Los proyectos históricos no necesariamente
+         * tendrán una página de detalle.
+         */
+        detail: z
+          .discriminatedUnion('visible', [
+            /*
+             * Proyecto registrado en la colección pero sin
+             * página individual pública.
+             */
+            z.object({
+              visible: z.literal(false),
+            }),
 
-              image: z.object({
+            /*
+             * Proyecto con página individual pública.
+             *
+             * Si visible=true, todos los datos y recursos
+             * requeridos por la ficha deben existir.
+             */
+            z.object({
+              visible: z.literal(true),
+
+              /*
+               * Métricas compartidas por los diferentes
+               * módulos de la página.
+               */
+              metrics: z
+                .array(
+                  z.object({
+                    key: z
+                      .string()
+                      .trim()
+                      .min(1)
+                      .regex(
+                        /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+                        'metrics.key debe utilizar formato slug',
+                      ),
+
+                    value: z.string().trim().min(1),
+
+                    label: z.string().trim().min(1),
+
+                    unit: z.string().trim().min(1),
+                  }),
+                )
+                .min(1)
+                .max(4),
+
+              /*
+               * Hero principal del proyecto.
+               */
+              hero: z.object({
                 image: image(),
 
                 alt: z.string().trim().min(1),
+
+                title: z.array(z.string().trim().min(1)).min(1).max(3),
+
+                eyebrow: z.object({
+                  primary: z.string().trim().min(1),
+
+                  secondary: z.string().trim().min(1).optional(),
+                }),
+
+                cta: z
+                  .object({
+                    label: z.string().trim().min(1),
+
+                    href: z.string().trim().min(1),
+                  })
+                  .optional(),
               }),
 
               /*
-               * Recurso gráfico puramente decorativo.
-               * El componente deberá renderizarlo con
-               * alt="" y aria-hidden="true".
+               * Overview / introducción del proyecto.
                */
-              decoration: z.object({
-                image: image(),
+              intro: z.object({
+                index: z.string().trim().min(1),
+
+                title: z.object({
+                  lead: z.string().trim().min(1),
+
+                  emphasis: z.string().trim().min(1),
+                }),
+
+                body: z.array(z.string().trim().min(1)).min(1),
+
+                image: z.object({
+                  image: image(),
+
+                  alt: z.string().trim().min(1),
+                }),
+
+                decoration: z.object({
+                  image: image(),
+                }),
+              }),
+
+              /*
+               * Sección editorial de ubicación.
+               *
+               * Los datos físicos/geográficos viven en project.location.
+               * Aquí sólo vive el contenido editorial del componente.
+               */
+              location: z.object({
+                index: z.string().trim().min(1),
+
+                title: z.object({
+                  lead: z.string().trim().min(1),
+
+                  emphasis: z.string().trim().min(1),
+                }),
+
+                body: z.array(z.string().trim().min(1)).min(1),
               }),
             }),
-          }),
-        ])
-        .optional(),
-    }),
+          ])
+          .optional(),
+      })
+      .superRefine((project, ctx) => {
+        const { location, detail } = project;
+
+        const hasCoordinates = Boolean(location.coordinates);
+
+        const homeMapVisible = location.map?.home.visible === true;
+
+        const detailMapVisible = location.map?.detail.visible === true;
+
+        /*
+         * Cualquier mapa visible necesita coordenadas reales.
+         */
+        if ((homeMapVisible || detailMapVisible) && !hasCoordinates) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['location', 'coordinates'],
+            message:
+              'Todo proyecto visible en un mapa debe tener location.coordinates.',
+          });
+        }
+
+        /*
+         * Un proyecto con página pública debe tener
+         * una dirección física centralizada.
+         */
+        if (
+          detail?.visible === true &&
+          (!location.address || location.address.length === 0)
+        ) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['location', 'address'],
+            message:
+              'Un proyecto con detail.visible=true debe tener location.address.',
+          });
+        }
+
+        /*
+         * Los proyectos con página pública deben declarar
+         * explícitamente su configuración cartográfica.
+         */
+        if (detail?.visible === true && !location.map) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['location', 'map'],
+            message:
+              'Un proyecto con detail.visible=true debe definir location.map.',
+          });
+        }
+
+        /*
+         * Los proyectos actuales con página de detalle deben
+         * tener coordenadas aunque posteriormente se decida
+         * ocultar alguno de sus mapas.
+         */
+        if (detail?.visible === true && !hasCoordinates) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['location', 'coordinates'],
+            message:
+              'Un proyecto con detail.visible=true debe tener location.coordinates.',
+          });
+        }
+
+        /*
+         * No tiene sentido habilitar un mapa de detalle
+         * para un proyecto sin página individual pública.
+         */
+        if (detailMapVisible && detail?.visible !== true) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['location', 'map', 'detail', 'visible'],
+            message:
+              'location.map.detail.visible=true requiere detail.visible=true.',
+          });
+        }
+      }),
 });
 
 const partners = defineCollection({

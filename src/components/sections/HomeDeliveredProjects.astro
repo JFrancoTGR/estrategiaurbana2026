@@ -3,7 +3,9 @@ import { Image } from 'astro:assets';
 
 import deliveredProjectsImage from '../../assets/img/home/delivered-projects.webp';
 
-const portfolioHref = `${import.meta.env.BASE_URL}portafolio`;
+import { withBase } from '../../utils/paths';
+
+const portfolioHref = withBase('/portafolio');
 ---
 
 <section

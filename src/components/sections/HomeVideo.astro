@@ -1,7 +1,15 @@
 ---
-const posterLoopWebm = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.webm`;
-const posterLoopMp4 = `${import.meta.env.BASE_URL}media/home/manifesto/video/poster-loop.mp4`;
-const videoSrc = `${import.meta.env.BASE_URL}media/home/manifesto/video/manifesto-1080.mp4`;
+import { withBase } from '../../utils/paths';
+
+const posterLoopWebm = withBase(
+  '/media/home/manifesto/video/poster-loop.webm',
+);
+const posterLoopMp4 = withBase(
+  '/media/home/manifesto/video/poster-loop.mp4',
+);
+const videoSrc = withBase(
+  '/media/home/manifesto/video/manifesto-1080.mp4',
+);
 ---
 
 <section id='home-video' class='home-video' data-home-video>

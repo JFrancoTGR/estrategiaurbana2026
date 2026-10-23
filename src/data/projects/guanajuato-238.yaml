@@ -7,6 +7,18 @@ location:
   zone: roma
   label: Roma Norte, CDMX
 
+  coordinates:
+    lat: 19.4165
+    lng: -99.1615
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: false
+
 commercial:
   available: false
 

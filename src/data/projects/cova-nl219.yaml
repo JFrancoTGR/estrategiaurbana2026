@@ -7,6 +7,23 @@ location:
   zone: condesa
   label: Condesa, CDMX
 
+  address:
+    - Av. Nuevo León 219
+    - Col. Hipódromo Condesa, CDMX
+
+  coordinates:
+    lat: 19.4043
+    lng: -99.1718
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 commercial:
   available: false
 
@@ -88,12 +105,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de COVA Nuevo León 219.
 
-    address:
-      - Condesa, CDMX
-
     image:
       image: ../../assets/img/projects/cova-nuevoleon/intro.webp
       alt: Vista arquitectónica de COVA Nuevo León 219
 
     decoration:
       image: ../../assets/img/projects/cova-nuevoleon/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Sobre Avenida Nuevo León, dentro de
+      emphasis: Hipódromo Condesa.
+
+    body:
+      - COVA Nuevo León 219 se ubica sobre Avenida Nuevo León, en Hipódromo Condesa, Ciudad de México.
+      - Su emplazamiento lo integra a una de las zonas residenciales y urbanas más reconocibles de la ciudad.

@@ -10,6 +10,23 @@ location:
   zone: tijuana
   label: Tijuana, Baja California
 
+  address:
+    - Boulevard Cuauhtémoc Sur 3573
+    - Madero Sur, Zona Centro, Tijuana, Baja California
+
+  coordinates:
+    lat: 32.5115555
+    lng: -117.0251622
+
+  map:
+    home:
+      visible: true
+      category: venta
+
+    detail:
+      visible: true
+      zoom: 16
+
 price:
   from: 4000000
   currency: MXN
@@ -61,12 +78,20 @@ detail:
     body:
       - Contenido editorial pendiente de definir para el overview de PORTTICA.
 
-    address:
-      - Tijuana, Baja California
-
     image:
       image: ../../assets/img/projects/porttica/intro.webp
       alt: Vista arquitectónica de PORTTICA
 
     decoration:
       image: ../../assets/img/projects/porttica/intro-decoration.svg
+
+  location:
+    index: '02 / Ubicación'
+
+    title:
+      lead: Una ubicación urbana conectada con
+      emphasis: Zona Río, Cacho y Gabilondo.
+
+    body:
+      - PORTTICA se ubica sobre Boulevard Cuauhtémoc Sur, en Madero Sur, Zona Centro de Tijuana.
+      - Su localización ofrece acceso a distintos puntos comerciales, gastronómicos y de servicios dentro de la ciudad.

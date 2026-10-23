@@ -9,6 +9,7 @@ import ProjectHero from '../../components/sections/ProjectHero.astro';
 import ProjectSubnav from '../../components/sections/ProjectSubnav.astro';
 
 import ProjectIntro from '../../components/sections/ProjectIntro.astro';
+import ProjectLocation from '../../components/sections/ProjectLocation.astro';
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection(
@@ -39,7 +40,7 @@ if (!project) {
   throw new Error(`No se encontró el proyecto "${projectId}".`);
 }
 
-const { detail } = project.data;
+const { detail, location } = project.data;
 
 if (!detail || detail.visible !== true) {
   throw new Error(
@@ -47,7 +48,23 @@ if (!detail || detail.visible !== true) {
   );
 }
 
-const { hero, metrics, intro } = detail;
+if (!location.address) {
+  throw new Error(
+    `El proyecto "${projectId}" no tiene una dirección definida.`,
+  );
+}
+
+const { hero, metrics, intro, location: locationSection } = detail;
+
+const detailMap = location.map?.detail;
+
+const projectLocationMap =
+  detailMap?.visible === true && location.coordinates
+    ? {
+        center: location.coordinates,
+        zoom: detailMap.zoom,
+      }
+    : null;
 ---
 
 <BaseLayout
@@ -70,10 +87,18 @@ const { hero, metrics, intro } = detail;
     index={intro.index}
     title={intro.title}
     body={intro.body}
-    address={intro.address}
+    address={location.address}
     image={intro.image.image}
     alt={intro.image.alt}
     decoration={intro.decoration.image}
     metrics={metrics}
+  />
+
+  <ProjectLocation
+    index={locationSection.index}
+    title={locationSection.title}
+    body={locationSection.body}
+    projectName={project.data.name}
+    map={projectLocationMap}
   />
 </BaseLayout>
