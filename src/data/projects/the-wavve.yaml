@@ -39,6 +39,11 @@ home:
   visible: true
   order: 9
 
+brand:
+  logo:
+    image: ../../assets/img/projects/the-wavve/brand.svg
+    alt: Logo de The WAVVE
+
 detail:
   visible: true
 

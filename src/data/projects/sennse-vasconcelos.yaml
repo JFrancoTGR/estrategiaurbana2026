@@ -39,6 +39,11 @@ home:
   visible: true
   order: 7
 
+brand:
+  logo:
+    image: ../../assets/img/projects/sennse-vasconcelos/brand.svg
+    alt: Logo de Sennse Vasconcelos
+
 detail:
   visible: true
 

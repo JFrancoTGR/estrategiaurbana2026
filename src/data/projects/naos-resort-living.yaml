@@ -39,6 +39,11 @@ home:
   visible: true
   order: 8
 
+brand:
+  logo:
+    image: ../../assets/img/projects/naos-resort-living/brand.svg
+    alt: Logo de NAOS Resort Living
+
 detail:
   visible: true
 

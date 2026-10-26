@@ -39,6 +39,11 @@ home:
   visible: true
   order: 10
 
+brand:
+  logo:
+    image: ../../assets/img/projects/porttica/brand.svg
+    alt: Logo de PORTTICA
+
 detail:
   visible: true
 

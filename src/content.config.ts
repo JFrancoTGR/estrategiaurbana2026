@@ -132,6 +132,20 @@ const projects = defineCollection({
           .optional(),
 
         /*
+         * Marca
+         *
+         * Logotipo de marca del desarrollo
+         */
+        brand: z
+          .object({
+            logo: z.object({
+              image: image(),
+              alt: z.string().trim().min(1),
+            }),
+          })
+          .optional(),
+
+        /*
          * Contexto Home.
          *
          * Sólo existe cuando el desarrollo participa

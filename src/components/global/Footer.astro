@@ -18,7 +18,16 @@ const navigation = [
   },
   {
     label: 'Zonas',
-    href: '/zonas',
+    children: [
+      {
+        label: 'Condesa',
+        href: '/zonas/condesa',
+      },
+      {
+        label: 'Juárez',
+        href: '/zonas/juarez',
+      },
+    ],
   },
   {
     label: 'Contacto',
@@ -57,13 +66,34 @@ const currentYear = new Date().getFullYear();
         <ul class='site-footer__navigation-list'>
           {
             navigation.map((item) => (
-              <li>
-                <a
-                  href={withBase(item.href)}
-                  class='site-footer__navigation-link'
-                >
-                  {item.label}
-                </a>
+              <li class='site-footer__navigation-item'>
+                {'href' in item && item.href ? (
+                  <a
+                    href={withBase(item.href)}
+                    class='site-footer__navigation-link'
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span class='site-footer__navigation-label'>
+                    {item.label}
+                  </span>
+                )}
+
+                {'children' in item && item.children && (
+                  <ul class='site-footer__navigation-sublist'>
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={withBase(child.href)}
+                          class='site-footer__navigation-sublink'
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))
           }
@@ -74,10 +104,7 @@ const currentYear = new Date().getFullYear();
         <div class='site-footer__contact-copy'>
           <span class='site-footer__eyebrow'> Contacto </span>
 
-          <a
-            href={withBase('/contacto')}
-            class='site-footer__contact-link'
-          >
+          <a href={withBase('/contacto')} class='site-footer__contact-link'>
             Hablemos de tu próximo proyecto
           </a>
         </div>
@@ -137,9 +164,7 @@ const currentYear = new Date().getFullYear();
       </p>
 
       <div class='site-footer__legal'>
-        <a href={withBase('/aviso-de-privacidad')}>
-          Aviso de privacidad
-        </a>
+        <a href={withBase('/aviso-de-privacidad')}> Aviso de privacidad </a>
       </div>
     </div>
   </div>
@@ -234,6 +259,48 @@ const currentYear = new Date().getFullYear();
     color: rgb(240 240 240 / 72%);
 
     transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  .site-footer__navigation-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer__navigation-label {
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-regular);
+
+    line-height: 1.35;
+
+    color: rgb(240 240 240 / 72%);
+  }
+
+  .site-footer__navigation-sublist {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    margin-top: 5px;
+    padding-left: 14px;
+  }
+
+  .site-footer__navigation-sublink {
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-regular);
+
+    line-height: 1.35;
+
+    color: rgb(240 240 240 / 48%);
+
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .site-footer__navigation-sublink:hover {
+      color: var(--color-white);
+    }
   }
 
   @media (hover: hover) and (pointer: fine) {

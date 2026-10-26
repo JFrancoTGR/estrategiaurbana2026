@@ -18,30 +18,42 @@ const zones = (
 
 const isZonesActive = pathname.startsWith('/zonas/');
 
+const isProjectsForSaleActive =
+  pathname === '/proyectos-en-venta' || pathname.startsWith('/proyectos/');
+
 const { theme = 'overlay' } = Astro.props;
+
+const isActive = (href: string) => {
+  return pathname === href || pathname.startsWith(`${href}/`);
+};
 
 const navigation = [
   {
     label: 'Proyectos en Venta',
     href: '/proyectos-en-venta',
+    active: isProjectsForSaleActive,
+    current: pathname === '/proyectos-en-venta',
   },
   {
     label: 'Proyectos Entregados',
     href: '/proyectos-entregados',
+    active: isActive('/proyectos-entregados'),
+    current: pathname === '/proyectos-entregados',
   },
   {
     label: 'Socios Estratégicos',
     href: '/socios-estrategicos',
+    active: isActive('/socios-estrategicos'),
+    current: pathname === '/socios-estrategicos',
   },
   {
     label: 'Contacto',
     href: '/contacto',
+    active: isActive('/contacto'),
+    current: pathname === '/contacto',
   },
 ];
 
-const isActive = (href: string) => {
-  return pathname === href || pathname.startsWith(`${href}/`);
-};
 ---
 
 <header
@@ -73,10 +85,10 @@ const isActive = (href: string) => {
                 class:list={[
                   'navigation-link',
                   {
-                    active: isActive(item.href),
+                    active: item.active,
                   },
                 ]}
-                aria-current={isActive(item.href) ? 'page' : undefined}
+                aria-current={item.current ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -134,10 +146,10 @@ const isActive = (href: string) => {
                 class:list={[
                   'navigation-link',
                   {
-                    active: isActive(item.href),
+                    active: item.active,
                   },
                 ]}
-                aria-current={isActive(item.href) ? 'page' : undefined}
+               aria-current={item.current ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -177,10 +189,10 @@ const isActive = (href: string) => {
                 class:list={[
                   'mobile-navigation__link',
                   {
-                    active: isActive(item.href),
+                    active: item.active,
                   },
                 ]}
-                aria-current={isActive(item.href) ? 'page' : undefined}
+                aria-current={item.current ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -236,10 +248,10 @@ const isActive = (href: string) => {
                 class:list={[
                   'mobile-navigation__link',
                   {
-                    active: isActive(item.href),
+                    active: item.active,
                   },
                 ]}
-                aria-current={isActive(item.href) ? 'page' : undefined}
+                aria-current={item.current ? 'page' : undefined}
               >
                 {item.label}
               </a>

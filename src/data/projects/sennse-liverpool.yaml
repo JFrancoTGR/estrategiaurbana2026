@@ -39,6 +39,11 @@ home:
   visible: true
   order: 4
 
+brand:
+  logo:
+    image: ../../assets/img/projects/sennse-liverpool/brand.svg
+    alt: Logo de Sennse Liverpool
+
 detail:
   visible: true
 

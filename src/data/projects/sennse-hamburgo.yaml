@@ -39,6 +39,11 @@ home:
   visible: true
   order: 3
 
+brand:
+  logo:
+    image: ../../assets/img/projects/sennse-hamburgo/brand.svg
+    alt: Logo de Sennse Hamburgo
+
 detail:
   visible: true
 

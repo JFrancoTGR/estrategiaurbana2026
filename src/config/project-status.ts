@@ -15,22 +15,18 @@ export const COMMERCIAL_PROJECT_STATUS_VALUES = PROJECT_STATUS_VALUES.filter(
 export const PROJECT_STATUS_META = {
   'en-construccion': {
     label: 'En construcción',
-    icon: 'construction',
   },
 
   entregado: {
     label: 'Entregado',
-    icon: 'delivered',
   },
 
   'fase-proyecto': {
-    label: 'Fase proyecto',
-    icon: 'planning',
+    label: 'Diseño',
   },
 } satisfies Record<
   ProjectStatus,
   {
     label: string;
-    icon: 'construction' | 'delivered' | 'planning';
   }
 >;

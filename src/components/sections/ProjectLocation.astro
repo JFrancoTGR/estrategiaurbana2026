@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
   index: string;
 
@@ -11,6 +14,11 @@ interface Props {
 
   projectName: string;
 
+  logo: {
+    image: ImageMetadata;
+    alt: string;
+  } | null;
+
   map: {
     center: {
       lat: number;
@@ -21,30 +29,38 @@ interface Props {
   } | null;
 }
 
-const { index, title, body, projectName, map } = Astro.props;
+const { index, title, body, projectName, logo, map } = Astro.props;
 ---
 
 <section id='location' class='project-location'>
   <div class='project-location__content page-shell'>
-    <div class='project-location__meta'>
-      <span class='project-location__index'>
-        {index}
-      </span>
-
-      <span class='project-location__project-name'>
-        {projectName}
-      </span>
-    </div>
-
     <div class='project-location__editorial'>
-      <h2 class='project-location__title font-editorial'>
-        <span>{title.lead}</span>
+      <div class='project-location__copy'>
+        <span class='project-location__index'>
+          {index}
+        </span>
 
-        <em>{title.emphasis}</em>
-      </h2>
+        <h2 class='project-location__title font-editorial'>
+          <span>{title.lead}</span>
+          <em>{title.emphasis}</em>
+        </h2>
 
-      <div class='project-location__body'>
-        {body.map((paragraph) => <p>{paragraph}</p>)}
+        <div class='project-location__body'>
+          {body.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+
+      <div class='project-location__brand'>
+        {
+          logo && (
+            <Image
+              src={logo.image}
+              alt={logo.alt}
+              class='project-location__logo'
+              loading='lazy'
+            />
+          )
+        }
       </div>
     </div>
   </div>
@@ -90,21 +106,58 @@ const { index, title, body, projectName, map } = Astro.props;
   }
 
   /* =========================
-     META
+     EDITORIAL LAYOUT
   ========================= */
 
-  .project-location__meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .project-location__editorial {
+    display: grid;
 
-    gap: 32px;
+    grid-template-columns:
+      minmax(0, 7fr)
+      minmax(220px, 3fr);
 
-    margin-bottom: clamp(42px, 5vw, 72px);
+    align-items: start;
+
+    gap: clamp(48px, 6vw, 96px);
   }
 
-  .project-location__index,
-  .project-location__project-name {
+  /* =========================
+     BRAND / LOGO
+  ========================= */
+
+  .project-location__brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    min-width: 0;
+  }
+
+  .project-location__logo {
+    display: block;
+
+    width: min(100%, 280px);
+    height: auto;
+  }
+
+  /* =========================
+     EDITORIAL COPY
+  ========================= */
+
+  .project-location__copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* =========================
+     INDEX
+  ========================= */
+
+  .project-location__index {
+    display: block;
+
+    margin-bottom: clamp(28px, 3vw, 40px);
+
     font-family: var(--font-primary);
     font-size: 0.6875rem;
     font-weight: var(--font-weight-medium);
@@ -117,39 +170,20 @@ const { index, title, body, projectName, map } = Astro.props;
     color: rgb(20 20 20 / 62%);
   }
 
-  .project-location__project-name {
-    text-align: right;
-  }
-
-  /* =========================
-     EDITORIAL
-  ========================= */
-
-  .project-location__editorial {
-    display: grid;
-    grid-template-columns:
-      minmax(0, 2fr)
-      minmax(260px, 0.8fr);
-
-    align-items: end;
-
-    gap: clamp(52px, 7vw, 120px);
-  }
-
   /* =========================
      TITLE
   ========================= */
 
   .project-location__title {
-    max-width: 980px;
+    max-width: 100%;
 
     margin: 0;
 
-    font-size: clamp(3.5rem, 5.8vw, 7rem);
+    font-size: clamp(1.9rem, 2.5vw, 2.81rem);
     font-weight: var(--font-weight-light);
 
-    line-height: 0.94;
-    letter-spacing: -0.045em;
+    line-height: 1;
+    letter-spacing: -0.025em;
 
     color: var(--color-black);
   }
@@ -160,7 +194,7 @@ const { index, title, body, projectName, map } = Astro.props;
   }
 
   .project-location__title em {
-    margin-top: 0.04em;
+    margin-top: 0.08em;
 
     font-weight: inherit;
     font-style: italic;
@@ -177,9 +211,9 @@ const { index, title, body, projectName, map } = Astro.props;
 
     gap: 18px;
 
-    max-width: 430px;
+    max-width: 100%;
 
-    padding-bottom: 0.35em;
+    margin-top: clamp(28px, 2.5vw, 36px);
   }
 
   .project-location__body p {
@@ -241,6 +275,7 @@ const { index, title, body, projectName, map } = Astro.props;
 
     font-family: var(--font-primary);
     font-size: 0.75rem;
+
     line-height: 1.2;
     white-space: nowrap;
 
@@ -259,16 +294,31 @@ const { index, title, body, projectName, map } = Astro.props;
   ========================= */
 
   @media (min-width: 768px) and (max-width: 1199px) {
+    .project-location__content {
+      padding-top: 80px;
+      padding-bottom: 88px;
+    }
+
     .project-location__editorial {
       grid-template-columns:
-        minmax(0, 1.6fr)
-        minmax(240px, 0.8fr);
+        minmax(0, 65fr)
+        minmax(220px, 35fr);
 
-      gap: 48px;
+      gap: clamp(40px, 5vw, 64px);
+    }
+
+    .project-location__brand :global(svg),
+    .project-location__brand :global(img) {
+      max-width: min(100%, 280px);
+      max-height: 150px;
+    }
+
+    .project-location__copy {
+      max-width: 380px;
     }
 
     .project-location__title {
-      font-size: clamp(3.75rem, 7vw, 5.5rem);
+      font-size: clamp(1.5rem, 2.8vw, 2.25rem);
     }
 
     .project-location__map {
@@ -286,31 +336,43 @@ const { index, title, body, projectName, map } = Astro.props;
       padding-bottom: 76px;
     }
 
-    .project-location__meta {
-      align-items: flex-start;
-
-      margin-bottom: 36px;
-    }
-
-    .project-location__project-name {
-      max-width: 50%;
-    }
-
     .project-location__editorial {
-      display: block;
+      display: flex;
+      flex-direction: column;
+
+      gap: 48px;
+    }
+
+    .project-location__brand {
+      width: 100%;
+      min-height: 0;
+    }
+
+    .project-location__brand :global(svg),
+    .project-location__brand :global(img) {
+      max-width: min(72%, 240px);
+      max-height: 130px;
+    }
+
+    .project-location__copy {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .project-location__index {
+      margin-bottom: 28px;
     }
 
     .project-location__title {
       max-width: 100%;
 
-      font-size: clamp(3rem, 13vw, 4.25rem);
+      font-size: clamp(1.8rem, 8.4vw, 2.4rem);
     }
 
     .project-location__body {
       max-width: 100%;
 
-      margin-top: 36px;
-      padding-bottom: 0;
+      margin-top: 30px;
     }
 
     .project-location__map {

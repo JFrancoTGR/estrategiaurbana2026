@@ -39,6 +39,11 @@ home:
   visible: true
   order: 2
 
+brand:
+  logo:
+    image: ../../assets/img/projects/sennse-juarez/brand.svg
+    alt: Logo de Sennse Juárez
+
 detail:
   visible: true
 
