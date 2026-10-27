@@ -1,18 +1,16 @@
+import GLightbox from 'glightbox';
+
 export function initProjectFloorplans(root: HTMLElement) {
-  const options = root.querySelectorAll<HTMLButtonElement>(
-    '[data-floorplan-option]',
+  const options = Array.from(
+    root.querySelectorAll<HTMLButtonElement>(
+      '[data-floorplan-option]',
+    ),
   );
 
-  const panels = root.querySelectorAll<HTMLElement>('[data-floorplan-panel]');
-
-  const modal = root.querySelector<HTMLElement>('[data-floorplan-modal]');
-
-  const modalPanels = root.querySelectorAll<HTMLElement>(
-    '[data-floorplan-modal-panel]',
-  );
-
-  const closeButtons = root.querySelectorAll<HTMLButtonElement>(
-    '[data-floorplan-close]',
+  const panels = Array.from(
+    root.querySelectorAll<HTMLElement>(
+      '[data-floorplan-panel]',
+    ),
   );
 
   if (!options.length || !panels.length) {
@@ -21,7 +19,14 @@ export function initProjectFloorplans(root: HTMLElement) {
 
   let activeIndex = 0;
 
-  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+  let activeLightbox: ReturnType<typeof GLightbox> | null = null;
+
+  const isMobile = () =>
+    window.matchMedia('(max-width: 767px)').matches;
+
+  /* ------------------------------
+     Active floorplan
+  ------------------------------ */
 
   const setActive = (index: number) => {
     activeIndex = index;
@@ -30,54 +35,85 @@ export function initProjectFloorplans(root: HTMLElement) {
       const active = optionIndex === index;
 
       option.classList.toggle('is-active', active);
-      option.setAttribute('aria-selected', active ? 'true' : 'false');
+
+      option.setAttribute(
+        'aria-selected',
+        active ? 'true' : 'false',
+      );
     });
 
     panels.forEach((panel, panelIndex) => {
       const active = panelIndex === index;
 
-      panel.hidden = !active;
       panel.classList.toggle('is-active', active);
+
+      panel.setAttribute(
+        'aria-hidden',
+        active ? 'false' : 'true',
+      );
     });
   };
 
-  const setModalPanel = (index: number) => {
-    modalPanels.forEach((panel, panelIndex) => {
-      const active = panelIndex === index;
+  /* ------------------------------
+     Mobile GLightbox
+  ------------------------------ */
 
-      panel.hidden = !active;
-      panel.classList.toggle('is-active', active);
+  const openMobileFloorplan = (
+    option: HTMLButtonElement,
+  ) => {
+    const href = option.dataset.floorplanImage;
+
+    if (!href) {
+      return;
+    }
+
+    const title =
+      option.dataset.floorplanTitle ?? '';
+
+    const variant =
+      option.dataset.floorplanVariant ?? '';
+
+    activeLightbox?.destroy();
+
+    activeLightbox = GLightbox({
+      /*
+       * GLightbox 3.3.1 tipa incorrectamente
+       * `elements` como una tupla vacía,
+       * aunque soporta arrays de slides.
+       */
+      elements: [
+        {
+          href,
+          type: 'image',
+          title,
+          description: variant,          
+        },
+      ] as any,
+
+      descPosition: 'top',
+      
+      touchNavigation: true,
+      keyboardNavigation: true,
+      loop: false,
     });
+
+    activeLightbox.open();
   };
 
-  const openModal = (index: number) => {
-    if (!modal) {
-      return;
-    }
-
-    setModalPanel(index);
-
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-
-    document.documentElement.classList.add('floorplan-modal-open');
-  };
-
-  const closeModal = () => {
-    if (!modal) {
-      return;
-    }
-
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-
-    document.documentElement.classList.remove('floorplan-modal-open');
-  };
+  /* ------------------------------
+     Events
+  ------------------------------ */
 
   const handleOptionClick = (event: Event) => {
-    const option = event.currentTarget as HTMLButtonElement;
+    const option = event.currentTarget;
 
-    const index = Number(option.dataset.floorplanIndex);
+    if (!(option instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const index = Number(
+      option.dataset.floorplanIndex,
+    );
 
     if (!Number.isFinite(index)) {
       return;
@@ -85,40 +121,45 @@ export function initProjectFloorplans(root: HTMLElement) {
 
     setActive(index);
 
-    if (isMobile()) {
-      openModal(index);
+    if (!isMobile()) {
+      return;
     }
-  };
 
-  const handleKeydown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      closeModal();
-    }
+    /*
+     * Igual que en DeliveredProjects:
+     * liberamos el focus antes de insertar
+     * el overlay de GLightbox.
+     */
+    option.blur();
+
+    requestAnimationFrame(() => {
+      openMobileFloorplan(option);
+    });
   };
 
   options.forEach((option) => {
-    option.addEventListener('click', handleOptionClick);
+    option.addEventListener(
+      'click',
+      handleOptionClick,
+    );
   });
-
-  closeButtons.forEach((button) => {
-    button.addEventListener('click', closeModal);
-  });
-
-  document.addEventListener('keydown', handleKeydown);
 
   setActive(activeIndex);
 
+  /* ------------------------------
+     Cleanup
+  ------------------------------ */
+
   return () => {
     options.forEach((option) => {
-      option.removeEventListener('click', handleOptionClick);
+      option.removeEventListener(
+        'click',
+        handleOptionClick,
+      );
     });
 
-    closeButtons.forEach((button) => {
-      button.removeEventListener('click', closeModal);
-    });
+    activeLightbox?.destroy();
 
-    document.removeEventListener('keydown', handleKeydown);
-
-    document.documentElement.classList.remove('floorplan-modal-open');
+    activeLightbox = null;
   };
 }

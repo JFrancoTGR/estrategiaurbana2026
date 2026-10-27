@@ -102,75 +102,109 @@ detail:
     body:
       - Ubicado sobre la Carretera Escénica Tijuana–Ensenada, el proyecto se sitúa en una de las zonas con mayor proyección de la región.
       - La ubicación ofrece una combinación única de conectividad, entorno natural y acceso a oferta gastronómica y recreativa, consolidándose como un punto estratégico entre México y Estados Unidos.
-    
+
   amenities:
-      visible: true
+    visible: true
 
-      index: '03 / Amenities'
+    index: '03 / Amenities'
 
-      title:
-        lead: Una propuesta de
-        emphasis: vivienda contemporánea.
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
 
-      eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado bajo una inspiración orgánica
 
-      items:
-        - image: ../../assets/img/projects/naos-resort-living/amenities/alberca.webp
-          alt: Alberca
-          title: Alberca
-          meta: Nivel 1
+    items:
+      - image: ../../assets/img/projects/naos-resort-living/amenities/alberca.webp
+        alt: Alberca
+        title: Alberca
+        meta: Nivel 1
 
-        - image: ../../assets/img/projects/naos-resort-living/amenities/business-center.webp
-          alt: Business Center
-          title: Business Center
-          meta: Nivel 1
+      - image: ../../assets/img/projects/naos-resort-living/amenities/business-center.webp
+        alt: Business Center
+        title: Business Center
+        meta: Nivel 1
 
-        - image: ../../assets/img/projects/naos-resort-living/amenities/game-room.webp
-          alt: Game Room
-          title: Game Room
-          meta: Nivel 1
-        
-        - image: ../../assets/img/projects/naos-resort-living/amenities/gym.webp
-          alt: Gym
-          title: Gym
-          meta: Nivel 1
+      - image: ../../assets/img/projects/naos-resort-living/amenities/game-room.webp
+        alt: Game Room
+        title: Game Room
+        meta: Nivel 1
 
-        - image: ../../assets/img/projects/naos-resort-living/amenities/lounge.webp
-          alt: Lounge
-          title: Lounge
-          meta: Nivel 1
-        
-        - image: ../../assets/img/projects/naos-resort-living/amenities/ludoteca.webp
-          alt: Ludoteca
-          title: Ludoteca
-          meta: Nivel 1
+      - image: ../../assets/img/projects/naos-resort-living/amenities/gym.webp
+        alt: Gym
+        title: Gym
+        meta: Nivel 1
 
-        - image: ../../assets/img/projects/naos-resort-living/amenities/residence-kitchen.webp
-          alt: Residence Kitchen
-          title: Residence Kitchen
-          meta: Nivel 1
-    
-      floorplans:
-        visible: true
+      - image: ../../assets/img/projects/naos-resort-living/amenities/lounge.webp
+        alt: Lounge
+        title: Lounge
+        meta: Nivel 1
 
-        index: '04 / Floorplans & Precios'
+      - image: ../../assets/img/projects/naos-resort-living/amenities/ludoteca.webp
+        alt: Ludoteca
+        title: Ludoteca
+        meta: Nivel 1
 
-        title:
-          lead: Tipologías, plantas
-          emphasis: y precios
+      - image: ../../assets/img/projects/naos-resort-living/amenities/residence-kitchen.webp
+        alt: Residence Kitchen
+        title: Residence Kitchen
+        meta: Nivel 1
 
-        items:
-          - name: The Firstroom
-            variant: Mountain View
+  floorplans:
+    visible: true
 
-            image:
-              image: ../../assets/img/projects/naos-resort-living/floorplans/1.webp
-              alt: Tipología The Firstroom Mountain View
+    index: '04 / Floorplans & Precios'
 
-        items:
-          - name: The Flexroom
-            variant: Ocean View
+    title:
+      lead: Tipologías, plantas
+      emphasis: y precios
 
-            image:
-              image: ../../assets/img/projects/naos-resort-living/floorplans/2.webp
-              alt: Tipología The FirstrFlexroom Ocean View
+    items:
+      - name: The Firstroom
+        variant: Mountain View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/1.webp
+          alt: Tipología The Firstroom Mountain View
+
+      - name: The Flexroom
+        variant: Ocean View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/2.webp
+          alt: Tipología The Flexroom Ocean View
+      
+      - name: The Twob-Room
+        variant: Ocean View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/3.webp
+          alt: Tipología The Twob-Room Ocean View
+      
+      - name: The Twob-Room Plus
+        variant: Mountain View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/4.webp
+          alt: Tipología The Twob-Room Plus Mountain View
+
+      - name: The Threeb-Room
+        variant: Ocean & Mountain View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/5.webp
+          alt: Tipología The Threeb-Room Ocean & Mountain View
+      
+      - name: The Threeb-Room Plus
+        variant: Ocean View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/6.webp
+          alt: Tipología The Threeb-Room Plus Ocean View
+      
+      - name: The Penthouse
+        variant: Ocean View
+
+        image:
+          image: ../../assets/img/projects/naos-resort-living/tipology/7.webp
+          alt: Tipología The The Penthouse Ocean View

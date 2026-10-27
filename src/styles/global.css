@@ -21,11 +21,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-html.floorplan-modal-open,
-html.floorplan-modal-open body {
-  overflow: hidden;
-}
-
 /* * {
   border: 1px solid yellow;
 } */

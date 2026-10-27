@@ -26,8 +26,17 @@ interface Props {
 const { index, title, items } = Astro.props;
 ---
 
-<section id='floorplans' class='project-floorplans' data-project-floorplans>
-  <div class='project-floorplans__inner page-shell'>
+<section
+  id='floorplans'
+  class='project-floorplans'
+  data-project-floorplans
+>
+  <div class='project-floorplans__inner'>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
     <header class='project-floorplans__header'>
       <span class='project-floorplans__index'>
         {index}
@@ -39,7 +48,12 @@ const { index, title, items } = Astro.props;
       </h2>
     </header>
 
+    <!-- =========================
+         CONTENT
+    ========================== -->
+
     <div class='project-floorplans__layout'>
+
       <!-- =========================
            SELECTOR
       ========================== -->
@@ -63,6 +77,10 @@ const { index, title, items } = Astro.props;
               aria-selected={itemIndex === 0 ? 'true' : 'false'}
               data-floorplan-option
               data-floorplan-index={itemIndex}
+              data-floorplan-image={item.image.image.src}
+              data-floorplan-alt={item.image.alt}
+              data-floorplan-title={item.name}
+              data-floorplan-variant={item.variant ?? ''}
             >
               <span class='project-floorplans__option-copy'>
                 <strong>{item.name}</strong>
@@ -70,7 +88,10 @@ const { index, title, items } = Astro.props;
                 {item.variant && <span>{item.variant}</span>}
               </span>
 
-              <span class='project-floorplans__option-arrow' aria-hidden='true'>
+              <span
+                class='project-floorplans__option-arrow'
+                aria-hidden='true'
+              >
                 →
               </span>
             </button>
@@ -79,10 +100,13 @@ const { index, title, items } = Astro.props;
       </div>
 
       <!-- =========================
-           DESKTOP VIEWER
+           DESKTOP / TABLET VIEWER
       ========================== -->
 
-      <div class='project-floorplans__viewer' aria-live='polite'>
+      <div
+        class='project-floorplans__viewer'
+        aria-live='polite'
+      >
         {
           items.map((item, itemIndex) => (
             <figure
@@ -94,7 +118,7 @@ const { index, title, items } = Astro.props;
               ]}
               data-floorplan-panel
               data-floorplan-index={itemIndex}
-              hidden={itemIndex !== 0}
+              aria-hidden={itemIndex === 0 ? 'false' : 'true'}
             >
               <Image
                 src={item.image.image}
@@ -108,69 +132,6 @@ const { index, title, items } = Astro.props;
       </div>
     </div>
   </div>
-
-  <!-- =========================
-       MOBILE MODAL
-  ========================== -->
-
-  <div
-    class='project-floorplans__modal'
-    data-floorplan-modal
-    aria-hidden='true'
-  >
-    <button
-      type='button'
-      class='project-floorplans__backdrop'
-      data-floorplan-close
-      aria-label='Cerrar tipología'></button>
-
-    <div
-      class='project-floorplans__modal-dialog'
-      role='dialog'
-      aria-modal='true'
-      aria-label='Detalle de tipología'
-    >
-      <button
-        type='button'
-        class='project-floorplans__modal-close'
-        data-floorplan-close
-        aria-label='Cerrar'
-      >
-        ×
-      </button>
-
-      {
-        items.map((item, itemIndex) => (
-          <div
-            class:list={[
-              'project-floorplans__modal-panel',
-              {
-                'is-active': itemIndex === 0,
-              },
-            ]}
-            data-floorplan-modal-panel
-            data-floorplan-index={itemIndex}
-            hidden={itemIndex !== 0}
-          >
-            <header class='project-floorplans__modal-header'>
-              <h3 class='font-editorial'>{item.name}</h3>
-
-              {item.variant && <p>{item.variant}</p>}
-            </header>
-
-            <figure class='project-floorplans__modal-figure'>
-              <Image
-                src={item.image.image}
-                alt={item.image.alt}
-                class='project-floorplans__modal-image'
-                loading='lazy'
-              />
-            </figure>
-          </div>
-        ))
-      }
-    </div>
-  </div>
 </section>
 
 <script>
@@ -178,10 +139,17 @@ const { index, title, items } = Astro.props;
 
   import { initProjectFloorplans } from '../../scripts/ui/project-floorplans';
 
-  mountPageUI('[data-project-floorplans]', initProjectFloorplans);
+  mountPageUI(
+    '[data-project-floorplans]',
+    initProjectFloorplans,
+  );
 </script>
 
 <style>
+  /* =========================
+     SECTION
+  ========================= */
+
   .project-floorplans {
     width: 100%;
 
@@ -191,8 +159,21 @@ const { index, title, items } = Astro.props;
     background-color: #deddd9;
   }
 
+  /*
+   * Boundary local temporal.
+   *
+   * Replica visualmente los mismos
+   * edges horizontales del header.
+   *
+   * Se revisará durante el QA final.
+   */
   .project-floorplans__inner {
-    width: 100%;
+    width: min(
+      calc(100% - (var(--page-gutter) * 2)),
+      var(--content-max)
+    );
+
+    margin-inline: auto;
   }
 
   /* =========================
@@ -254,12 +235,12 @@ const { index, title, items } = Astro.props;
     display: grid;
 
     grid-template-columns:
-      minmax(250px, 0.36fr)
-      minmax(0, 0.64fr);
+      minmax(260px, 4fr)
+      minmax(0, 8fr);
+
+    column-gap: var(--grid-gap);
 
     align-items: start;
-
-    gap: clamp(48px, 5vw, 82px);
   }
 
   /* =========================
@@ -336,14 +317,15 @@ const { index, title, items } = Astro.props;
     font-family: var(--font-primary);
     font-size: 1.1rem;
 
+    opacity: 0.55;
+
     transition:
       transform 300ms var(--ease-premium),
       opacity 300ms ease;
-
-    opacity: 0.55;
   }
 
-  .project-floorplans__option.is-active .project-floorplans__option-arrow {
+  .project-floorplans__option.is-active
+    .project-floorplans__option-arrow {
     transform: translateX(5px);
 
     opacity: 1;
@@ -360,157 +342,49 @@ const { index, title, items } = Astro.props;
   ========================= */
 
   .project-floorplans__viewer {
+    display: grid;
+
     position: relative;
 
     min-width: 0;
   }
 
+  /*
+   * Todos los paneles comparten la misma
+   * celda del grid y permanecen en flujo.
+   *
+   * El cambio visual se produce únicamente
+   * mediante opacity / visibility.
+   */
   .project-floorplans__panel {
-    width: 100%;
+    grid-area: 1 / 1;
 
-    margin: 0;
+    width: 85%;
+
+    margin: 0 0 0 auto;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+      opacity 380ms var(--ease-premium),
+      visibility 0s linear 380ms;
   }
 
-  .project-floorplans__panel[hidden] {
-    display: none;
+  .project-floorplans__panel.is-active {
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transition:
+      opacity 380ms var(--ease-premium),
+      visibility 0s;
   }
 
   .project-floorplans__image {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    object-fit: contain;
-  }
-
-  /* =========================
-     MODAL
-  ========================= */
-
-  .project-floorplans__modal {
-    position: fixed;
-    z-index: 1000;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: stretch;
-    justify-content: center;
-  }
-
-  .project-floorplans__modal.is-open {
-    display: flex;
-  }
-
-  .project-floorplans__backdrop {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    padding: 0;
-
-    background: rgb(0 0 0 / 55%);
-
-    border: 0;
-  }
-
-  .project-floorplans__modal-dialog {
-    position: relative;
-    z-index: 1;
-
-    width: min(100%, 760px);
-    height: 100%;
-
-    margin-left: auto;
-
-    overflow-y: auto;
-
-    background-color: #fff;
-  }
-
-  .project-floorplans__modal-close {
-    position: sticky;
-    z-index: 3;
-
-    top: 18px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    margin: 18px 18px 0 auto;
-
-    padding: 0;
-
-    font-family: var(--font-primary);
-    font-size: 1.75rem;
-    font-weight: var(--font-weight-light);
-
-    line-height: 1;
-
-    color: var(--color-black);
-    background-color: rgb(255 255 255 / 90%);
-
-    border: 1px solid rgb(20 20 20 / 14%);
-    border-radius: 50%;
-
-    cursor: pointer;
-  }
-
-  .project-floorplans__modal-panel {
-    padding: 18px clamp(24px, 6vw, 48px) 56px;
-  }
-
-  .project-floorplans__modal-panel[hidden] {
-    display: none;
-  }
-
-  .project-floorplans__modal-header {
-    margin-bottom: 32px;
-  }
-
-  .project-floorplans__modal-header h3 {
-    margin: 0;
-
-    font-size: clamp(2rem, 8vw, 3rem);
-    font-weight: var(--font-weight-light);
-
-    line-height: 1;
-
-    color: var(--color-black);
-  }
-
-  .project-floorplans__modal-header p {
-    margin: 10px 0 0;
-
-    font-family: var(--font-primary);
-    font-size: 0.6875rem;
-    font-weight: var(--font-weight-medium);
-
-    line-height: 1;
-    letter-spacing: 0.24em;
-
-    text-transform: uppercase;
-
-    color: rgb(20 20 20 / 52%);
-  }
-
-  .project-floorplans__modal-figure {
-    width: 100%;
-
-    margin: 0;
-  }
-
-  .project-floorplans__modal-image {
     display: block;
 
     width: 100%;
@@ -526,10 +400,14 @@ const { index, title, items } = Astro.props;
   @media (min-width: 768px) and (max-width: 1199px) {
     .project-floorplans__layout {
       grid-template-columns:
-        minmax(220px, 0.34fr)
-        minmax(0, 0.66fr);
+        minmax(220px, 3fr)
+        minmax(0, 5fr);
 
-      gap: 42px;
+      column-gap: var(--grid-gap);
+    }
+
+    .project-floorplans__panel {
+      width: 92%;
     }
 
     .project-floorplans__option {
@@ -569,12 +447,27 @@ const { index, title, items } = Astro.props;
       display: block;
     }
 
+    /*
+     * En mobile el selector abre GLightbox.
+     * No necesitamos mantener el viewer
+     * arquitectónico visible.
+     */
     .project-floorplans__viewer {
       display: none;
     }
 
     .project-floorplans__option {
       padding: 22px 8px;
+    }
+  }
+
+  /* =========================
+     REDUCED MOTION
+  ========================= */
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-floorplans__panel {
+      transition: none;
     }
   }
 </style>
