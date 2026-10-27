@@ -1,0 +1,461 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+import 'swiper/css';
+
+interface AmenityItem {
+  image: ImageMetadata;
+  alt: string;
+  title: string;
+  meta?: string;
+}
+
+interface Props {
+  index: string;
+
+  title: {
+    lead: string;
+    emphasis: string;
+  };
+
+  eyebrow?: string;
+
+  items: AmenityItem[];
+}
+
+const { index, title, eyebrow, items } = Astro.props;
+---
+
+<section id='amenities' class='project-amenities' data-project-amenities>
+  <div class='project-amenities__header page-shell'>
+    <div class='project-amenities__heading'>
+      <span class='project-amenities__index'>
+        {index}
+      </span>
+
+      <h2 class='project-amenities__title font-editorial'>
+        <span>{title.lead}</span>
+        <em>{title.emphasis}</em>
+      </h2>
+    </div>
+
+    {eyebrow && <p class='project-amenities__eyebrow'>{eyebrow}</p>}
+  </div>
+
+  <div class='project-amenities__divider page-shell'></div>
+
+  <div class='project-amenities__slider swiper' data-project-amenities-slider>
+    <div class='swiper-wrapper'>
+      {
+        items.map((item) => (
+          <article class='swiper-slide project-amenities__slide'>
+            <figure class='project-amenities__figure'>
+              <Image
+                src={item.image}
+                alt={item.alt}
+                class='project-amenities__image'
+                loading='lazy'
+              />
+
+              <div class='project-amenities__overlay' aria-hidden='true' />
+
+              <figcaption class='project-amenities__caption'>
+                <strong class='project-amenities__caption-title'>
+                  {item.title}
+                </strong>
+
+                {item.meta && (
+                  <span class='project-amenities__caption-meta'>
+                    {item.meta}
+                  </span>
+                )}
+              </figcaption>
+            </figure>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
+
+  import {
+    initProjectAmenitiesSlider,
+  } from '../../scripts/ui/project-amenities-slider';
+
+  mountPageUI(
+    '[data-project-amenities]',
+    initProjectAmenitiesSlider,
+  );
+</script>
+
+<style>
+  .project-amenities {
+    width: 100%;
+
+    padding-top: clamp(88px, 8vw, 128px);
+    padding-bottom: clamp(88px, 8vw, 128px);
+
+    overflow: hidden;
+
+    background-color: #fff;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+
+  .project-amenities__header {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 7fr)
+      minmax(220px, 3fr);
+
+    align-items: end;
+
+    gap: clamp(48px, 6vw, 96px);
+  }
+
+  .project-amenities__heading {
+    min-width: 0;
+  }
+
+  /* =========================
+     INDEX
+  ========================= */
+
+  .project-amenities__index {
+    display: block;
+
+    margin-bottom: clamp(22px, 2.5vw, 30px);
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1;
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+
+    color: rgb(20 20 20 / 62%);
+  }
+
+  /* =========================
+     TITLE
+  ========================= */
+
+  .project-amenities__title {
+    max-width: 780px;
+
+    margin: 0;
+
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: var(--font-weight-light);
+
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+
+    color: var(--color-black);
+  }
+
+  .project-amenities__title span,
+  .project-amenities__title em {
+    display: inline;
+  }
+
+  .project-amenities__title em {
+    margin-left: 0.18em;
+
+    font-weight: inherit;
+    font-style: italic;
+
+    color: var(--color-red);
+  }
+
+  /* =========================
+     EYEBROW
+  ========================= */
+
+  .project-amenities__eyebrow {
+    max-width: 220px;
+
+    margin: 0 0 2px auto;
+
+    font-family: var(--font-primary);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1.45;
+    letter-spacing: 0.26em;
+
+    text-align: left;
+    text-transform: uppercase;
+
+    color: rgb(20 20 20 / 48%);
+  }
+
+  /* =========================
+     DIVIDER
+  ========================= */
+
+  .project-amenities__divider {
+    margin-top: clamp(34px, 3.5vw, 48px);
+    margin-bottom: clamp(64px, 5vw, 82px);
+  }
+
+  .project-amenities__divider::before {
+    display: block;
+
+    width: 100%;
+    height: 1px;
+
+    content: '';
+
+    background-color: rgb(20 20 20 / 18%);
+  }
+
+  /* =========================
+     SWIPER
+  ========================= */
+
+  .project-amenities__slider {
+    width: 100%;
+
+    overflow: visible;
+  }
+
+  .project-amenities__slider :global(.swiper-wrapper) {
+    align-items: stretch;
+  }
+
+  /* =========================
+     SLIDE
+  ========================= */
+
+  .project-amenities__slide {
+    width: min(72vw, 1100px);
+    height: auto;
+  }
+
+  .project-amenities__figure {
+    position: relative;
+
+    width: 100%;
+    height: clamp(500px, 50vw, 790px);
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background-color: #ddd;
+  }
+
+  /* =========================
+     IMAGE
+  ========================= */
+
+  .project-amenities__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .project-amenities__slide:hover .project-amenities__image {
+    transform: scale(1.015);
+  }
+
+  /* =========================
+     OVERLAY
+  ========================= */
+
+  .project-amenities__overlay {
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 0;
+
+    height: 34%;
+
+    background: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0%),
+      rgb(0 0 0 / 8%) 20%,
+      rgb(0 0 0 / 70%) 100%
+    );
+
+    pointer-events: none;
+  }
+
+  /* =========================
+     CAPTION
+  ========================= */
+
+  .project-amenities__caption {
+    position: absolute;
+    z-index: 2;
+
+    bottom: clamp(24px, 2.5vw, 38px);
+    left: clamp(28px, 3vw, 52px);
+
+    display: flex;
+    flex-direction: column;
+
+    pointer-events: none;
+  }
+
+  .project-amenities__caption-title {
+    font-family: var(--font-primary);
+    font-size: clamp(0.72rem, 0.8vw, 0.875rem);
+    font-weight: var(--font-weight-medium);
+
+    line-height: 1;
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: #fff;
+  }
+
+  .project-amenities__caption-meta {
+    margin-top: 6px;
+
+    font-family: var(--font-primary);
+    font-size: 0.5625rem;
+    font-weight: var(--font-weight-regular);
+
+    line-height: 1;
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    color: rgb(255 255 255 / 58%);
+  }
+
+  /* =========================
+     TABLET
+  ========================= */
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .project-amenities {
+      padding-top: 88px;
+      padding-bottom: 96px;
+    }
+
+    .project-amenities__header {
+      grid-template-columns:
+        minmax(0, 65fr)
+        minmax(190px, 35fr);
+
+      gap: 48px;
+    }
+
+    .project-amenities__title {
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+    }
+
+    .project-amenities__divider {
+      margin-top: 38px;
+      margin-bottom: 58px;
+    }
+
+    .project-amenities__slide {
+      width: 82vw;
+    }
+
+    .project-amenities__figure {
+      height: clamp(480px, 64vw, 680px);
+    }
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media (max-width: 767px) {
+    .project-amenities {
+      padding-top: 72px;
+      padding-bottom: 80px;
+    }
+
+    .project-amenities__header {
+      display: flex;
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      gap: 32px;
+    }
+
+    .project-amenities__heading {
+      width: 100%;
+    }
+
+    .project-amenities__index {
+      margin-bottom: 24px;
+    }
+
+    .project-amenities__title {
+      max-width: 100%;
+
+      font-size: clamp(1.8rem, 8vw, 2.4rem);
+      line-height: 1.02;
+    }
+
+    .project-amenities__title span,
+    .project-amenities__title em {
+      display: block;
+    }
+
+    .project-amenities__title em {
+      margin-top: 0.08em;
+      margin-left: 0;
+    }
+
+    .project-amenities__eyebrow {
+      max-width: 200px;
+
+      margin: 0;
+    }
+
+    .project-amenities__divider {
+      margin-top: 36px;
+      margin-bottom: 44px;
+    }
+
+    .project-amenities__slide {
+      width: 88vw;
+    }
+
+    .project-amenities__figure {
+      height: min(126vw, 620px);
+    }
+
+    .project-amenities__caption {
+      bottom: 24px;
+      left: 24px;
+    }
+  }
+
+  /* =========================
+     REDUCED MOTION
+  ========================= */
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-amenities__image {
+      transition: none;
+    }
+
+    .project-amenities__slide:hover .project-amenities__image {
+      transform: none;
+    }
+  }
+</style>

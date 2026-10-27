@@ -346,6 +346,84 @@ const projects = defineCollection({
 
                 body: z.array(z.string().trim().min(1)).min(1),
               }),
+
+              /*
+               * Sección editorial de amenidades.
+               *
+               * Si visible=true, requiere contenido y assets
+               * necesarios para renderizar el carrusel.
+               */
+              amenities: z
+                .discriminatedUnion('visible', [
+                  z.object({
+                    visible: z.literal(false),
+                  }),
+
+                  z.object({
+                    visible: z.literal(true),
+
+                    index: z.string().trim().min(1),
+
+                    title: z.object({
+                      lead: z.string().trim().min(1),
+                      emphasis: z.string().trim().min(1),
+                    }),
+
+                    eyebrow: z.string().trim().min(1).optional(),
+
+                    items: z
+                      .array(
+                        z.object({
+                          image: image(),
+                          alt: z.string().trim().min(1),
+                          title: z.string().trim().min(1),
+                          meta: z.string().trim().min(1).optional(),
+                        }),
+                      )
+                      .min(1),
+                  }),
+                ])
+                .optional(),
+
+              /*
+               * Sección editorial de tipologías / plantas.
+               *
+               * Si visible=true, requiere contenido y assets
+               * necesarios para renderizar el selector.
+               */
+              floorplans: z
+                .discriminatedUnion('visible', [
+                  z.object({
+                    visible: z.literal(false),
+                  }),
+
+                  z.object({
+                    visible: z.literal(true),
+
+                    index: z.string().trim().min(1),
+
+                    title: z.object({
+                      lead: z.string().trim().min(1),
+                      emphasis: z.string().trim().min(1),
+                    }),
+
+                    items: z
+                      .array(
+                        z.object({
+                          name: z.string().trim().min(1),
+
+                          variant: z.string().trim().min(1).optional(),
+
+                          image: z.object({
+                            image: image(),
+                            alt: z.string().trim().min(1),
+                          }),
+                        }),
+                      )
+                      .min(1),
+                  }),
+                ])
+                .optional(),
             }),
           ])
           .optional(),

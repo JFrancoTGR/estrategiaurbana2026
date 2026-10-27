@@ -102,3 +102,75 @@ detail:
     body:
       - Ubicado sobre la Carretera Escénica Tijuana–Ensenada, el proyecto se sitúa en una de las zonas con mayor proyección de la región.
       - La ubicación ofrece una combinación única de conectividad, entorno natural y acceso a oferta gastronómica y recreativa, consolidándose como un punto estratégico entre México y Estados Unidos.
+    
+  amenities:
+      visible: true
+
+      index: '03 / Amenities'
+
+      title:
+        lead: Una propuesta de
+        emphasis: vivienda contemporánea.
+
+      eyebrow: Diseñado bajo una inspiración orgánica
+
+      items:
+        - image: ../../assets/img/projects/naos-resort-living/amenities/alberca.webp
+          alt: Alberca
+          title: Alberca
+          meta: Nivel 1
+
+        - image: ../../assets/img/projects/naos-resort-living/amenities/business-center.webp
+          alt: Business Center
+          title: Business Center
+          meta: Nivel 1
+
+        - image: ../../assets/img/projects/naos-resort-living/amenities/game-room.webp
+          alt: Game Room
+          title: Game Room
+          meta: Nivel 1
+        
+        - image: ../../assets/img/projects/naos-resort-living/amenities/gym.webp
+          alt: Gym
+          title: Gym
+          meta: Nivel 1
+
+        - image: ../../assets/img/projects/naos-resort-living/amenities/lounge.webp
+          alt: Lounge
+          title: Lounge
+          meta: Nivel 1
+        
+        - image: ../../assets/img/projects/naos-resort-living/amenities/ludoteca.webp
+          alt: Ludoteca
+          title: Ludoteca
+          meta: Nivel 1
+
+        - image: ../../assets/img/projects/naos-resort-living/amenities/residence-kitchen.webp
+          alt: Residence Kitchen
+          title: Residence Kitchen
+          meta: Nivel 1
+    
+      floorplans:
+        visible: true
+
+        index: '04 / Floorplans & Precios'
+
+        title:
+          lead: Tipologías, plantas
+          emphasis: y precios
+
+        items:
+          - name: The Firstroom
+            variant: Mountain View
+
+            image:
+              image: ../../assets/img/projects/naos-resort-living/floorplans/1.webp
+              alt: Tipología The Firstroom Mountain View
+
+        items:
+          - name: The Flexroom
+            variant: Ocean View
+
+            image:
+              image: ../../assets/img/projects/naos-resort-living/floorplans/2.webp
+              alt: Tipología The FirstrFlexroom Ocean View

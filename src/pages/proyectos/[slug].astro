@@ -10,6 +10,8 @@ import ProjectSubnav from '../../components/sections/ProjectSubnav.astro';
 
 import ProjectIntro from '../../components/sections/ProjectIntro.astro';
 import ProjectLocation from '../../components/sections/ProjectLocation.astro';
+import ProjectAmenities from '../../components/sections/ProjectAmenities.astro';
+import ProjectFloorplans from '../../components/sections/ProjectFloorplans.astro';
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection(
@@ -54,7 +56,14 @@ if (!location.address) {
   );
 }
 
-const { hero, metrics, intro, location: locationSection } = detail;
+const {
+  hero,
+  metrics,
+  intro,
+  location: locationSection,
+  amenities,
+  floorplans,
+} = detail;
 
 const detailMap = location.map?.detail;
 
@@ -102,4 +111,25 @@ const projectLocationMap =
     logo={project.data.brand?.logo ?? null}
     map={projectLocationMap}
   />
+
+  {
+    amenities?.visible === true && (
+      <ProjectAmenities
+        index={amenities.index}
+        title={amenities.title}
+        eyebrow={amenities.eyebrow}
+        items={amenities.items}
+      />
+    )
+  }
+
+  {
+    floorplans?.visible === true && (
+      <ProjectFloorplans
+        index={floorplans.index}
+        title={floorplans.title}
+        items={floorplans.items}
+      />
+    )
+  }
 </BaseLayout>
