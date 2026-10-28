@@ -12,6 +12,7 @@ import ProjectIntro from '../../components/sections/ProjectIntro.astro';
 import ProjectLocation from '../../components/sections/ProjectLocation.astro';
 import ProjectAmenities from '../../components/sections/ProjectAmenities.astro';
 import ProjectFloorplans from '../../components/sections/ProjectFloorplans.astro';
+import ProjectGallery from '../../components/sections/ProjectGallery.astro';
 
 export const getStaticPaths = (async () => {
   const projects = await getCollection(
@@ -63,6 +64,7 @@ const {
   location: locationSection,
   amenities,
   floorplans,
+  gallery,
 } = detail;
 
 const detailMap = location.map?.detail;
@@ -129,6 +131,17 @@ const projectLocationMap =
         index={floorplans.index}
         title={floorplans.title}
         items={floorplans.items}
+      />
+    )
+  }
+
+  {
+    gallery?.visible === true && (
+      <ProjectGallery
+        index={gallery.index}
+        title={gallery.title}
+        note={gallery.note}
+        items={gallery.items}
       />
     )
   }

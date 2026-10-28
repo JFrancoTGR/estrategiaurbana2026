@@ -424,6 +424,45 @@ const projects = defineCollection({
                   }),
                 ])
                 .optional(),
+              gallery: z
+                .discriminatedUnion('visible', [
+                  z.object({
+                    visible: z.literal(false),
+                  }),
+
+                  z.object({
+                    visible: z.literal(true),
+
+                    index: z.string().trim().min(1),
+
+                    title: z.object({
+                      lead: z.string().trim().min(1),
+                      emphasis: z.string().trim().min(1),
+                    }),
+
+                    note: z
+                      .object({
+                        lead: z.string().trim().min(1),
+                        action: z.string().trim().min(1),
+                      })
+                      .optional(),
+
+                    items: z
+                      .array(
+                        z.object({
+                          image: image(),
+
+                          alt: z.string().trim().min(1),
+
+                          variant: z
+                            .enum(['standard', 'wide', 'tall', 'feature'])
+                            .optional(),
+                        }),
+                      )
+                      .min(1),
+                  }),
+                ])
+                .optional(),
             }),
           ])
           .optional(),

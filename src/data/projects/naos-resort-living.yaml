@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -57,6 +61,10 @@ detail:
       value: '22'
       label: Niveles
       unit: niveles
+  
+  # =========================
+  # HERO
+  # =========================
 
   hero:
     image: ../../assets/img/projects/naos-resort-living/hero.webp
@@ -73,6 +81,10 @@ detail:
     cta:
       label: Agenda una cita
       href: '#contacto'
+  
+  # =========================
+  # INTRO / OVERVIEW
+  # =========================
 
   intro:
     index: '01 / Overview'
@@ -92,6 +104,10 @@ detail:
     decoration:
       image: ../../assets/img/projects/naos-resort-living/intro-decoration.svg
 
+  # =========================
+  # LOCATION
+  # =========================
+
   location:
     index: '02 / Ubicación'
 
@@ -102,6 +118,10 @@ detail:
     body:
       - Ubicado sobre la Carretera Escénica Tijuana–Ensenada, el proyecto se sitúa en una de las zonas con mayor proyección de la región.
       - La ubicación ofrece una combinación única de conectividad, entorno natural y acceso a oferta gastronómica y recreativa, consolidándose como un punto estratégico entre México y Estados Unidos.
+
+  # =========================
+  # AMENITIES
+  # =========================
 
   amenities:
     visible: true
@@ -150,6 +170,10 @@ detail:
         title: Residence Kitchen
         meta: Nivel 1
 
+  # =========================
+  # FLOORPLANS
+  # =========================
+
   floorplans:
     visible: true
 
@@ -173,14 +197,14 @@ detail:
         image:
           image: ../../assets/img/projects/naos-resort-living/tipology/2.webp
           alt: Tipología The Flexroom Ocean View
-      
+
       - name: The Twob-Room
         variant: Ocean View
 
         image:
           image: ../../assets/img/projects/naos-resort-living/tipology/3.webp
           alt: Tipología The Twob-Room Ocean View
-      
+
       - name: The Twob-Room Plus
         variant: Mountain View
 
@@ -194,17 +218,83 @@ detail:
         image:
           image: ../../assets/img/projects/naos-resort-living/tipology/5.webp
           alt: Tipología The Threeb-Room Ocean & Mountain View
-      
+
       - name: The Threeb-Room Plus
         variant: Ocean View
 
         image:
           image: ../../assets/img/projects/naos-resort-living/tipology/6.webp
           alt: Tipología The Threeb-Room Plus Ocean View
-      
+
       - name: The Penthouse
         variant: Ocean View
 
         image:
           image: ../../assets/img/projects/naos-resort-living/tipology/7.webp
           alt: Tipología The The Penthouse Ocean View
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: true
+
+    index: '05 / GALERÍA'
+
+    title:
+      lead: 'Galería'
+      emphasis: 'del proyecto'
+
+    note:
+      lead: 'RENDERS & AVANCES DE OBRA'
+      action: 'CLICK PARA AMPLIAR'
+
+    items:
+      - image: ../../assets/img/projects/naos-resort-living/gallery/01.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: tall
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/02.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: wide
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/03.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: standard
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/04.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: standard
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/05.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: tall
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/06.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: standard
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/07.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: wide
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/08.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: tall
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/09.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: standard
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/10.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: wide
+
+      - image: ../../assets/img/projects/naos-resort-living/gallery/11.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: wide
+      
+      - image: ../../assets/img/projects/naos-resort-living/gallery/12.webp
+        alt: 'Vista exterior de NAOS Resort Living'
+        variant: wide

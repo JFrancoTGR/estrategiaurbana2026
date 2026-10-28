@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -57,6 +61,10 @@ detail:
       value: '22'
       label: Niveles
       unit: niveles
+
+  # =========================
+  # HERO
+  # =========================
 
   hero:
     image: ../../assets/img/projects/the-wavve/hero.webp
@@ -73,6 +81,10 @@ detail:
       label: Agenda una cita
       href: '#contacto'
 
+  # =========================
+  # INTRO / OVERVIEW
+  # =========================
+
   intro:
     index: '01 / Overview'
 
@@ -82,6 +94,7 @@ detail:
 
     body:
       - Contenido editorial pendiente de definir para el overview de THE WAVVE.
+      - Contenido editorial pendiente de definir para el overview de THE WAVVE.
 
     image:
       image: ../../assets/img/projects/the-wavve/intro.webp
@@ -89,6 +102,10 @@ detail:
 
     decoration:
       image: ../../assets/img/projects/the-wavve/intro-decoration.svg
+
+  # =========================
+  # LOCATION
+  # =========================
 
   location:
     index: '02 / Ubicación'
@@ -100,3 +117,151 @@ detail:
     body:
       - THE WAVVE se ubica sobre la Carretera Escénica Tijuana–Ensenada, en Punta Bandera, Playas de Tijuana.
       - Su posición dentro del corredor costero permite mantener conexión con Tijuana, Rosarito y los principales cruces hacia Estados Unidos.
+
+  # =========================
+  # AMENITIES
+  # =========================
+
+  amenities:
+    visible: true
+  
+    index: '03 / Amenities'
+  
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
+  
+    eyebrow: Diseño bajo una inspiración orgánica
+  
+    items:
+      - image: ../../assets/img/projects/the-wavve/amenities/alberca-exterior.webp
+        alt: Alberca Exterior
+        title: Alberca Exterior
+        meta: Nivel 1
+  
+      - image: ../../assets/img/projects/the-wavve/amenities/business-center.webp
+        alt: Business Center
+        title: Business Center
+        meta: Nivel 1
+      
+      - image: ../../assets/img/projects/the-wavve/amenities/padel.webp
+        alt: Padel
+        title: Padel
+        meta: Nivel 1
+      
+      - image: ../../assets/img/projects/the-wavve/amenities/residence-kitchen.webp
+        alt: Residence Kitchen
+        title: Residence Kitchen
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/alberca-villas.webp
+        alt: Alberca Villas
+        title: Alberca Villas
+        meta: Nivel 1
+      
+      - image: ../../assets/img/projects/the-wavve/amenities/gym.webp
+        alt: Gym
+        title: Gym
+        meta: Nivel 1
+
+  # =========================
+  # FLOORPLANS
+  # =========================
+  #
+  # Activar cuando tengamos las
+  # tipologías definitivas.
+  #
+  # Estructura de referencia:
+  #
+  # floorplans:
+  #   visible: true
+  #
+  #   index: '04 / Floorplans & Precios'
+  #
+  #   title:
+  #     lead: Tipologías, plantas
+  #     emphasis: y precios
+  #
+  #   items:
+  #     - name: PLACEHOLDER_TIPOLOGIA_01
+  #       variant: PLACEHOLDER_VARIANTE_01
+  #
+  #       image:
+  #         image: ../../assets/img/projects/the-wavve/tipology/1.webp
+  #         alt: PLACEHOLDER_ALT_TIPOLOGIA_01
+  #
+  #     - name: PLACEHOLDER_TIPOLOGIA_02
+  #       variant: PLACEHOLDER_VARIANTE_02
+  #
+  #       image:
+  #         image: ../../assets/img/projects/the-wavve/tipology/2.webp
+  #         alt: PLACEHOLDER_ALT_TIPOLOGIA_02
+
+  floorplans:
+    visible: false
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: true
+  
+    index: '05 / Galería'
+  
+    title:
+      lead: Galería
+      emphasis: del proyecto
+  
+    note:
+      lead: RENDERS & AVANCES DE OBRA
+      action: CLICK PARA AMPLIAR
+  
+    items:
+      - image: ../../assets/img/projects/the-wavve/gallery/01.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: tall
+  
+      - image: ../../assets/img/projects/the-wavve/gallery/02.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: standard
+  
+      - image: ../../assets/img/projects/the-wavve/gallery/03.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: wide
+  
+      - image: ../../assets/img/projects/the-wavve/gallery/04.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: wide
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/05.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: tall
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/06.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: wide
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/07.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: standard
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/08.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: tall
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/09.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: standard
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/10.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: wide
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/11.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: wide
+      
+      - image: ../../assets/img/projects/the-wavve/gallery/12.webp
+        alt: 'Vista exterior de The WAVVE'
+        variant: standard
