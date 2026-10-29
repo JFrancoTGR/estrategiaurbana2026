@@ -10,7 +10,7 @@ import { init as initPartnersGrid } from './modules/partners-grid';
 import { init as initProjectHero } from './modules/project-hero';
 
 import { init as initZoneHero } from './modules/zone-hero';
-import { init as initProjectsListingHero } from './modules/project-listing-hero';
+import { init as initProjectsListingHero } from './modules/projects-listing-hero';
 import { init as initProjectsGrid } from './modules/projects-grid';
 
 export type MotionInitializer = (root: HTMLElement) => void | (() => void);

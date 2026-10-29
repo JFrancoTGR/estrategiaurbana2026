@@ -18,19 +18,19 @@ interface Props {
 const { image, title, cta } = Astro.props;
 ---
 
-<section class='section-hero' data-motion='section-hero'>
+<section class='projects-listing-hero' data-motion='projects-listing-hero'>
   <Image
     src={image}
     alt=''
-    class='section-hero__image'
+    class='projects-listing-hero__image'
     loading='eager'
     fetchpriority='high'
     data-anim='media'
   />
 
-  <div class='section-hero__content page-shell layout-grid'>
-    <div class='section-hero__copy'>
-      <h1 class='section-hero__title font-editorial' data-anim='title'>
+  <div class='projects-listing-hero__content page-shell layout-grid'>
+    <div class='projects-listing-hero__copy'>
+      <h1 class='projects-listing-hero__title font-editorial' data-anim='title'>
         {title.map((line) => <span>{line}</span>)}
       </h1>
 
@@ -38,7 +38,7 @@ const { image, title, cta } = Astro.props;
         cta && (
           <a
             href={withBase(cta.href)}
-            class='section-hero__cta'
+            class='projects-listing-hero__cta'
             data-anim='cta'
           >
             {cta.label}
@@ -50,7 +50,7 @@ const { image, title, cta } = Astro.props;
 </section>
 
 <style>
-  .section-hero {
+  .projects-listing-hero {
     position: relative;
 
     width: 100%;
@@ -66,7 +66,7 @@ const { image, title, cta } = Astro.props;
      Media
   ------------------------------ */
 
-  .section-hero__image {
+  .projects-listing-hero__image {
     position: absolute;
     z-index: 0;
     inset: 0;
@@ -84,7 +84,7 @@ const { image, title, cta } = Astro.props;
    * 1. preservar legibilidad del navbar;
    * 2. reforzar contraste del copy inferior.
    */
-  .section-hero::after {
+  .projects-listing-hero::after {
     content: '';
 
     position: absolute;
@@ -112,7 +112,7 @@ const { image, title, cta } = Astro.props;
      Content
   ------------------------------ */
 
-  .section-hero__content {
+  .projects-listing-hero__content {
     position: relative;
     z-index: 2;
 
@@ -121,7 +121,7 @@ const { image, title, cta } = Astro.props;
     align-items: end;
   }
 
-  .section-hero__copy {
+  .projects-listing-hero__copy {
     grid-column: 1 / span 7;
 
     display: flex;
@@ -131,7 +131,7 @@ const { image, title, cta } = Astro.props;
     padding-bottom: clamp(64px, 6vw, 104px);
   }
 
-  .section-hero__title {
+  .projects-listing-hero__title {
     margin: 0;
 
     font-size: clamp(3.4rem, 5vw, 6rem);
@@ -146,7 +146,7 @@ const { image, title, cta } = Astro.props;
       0 4px 18px rgb(0 0 0 / 25%);
   }
 
-  .section-hero__title span {
+  .projects-listing-hero__title span {
     display: block;
   }
 
@@ -154,7 +154,7 @@ const { image, title, cta } = Astro.props;
      CTA
   ------------------------------ */
 
-  .section-hero__cta {
+  .projects-listing-hero__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -178,12 +178,12 @@ const { image, title, cta } = Astro.props;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .section-hero__cta:hover {
+    .projects-listing-hero__cta:hover {
       transform: translateY(-1px);
     }
   }
 
-  .section-hero__cta:focus-visible {
+  .projects-listing-hero__cta:focus-visible {
     outline: 1px solid var(--color-white);
 
     outline-offset: 4px;
@@ -194,11 +194,11 @@ const { image, title, cta } = Astro.props;
   ------------------------------ */
 
   @media (min-width: 768px) and (max-width: 1199px) {
-    .section-hero__copy {
+    .projects-listing-hero__copy {
       grid-column: 1 / span 6;
     }
 
-    .section-hero__title {
+    .projects-listing-hero__title {
       font-size: clamp(3.5rem, 7vw, 5rem);
     }
   }
@@ -208,24 +208,24 @@ const { image, title, cta } = Astro.props;
   ------------------------------ */
 
   @media (max-width: 767px) {
-    .section-hero,
-    .section-hero__content {
+    .projects-listing-hero,
+    .projects-listing-hero__content {
       min-height: clamp(485px, 68svh, 610px);
     }
 
-    .section-hero__copy {
+    .projects-listing-hero__copy {
       grid-column: 1 / -1;
 
       padding-bottom: 48px;
     }
 
-    .section-hero__title {
+    .projects-listing-hero__title {
       font-size: clamp(3rem, 13vw, 4.6rem);
 
       line-height: 0.94;
     }
 
-    .section-hero__cta {
+    .projects-listing-hero__cta {
       margin-top: 28px;
     }
   }

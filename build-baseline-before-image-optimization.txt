@@ -1,0 +1,43 @@
+BUILD BASELINE - BEFORE IMAGE OPTIMIZATION
+Generated: 2026-10-27 13:55:41
+
+
+
+BuildDate : 2026-10-27 13:55:35
+Files     : 430
+TotalMB   : 455.45
+Images    : 376
+ImagesMB  : 377.53
+WebP      : 344
+WebPMB    : 377.38
+
+
+
+
+TOP 20 FILES
+
+   MB FullName                                                                               
+   -- --------                                                                               
+61.97 C:\xampp\htdocs\estrategiaurbana2026\dist\media\home\manifesto\video\manifesto-1080.mp4
+   20 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\02.DRa5aXhQ.webp                      
+ 19.6 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\04.bUbhasvB.webp                      
+19.36 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.IE4kl1u1.webp                      
+19.18 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\03.De9VuyEP.webp                      
+13.13 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\04.D2RQZ5KZ.webp                      
+11.65 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\03.D0zwd3Dk.webp                      
+10.16 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\02.C5zTKAC4.webp                      
+ 8.63 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.1nkbAT10.webp                      
+ 8.18 C:\xampp\htdocs\estrategiaurbana2026\dist\media\home\manifesto\video\clip-base.mp4     
+ 8.06 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.CWPhyBZT.webp                      
+ 8.01 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.Bo6PZ0ND.webp                      
+ 7.76 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.BbB1aBVw.webp                      
+  7.4 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\10.sjqSkvSR.webp                      
+ 7.23 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\03.DsWiI1qN.webp                      
+ 7.18 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\12.C0qK92Mg.webp                      
+ 7.16 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\09.BvAm22Pr.webp                      
+ 7.13 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\02.C4ADRFo0.webp                      
+ 6.91 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\01.DYPKq4Th.webp                      
+ 6.31 C:\xampp\htdocs\estrategiaurbana2026\dist\_astro\02.7CJtfCpj.webp                      
+
+
+
