@@ -19,14 +19,15 @@ const { image, alt, title, subtitle } = Astro.props;
     class='zone-hero__image'
     loading='eager'
     fetchpriority='high'
+    data-anim='media'
   />
 
   <div class='zone-hero__content page-shell'>
-    <p class='zone-hero__subtitle'>
+    <p class='zone-hero__subtitle' data-anim='subtitle'>
       {subtitle}
     </p>
 
-    <h1 class='zone-hero__title font-editorial'>
+    <h1 class='zone-hero__title font-editorial' data-anim='title'>
       {title}
     </h1>
   </div>

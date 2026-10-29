@@ -14,6 +14,8 @@ import ProjectAmenities from '../../components/sections/ProjectAmenities.astro';
 import ProjectFloorplans from '../../components/sections/ProjectFloorplans.astro';
 import ProjectGallery from '../../components/sections/ProjectGallery.astro';
 
+import ContactForm from '../../components/sections/ContactForm.astro';
+
 export const getStaticPaths = (async () => {
   const projects = await getCollection(
     'projects',
@@ -145,4 +147,6 @@ const projectLocationMap =
       />
     )
   }
+
+  <ContactForm />
 </BaseLayout>

@@ -1,20 +1,20 @@
 <section
   id='contacto'
-  class='home-contact'
+  class='contact-form'
 >
-  <div class='page-shell home-contact__layout'>
-    <div class='home-contact__intro'>
-      <p class='home-contact__eyebrow'>
+  <div class='page-shell contact-form__layout'>
+    <div class='contact-form__intro'>
+      <p class='contact-form__eyebrow'>
         CONTÁCTANOS
       </p>
 
-      <h2 class='home-contact__title font-editorial'>
+      <h2 class='contact-form__title font-editorial'>
         Empecemos la
         <strong>conversación</strong>
         <strong>correcta.</strong>
       </h2>
 
-      <p class='home-contact__description'>
+      <p class='contact-form__description'>
         Ya sea que estés interesado en uno de nuestros proyectos,
         explorando una oportunidad de inversión, buscando desarrollar
         una propiedad o construyendo una alianza estratégica, queremos
@@ -23,10 +23,10 @@
     </div>
 
     <form
-      class='home-contact__form'
+      class='contact-form__form'
       aria-label='Formulario de contacto'
     >
-      <div class='home-contact__field'>
+      <div class='contact-form__field'>
         <label for='contact-name'>
           NOMBRE
         </label>
@@ -39,7 +39,7 @@
         />
       </div>
 
-      <div class='home-contact__field'>
+      <div class='contact-form__field'>
         <label for='contact-email'>
           CORREO
         </label>
@@ -52,7 +52,7 @@
         />
       </div>
 
-      <div class='home-contact__field'>
+      <div class='contact-form__field'>
         <label for='contact-project'>
           PROYECTO DE INTERÉS
         </label>
@@ -65,7 +65,7 @@
       </div>
 
       <button
-        class='home-contact__submit'
+        class='contact-form__submit'
         type='button'
       >
         ENVIAR MENSAJE
@@ -75,14 +75,14 @@
 </section>
 
 <style>
-  .home-contact {
+  .contact-form {
     width: 100%;
 
     color: var(--color-white);
     background-color: var(--color-red);
   }
 
-  .home-contact__layout {
+  .contact-form__layout {
     min-height: 700px;
 
     display: grid;
@@ -102,11 +102,11 @@
      INTRO
   ========================= */
 
-  .home-contact__intro {
+  .contact-form__intro {
     max-width: 590px;
   }
 
-  .home-contact__eyebrow {
+  .contact-form__eyebrow {
     margin: 0;
 
     font-family: var(--font-primary);
@@ -118,7 +118,7 @@
     text-transform: uppercase;
   }
 
-  .home-contact__title {
+  .contact-form__title {
     margin:
       clamp(42px, 4vw, 56px)
       0
@@ -132,13 +132,13 @@
     line-height: 0.88;
   }
 
-  .home-contact__title strong {
+  .contact-form__title strong {
     display: block;
 
     font-weight: var(--font-weight-semibold);
   }
 
-  .home-contact__description {
+  .contact-form__description {
     max-width: 590px;
 
     margin:
@@ -156,7 +156,7 @@
      FORM
   ========================= */
 
-  .home-contact__form {
+  .contact-form__form {
     width: 100%;
     max-width: 520px;
 
@@ -166,14 +166,14 @@
     flex-direction: column;
   }
 
-  .home-contact__field {
+  .contact-form__field {
     display: flex;
     flex-direction: column;
 
     margin-bottom: 34px;
   }
 
-  .home-contact__field label {
+  .contact-form__field label {
     margin-bottom: 16px;
 
     font-family: var(--font-primary);
@@ -187,7 +187,7 @@
     text-transform: uppercase;
   }
 
-  .home-contact__field input {
+  .contact-form__field input {
     width: 100%;
     height: 28px;
 
@@ -206,11 +206,11 @@
     font-weight: var(--font-weight-regular);
   }
 
-  .home-contact__field input:focus {
+  .contact-form__field input:focus {
     border-bottom-color: var(--color-white);
   }
 
-  .home-contact__submit {
+  .contact-form__submit {
     width: fit-content;
 
     margin-top: 20px;
@@ -238,7 +238,7 @@
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .home-contact__submit:hover {
+    .contact-form__submit:hover {
       color: var(--color-white);
       background-color: transparent;
 
@@ -251,7 +251,7 @@
   ========================= */
 
   @media (max-width: 900px) {
-    .home-contact__layout {
+    .contact-form__layout {
       min-height: 0;
 
       grid-template-columns: 1fr;
@@ -261,11 +261,11 @@
       padding-block: 96px;
     }
 
-    .home-contact__intro {
+    .contact-form__intro {
       max-width: 680px;
     }
 
-    .home-contact__form {
+    .contact-form__form {
       max-width: 680px;
 
       justify-self: start;
@@ -273,36 +273,36 @@
   }
 
   @media (max-width: 767px) {
-    .home-contact__layout {
+    .contact-form__layout {
       row-gap: 68px;
 
       padding-block: 84px 96px;
     }
 
-    .home-contact__title {
+    .contact-form__title {
       margin-top: 36px;
 
       font-size: clamp(3.25rem, 14vw, 4.5rem);
     }
 
-    .home-contact__description {
+    .contact-form__description {
       margin-top: 34px;
 
       font-size: 1.0625rem;
       line-height: 1.35;
     }
 
-    .home-contact__field {
+    .contact-form__field {
       margin-bottom: 30px;
     }
 
-    .home-contact__submit {
+    .contact-form__submit {
       margin-top: 14px;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .home-contact__submit {
+    .contact-form__submit {
       transition: none;
     }
   }

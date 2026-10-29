@@ -32,25 +32,25 @@ interface Props {
 const { index, title, body, projectName, logo, map } = Astro.props;
 ---
 
-<section id='location' class='project-location'>
+<section id='location' class='project-location' data-motion='project-location'>
   <div class='project-location__content page-shell'>
     <div class='project-location__editorial'>
       <div class='project-location__copy'>
-        <span class='project-location__index'>
+        <span class='project-location__index' data-anim>
           {index}
         </span>
 
-        <h2 class='project-location__title font-editorial'>
+        <h2 class='project-location__title font-editorial' data-anim>
           <span>{title.lead}</span>
           <em>{title.emphasis}</em>
         </h2>
 
-        <div class='project-location__body'>
+        <div class='project-location__body' data-anim>
           {body.map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </div>
 
-      <div class='project-location__brand'>
+      <div class='project-location__brand' data-anim>
         {
           logo && (
             <Image
@@ -290,6 +290,36 @@ const { index, title, body, projectName, logo, map } = Astro.props;
   }
 
   /* =========================
+   ANIMATION
+  ========================= */
+
+  .project-location [data-anim] {
+    opacity: 0;
+    transform: translateY(12px);
+
+    transition:
+      opacity 700ms var(--ease-premium),
+      transform 700ms var(--ease-premium);
+  }
+
+  .project-location [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-location__title[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  .project-location__body[data-anim] {
+    transition-delay: 160ms;
+  }
+
+  .project-location__brand[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  /* =========================
      TABLET
   ========================= */
 
@@ -385,6 +415,14 @@ const { index, title, body, projectName, logo, map } = Astro.props;
       overflow: hidden;
 
       text-overflow: ellipsis;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-location [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 </style>

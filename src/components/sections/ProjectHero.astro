@@ -117,7 +117,7 @@ const hasFooter = stats.length > 0 || Boolean(cta);
 
 <style>
   .project-hero {
-    --project-hero-height: clamp(640px, 100svh, 900px);
+    --project-hero-height: 100svh;
 
     position: relative;
 
@@ -383,9 +383,9 @@ const hasFooter = stats.length > 0 || Boolean(cta);
   ========================= */
 
   @media (min-width: 768px) and (max-width: 1199px) {
-    .project-hero {
+    /* .project-hero {
       --project-hero-height: clamp(620px, 92svh, 820px);
-    }
+    } */
 
     .project-hero__content {
       padding-bottom: 56px;
@@ -417,9 +417,9 @@ const hasFooter = stats.length > 0 || Boolean(cta);
   ========================= */
 
   @media (max-width: 767px) {
-    .project-hero {
+    /* .project-hero {
       --project-hero-height: clamp(620px, 100svh, 780px);
-    }
+    } */
 
     .project-hero::after {
       background:

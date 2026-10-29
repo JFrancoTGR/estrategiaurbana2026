@@ -27,23 +27,34 @@ interface Props {
 const { index, title, eyebrow, items } = Astro.props;
 ---
 
-<section id='amenities' class='project-amenities' data-project-amenities>
+<section
+  id='features'
+  class='project-amenities'
+  data-project-amenities
+  data-motion='project-amenities'
+>
   <div class='project-amenities__header page-shell'>
     <div class='project-amenities__heading'>
-      <span class='project-amenities__index'>
+      <span class='project-amenities__index' data-anim>
         {index}
       </span>
 
-      <h2 class='project-amenities__title font-editorial'>
+      <h2 class='project-amenities__title font-editorial' data-anim>
         <span>{title.lead}</span>
         <em>{title.emphasis}</em>
       </h2>
     </div>
 
-    {eyebrow && <p class='project-amenities__eyebrow'>{eyebrow}</p>}
+    {
+      eyebrow && (
+        <p class='project-amenities__eyebrow' data-anim>
+          {eyebrow}
+        </p>
+      )
+    }
   </div>
 
-  <div class='project-amenities__divider page-shell'></div>
+  <div class='project-amenities__divider page-shell' data-anim></div>
 
   <div class='project-amenities__slider swiper' data-project-amenities-slider>
     <div class='swiper-wrapper'>
@@ -82,14 +93,9 @@ const { index, title, eyebrow, items } = Astro.props;
 <script>
   import { mountPageUI } from '../../scripts/ui/page-lifecycle';
 
-  import {
-    initProjectAmenitiesSlider,
-  } from '../../scripts/ui/project-amenities-slider';
+  import { initProjectAmenitiesSlider } from '../../scripts/ui/project-amenities-slider';
 
-  mountPageUI(
-    '[data-project-amenities]',
-    initProjectAmenitiesSlider,
-  );
+  mountPageUI('[data-project-amenities]', initProjectAmenitiesSlider);
 </script>
 
 <style>
@@ -341,6 +347,36 @@ const { index, title, eyebrow, items } = Astro.props;
   }
 
   /* =========================
+   ANIMATION
+  ========================= */
+
+  .project-amenities [data-anim] {
+    opacity: 0;
+    transform: translateY(12px);
+
+    transition:
+      opacity 700ms var(--ease-premium),
+      transform 700ms var(--ease-premium);
+  }
+
+  .project-amenities [data-anim].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-amenities__title[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  .project-amenities__eyebrow[data-anim] {
+    transition-delay: 100ms;
+  }
+
+  .project-amenities__divider[data-anim] {
+    transition-delay: 180ms;
+  }
+
+  /* =========================
      TABLET
   ========================= */
 
@@ -450,6 +486,12 @@ const { index, title, eyebrow, items } = Astro.props;
   ========================= */
 
   @media (prefers-reduced-motion: reduce) {
+    .project-amenities [data-anim] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
     .project-amenities__image {
       transition: none;
     }
