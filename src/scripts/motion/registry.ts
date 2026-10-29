@@ -27,7 +27,7 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'home-zones-intro': initEditorialReveal,
 
   'zone-hero': initZoneHero,
-  'section-hero': initProjectsListingHero,
+  'projects-listing-hero': initProjectsListingHero,
 
   'projects-grid': initProjectsGrid,
   'partners-grid': initPartnersGrid,

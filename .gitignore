@@ -28,3 +28,7 @@ pnpm-debug.log*
 
 # Carpeta de videos
 /public/media/home/manifesto/video
+
+# Optimizadores de Webp
+build-baseline-before-image-optimization.txt
+optimize-webp-preview-q88.cjs
