@@ -1,26 +1,14 @@
 ---
-const navigation = [
-  {
-    label: 'Proyecto',
-    href: '#project',
-  },
-  {
-    label: 'Ubicación',
-    href: '#location',
-  },
-  {
-    label: 'Amenidades',
-    href: '#features',
-  },
-  {
-    label: 'Tipologías',
-    href: '#typologies',
-  },
-  {
-    label: 'Galería',
-    href: '#gallery',
-  },
-];
+interface NavigationItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  navigation: NavigationItem[];
+}
+
+const { navigation } = Astro.props;
 ---
 
 <nav

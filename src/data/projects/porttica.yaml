@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -73,6 +77,10 @@ detail:
       label: Agenda una cita
       href: '#contacto'
 
+  # =========================
+  # INTRO / OVERVIEW
+  # =========================
+
   intro:
     index: '01 / Overview'
 
@@ -90,6 +98,10 @@ detail:
     decoration:
       image: ../../assets/img/projects/porttica/intro-decoration.svg
 
+  # =========================
+  # LOCATION
+  # =========================
+
   location:
     index: '02 / Ubicación'
 
@@ -100,3 +112,183 @@ detail:
     body:
       - PORTTICA se ubica sobre Boulevard Cuauhtémoc Sur, en Madero Sur, Zona Centro de Tijuana.
       - Su localización ofrece acceso a distintos puntos comerciales, gastronómicos y de servicios dentro de la ciudad.
+
+  # =========================
+  # AMENITIES
+  # =========================
+
+  amenities:
+    visible: true
+
+    index: '03 / Amenities'
+
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
+
+    eyebrow: Diseñado bajo una inspiración orgánica
+
+    items:
+      - image: ../../assets/img/projects/porttica/amenities/alberca.webp
+        alt: Alberca
+        title: Alberca
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/porttica/amenities/roof.webp
+        alt: Roof
+        title: Roof
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/porttica/amenities/usos-multiples.webp
+        alt: Usos Múltiples
+        title: Usos Múltiples
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/porttica/amenities/gym.webp
+        alt: Gimnasio
+        title: Gimnasio
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/porttica/amenities/coworking.webp
+        alt: Coworking
+        title: Coworking
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/porttica/amenities/ludoteca.webp
+        alt: Ludoteca
+        title: Ludoteca
+        meta: Nivel 1
+      
+      - image: ../../assets/img/projects/porttica/amenities/lobby.webp
+        alt: Lobby
+        title: Lobby
+        meta: Nivel 1
+
+  # =========================
+  # FLOORPLANS
+  # =========================
+
+  floorplans:
+    visible: true
+
+    index: '04 / Floorplans & Precios'
+
+    title:
+      lead: Tipologías, plantas
+      emphasis: y precios
+
+    items:
+      - name: Tipología 1R
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/1.webp
+          alt: Tipología 1R
+
+      - name: Tipología 1R + Flex
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/2.webp
+          alt: Tipología 1R + Flex
+
+      - name: Tipología 2XL
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/3.webp
+          alt: Tipología 2XL
+
+      - name: Tipología 2R + Flex
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/4.webp
+          alt: Tipología 2R + Flex
+
+      - name: Tipología 3R
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/5.webp
+          alt: Tipología 3R
+      
+      - name: Tipología PH 2R
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/6.webp
+          alt: Tipología PH 2R
+      
+      - name: Tipología PH 3R
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/porttica/tipology/7.webp
+          alt: Tipología PH 3R
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: false
+
+    index: '05 / GALERÍA'
+
+    title:
+      lead: 'Galería'
+      emphasis: 'del proyecto'
+
+    note:
+      lead: 'RENDERS & AVANCES DE OBRA'
+      action: 'CLICK PARA AMPLIAR'
+
+    items:
+      - image: ../../assets/img/projects/porttica/gallery/01.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/porttica/gallery/02.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/porttica/gallery/03.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/porttica/gallery/04.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/porttica/gallery/05.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/porttica/gallery/06.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/porttica/gallery/07.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/porttica/gallery/08.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/porttica/gallery/09.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/porttica/gallery/10.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/porttica/gallery/11.webp
+        alt: 'Vista exterior '
+        variant: wide
+      
+      - image: ../../assets/img/projects/porttica/gallery/12.webp
+        alt: 'Vista exterior '
+        variant: wide

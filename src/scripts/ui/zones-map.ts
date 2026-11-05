@@ -14,6 +14,13 @@ import {
 
 const LOCATION_ZOOM = 16;
 
+const CDMX_INITIAL_BOUNDS = {
+  north: 19.6,
+  south: 19.2,
+  east: -98.9,
+  west: -99.4,
+};
+
 const getInitialBoundsPadding = () => {
   const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
@@ -599,12 +606,26 @@ export function initZonesMap(root: HTMLElement) {
       const { LatLng, LatLngBounds, event: mapsEvent } = coreLibrary;
 
       /* ---------------------------------
-         Calculate project bounds
+      Calculate initial CDMX bounds
       --------------------------------- */
+
+      const initialLocations = locations.filter((location) => {
+        const { lat, lng } = location;
+
+        return (
+          lat >= CDMX_INITIAL_BOUNDS.south &&
+          lat <= CDMX_INITIAL_BOUNDS.north &&
+          lng >= CDMX_INITIAL_BOUNDS.west &&
+          lng <= CDMX_INITIAL_BOUNDS.east
+        );
+      });
 
       const bounds = new LatLngBounds();
 
-      locations.forEach((location) => {
+      const boundsLocations =
+        initialLocations.length > 0 ? initialLocations : locations;
+
+      boundsLocations.forEach((location) => {
         bounds.extend({
           lat: location.lat,
           lng: location.lng,

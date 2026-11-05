@@ -69,6 +69,36 @@ const {
   gallery,
 } = detail;
 
+/*
+ * =========================
+ * PROJECT NAVIGATION
+ * =========================
+ *
+ */
+
+const projectNavigation = [
+  {
+    label: 'Proyecto',
+    href: '#project',
+  },
+  {
+    label: 'Ubicación',
+    href: '#location',
+  },
+
+  ...(amenities?.visible === true
+    ? [{ label: 'Amenidades', href: '#features' }]
+    : []),
+
+  ...(floorplans?.visible === true
+    ? [{ label: 'Tipologías', href: '#typologies' }]
+    : []),
+
+  ...(gallery?.visible === true
+    ? [{ label: 'Galería', href: '#gallery' }]
+    : []),
+];
+
 const detailMap = location.map?.detail;
 
 const projectLocationMap =
@@ -94,7 +124,7 @@ const projectLocationMap =
     cta={hero.cta}
   />
 
-  <ProjectSubnav />
+  <ProjectSubnav navigation={projectNavigation} />
 
   <ProjectIntro
     index={intro.index}

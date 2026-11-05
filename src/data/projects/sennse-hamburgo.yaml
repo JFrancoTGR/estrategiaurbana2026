@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -57,6 +61,10 @@ detail:
       value: '22'
       label: Niveles
       unit: niveles
+
+  # =========================
+  # HERO
+  # =========================
 
   hero:
     image: ../../assets/img/projects/sennse-hamburgo/hero.webp
@@ -73,6 +81,10 @@ detail:
     cta:
       label: Agenda una cita
       href: '#contacto'
+  
+    # =========================
+    # INTRO / OVERVIEW
+    # =========================
 
   intro:
     index: '01 / Overview'
@@ -91,6 +103,10 @@ detail:
     decoration:
       image: ../../assets/img/projects/sennse-hamburgo/intro-decoration.svg
 
+  # =========================
+  # LOCATION
+  # =========================
+
   location:
     index: '02 / Ubicación'
 
@@ -101,3 +117,185 @@ detail:
     body:
       - Sennse Hamburgo se ubica en Hamburgo 112, dentro de la colonia Juárez, en Ciudad de México.
       - La ubicación lo integra a un entorno consolidado de vivienda, comercio y servicios de la zona central.
+
+  # =========================
+  # AMENITIES
+  # =========================
+
+  amenities:
+    visible: true
+
+    index: '03 / Amenities'
+
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
+
+    eyebrow: Diseñado bajo una inspiración orgánica
+
+    items:
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-top.webp
+        alt: Terraza
+        title: Terraza
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/patio.webp
+        alt: Patio Jardín
+        title: Patio Jardín
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-garden.webp
+        alt: Terraza
+        title: Terraza
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/sala-comedor.webp
+        alt: Sala Comedor
+        title: Sala Comedor
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/bike-station.webp
+        alt: Bike Station
+        title: Bike Station
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-hamburgo/amenities/lobby.webp
+        alt: Lobby
+        title: Lobby
+        meta: Nivel 1
+
+  # =========================
+  # FLOORPLANS
+  # =========================
+
+  floorplans:
+    visible: true
+
+    index: '04 / Floorplans & Precios'
+
+    title:
+      lead: Tipologías, plantas
+      emphasis: y precios
+
+    items:
+      - name: Depto 01
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/1.webp
+          alt: Tipología Departamento
+
+      - name: Depto 02
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/2.webp
+          alt: Tipología Departamento
+
+      - name: Depto 03
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/3.webp
+          alt: Tipología Departamento
+
+      - name: Depto 04
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/4.webp
+          alt: Tipología Departamento
+
+      - name: RG 01
+        variant: Roof Garden
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/5.webp
+          alt: Tipología Roof Garden
+      
+      - name: RG 02
+        variant: Roof Garden
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/6.webp
+          alt: Tipología Roof Garden
+      
+      - name: RG 03
+        variant: Roof Garden
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/7.webp
+          alt: Tipología Roof Garden
+      
+      - name: RG 04
+        variant: Roof Garden
+
+        image:
+          image: ../../assets/img/projects/sennse-hamburgo/tipology/8.webp
+          alt: Tipología Roof Garden
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: false
+
+    index: '05 / GALERÍA'
+
+    title:
+      lead: 'Galería'
+      emphasis: 'del proyecto'
+
+    note:
+      lead: 'RENDERS & AVANCES DE OBRA'
+      action: 'CLICK PARA AMPLIAR'
+
+    items:
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/01.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/02.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/03.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/04.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/05.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/06.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/07.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/08.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/09.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/10.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/11.webp
+        alt: 'Vista exterior '
+        variant: wide
+      
+      - image: ../../assets/img/projects/sennse-hamburgo/gallery/12.webp
+        alt: 'Vista exterior '
+        variant: wide

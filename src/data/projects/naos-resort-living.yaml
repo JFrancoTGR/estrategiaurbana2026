@@ -25,7 +25,7 @@ location:
 
     detail:
       visible: true
-      zoom: 15
+      zoom: 16
 
 price:
   from: 4000000

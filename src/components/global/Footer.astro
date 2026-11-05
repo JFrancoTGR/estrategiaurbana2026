@@ -30,8 +30,9 @@ const navigation = [
     ],
   },
   {
-    label: 'Contacto',
-    href: '/contacto',
+    label: 'Terrenos',
+    href: 'https://terrenos.estrategiaurbana.info/',
+    external: true,
   },
 ];
 
@@ -69,7 +70,19 @@ const currentYear = new Date().getFullYear();
               <li class='site-footer__navigation-item'>
                 {'href' in item && item.href ? (
                   <a
-                    href={withBase(item.href)}
+                    href={
+                      'external' in item && item.external
+                        ? item.href
+                        : withBase(item.href)
+                    }
+                    target={
+                      'external' in item && item.external ? '_blank' : undefined
+                    }
+                    rel={
+                      'external' in item && item.external
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
                     class='site-footer__navigation-link'
                   >
                     {item.label}
@@ -104,14 +117,14 @@ const currentYear = new Date().getFullYear();
         <div class='site-footer__contact-copy'>
           <span class='site-footer__eyebrow'> Contacto </span>
 
-          <a href={withBase('/contacto')} class='site-footer__contact-link'>
+          <p class='site-footer__contact-link'>
             Hablemos de tu próximo proyecto
-          </a>
+          </p>
         </div>
 
         <div class='site-footer__social' aria-label='Redes sociales'>
           <a
-            href='#'
+            href='https://www.facebook.com/EstrategiaUrbanaDesarrollos'
             class='site-footer__social-link'
             aria-label='Facebook'
             target='_blank'
@@ -126,7 +139,7 @@ const currentYear = new Date().getFullYear();
           </a>
 
           <a
-            href='#'
+            href='https://www.instagram.com/estrategiaurbana/'
             class='site-footer__social-link'
             aria-label='Instagram'
             target='_blank'
@@ -141,7 +154,7 @@ const currentYear = new Date().getFullYear();
           </a>
 
           <a
-            href='#'
+            href='https://mx.linkedin.com/company/estrategia-urbana'
             class='site-footer__social-link'
             aria-label='LinkedIn'
             target='_blank'

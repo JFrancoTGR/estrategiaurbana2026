@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -57,6 +61,10 @@ detail:
       value: '22'
       label: Niveles
       unit: niveles
+
+  # =========================
+  # HERO
+  # =========================
 
   hero:
     image: ../../assets/img/projects/sennse-juarez/hero.webp
@@ -73,6 +81,10 @@ detail:
     cta:
       label: Agenda una cita
       href: '#contacto'
+
+  # =========================
+  # INTRO / OVERVIEW
+  # =========================
 
   intro:
     index: '01 / Overview'
@@ -91,6 +103,10 @@ detail:
     decoration:
       image: ../../assets/img/projects/sennse-juarez/intro-decoration.svg
 
+  # =========================
+  # LOCATION
+  # =========================
+
   location:
     index: '02 / Ubicación'
 
@@ -101,3 +117,164 @@ detail:
     body:
       - Sennse Juárez se ubica en Nápoles 86, dentro de la colonia Juárez, en Ciudad de México.
       - Su localización lo integra a uno de los entornos urbanos más consolidados de la zona central de la ciudad.
+
+  # =========================
+  # AMENITIES
+  # =========================
+
+  amenities:
+    visible: true
+
+    index: '03 / Amenities'
+
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
+
+    eyebrow: Diseñado bajo una inspiración orgánica
+
+    items:
+      - image: ../../assets/img/projects/sennse-juarez/amenities/roof-garden.webp
+        alt: Roof Garden
+        title: Roof Garden
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-juarez/amenities/sala-cocina.webp
+        alt: Sala Cocina
+        title: Sala Cocina
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-juarez/amenities/roof-top.webp
+        alt: Roof
+        title: Roof
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom.webp
+        alt: Habitación
+        title: Habitación
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-juarez/amenities/sala-ph.webp
+        alt: Sala
+        title: Sala
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom-b.webp
+        alt: Habitación
+        title: Habitación
+        meta: Nivel 1
+
+  # =========================
+  # FLOORPLANS
+  # =========================
+
+  floorplans:
+    visible: true
+
+    index: '04 / Floorplans & Precios'
+
+    title:
+      lead: Tipologías, plantas
+      emphasis: y precios
+
+    items:
+      - name: Estudio 02
+        variant: Estudio
+
+        image:
+          image: ../../assets/img/projects/sennse-juarez/tipology/1.webp
+          alt: Tipología Estudio
+
+      - name: Estudio 04
+        variant: Estudio
+
+        image:
+          image: ../../assets/img/projects/sennse-juarez/tipology/2.webp
+          alt: Tipología Estudio
+
+      - name: Estudio 06
+        variant: Estudio
+
+        image:
+          image: ../../assets/img/projects/sennse-juarez/tipology/3.webp
+          alt: Tipología Estudio
+
+      - name: Estudio 07
+        variant: Estudio
+
+        image:
+          image: ../../assets/img/projects/sennse-juarez/tipology/4.webp
+          alt: Tipología Estudio
+
+      - name: PH 01
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/sennse-juarez/tipology/5.webp
+          alt: Tipología Penthouse
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: false
+
+    index: '05 / GALERÍA'
+
+    title:
+      lead: 'Galería'
+      emphasis: 'del proyecto'
+
+    note:
+      lead: 'RENDERS & AVANCES DE OBRA'
+      action: 'CLICK PARA AMPLIAR'
+
+    items:
+      - image: ../../assets/img/projects/sennse-juarez/gallery/01.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/02.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/03.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/04.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/05.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/06.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/07.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/08.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/09.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/10.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-juarez/gallery/11.webp
+        alt: 'Vista exterior '
+        variant: wide
+      
+      - image: ../../assets/img/projects/sennse-juarez/gallery/12.webp
+        alt: 'Vista exterior '
+        variant: wide

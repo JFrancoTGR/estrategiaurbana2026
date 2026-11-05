@@ -47,6 +47,10 @@ brand:
 detail:
   visible: true
 
+  # =========================
+  # METRICS
+  # =========================
+
   metrics:
     - key: units
       value: '140'
@@ -74,6 +78,10 @@ detail:
       label: Agenda una cita
       href: '#contacto'
 
+  # =========================
+  # INTRO / OVERVIEW
+  # =========================
+
   intro:
     index: '01 / Overview'
 
@@ -91,6 +99,10 @@ detail:
     decoration:
       image: ../../assets/img/projects/sennse-vasconcelos/intro-decoration.svg
 
+  # =========================
+  # LOCATION
+  # =========================
+
   location:
     index: '02 / Ubicación'
 
@@ -101,3 +113,269 @@ detail:
     body:
       - Sennse Vasconcelos se ubica en José Vasconcelos 154, en Hipódromo Condesa, Ciudad de México.
       - Su posición lo vincula directamente con la dinámica residencial y urbana de la zona Condesa.
+
+  # =========================
+  # AMENITIES
+  # =========================
+
+  amenities:
+    visible: false
+
+    index: '03 / Amenities'
+
+    title:
+      lead: Una propuesta de
+      emphasis: vivienda contemporánea.
+
+    eyebrow: Diseñado bajo una inspiración orgánica
+
+    items:
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/roof-garden.webp
+        alt: Roof Garden
+        title: Roof Garden
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/sala-cocina.webp
+        alt: Sala Cocina
+        title: Sala Cocina
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/roof-top.webp
+        alt: Roof
+        title: Roof
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/bedroom.webp
+        alt: Habitación
+        title: Habitación
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/sala-ph.webp
+        alt: Sala
+        title: Sala
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/amenities/bedroom-b.webp
+        alt: Habitación
+        title: Habitación
+        meta: Nivel 1
+
+  # =========================
+  # FLOORPLANS
+  # =========================
+
+  floorplans:
+    visible: true
+
+    index: '04 / Floorplans & Precios'
+
+    title:
+      lead: Tipologías, plantas
+      emphasis: y precios
+
+    items:
+      - name: Depto 103
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/1.webp
+          alt: Tipología Departamento
+
+      - name: GH 104
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/2.webp
+          alt: Tipología Departamento
+
+      - name: Depto 201
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/3.webp
+          alt: Tipología Departamento
+
+      - name: Depto 203
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/4.webp
+          alt: Tipología Departamento
+
+      - name: Depto 204
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/5.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 205
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/6.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 206
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/7.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 207
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/8.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 301
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/9.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 307
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/10.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 01
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/11.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 02
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/12.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 03
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/13.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 04
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/14.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 05
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/15.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 06
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/16.webp
+          alt: Tipología Departamento
+      
+      - name: Depto 07
+        variant: Departamento
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/17.webp
+          alt: Tipología Departamento
+      
+      - name: PH 01
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/18.webp
+          alt: Tipología Penthouse
+      
+      - name: PH 02
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/19.webp
+          alt: Tipología Penthouse
+      
+      - name: PH 03
+        variant: Penthouse
+
+        image:
+          image: ../../assets/img/projects/sennse-vasconcelos/tipology/20.webp
+          alt: Tipología Penthouse
+
+  # =========================
+  # GALLERY
+  # =========================
+  
+  gallery:
+    visible: false
+
+    index: '05 / GALERÍA'
+
+    title:
+      lead: 'Galería'
+      emphasis: 'del proyecto'
+
+    note:
+      lead: 'RENDERS & AVANCES DE OBRA'
+      action: 'CLICK PARA AMPLIAR'
+
+    items:
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/01.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/02.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/03.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/04.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/05.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/06.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/07.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/08.webp
+        alt: 'Vista exterior '
+        variant: tall
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/09.webp
+        alt: 'Vista exterior '
+        variant: standard
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/10.webp
+        alt: 'Vista exterior '
+        variant: wide
+
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/11.webp
+        alt: 'Vista exterior '
+        variant: wide
+      
+      - image: ../../assets/img/projects/sennse-vasconcelos/gallery/12.webp
+        alt: 'Vista exterior '
+        variant: wide

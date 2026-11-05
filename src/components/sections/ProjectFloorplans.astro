@@ -58,11 +58,23 @@ const { index, title, items } = Astro.props;
            SELECTOR
       ========================== -->
 
-      <div
-        class='project-floorplans__selector'
-        role='tablist'
-        aria-label='Tipologías disponibles'
-      >
+      <div class='project-floorplans__selector-shell' data-floorplan-selector-shell>
+        <button
+          class='project-floorplans__nav project-floorplans__nav--up'
+          type='button'
+          aria-label='Mostrar tipologías anteriores'
+          data-floorplan-nav-up
+          hidden
+        >
+          <span aria-hidden='true'>↑</span>
+        </button>
+
+        <div
+          class='project-floorplans__selector'
+          role='tablist'
+          aria-label='Tipologías disponibles'
+          data-floorplan-selector-scroll
+        >
         {
           items.map((item, itemIndex) => (
             <button
@@ -97,6 +109,17 @@ const { index, title, items } = Astro.props;
             </button>
           ))
         }
+        </div>
+
+        <button
+          class='project-floorplans__nav project-floorplans__nav--down'
+          type='button'
+          aria-label='Mostrar más tipologías'
+          data-floorplan-nav-down
+          hidden
+        >
+          <span aria-hidden='true'>↓</span>
+        </button>
       </div>
 
       <!-- =========================
@@ -138,10 +161,16 @@ const { index, title, items } = Astro.props;
   import { mountPageUI } from '../../scripts/ui/page-lifecycle';
 
   import { initProjectFloorplans } from '../../scripts/ui/project-floorplans';
+  import { initProjectFloorplansNavigation } from '../../scripts/ui/project-floorplans-navigation';
 
   mountPageUI(
     '[data-project-floorplans]',
     initProjectFloorplans,
+  );
+
+  mountPageUI(
+    '[data-project-floorplans]',
+    initProjectFloorplansNavigation,
   );
 </script>
 
@@ -247,6 +276,11 @@ const { index, title, items } = Astro.props;
      SELECTOR
   ========================= */
 
+  .project-floorplans__selector-shell {
+    position: relative;
+    min-width: 0;
+  }
+
   .project-floorplans__selector {
     display: flex;
     flex-direction: column;
@@ -254,6 +288,66 @@ const { index, title, items } = Astro.props;
     min-width: 0;
 
     border-top: 1px solid rgb(20 20 20 / 24%);
+  }
+
+  @media (min-width: 768px) {
+    .project-floorplans__selector {
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      scrollbar-width: none;
+    }
+
+    .project-floorplans__selector::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .project-floorplans__nav {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    color: var(--color-black);
+    cursor: pointer;
+    font-size: 1.4rem;
+    background: transparent;
+  }
+
+  .project-floorplans__nav[hidden] {
+    display: none;
+  }
+
+  .project-floorplans__nav--up {
+    top: 0;
+    background: linear-gradient(to bottom, #deddd9 40%, rgb(222 221 217 / 0%));
+  }
+
+  .project-floorplans__nav--down {
+    bottom: 0;
+    background: linear-gradient(to top, #deddd9 40%, rgb(222 221 217 / 0%));
+  }
+
+  .project-floorplans__nav span {
+    transition: transform 300ms var(--ease-premium);
+  }
+
+  .project-floorplans__nav--up:hover span {
+    transform: translateY(-4px);
+  }
+
+  .project-floorplans__nav--down:hover span {
+    transform: translateY(4px);
+  }
+
+  .project-floorplans__nav:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
   }
 
   .project-floorplans__option {
@@ -266,7 +360,7 @@ const { index, title, items } = Astro.props;
 
     width: 100%;
 
-    padding: 24px 16px;
+    padding: 20px 12px;
 
     color: var(--color-black);
     background: transparent;
@@ -466,6 +560,10 @@ const { index, title, items } = Astro.props;
   ========================= */
 
   @media (prefers-reduced-motion: reduce) {
+    .project-floorplans__nav span {
+      transition: none;
+    }
+
     .project-floorplans__panel {
       transition: none;
     }

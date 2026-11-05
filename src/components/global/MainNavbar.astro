@@ -47,13 +47,13 @@ const navigation = [
     current: pathname === '/socios-estrategicos',
   },
   {
-    label: 'Contacto',
-    href: '/contacto',
-    active: isActive('/contacto'),
-    current: pathname === '/contacto',
+    label: 'Terrenos',
+    href: 'https://terrenos.estrategiaurbana.info/',
+    external: true,
+    active: false,
+    current: false,
   },
 ];
-
 ---
 
 <header
@@ -142,14 +142,16 @@ const navigation = [
           navigation.slice(3).map((item) => (
             <li class='navigation-item'>
               <a
-                href={withBase(item.href)}
+                href={item.external ? item.href : withBase(item.href)}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
                 class:list={[
                   'navigation-link',
                   {
                     active: item.active,
                   },
                 ]}
-               aria-current={item.current ? 'page' : undefined}
+                aria-current={item.current ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -244,7 +246,9 @@ const navigation = [
           navigation.slice(3).map((item) => (
             <li class='mobile-navigation__item'>
               <a
-                href={withBase(item.href)}
+                href={item.external ? item.href : withBase(item.href)}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
                 class:list={[
                   'mobile-navigation__link',
                   {

@@ -32,3 +32,6 @@ pnpm-debug.log*
 # Optimizadores de Webp
 build-baseline-before-image-optimization.txt
 optimize-webp-preview-q88.cjs
+
+# Temporary WebP optimization output
+.webp-optimized-q88/
