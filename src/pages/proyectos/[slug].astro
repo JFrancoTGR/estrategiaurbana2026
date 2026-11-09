@@ -115,6 +115,12 @@ const projectLocationMap =
   description={`Conoce ${project.data.name}, desarrollo de Estrategia Urbana.`}
   headerTheme='overlay'
 >
+  <ProjectSubnav
+    slot='fixed-ui'
+    mode='fixed'
+    navigation={projectNavigation}
+  />
+
   <ProjectHero
     image={hero.image}
     alt={hero.alt}
@@ -124,7 +130,7 @@ const projectLocationMap =
     cta={hero.cta}
   />
 
-  <ProjectSubnav navigation={projectNavigation} />
+  <ProjectSubnav mode='flow' navigation={projectNavigation} />
 
   <ProjectIntro
     index={intro.index}

@@ -6,7 +6,7 @@ import marca from '../../assets/img/logos/logo-marca.svg';
 
 import { withBase, withoutBase } from '../../utils/paths';
 
-const pathname = withoutBase(Astro.url.pathname);
+const pathname = withoutBase(Astro.url.pathname).replace(/\/+$/, '') || '/';
 
 interface Props {
   theme?: 'overlay' | 'light';

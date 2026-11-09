@@ -27,7 +27,7 @@ pnpm-debug.log*
 /recursos/
 
 # Carpeta de videos
-/public/media/home/manifesto/video
+/public/media/home
 
 # Optimizadores de Webp
 build-baseline-before-image-optimization.txt

@@ -44,11 +44,7 @@ const { image, mark } = Astro.props;
         construirse y entregarse.
       </p>
 
-      <a
-        href={withBase('/contacto')}
-        class='home-hero__cta'
-        data-anim='cta'
-      >
+      <a href={withBase('/contacto')} class='home-hero__cta' data-anim='cta'>
         Agenda una cita
       </a>
     </div>
@@ -205,11 +201,26 @@ const { image, mark } = Astro.props;
     }
 
     .home-hero__title {
-      font-size: clamp(3rem, 13vw, 5rem);
+      font-size: clamp(2.5rem, 10vw, 4rem);
     }
 
     .home-hero__description {
       max-width: 100%;
+
+      font-size: clamp(1rem, 3.5vw, 1.125rem);
+      line-height: 1.45;
+
+      margin-top: 22px;
+    }
+  }
+
+  /* =========================
+   TOUCH LANDSCAPE
+  ========================= */
+
+  @media (orientation: landscape) and (any-pointer: coarse) {
+    .home-hero__mark {
+      display: none;
     }
   }
 </style>

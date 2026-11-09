@@ -6,15 +6,18 @@ interface NavigationItem {
 
 interface Props {
   navigation: NavigationItem[];
+  mode?: 'flow' | 'fixed';
 }
 
-const { navigation } = Astro.props;
+const { navigation, mode = 'flow' } = Astro.props;
 ---
 
 <nav
   class='project-subnav'
   aria-label='Navegación del proyecto'
-  data-project-subnav
+  data-project-subnav={mode}
+  aria-hidden={mode === 'fixed' ? 'true' : 'false'}
+  inert={mode === 'fixed'}
 >
   <div class='page-shell'>
     <ul class='project-subnav__list'>
@@ -45,7 +48,7 @@ const { navigation } = Astro.props;
 
   import { initProjectSubnav } from '../../scripts/ui/project-subnav';
 
-  mountPageUI('[data-project-subnav]', initProjectSubnav);
+  mountPageUI('[data-project-subnav="flow"]', initProjectSubnav);
 </script>
 
 <style>
@@ -67,6 +70,26 @@ const { navigation } = Astro.props;
     border-bottom: 1px solid var(--project-subnav-border);
   }
 
+  /* La capa fija vive fuera del contenedor transformado por ScrollSmoother. */
+  .project-subnav[data-project-subnav='fixed'] {
+    position: fixed;
+    top: var(--header-height-scrolled);
+    left: 0;
+    z-index: 900;
+
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .project-subnav[data-project-subnav='fixed'].is-fixed-visible {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .project-subnav[data-project-subnav='flow'].is-flow-hidden {
+    visibility: hidden;
+  }
+  
   .project-subnav .page-shell {
     height: 100%;
   }

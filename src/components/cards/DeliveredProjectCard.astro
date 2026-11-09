@@ -232,7 +232,7 @@ const galleryData = gallery.map((item) => ({
     outline-offset: 4px;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
     .delivered-project-card__media:hover .delivered-project-card__overlay,
     .delivered-project-card__media:focus-within
       .delivered-project-card__overlay {
@@ -270,7 +270,7 @@ const galleryData = gallery.map((item) => ({
      Mobile
   ------------------------------ */
 
-  @media (max-width: 767px) {
+  @media (max-width: 767px), (hover: none), (pointer: coarse) {
     .delivered-project-card__image {
       aspect-ratio: 4 / 4.65;
     }
