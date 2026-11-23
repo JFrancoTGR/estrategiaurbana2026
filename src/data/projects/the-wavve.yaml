@@ -15,8 +15,8 @@ location:
     - Col. Punta Bandera, Playas de Tijuana, Baja California
 
   coordinates:
-    lat: 32.4506127
-    lng: -117.1126553
+    lat: 32.450596
+    lng: -117.110129
 
   map:
     home:
@@ -28,7 +28,7 @@ location:
       zoom: 15
 
 price:
-  from: 5000000
+  from: 3110839
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '150'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '18'
       label: Niveles
       unit: niveles
 
@@ -89,12 +89,12 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: THE WAVVE.
+      lead: Mucho más por 
+      emphasis: disfrutar en THE WAVVE.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de THE WAVVE.
-      - Contenido editorial pendiente de definir para el overview de THE WAVVE.
+      - Ubicado en Playas de Tijuana, Baja California, THE WAVVE es un desarrollo residencial de dos torres que reúne departamentos con vistas panorámicas al mar y espacios para disfrutar más allá de tu departamento.
+      - Desde una tarde en la alberca hasta un partido de pádel o una reunión con amigos, THE WAVVE cuenta con amenidades que te permiten aprovechar tu tiempo libre sin tener que salir de casa.
 
     image:
       image: ../../assets/img/projects/the-wavve/intro.webp
@@ -111,12 +111,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Una ubicación costera conectada con
-      emphasis: Playas de Tijuana, Rosarito y el sur de California.
+      lead: Una ubicación con
+      emphasis: mucho por descubrir.
 
     body:
-      - THE WAVVE se ubica sobre la Carretera Escénica Tijuana–Ensenada, en Punta Bandera, Playas de Tijuana.
-      - Su posición dentro del corredor costero permite mantener conexión con Tijuana, Rosarito y los principales cruces hacia Estados Unidos.
+      - THE WAVVE se encuentra sobre la Carretera Escénica Tijuana–Ensenada, en Playas de Tijuana, una zona que combina paisajes costeros con cercanía a distintos puntos de interés.
+      - Su ubicación permite disfrutar de restaurantes, playas y atractivos turísticos de la región, además de facilitar los traslados hacia la frontera con Estados Unidos.
 
   # =========================
   # AMENITIES
@@ -125,13 +125,13 @@ detail:
   amenities:
     visible: true
   
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
   
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Amenidades para
+      emphasis: todos los momentos.
   
-    eyebrow: Diseño bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
   
     items:
       - image: ../../assets/img/projects/the-wavve/amenities/alberca-exterior.webp
@@ -142,26 +142,36 @@ detail:
       - image: ../../assets/img/projects/the-wavve/amenities/business-center.webp
         alt: Business Center
         title: Business Center
-        meta: Nivel 1
-      
-      - image: ../../assets/img/projects/the-wavve/amenities/padel.webp
-        alt: Padel
-        title: Padel
-        meta: Nivel 1
+        meta: Sótano 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/alberca-villas.webp
+        alt: Alberca Techada
+        title: Alberca Techada
+        meta: Sótano 2
       
       - image: ../../assets/img/projects/the-wavve/amenities/residence-kitchen.webp
         alt: Residence Kitchen
         title: Residence Kitchen
         meta: Nivel 1
 
-      - image: ../../assets/img/projects/the-wavve/amenities/alberca-villas.webp
-        alt: Alberca Villas
-        title: Alberca Villas
+      - image: ../../assets/img/projects/the-wavve/amenities/padel.webp
+        alt: Padel
+        title: Padel
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/grills.webp
+        alt: Grills
+        title: Grills
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/gym.webp
+        alt: Fitness Center
+        title: Fitness Center
         meta: Nivel 1
       
-      - image: ../../assets/img/projects/the-wavve/amenities/gym.webp
-        alt: Gym
-        title: Gym
+      - image: ../../assets/img/projects/the-wavve/amenities/kids-playground.webp
+        alt: Kids Playground
+        title: Kids Playground
         meta: Nivel 1
 
   # =========================

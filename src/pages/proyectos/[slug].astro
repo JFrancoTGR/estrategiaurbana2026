@@ -13,6 +13,7 @@ import ProjectLocation from '../../components/sections/ProjectLocation.astro';
 import ProjectAmenities from '../../components/sections/ProjectAmenities.astro';
 import ProjectFloorplans from '../../components/sections/ProjectFloorplans.astro';
 import ProjectGallery from '../../components/sections/ProjectGallery.astro';
+import ProjectCollaborators from '../../components/sections/ProjectCollaborators.astro';
 
 import ContactForm from '../../components/sections/ContactForm.astro';
 
@@ -67,6 +68,7 @@ const {
   amenities,
   floorplans,
   gallery,
+  collaborators,
 } = detail;
 
 /*
@@ -115,11 +117,7 @@ const projectLocationMap =
   description={`Conoce ${project.data.name}, desarrollo de Estrategia Urbana.`}
   headerTheme='overlay'
 >
-  <ProjectSubnav
-    slot='fixed-ui'
-    mode='fixed'
-    navigation={projectNavigation}
-  />
+  <ProjectSubnav slot='fixed-ui' mode='fixed' navigation={projectNavigation} />
 
   <ProjectHero
     image={hero.image}
@@ -184,5 +182,17 @@ const projectLocationMap =
     )
   }
 
-  <ContactForm />
+  {
+    collaborators?.visible === true && (
+      <ProjectCollaborators
+        index={collaborators.index}
+        items={collaborators.items}
+      />
+    )
+  }
+
+  <ContactForm
+    projectInterest={project.data.name}
+    conversionSource='project_contact_form'
+  />
 </BaseLayout>

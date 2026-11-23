@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 4000000
+  from: 7324092
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '220'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '15'
       label: Niveles
       unit: niveles
 
@@ -85,11 +85,12 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: PORTTICA.
+      lead: Tijuana tiene mucho que ofrecer.
+      emphasis: PORTTICA también.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de PORTTICA.
+      - PORTTICA es un desarrollo residencial ubicado en la Zona Dorada de Tijuana, Baja California, que combina la cercanía a los principales puntos de interés de la ciudad con diferentes opciones para vivir o invertir.
+      - Su propuesta reúne departamentos de 1, 2 y 3 recámaras, amenidades para el deporte y el entretenimiento, y espacios para disfrutar de tu tiempo libre sin salir de casa.
 
     image:
       image: ../../assets/img/projects/porttica/intro.webp
@@ -106,12 +107,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Una ubicación urbana conectada con
-      emphasis: Zona Río, Cacho y Gabilondo.
+      lead: En La Cacho, una de las zonas
+      emphasis: más conocidas de Tijuana.
 
     body:
-      - PORTTICA se ubica sobre Boulevard Cuauhtémoc Sur, en Madero Sur, Zona Centro de Tijuana.
-      - Su localización ofrece acceso a distintos puntos comerciales, gastronómicos y de servicios dentro de la ciudad.
+      - PORTTICA se encuentra sobre el Boulevard Cuauhtémoc Sur, en una zona de la ciudad reconocida por su oferta gastronómica, comercios y servicios.
+      - Su cercanía con importantes zonas comerciales y de negocios permite disfrutar de las ventajas de vivir en un entorno urbano, con distintas opciones de entretenimiento y servicios a su alrededor.
 
   # =========================
   # AMENITIES
@@ -120,44 +121,54 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Más espacios,
+      emphasis: más posibilidades.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/porttica/amenities/alberca.webp
         alt: Alberca
         title: Alberca
-        meta: Nivel 1
+        meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/roof.webp
-        alt: Roof
-        title: Roof
+        alt: Terraza Asadores
+        title: Terraza Asadores
         meta: Nivel 1
 
       - image: ../../assets/img/projects/porttica/amenities/usos-multiples.webp
-        alt: Usos Múltiples
-        title: Usos Múltiples
-        meta: Nivel 1
+        alt: Salón de Usos Múltiples
+        title: Salón de Usos Múltiples
+        meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/gym.webp
         alt: Gimnasio
         title: Gimnasio
-        meta: Nivel 1
+        meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/coworking.webp
         alt: Coworking
         title: Coworking
-        meta: Nivel 1
+        meta: Nivel 5
+
+      - image: ../../assets/img/projects/porttica/amenities/roof-02.webp
+        alt: Roof
+        title: Roof
+        meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/ludoteca.webp
         alt: Ludoteca
         title: Ludoteca
-        meta: Nivel 1
+        meta: Nivel 5
+      
+      - image: ../../assets/img/projects/porttica/amenities/pet-zone.webp
+        alt: Pet Zone
+        title: Pet Zone
+        meta: Nivel 5
       
       - image: ../../assets/img/projects/porttica/amenities/lobby.webp
         alt: Lobby
@@ -171,11 +182,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipologías,
+      emphasis: y plantas
 
     items:
       - name: Tipología 1R

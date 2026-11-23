@@ -1,6 +1,6 @@
 name: Sennse Vasconcelos
 
-status: fase-proyecto
+status: en-licencias
 
 commercial:
   available: true
@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 4000000
+  from: 3792770
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '80'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '15'
       label: Niveles
       unit: niveles
 
@@ -86,11 +86,11 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: Sennse Vasconcelos.
+      lead: A un paso del
+      emphasis: Castillo de Chapultepec.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de Sennse Vasconcelos.
+      - Un desarrollo que ofrece, en sus niveles más altos, vista directa al Castillo de Chapultepec, uno de los puntos más emblemáticos de la Ciudad de México.
 
     image:
       image: ../../assets/img/projects/sennse-vasconcelos/intro.webp
@@ -107,12 +107,16 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Sobre José Vasconcelos, en el entorno de
-      emphasis: Hipódromo Condesa.
+      lead: Caracterizada por su cercanía al Bosque de Chapultepec,
+      emphasis: Parque España y Parque México.
 
     body:
-      - Sennse Vasconcelos se ubica en José Vasconcelos 154, en Hipódromo Condesa, Ciudad de México.
-      - Su posición lo vincula directamente con la dinámica residencial y urbana de la zona Condesa.
+      - Vasconcelos 154 está a unas cuadras del Bosque de Chapultepec, sobre el Circuito Interior, con acceso directo a Av. Chapultepec, Av. Insurgentes y Paseo de la Reforma.
+      - Alrededor del proyecto hay una oferta de restaurantes, bares y espacios culturales, además de comercio como El Palacio de Hierro.
+      - Gastronomía y vida nocturna -  Maizajo, Ling Ling, Wallace Whisky Bar, Restaurante Primos, Patagonia, Cafebrería El Péndulo.
+      - Cultura y espacios públicos -  Bosque de Chapultepec, Parque España, Parque México, Plaza de los Compositores, Galería RGR, Estela de Luz, Foro Shakespeare.
+      - Fitness y bienestar - Smart Fit Condesa.
+      - Comercio y servicios -  El Palacio de Hierro, Embajada de la Federación Rusa.
 
   # =========================
   # AMENITIES
@@ -127,7 +131,7 @@ detail:
       lead: Una propuesta de
       emphasis: vivienda contemporánea.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/roof-garden.webp

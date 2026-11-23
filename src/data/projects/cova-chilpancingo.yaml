@@ -15,8 +15,8 @@ location:
     - Col. Hipódromo Condesa, CDMX
 
   coordinates:
-    lat: 19.4105
-    lng: -99.1705
+    lat: 19.407402
+    lng: -99.169443
 
   map:
     home:
@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 9000000
+  from: 9901813
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '39'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '5'
       label: Niveles
       unit: niveles
 
@@ -90,11 +90,11 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: COVA Chilpancingo.
+      lead: Un desarrollo residencial
+      emphasis: con tres formas distintas de vivir, dentro de un mismo proyecto.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de COVA Chilpancingo.
+      - Garden house en planta baja, departamento en los niveles intermedios y penthouse en el último nivel - tres tipologías pensadas para etapas de vida distintas, no una sola fórmula repetida piso tras piso.
 
     image:
       image: ../../assets/img/projects/cova-chilpancingo/intro.webp
@@ -111,12 +111,16 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: En una de las calles que conectan
-      emphasis: Hipódromo Condesa.
+      lead: Caracterizada por su cercanía a Parque México,
+      emphasis: Andaz Condesa y el Hospital Ángeles Metropolitano.
 
     body:
       - COVA Chilpancingo se ubica en Chilpancingo 54, en Hipódromo Condesa, Ciudad de México.
-      - Su ubicación lo integra al tejido residencial, comercial y de servicios característico de la zona.
+      - Chilpancingo 54 está a unas cuadras de Parque México, sobre una zona con acceso directo a Insurgentes, Reforma y Circuito Interior.
+      - Alrededor del proyecto hay una oferta amplia de restaurantes, bares y espacios de bienestar, además de servicios de salud como el Hospital Ángeles Metropolitano y la Torre Médica Dalinde.
+      - Gastronomía y vida nocturna - Restaurante Castizo, Roberta Trattoria, Hookah Lounge, Mendl Delicatessen, Restaurante Patagonia, Maque Condesa, Ojo de Agua, Caimán Bar, El Pescadito Roma, Andaz Condesa, Terraza Central Roma Sur.
+      - Salud y bienestar - Hospital Ángeles Metropolitano, Torre Médica Dalinde, COMMANDO Condesa, Mukta Yoga.
+      - Cultural y espacios públicos - Parque México.
 
   # =========================
   # AMENITIES
@@ -125,18 +129,18 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Menos amenidades, menos mantenimiento
+      emphasis: y más de lo que sí necesitas en tu día a día.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-01.webp
-        alt: Terraza
-        title: Terraza
+        alt: Roof Privado
+        title: Roof Privado
         meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/sala.webp
@@ -145,8 +149,8 @@ detail:
         meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-02.webp
-        alt: Terraza 02
-        title: Terraza 02
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/cocina.webp
@@ -155,13 +159,13 @@ detail:
         meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-03.webp
-        alt: Terraza
-        title: Terraza
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-04.webp
-        alt: Terraza
-        title: Terraza
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
   # =========================
@@ -171,11 +175,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipologías
+      emphasis: y plantas
 
     items:
       - name: GH A 101

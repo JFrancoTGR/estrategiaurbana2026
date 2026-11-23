@@ -5,6 +5,8 @@ import ProjectsListingHero from '../components/sections/ProjectsListingHero.astr
 import ProjectsGrid from '../components/sections/ProjectsGrid.astro';
 
 import heroImage from '../assets/img/sections/projects/hero.webp';
+
+import ContactForm from '../components/sections/ContactForm.astro';
 ---
 
 <BaseLayout
@@ -16,9 +18,10 @@ import heroImage from '../assets/img/sections/projects/hero.webp';
     title={['Conoce nuestros', 'desarrollos']}
     cta={{
       label: 'Agenda una cita',
-      href: '/contacto',
+      href: '#',
     }}
   />
 
   <ProjectsGrid />
+  <ContactForm />
 </BaseLayout>

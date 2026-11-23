@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 4000000
+  from: 3286363
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '60'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '10'
       label: Niveles
       unit: niveles
 
@@ -79,7 +79,7 @@ detail:
       secondary: CDMX
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -90,11 +90,12 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: Sennse Juárez.
+      lead: Un desarrollo residencial enfocado
+      emphasis: en el estilo de vida urbano de la Juárez.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de Sennse Juárez.
+      - Pocas unidades, buena escala y una de las colonias más vivas de la ciudad a la puerta. Aquí el día se resuelve caminando - el café de la mañana, la oficina sobre Reforma, la cena en la Zona Rosa. Y de regreso, un roof garden para ver caer la tarde.
+      - El proyecto integra una torre habitacional de 10 niveles con departamentos de 1 y 2 recámaras, un local comercial en planta baja y amenidades pensadas para el día a día, desde roof top hasta espacios de co-working.
 
     image:
       image: ../../assets/img/projects/sennse-juarez/intro.webp
@@ -111,12 +112,14 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Una ubicación integrada a la vida urbana de
-      emphasis: la colonia Juárez.
+      lead: Caracterizada por su cercanía a Reforma, el Ángel de la Independencia
+      emphasis: y la oferta gastronómica de Roma-Condesa.
 
     body:
-      - Sennse Juárez se ubica en Nápoles 86, dentro de la colonia Juárez, en Ciudad de México.
-      - Su localización lo integra a uno de los entornos urbanos más consolidados de la zona central de la ciudad.
+      - Ubicado en Nápoles 86, Colonia Juárez, el proyecto se sitúa en una de las zonas con mayor actividad urbana y cultural de la Ciudad de México.
+      - La ubicación ofrece una combinación de conectividad, vida gastronómica y acceso a espacios culturales y comerciales, consolidándose como un punto estratégico entre el Centro Histórico y las colonias Roma-Condesa.
+      - Gastronomía y vida nocturna - Soho House, Restaurante Rosetta, Niddo Restaurante, Café Nin, Máximo Bistrot, Hanky Panky, Taverna Prime.
+      - Cultura y espacios públicos - Ángel de la Independencia, Glorieta de Insurgentes, Jardín Pushkin, Fuente de Cibeles, Museo de Cera, MODO Museo del Objeto, Arena México, El Palacio de Hierro Durango.
 
   # =========================
   # AMENITIES
@@ -125,44 +128,44 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Todo lo que necesitas para tu día a día,
+      emphasis: dentro del mismo edificio.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/sennse-juarez/amenities/roof-garden.webp
-        alt: Roof Garden
-        title: Roof Garden
+        alt: Roof Top
+        title: Roof Top
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/sala-cocina.webp
         alt: Sala Cocina
         title: Sala Cocina
-        meta: Nivel 1
+        meta: Penthouse
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/roof-top.webp
-        alt: Roof
-        title: Roof
+        alt: Roof Top
+        title: Roof Top
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom.webp
         alt: Habitación
         title: Habitación
-        meta: Nivel 1
+        meta: Estudio 02
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/sala-ph.webp
         alt: Sala
         title: Sala
-        meta: Nivel 1
+        meta: Penthouse
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom-b.webp
         alt: Habitación
         title: Habitación
-        meta: Nivel 1
+        meta: Penthouse
 
   # =========================
   # FLOORPLANS
@@ -171,11 +174,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipologías
+      emphasis: y plantas
 
     items:
       - name: Estudio 02
@@ -216,7 +219,7 @@ detail:
   # =========================
   # GALLERY
   # =========================
-  
+
   gallery:
     visible: false
 
@@ -274,7 +277,29 @@ detail:
       - image: ../../assets/img/projects/sennse-juarez/gallery/11.webp
         alt: 'Vista exterior '
         variant: wide
-      
+
       - image: ../../assets/img/projects/sennse-juarez/gallery/12.webp
         alt: 'Vista exterior '
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/hacer.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/factor-neutral.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/tepetl.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/mozaco.svg
+        alt: Collaboradores del proyecto

@@ -1,7 +1,7 @@
 export const PROJECT_STATUS_VALUES = [
   'en-construccion',
   'entregado',
-  'fase-proyecto',
+  'en-licencias',
 ] as const;
 
 export type ProjectStatus = (typeof PROJECT_STATUS_VALUES)[number];
@@ -21,8 +21,8 @@ export const PROJECT_STATUS_META = {
     label: 'Entregado',
   },
 
-  'fase-proyecto': {
-    label: 'Diseño',
+  'en-licencias': {
+    label: 'Licencias',
   },
 } satisfies Record<
   ProjectStatus,

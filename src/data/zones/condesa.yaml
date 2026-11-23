@@ -18,9 +18,9 @@ hero:
 
 intro:
   index: '01'
-  title: Contenido editorial pendiente
+  title: La Condesa puede ser tu nueva dirección.
   body:
-    - Texto editorial pendiente para la sección Condesa.
+    - La Condesa combina calles arboladas, arquitectura con historia y lugares que poco a poco se vuelven tus favoritos. Una colonia que conserva su esencia sin dejar de sorprenderte, donde disfrutas tanto estar en casa como salir a descubrir algo nuevo.
   image: ../../assets/img/zones/condesa/condesa-gallery-004.webp
   alt: Vida urbana en la Condesa
 

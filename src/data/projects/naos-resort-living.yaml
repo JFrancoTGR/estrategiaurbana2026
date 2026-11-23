@@ -1,6 +1,6 @@
 name: NAOS RESORT LIVING
 
-status: fase-proyecto
+status: en-licencias
 
 commercial:
   available: true
@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 4000000
+  from: 4152821
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '280'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '20'
       label: Niveles
       unit: niveles
   
@@ -79,7 +79,7 @@ detail:
       secondary: Tijuana
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
   
   # =========================
@@ -94,8 +94,8 @@ detail:
       emphasis: tipo resort frente al mar.
 
     body:
-      - Concebido para ofrecer una experiencia de vida que combina lujo, confort y conexión directa con el entorno natural.
-      - El proyecto integra una torre habitacional de 22 niveles con un enfoque en vistas panorámicas, diseño contemporáneo y amenidades de alto nivel.
+      - Ubicado en Rosarito, Baja California, NAOS Resort Living ofrece residencias de 1, 2 y 3 recámaras, con vistas panorámicas, acceso directo a la playa y amenidades tipo resort.
+      - Una propuesta residencial que reúne ubicación, comodidad y espacios para disfrutar, ya sea como hogar, segunda residencia o inversión patrimonial.
 
     image:
       image: ../../assets/img/projects/naos-resort-living/intro.webp
@@ -112,12 +112,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Caracterizada por su cercanía a
-      emphasis: Rosarito, Playas de Tijuana y el Valle de Guadalupe.
+      lead: Una ubicación costera conectada con
+      emphasis: Playas de Tijuana, Rosarito y el sur de California.
 
     body:
-      - Ubicado sobre la Carretera Escénica Tijuana–Ensenada, el proyecto se sitúa en una de las zonas con mayor proyección de la región.
-      - La ubicación ofrece una combinación única de conectividad, entorno natural y acceso a oferta gastronómica y recreativa, consolidándose como un punto estratégico entre México y Estados Unidos.
+      - NAOS Resort Living se encuentra sobre la Carretera Escénica Tijuana–Ensenada, frente al océano Pacífico.
+      - Su entorno combina paisajes naturales con la cercanía a restaurantes, atractivos turísticos y opciones de entretenimiento, además de una conexión directa con la frontera de Estados Unidos.
 
   # =========================
   # AMENITIES
@@ -126,23 +126,33 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Espacios para
+      emphasis:  disfrutar todos los días.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/naos-resort-living/amenities/alberca.webp
-        alt: Alberca
-        title: Alberca
-        meta: Nivel 1
+        alt: Indoor Pool
+        title: Indoor Pool
+        meta: Sótano 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/business-center.webp
         alt: Business Center
         title: Business Center
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/naos-resort-living/amenities/wellness-suite.webp
+        alt: Wellness Suite
+        title: Wellness Suite
+        meta: Nivel 1
+
+      - image: ../../assets/img/projects/naos-resort-living/amenities/alberca-exterior.webp
+        alt: Outdoor Pool
+        title: Outdoor Pool
         meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/game-room.webp
@@ -151,18 +161,18 @@ detail:
         meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/gym.webp
-        alt: Gym
-        title: Gym
+        alt: Fitness Center
+        title: Fitness Center
         meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/lounge.webp
         alt: Lounge
         title: Lounge
-        meta: Nivel 1
+        meta: Sótano 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/ludoteca.webp
-        alt: Ludoteca
-        title: Ludoteca
+        alt: Playroom
+        title: Playroom
         meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/residence-kitchen.webp
@@ -177,11 +187,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipología
+      emphasis: y plantas
 
     items:
       - name: The Firstroom

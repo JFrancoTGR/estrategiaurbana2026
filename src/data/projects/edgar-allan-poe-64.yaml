@@ -26,8 +26,8 @@ delivered:
   visible: false
   order: 8
 
-  units: 7
-  levels: 4
+  units: 11
+  levels: 6
 
   cover:
     image: ../../assets/img/projects/edgar-allan-poe-64/delivered/cover.webp

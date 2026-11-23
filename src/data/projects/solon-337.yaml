@@ -23,7 +23,7 @@ commercial:
   available: false
 
 delivered:
-  visible: false
+  visible: true
   order: 20
 
   units: 12
@@ -41,4 +41,10 @@ delivered:
       alt: Detalle arquitectónico de Solón 337
 
     - image: ../../assets/img/projects/solon-337/gallery/03.webp
+      alt: Interior de Solón 337
+
+    - image: ../../assets/img/projects/solon-337/gallery/04.webp
+      alt: Interior de Solón 337
+
+    - image: ../../assets/img/projects/solon-337/gallery/05.webp
       alt: Interior de Solón 337

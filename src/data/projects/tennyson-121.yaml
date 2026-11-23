@@ -24,7 +24,7 @@ commercial:
   available: false
 
 delivered:
-  visible: false
+  visible: true
   order: 23
 
   units: 18
@@ -42,4 +42,13 @@ delivered:
       alt: Detalle arquitectónico de Tennyson 121
 
     - image: ../../assets/img/projects/tennyson-121/gallery/03.webp
+      alt: Interior de Tennyson 121
+    
+    - image: ../../assets/img/projects/tennyson-121/gallery/04.webp
+      alt: Interior de Tennyson 121
+
+    - image: ../../assets/img/projects/tennyson-121/gallery/05.webp
+      alt: Interior de Tennyson 121
+
+    - image: ../../assets/img/projects/tennyson-121/gallery/06.webp
       alt: Interior de Tennyson 121

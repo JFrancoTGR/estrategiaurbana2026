@@ -1,6 +1,6 @@
 name: Sennse Hamburgo
 
-status: fase-proyecto
+status: en-licencias
 
 commercial:
   available: true
@@ -15,8 +15,8 @@ location:
     - Col. Juárez, CDMX
 
   coordinates:
-    lat: 19.4255
-    lng: -99.165
+    lat: 19.4262284
+    lng: -99.1644783
 
   map:
     home:
@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 3000000
+  from: 5047350
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '24'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '6'
       label: Niveles
       unit: niveles
 
@@ -79,7 +79,7 @@ detail:
       secondary: CDMX
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
   
     # =========================
@@ -90,11 +90,11 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: Sennse Hamburgo.
+      lead: Un desarrollo boutique
+      emphasis: de solo 24 unidades.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de Sennse Hamburgo.
+      - Pocas unidades, 1 y 2 recámaras, pensadas para quienes buscan algo más personal. Un proyecto compacto, donde lo boutique no es solo el tamaño, sino la forma en que está pensado cada departamento.
 
     image:
       image: ../../assets/img/projects/sennse-hamburgo/intro.webp
@@ -111,12 +111,14 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Una ubicación urbana dentro de
-      emphasis: la colonia Juárez.
+      lead: Caracterizada por su cercanía a
+      emphasis:  Soho House, Restaurante Rosetta y el Jardín Chapultepec.
 
     body:
-      - Sennse Hamburgo se ubica en Hamburgo 112, dentro de la colonia Juárez, en Ciudad de México.
-      - La ubicación lo integra a un entorno consolidado de vivienda, comercio y servicios de la zona central.
+      - Hamburgo 112 está a unas cuadras del Jardín Chapultepec y Puerto Prendes, en una de las zonas con mayor vida gastronómica y cultural de la Ciudad de México.
+      - Gastronomía y vida nocturna - Café Nin, Cicatriz Bar, Hanky Panky, Yuyu Bar, Cana Restaurante, Parker & Lenox, Amaya, Soho House, Taquería Orinoco, Niddo Restaurante, Puerto Prendes, Restaurante Rosetta, Plantasia Café, Cafebrería El Péndulo, Cityzen Rooftop Bar.
+      - Cultura y espacios públicos - Jardín Chapultepec, Fuente de Cibeles, Plaza Río de Janeiro, Reforma 222.
+      - Fitness y bienestar - Escuadrón Crossfit Reforma, Smart Fit Genova.
 
   # =========================
   # AMENITIES
@@ -125,39 +127,39 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Lo justo para vivir cómodo,
+      emphasis: entrenar y moverte por la ciudad.”
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-top.webp
-        alt: Terraza
-        title: Terraza
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/patio.webp
-        alt: Patio Jardín
-        title: Patio Jardín
+        alt: Patio Común
+        title: Patio Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-garden.webp
-        alt: Terraza
-        title: Terraza
+        alt: Roof Privado
+        title: Roof Privado
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/sala-comedor.webp
         alt: Sala Comedor
         title: Sala Comedor
-        meta: Nivel 1
+        meta: Todos
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/bike-station.webp
         alt: Bike Station
         title: Bike Station
-        meta: Nivel 1
+        meta: Sóitano
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/lobby.webp
         alt: Lobby
@@ -171,11 +173,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipologías
+      emphasis: y plantas
 
     items:
       - name: Depto 01

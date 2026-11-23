@@ -463,6 +463,33 @@ const projects = defineCollection({
                   }),
                 ])
                 .optional(),
+
+              /*
+               * Colaboradores del desarrollo.
+               *
+               * Sección opcional con logotipos de las
+               * empresas participantes en el proyecto.
+               */
+              collaborators: z
+                .discriminatedUnion('visible', [
+                  z.object({
+                    visible: z.literal(false),
+                  }),
+
+                  z.object({
+                    visible: z.literal(true),
+                    index: z.string().trim().min(1),
+                    items: z
+                      .array(
+                        z.object({
+                          image: image(),
+                          alt: z.string().trim().min(1),
+                        }),
+                      )
+                      .min(1),
+                  }),
+                ])
+                .optional(),
             }),
           ])
           .optional(),

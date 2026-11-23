@@ -28,7 +28,7 @@ location:
       zoom: 16
 
 price:
-  from: 3000000
+  from: 3497266
   currency: MXN
 
 card:
@@ -53,12 +53,12 @@ detail:
 
   metrics:
     - key: units
-      value: '140'
+      value: '66'
       label: Departamentos
       unit: unidades
 
     - key: levels
-      value: '22'
+      value: '12'
       label: Niveles
       unit: niveles
 
@@ -79,7 +79,7 @@ detail:
       secondary: CDMX
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -90,11 +90,11 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Conoce los aspectos principales de
-      emphasis: Sennse Liverpool.
+      lead: Un desarrollo residencial pensado
+      emphasis: para el día a día, no solo para el fin de semana.
 
     body:
-      - Contenido editorial pendiente de definir para el overview de Sennse Liverpool.
+      - Diseñado bajo la idea de que el estilo de vida no debería limitarse a ocasiones especiales, sino integrarse a la vida cotidiana de sus residentes.
 
     image:
       image: ../../assets/img/projects/sennse-liverpool/intro.webp
@@ -111,12 +111,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: En el corazón de
-      emphasis: la colonia Juárez.
+      lead: Caracterizada por su cercanía a Soho House,
+      emphasis: Restaurante Rosetta y el Jardín Chapultepec.
 
     body:
-      - Sennse Liverpool se ubica en Liverpool 108, dentro de la colonia Juárez, en Ciudad de México.
-      - Su entorno concentra actividad residencial, comercial y de servicios dentro de una zona central de la ciudad.
+      - Ubicado en Liverpool 108, Colonia Juárez, el proyecto se sitúa en una de las zonas con mayor vida social y cultural de la Ciudad de México.
+      - La ubicación ofrece una combinación de conectividad, oferta gastronómica y espacios de recreación, consolidándose como un punto de referencia entre la Zona Rosa y la Roma-Condesa.
 
   # =========================
   # AMENITIES
@@ -125,28 +125,28 @@ detail:
   amenities:
     visible: true
 
-    index: '03 / Amenities'
+    index: '03 / Amenidades'
 
     title:
-      lead: Una propuesta de
-      emphasis: vivienda contemporánea.
+      lead: Lo esencial, bien resuelto - un gimnasio para entrenar, un roof para despejarte y
+      emphasis: un lugar seguro para tu bici.
 
-    eyebrow: Diseñado bajo una inspiración orgánica
+    eyebrow: Diseñado con intención. Pensado para durar.
 
     items:
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-comun.webp
-        alt: Roof 
-        title: Roof 
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-privado.webp
-        alt: Roof
-        title: Roof
+        alt: Roof Privado
+        title: Roof Privado
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-comun-2.webp
-        alt: Roof
-        title: Roof
+        alt: Roof Común
+        title: Roof Común
         meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/gym.webp
@@ -162,12 +162,12 @@ detail:
       - image: ../../assets/img/projects/sennse-liverpool/amenities/sala.webp
         alt: Sala
         title: Sala
-        meta: Nivel 1
+        meta: Depto 03
       
       - image: ../../assets/img/projects/sennse-liverpool/amenities/dormitorio.webp
-        alt: Dormitorio
-        title: Dormitorio
-        meta: Nivel 1
+        alt: Sala
+        title: Sala
+        meta: Depto 05
 
   # =========================
   # FLOORPLANS
@@ -176,11 +176,11 @@ detail:
   floorplans:
     visible: true
 
-    index: '04 / Floorplans & Precios'
+    index: '04 / Floorplans'
 
     title:
-      lead: Tipologías, plantas
-      emphasis: y precios
+      lead: Tipologías
+      emphasis: y plantas
 
     items:
       - name: Depto 01

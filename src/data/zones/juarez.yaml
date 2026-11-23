@@ -18,9 +18,9 @@ hero:
 
 intro:
   index: '01'
-  title: Contenido editorial pendiente
+  title: En la Juárez, un buen plan queda a unas calles.
   body:
-    - Texto editorial pendiente para la sección Juárez.
+    - En la Juárez puedes ir caminando al trabajo, comer en la Roma o pasar la tarde en Chapultepec. Su ubicación entre Reforma e Insurgentes te permite resolver gran parte de tu día sin salir demasiado de la zona. Una colonia en la que tener todo cerca se convierte en una ventaja real.
   image: ../../assets/img/zones/juarez/hero-zones.webp
   alt: Vida urbana en la Juárez
 

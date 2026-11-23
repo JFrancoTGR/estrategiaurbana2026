@@ -1,0 +1,168 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Collaborator {
+  image: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  index: string;
+  items: Collaborator[];
+}
+
+const { index, items } = Astro.props;
+---
+
+<section
+  id='collaborators'
+  class='project-collaborators'
+  aria-labelledby='project-collaborators-title'
+>
+  <div class='project-collaborators__inner page-shell'>
+
+    <header class='project-collaborators__header'>
+  <span class='project-collaborators__index'>
+    {index}
+  </span>
+
+  <h2
+    id='project-collaborators-title'
+    class='project-collaborators__title font-editorial'
+  >
+    Quienes forman parte del proyecto
+  </h2>
+</header>
+
+    <ul class='project-collaborators__grid'>
+      {
+        items.map((item) => (
+          <li class='project-collaborators__item'>
+            <Image
+              src={item.image}
+              alt={item.alt}
+              class='project-collaborators__logo'
+              loading='lazy'
+            />
+          </li>
+        ))
+      }
+    </ul>
+
+  </div>
+</section>
+
+<style>
+  .project-collaborators {
+    width: 100%;
+
+    padding-block: clamp(64px, 7vw, 112px);
+
+    background-color: var(--color-background);
+  }
+
+  .project-collaborators__header {
+    margin-bottom: clamp(40px, 4vw, 64px);
+  }
+
+  .project-collaborators__title {
+    margin: 0;
+
+    font-size: clamp(1.75rem, 2.5vw, 2.75rem);
+    font-weight: var(--font-weight-light);
+
+    line-height: 1.1;
+
+    color: var(--color-black);
+  }
+
+  /* =========================
+   INDEX
+  ========================= */
+
+.project-collaborators__index {
+  display: block;
+
+  margin-bottom: clamp(24px, 2.5vw, 32px);
+
+  font-family: var(--font-primary);
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-medium);
+
+  line-height: 1;
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  color: rgb(20 20 20 / 62%);
+}
+
+  /* =========================
+     GRID
+  ========================= */
+
+  .project-collaborators__grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: clamp(24px, 3vw, 48px);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .project-collaborators__item {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    aspect-ratio: 3 / 2;
+
+    padding: clamp(12px, 2vw, 24px);
+  }
+
+  .project-collaborators__logo {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+  }
+
+  /* =========================
+     TABLET
+  ========================= */
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .project-collaborators__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media (max-width: 767px) {
+    .project-collaborators {
+      padding-block: 64px;
+    }
+
+    .project-collaborators__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 16px;
+    }
+
+    .project-collaborators__item {
+      padding: 12px;
+    }
+  }
+</style>

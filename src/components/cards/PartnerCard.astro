@@ -21,13 +21,13 @@ const { data } = partner;
   </figure>
 
   <p class='partner-card__caption'>
-    <span>{data.partner}</span>
+    <span>{data.company}</span>
 
     {
       data.company && (
         <>
           <span aria-hidden='true'> - </span>
-          <span>{data.company}</span>
+          <span>{data.partner}</span>
         </>
       )
     }
