@@ -8,7 +8,7 @@ location:
   label: Juárez, CDMX
 
   coordinates:
-    lat: 19.433252 
+    lat: 19.433252
     lng: -99.150840
 
   map:
@@ -43,7 +43,7 @@ delivered:
 
     - image: ../../assets/img/projects/nomad-bucareli/gallery/03.webp
       alt: Interior de Nomad Bucareli
-    
+
     - image: ../../assets/img/projects/nomad-bucareli/gallery/04.webp
       alt: Interior de Nomad Bucareli
 
