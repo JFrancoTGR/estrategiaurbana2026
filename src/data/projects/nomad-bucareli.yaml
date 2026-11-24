@@ -1,0 +1,54 @@
+name: NOMAD BUCARELI
+
+status: entregado
+
+location:
+  market: cdmx
+  zone: juarez
+  label: Juárez, CDMX
+
+  coordinates:
+    lat: 19.433252 
+    lng: -99.150840
+
+  map:
+    home:
+      visible: true
+      category: renta
+      reconciled: false
+
+    detail:
+      visible: false
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 17
+
+  units: 268
+  levels: 13
+
+  cover:
+    image: ../../assets/img/projects/nomad-bucareli/delivered/cover.webp
+    alt: Vista exterior de Nomad Bucareli
+
+  gallery:
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/01.webp
+      alt: Vista exterior de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/02.webp
+      alt: Detalle arquitectónico de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/03.webp
+      alt: Interior de Nomad Bucareli
+    
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/04.webp
+      alt: Interior de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/05.webp
+      alt: Interior de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-bucareli/gallery/06.webp
+      alt: Interior de Nomad Bucareli

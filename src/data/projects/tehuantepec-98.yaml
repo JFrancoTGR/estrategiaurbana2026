@@ -24,7 +24,7 @@ commercial:
 
 delivered:
   visible: true
-  order: 22
+  order: 32
 
   units: 11
   levels: 5

@@ -40,6 +40,7 @@ const { image, title, cta } = Astro.props;
             href={withBase(cta.href)}
             class='projects-listing-hero__cta'
             data-anim='cta'
+            data-home-contact-cta={cta.href === '#contacto' ? '' : undefined}
           >
             {cta.label}
           </a>

@@ -1,4 +1,4 @@
-name: Sennse Tabacalera
+name: SENNSE TABACALERA
 
 status: entregado
 
@@ -41,7 +41,7 @@ home:
 
 delivered:
   visible: true
-  order: 1
+  order: 28
 
   units: 130
   levels: 21

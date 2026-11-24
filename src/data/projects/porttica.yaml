@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 10
+  order: 21
 
 brand:
   logo:
@@ -74,7 +74,7 @@ detail:
       secondary: Tijuana
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -133,47 +133,47 @@ detail:
       - image: ../../assets/img/projects/porttica/amenities/alberca.webp
         alt: Alberca
         title: Alberca
-        meta: Nivel 5
+        #meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/roof.webp
         alt: Terraza Asadores
         title: Terraza Asadores
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/porttica/amenities/usos-multiples.webp
         alt: Salón de Usos Múltiples
         title: Salón de Usos Múltiples
-        meta: Nivel 5
+        #meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/gym.webp
         alt: Gimnasio
         title: Gimnasio
-        meta: Nivel 5
+        #meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/coworking.webp
         alt: Coworking
         title: Coworking
-        meta: Nivel 5
+        #meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/roof-02.webp
         alt: Roof
         title: Roof
-        meta: Nivel 5
+        #meta: Nivel 5
 
       - image: ../../assets/img/projects/porttica/amenities/ludoteca.webp
         alt: Ludoteca
         title: Ludoteca
-        meta: Nivel 5
+        #meta: Nivel 5
       
       - image: ../../assets/img/projects/porttica/amenities/pet-zone.webp
         alt: Pet Zone
         title: Pet Zone
-        meta: Nivel 5
+        #meta: Nivel 5
       
       - image: ../../assets/img/projects/porttica/amenities/lobby.webp
         alt: Lobby
         title: Lobby
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS

@@ -1,4 +1,4 @@
-name: Sennse Hamburgo
+name: SENNSE HAMBURGO
 
 status: en-licencias
 
@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 3
+  order: 25
 
 brand:
   logo:
@@ -139,32 +139,32 @@ detail:
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-top.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/patio.webp
         alt: Patio Común
         title: Patio Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/roof-garden.webp
         alt: Roof Privado
         title: Roof Privado
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/sala-comedor.webp
         alt: Sala Comedor
         title: Sala Comedor
-        meta: Todos
+        #meta: Todos
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/bike-station.webp
         alt: Bike Station
         title: Bike Station
-        meta: Sóitano
+        #meta: Sóitano
 
       - image: ../../assets/img/projects/sennse-hamburgo/amenities/lobby.webp
         alt: Lobby
         title: Lobby
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS

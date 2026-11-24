@@ -1,4 +1,4 @@
-name: Sennse Juárez
+name: SENNSE JUÁREZ
 
 status: en-construccion
 
@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 2
+  order: 26
 
 brand:
   logo:
@@ -140,32 +140,32 @@ detail:
       - image: ../../assets/img/projects/sennse-juarez/amenities/roof-garden.webp
         alt: Roof Top
         title: Roof Top
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/sala-cocina.webp
         alt: Sala Cocina
         title: Sala Cocina
-        meta: Penthouse
+        #meta: Penthouse
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/roof-top.webp
         alt: Roof Top
         title: Roof Top
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom.webp
         alt: Habitación
         title: Habitación
-        meta: Estudio 02
+        #meta: Estudio 02
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/sala-ph.webp
         alt: Sala
         title: Sala
-        meta: Penthouse
+        #meta: Penthouse
 
       - image: ../../assets/img/projects/sennse-juarez/amenities/bedroom-b.webp
         alt: Habitación
         title: Habitación
-        meta: Penthouse
+        #meta: Penthouse
 
   # =========================
   # FLOORPLANS

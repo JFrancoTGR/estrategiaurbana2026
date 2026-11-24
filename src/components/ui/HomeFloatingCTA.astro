@@ -1,21 +1,15 @@
-<button
-  id="home-floating-cta"
-  class="home-floating-cta"
-  type="button"
-  data-motion="home-floating-cta"
-  aria-label="Call to action"
+<a
+  id='home-floating-cta'
+  class='home-floating-cta'
+  href='#contacto'
+  data-motion='home-floating-cta'
+  data-home-contact-cta
+  aria-label='Contáctanos'
 >
-  <span class="home-floating-cta__label">
-    Call to action
-  </span>
+  <span class='home-floating-cta__label'> Contáctanos </span>
 
-  <span
-    class="home-floating-cta__icon"
-    aria-hidden="true"
-  >
-    +
-  </span>
-</button>
+  <span class='home-floating-cta__icon' aria-hidden='true'> + </span>
+</a>
 
 <style>
   .home-floating-cta {
@@ -25,6 +19,8 @@
     top: 55dvh;
     right: 0;
 
+    box-shadow: -4px 0 12px rgb(0 0 0 / 10%);
+    
     display: inline-flex;
     align-items: center;
     justify-content: flex-end;
@@ -62,7 +58,7 @@
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-
+    text-decoration: none;
     transform: translateX(0);
   }
 

@@ -104,6 +104,9 @@ const hasFooter = stats.length > 0 || Boolean(cta);
                 href={withBase(cta.href)}
                 class='project-hero__cta'
                 data-anim='cta'
+                data-home-contact-cta={
+                  cta.href === '#contacto' ? '' : undefined
+                }
               >
                 {cta.label}
               </a>
@@ -114,75 +117,6 @@ const hasFooter = stats.length > 0 || Boolean(cta);
     }
   </div>
 </section>
-<script>
-  import { ScrollSmoother } from 'gsap/ScrollSmoother';
-
-  import { mountPageUI } from '../../scripts/ui/page-lifecycle';
-
-  mountPageUI<HTMLAnchorElement>('.project-hero__cta', (link) => {
-    const handleClick = (event: MouseEvent) => {
-      if (
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-
-      const href = link.getAttribute('href');
-
-      if (!href?.startsWith('#')) return;
-
-      const target = document.getElementById(href.slice(1));
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      const headerHeight = Number.parseFloat(
-        getComputedStyle(document.documentElement)
-          .getPropertyValue('--header-height-scrolled'),
-      );
-
-      const offset = Number.isFinite(headerHeight)
-        ? headerHeight
-        : 0;
-
-      const smoother = ScrollSmoother.get();
-
-      if (window.location.hash !== href) {
-        window.history.pushState(null, '', href);
-      }
-
-      if (smoother) {
-        smoother.scrollTo(target, true, `top ${offset}px`);
-        return;
-      }
-
-      const targetTop =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        offset;
-
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior: window.matchMedia(
-          '(prefers-reduced-motion: reduce)',
-        ).matches
-          ? 'instant'
-          : 'smooth',
-      });
-    };
-
-    link.addEventListener('click', handleClick);
-
-    return () => {
-      link.removeEventListener('click', handleClick);
-    };
-  });
-</script>
 
 <style>
   .project-hero {

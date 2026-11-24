@@ -13,7 +13,7 @@ location:
 
   map:
     home:
-      visible: true
+      visible: false
       category: venta
       reconciled: false
 
@@ -24,8 +24,8 @@ commercial:
   available: false
 
 delivered:
-  visible: true
-  order: 23
+  visible: false
+  order: 33
 
   units: 18
   levels: 6

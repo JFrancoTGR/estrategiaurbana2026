@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 9
+  order: 34
 
 brand:
   logo:
@@ -78,7 +78,7 @@ detail:
       secondary: Tijuana
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -137,42 +137,42 @@ detail:
       - image: ../../assets/img/projects/the-wavve/amenities/alberca-exterior.webp
         alt: Alberca Exterior
         title: Alberca Exterior
-        meta: Nivel 1
+        #meta: Nivel 1
   
       - image: ../../assets/img/projects/the-wavve/amenities/business-center.webp
         alt: Business Center
         title: Business Center
-        meta: Sótano 1
+        #meta: Sótano 1
 
       - image: ../../assets/img/projects/the-wavve/amenities/alberca-villas.webp
         alt: Alberca Techada
         title: Alberca Techada
-        meta: Sótano 2
+        #meta: Sótano 2
       
       - image: ../../assets/img/projects/the-wavve/amenities/residence-kitchen.webp
         alt: Residence Kitchen
         title: Residence Kitchen
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/the-wavve/amenities/padel.webp
         alt: Padel
         title: Padel
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/the-wavve/amenities/grills.webp
         alt: Grills
         title: Grills
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/the-wavve/amenities/gym.webp
         alt: Fitness Center
         title: Fitness Center
-        meta: Nivel 1
+        #meta: Nivel 1
       
       - image: ../../assets/img/projects/the-wavve/amenities/kids-playground.webp
         alt: Kids Playground
         title: Kids Playground
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS

@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 5
+  order: 6
 
 delivered:
   visible: true

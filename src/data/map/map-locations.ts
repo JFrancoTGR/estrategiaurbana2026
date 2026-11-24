@@ -215,20 +215,6 @@ export const mapLocations = [
   --------------------------------- */
 
   {
-    id: 'bucareli-35',
-    name: 'Bucareli 35',
-    lat: 19.4333,
-    lng: -99.1513,
-    category: 'renta',
-  },
-  {
-    id: 'sullivan-25',
-    name: 'Sullivan 25',
-    lat: 19.4344,
-    lng: -99.1642,
-    category: 'renta',
-  },
-  {
     id: 'nuevo-leon-257',
     name: 'Nuevo León 257',
     lat: 19.402,

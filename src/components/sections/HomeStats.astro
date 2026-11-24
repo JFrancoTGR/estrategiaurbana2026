@@ -52,15 +52,15 @@ const stats: Stat[] = [
 
     useGrouping: false,
   },
-  {
-    value: 3,
-    label: 'Ciudades',
+  // {
+  //   value: 3,
+  //   label: 'Ciudades',
 
-    minimumIntegerDigits: 2,
-    maximumFractionDigits: 0,
+  //   minimumIntegerDigits: 2,
+  //   maximumFractionDigits: 0,
 
-    useGrouping: false,
-  },
+  //   useGrouping: false,
+  // },
 ];
 
 const formatInitialValue = (stat: Stat) => {
@@ -138,7 +138,7 @@ const formatInitialValue = (stat: Stat) => {
 
   .home-stats__grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     align-items: center;
 

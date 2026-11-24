@@ -1,4 +1,4 @@
-name: Sennse Liverpool
+name: SENNSE LIVERPOOL
 
 status: en-construccion
 
@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 4
+  order: 27
 
 brand:
   logo:
@@ -137,37 +137,37 @@ detail:
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-comun.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-privado.webp
         alt: Roof Privado
         title: Roof Privado
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/roof-comun-2.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/gym.webp
         alt: Gimnasio
         title: Gimnasio
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/coworking.webp
         alt: Coworking
         title: Coworking
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-liverpool/amenities/sala.webp
         alt: Sala
         title: Sala
-        meta: Depto 03
+        #meta: Depto 03
       
       - image: ../../assets/img/projects/sennse-liverpool/amenities/dormitorio.webp
         alt: Sala
         title: Sala
-        meta: Depto 05
+        #meta: Depto 05
 
   # =========================
   # FLOORPLANS

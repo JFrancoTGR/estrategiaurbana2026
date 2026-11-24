@@ -24,7 +24,7 @@ commercial:
 
 delivered:
   visible: false
-  order: 3
+  order: 1
 
   units: 5
   levels: 5

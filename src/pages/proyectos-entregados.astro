@@ -4,6 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectsListingHero from '../components/sections/ProjectsListingHero.astro';
 import DeliveredProjectsGrid from '../components/sections/DeliveredProjectsGrid.astro';
 
+import ContactForm from '../components/sections/ContactForm.astro';
+
 import heroImage from '../assets/img/sections/delivered-projects/hero.webp';
 ---
 
@@ -15,10 +17,11 @@ import heroImage from '../assets/img/sections/delivered-projects/hero.webp';
     image={heroImage}
     title={['Proyectos', 'entregados']}
     cta={{
-      label: 'Agenda una cita',
-      href: '#',
+      label: 'Contáctanos',
+      href: '#contacto',
     }}
   />
 
   <DeliveredProjectsGrid />
+  <ContactForm />
 </BaseLayout>

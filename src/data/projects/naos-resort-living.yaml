@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 8
+  order: 16
 
 brand:
   logo:
@@ -138,47 +138,47 @@ detail:
       - image: ../../assets/img/projects/naos-resort-living/amenities/alberca.webp
         alt: Indoor Pool
         title: Indoor Pool
-        meta: Sótano 1
+        #meta: Sótano 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/business-center.webp
         alt: Business Center
         title: Business Center
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/wellness-suite.webp
         alt: Wellness Suite
         title: Wellness Suite
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/alberca-exterior.webp
         alt: Outdoor Pool
         title: Outdoor Pool
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/game-room.webp
         alt: Game Room
         title: Game Room
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/gym.webp
         alt: Fitness Center
         title: Fitness Center
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/lounge.webp
         alt: Lounge
         title: Lounge
-        meta: Sótano 1
+        #meta: Sótano 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/ludoteca.webp
         alt: Playroom
         title: Playroom
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/naos-resort-living/amenities/residence-kitchen.webp
         alt: Residence Kitchen
         title: Residence Kitchen
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS

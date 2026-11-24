@@ -1,0 +1,51 @@
+name: NOMAD SULLIVAN
+
+status: entregado
+
+location:
+  market: cdmx
+  zone: san-rafael
+  label: San Rafael, CDMX
+
+  coordinates:
+    lat: 19.432789
+    lng: -99.160051
+
+  map:
+    home:
+      visible: true
+      category: renta
+      reconciled: false
+
+    detail:
+      visible: false
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 19
+
+  units: 386
+  levels: 10
+
+  cover:
+    image: ../../assets/img/projects/nomad-sullivan/delivered/cover.webp
+    alt: Vista exterior de Nomad Bucareli
+
+  gallery:
+    - image: ../../assets/img/projects/nomad-sullivan/gallery/01.webp
+      alt: Vista exterior de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-sullivan/gallery/02.webp
+      alt: Detalle arquitectónico de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-sullivan/gallery/03.webp
+      alt: Interior de Nomad Bucareli
+    
+    - image: ../../assets/img/projects/nomad-sullivan/gallery/04.webp
+      alt: Interior de Nomad Bucareli
+
+    - image: ../../assets/img/projects/nomad-sullivan/gallery/05.webp
+      alt: Interior de Nomad Bucareli

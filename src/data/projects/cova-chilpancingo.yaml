@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 6
+  order: 5
 
 brand:
   logo:
@@ -79,7 +79,7 @@ detail:
       secondary: CDMX
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -141,32 +141,32 @@ detail:
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-01.webp
         alt: Roof Privado
         title: Roof Privado
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/sala.webp
         alt: Sala
         title: Sala
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-02.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/cocina.webp
         alt: Cocina
         title: Cocina
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-03.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/cova-chilpancingo/amenities/terraza-04.webp
         alt: Roof Común
         title: Roof Común
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS
@@ -196,21 +196,21 @@ detail:
           image: ../../assets/img/projects/cova-chilpancingo/tipology/2.webp
           alt: Tipología Departamento
 
-      - name: PH C 501
+      - name: PH A 504
         variant: Penthouse
 
         image:
           image: ../../assets/img/projects/cova-chilpancingo/tipology/3.webp
           alt: Tipología Penthouse
 
-      - name: PH C 502
+      - name: PH C 501
         variant: Penthouse
 
         image:
           image: ../../assets/img/projects/cova-chilpancingo/tipology/4.webp
           alt: Tipología Penthouse
 
-      - name: PH C 504
+      - name: PH C 502
         variant: Penthouse
 
         image:

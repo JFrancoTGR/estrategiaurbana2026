@@ -132,12 +132,23 @@ const pageTransition = {
 
     <script>
       import { destroyMotion, initMotion } from '../scripts/motion';
+
       import { mountOnPageLoad } from '../scripts/ui/page-lifecycle';
-      import { captureWebsiteAttribution, initContactForm } from '../scripts/ui/contact-form';
+
+      import {
+        captureWebsiteAttribution,
+        initContactForm,
+      } from '../scripts/ui/contact-form';
+
+      import { initHomeContactCTA } from '../scripts/ui/home-contact-cta';
 
       mountOnPageLoad(() => {
         captureWebsiteAttribution();
-        const form = document.querySelector<HTMLFormElement>('[data-eu-contact-form]');
+
+        const form = document.querySelector<HTMLFormElement>(
+          '[data-eu-contact-form]',
+        );
+
         return form ? initContactForm(form) : undefined;
       });
 
@@ -148,6 +159,8 @@ const pageTransition = {
       document.addEventListener('astro:page-load', () => {
         initMotion();
       });
+
+      mountOnPageLoad(initHomeContactCTA);
     </script>
   </body>
 </html>

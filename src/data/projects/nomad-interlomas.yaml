@@ -1,0 +1,57 @@
+name: NOMAD INTERLOMAS
+
+status: entregado
+
+location:
+  market: cdmx
+  zone: interlomas
+  label: Interlomas, CDMX
+
+  coordinates:
+    lat: 19.40016
+    lng: -99.2700845
+
+  map:
+    home:
+      visible: true
+      category: renta
+      reconciled: false
+
+    detail:
+      visible: false
+
+commercial:
+  available: false
+
+delivered:
+  visible: true
+  order: 18
+
+  units: 486
+  levels: 22
+
+  cover:
+    image: ../../assets/img/projects/nomad-interlomas/delivered/cover.webp
+    alt: Vista exterior de Nomad Interlomas
+
+  gallery:
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/01.webp
+      alt: Vista exterior de Nomad Interlomas
+
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/02.webp
+      alt: Detalle arquitectónico de Nomad Interlomas
+
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/03.webp
+      alt: Interior de Nomad Interlomas
+    
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/04.webp
+      alt: Interior de Nomad Interlomas
+
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/05.webp
+      alt: Interior de Nomad Interlomas
+    
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/06.webp
+      alt: Interior de Nomad Interlomas
+    
+    - image: ../../assets/img/projects/nomad-interlomas/gallery/07.webp
+      alt: Interior de Nomad Interlomas

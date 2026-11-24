@@ -6,10 +6,12 @@ interface Props {
     title: string;
     type: string;
     startsAt: string;
-    endsAt: string;
+    endsAt?: string;
     zone: string;
     city: string;
     href: string;
+    detailsLabel?: string;
+    ctaLabel?: string;
   };
 }
 
@@ -18,7 +20,6 @@ const { event } = Astro.props;
 const timeZone = 'America/Mexico_City';
 
 const startsAt = new Date(event.startsAt);
-const endsAt = new Date(event.endsAt);
 
 const day = new Intl.DateTimeFormat('es-MX', {
   day: '2-digit',
@@ -40,6 +41,14 @@ const formatTime = (date: Date) =>
     hour12: false,
     timeZone,
   }).format(date);
+
+const detailsLabel =
+  event.detailsLabel ??
+  (event.endsAt
+    ? `${formatTime(startsAt)} - ${formatTime(new Date(event.endsAt))} HRS`
+    : 'Horario por confirmar');
+
+const ctaLabel = event.ctaLabel ?? 'Reservar lugar';
 ---
 
 <article class='event-card'>
@@ -70,15 +79,12 @@ const formatTime = (date: Date) =>
       </p>
 
       <p>
-        {formatTime(startsAt)} - {formatTime(endsAt)} HRS
+        {detailsLabel}
       </p>
     </div>
 
-    <a
-      class='event-card__cta'
-      href={withBase(event.href)}
-    >
-      RESERVAR LUGAR
+    <a class='event-card__cta' href={withBase(event.href)}>
+      {ctaLabel}
       <span aria-hidden='true'>→</span>
     </a>
   </div>
@@ -202,7 +208,8 @@ const formatTime = (date: Date) =>
 
     margin-top: 24px;
 
-    display: inline-flex;
+    /* display: inline-flex; */
+    display: none;
     align-items: center;
     gap: 9px;
 
@@ -216,8 +223,7 @@ const formatTime = (date: Date) =>
     text-decoration: none;
     text-transform: uppercase;
 
-    transition:
-      gap var(--duration-fast) var(--ease-premium);
+    transition: gap var(--duration-fast) var(--ease-premium);
   }
 
   @media (hover: hover) and (pointer: fine) {

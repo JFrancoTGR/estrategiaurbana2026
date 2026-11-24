@@ -81,7 +81,7 @@ export function initDeliveredProjects(root: HTMLElement) {
     const lightboxElements = gallery.map((item) => ({
       href: item.href,
       type: 'image',
-      title: item.alt,
+      alt: item.alt,
     }));
 
     activeLightbox = GLightbox({

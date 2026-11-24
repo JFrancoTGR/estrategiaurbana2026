@@ -1,4 +1,4 @@
-name: Sennse Vasconcelos
+name: SENNSE VASCONCELOS
 
 status: en-licencias
 
@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 7
+  order: 29
 
 brand:
   logo:
@@ -75,7 +75,7 @@ detail:
       secondary: CDMX
 
     cta:
-      label: Agenda una cita
+      label: Contáctanos
       href: '#contacto'
 
   # =========================
@@ -137,32 +137,32 @@ detail:
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/roof-garden.webp
         alt: Roof Garden
         title: Roof Garden
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/sala-cocina.webp
         alt: Sala Cocina
         title: Sala Cocina
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/roof-top.webp
         alt: Roof
         title: Roof
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/bedroom.webp
         alt: Habitación
         title: Habitación
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/sala-ph.webp
         alt: Sala
         title: Sala
-        meta: Nivel 1
+        #meta: Nivel 1
 
       - image: ../../assets/img/projects/sennse-vasconcelos/amenities/bedroom-b.webp
         alt: Habitación
         title: Habitación
-        meta: Nivel 1
+        #meta: Nivel 1
 
   # =========================
   # FLOORPLANS
