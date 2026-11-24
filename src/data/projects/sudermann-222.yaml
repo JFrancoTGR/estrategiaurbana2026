@@ -23,7 +23,7 @@ commercial:
   available: false
 
 delivered:
-  visible: false
+  visible: true
   order: 31
 
   units: 21
@@ -35,10 +35,19 @@ delivered:
 
   gallery:
     - image: ../../assets/img/projects/sudermann-222/gallery/01.webp
-      alt: Vista exterior de Sudermann 222
+      alt: Detalle arquitectónico de Sudermann 222
 
     - image: ../../assets/img/projects/sudermann-222/gallery/02.webp
       alt: Detalle arquitectónico de Sudermann 222
 
     - image: ../../assets/img/projects/sudermann-222/gallery/03.webp
-      alt: Interior de Sudermann 222
+      alt: Detalle arquitectónico de Sudermann 222
+
+    - image: ../../assets/img/projects/sudermann-222/gallery/04.webp
+      alt: Detalle arquitectónico de Sudermann 222
+
+    - image: ../../assets/img/projects/sudermann-222/gallery/05.webp
+      alt: Detalle arquitectónico de Sudermann 222
+
+    - image: ../../assets/img/projects/sudermann-222/gallery/06.webp
+      alt: Detalle arquitectónico de Sudermann 222

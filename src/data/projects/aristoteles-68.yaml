@@ -23,7 +23,7 @@ commercial:
   available: false
 
 delivered:
-  visible: false
+  visible: true
   order: 1
 
   units: 5
@@ -35,10 +35,13 @@ delivered:
 
   gallery:
     - image: ../../assets/img/projects/aristoteles-68/gallery/01.webp
-      alt: Vista exterior de Aristóteles 68
+      alt: Detalle arquitectónico de Aristóteles 68
 
     - image: ../../assets/img/projects/aristoteles-68/gallery/02.webp
       alt: Detalle arquitectónico de Aristóteles 68
 
     - image: ../../assets/img/projects/aristoteles-68/gallery/03.webp
-      alt: Interior de Aristóteles 68
+      alt: Detalle arquitectónico de Aristóteles 68
+
+    - image: ../../assets/img/projects/aristoteles-68/gallery/04.webp
+      alt: Detalle arquitectónico de Aristóteles 68

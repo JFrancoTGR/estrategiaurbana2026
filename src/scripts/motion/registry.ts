@@ -4,7 +4,7 @@ import { init as initHomeFloatingCTA } from './modules/home-floating-cta';
 import { init as initHomeProjectsIntro } from './modules/home-projects-intro';
 import { init as initHomeProjectsGrid } from './modules/home-projects-grid';
 import { init as initHomePartners } from './modules/home-partners';
-import { init as initHomeManifesto } from './modules/home-manifesto';
+
 import { init as initHomeDeliveredProjects } from './modules/home-delivered-projects';
 import { init as initPartnersGrid } from './modules/partners-grid';
 import { init as initProjectHero } from './modules/project-hero';
@@ -22,7 +22,6 @@ export const motionRegistry: Record<string, MotionInitializer> = {
   'home-projects-grid': initHomeProjectsGrid,
   'home-partners': initHomePartners,
   'home-team-intro': initEditorialReveal,
-  'home-manifesto': initHomeManifesto,
   'home-delivered-projects': initHomeDeliveredProjects,
   'home-zones-intro': initEditorialReveal,
 

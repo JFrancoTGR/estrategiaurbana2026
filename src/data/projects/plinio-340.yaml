@@ -23,7 +23,7 @@ commercial:
   available: false
 
 delivered:
-  visible: false
+  visible: true
   order: 20
 
   units: 25
@@ -35,10 +35,13 @@ delivered:
 
   gallery:
     - image: ../../assets/img/projects/plinio-340/gallery/01.webp
-      alt: Vista exterior de Plinio 340
+      alt: Detalle arquitectónico de Plinio 340
 
     - image: ../../assets/img/projects/plinio-340/gallery/02.webp
       alt: Detalle arquitectónico de Plinio 340
 
     - image: ../../assets/img/projects/plinio-340/gallery/03.webp
-      alt: Interior de Plinio 340
+      alt: Detalle arquitectónico de Plinio 340
+
+    - image: ../../assets/img/projects/plinio-340/gallery/04.webp
+      alt: Detalle arquitectónico de Plinio 340
