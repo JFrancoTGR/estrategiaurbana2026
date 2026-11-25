@@ -163,7 +163,7 @@ detail:
         alt: Sala
         title: Sala
         #meta: Depto 03
-      
+
       - image: ../../assets/img/projects/sennse-liverpool/amenities/dormitorio.webp
         alt: Sala
         title: Sala
@@ -221,7 +221,7 @@ detail:
   # =========================
   # GALLERY
   # =========================
-  
+
   gallery:
     visible: false
 
@@ -279,7 +279,26 @@ detail:
       - image: ../../assets/img/projects/sennse-liverpool/gallery/11.webp
         alt: 'Vista exterior '
         variant: wide
-      
+
       - image: ../../assets/img/projects/sennse-liverpool/gallery/12.webp
         alt: 'Vista exterior '
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/hacer.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/kalinka.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/tepetl.svg
+        alt: Collaboradores del proyecto

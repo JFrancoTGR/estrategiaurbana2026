@@ -10,5 +10,11 @@ export default defineConfig({
 
   base: isProduction ? '/' : '/web2026/',
 
-  // Mantener el resto de la configuración actual.
+  vite: {
+    // Preserve standard and prefixed backdrop-filter declarations.
+    // Prevent glassmorphism regressions in production builds.
+    build: {
+      cssMinify: 'esbuild',
+    },
+  },
 });

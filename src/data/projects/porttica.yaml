@@ -189,54 +189,150 @@ detail:
       emphasis: y plantas
 
     items:
-      - name: Tipología 1R
-        variant: Departamento
+      - name: Tipología 1BD
+        variant: Vista Sur - Alberca
 
         image:
           image: ../../assets/img/projects/porttica/tipology/1.webp
-          alt: Tipología 1R
+          alt: Tipología 1BD
 
-      - name: Tipología 1R + Flex
-        variant: Departamento
+      - name: Tipología 1BD
+        variant: Vista Norte - Farmacia
 
         image:
           image: ../../assets/img/projects/porttica/tipology/2.webp
-          alt: Tipología 1R + Flex
+          alt: Tipología 1BD
 
-      - name: Tipología 2XL
-        variant: Departamento
+      - name: Tipología 1BD
+        variant: Vista Sur - Alberca
 
         image:
           image: ../../assets/img/projects/porttica/tipology/3.webp
-          alt: Tipología 2XL
+          alt: Vista Sur - Alberca
 
-      - name: Tipología 2R + Flex
-        variant: Departamento
+      - name: Tipología 1BD
+        variant: Vista Norte - Farmacia
 
         image:
           image: ../../assets/img/projects/porttica/tipology/4.webp
-          alt: Tipología 2R + Flex
+          alt: Vista Norte - Farmacia
 
-      - name: Tipología 3R
-        variant: Departamento
+      - name: Tipología 1BD
+        variant: Vista Oeste - EUA
 
         image:
           image: ../../assets/img/projects/porttica/tipology/5.webp
-          alt: Tipología 3R
-      
-      - name: Tipología PH 2R
-        variant: Penthouse
+          alt: Vista Oeste - EUA
+
+      - name: Tipología 1BD + FLEX
+        variant: Vista Este - Tijuana Blvd. Cuauhtémoc
 
         image:
           image: ../../assets/img/projects/porttica/tipology/6.webp
-          alt: Tipología PH 2R
-      
-      - name: Tipología PH 3R
-        variant: Penthouse
+          alt: Vista Este - Tijuana Blvd. Cuauhtémoc
+
+      - name: Tipología 1BD + FLEX
+        variant: Vista Norte - Farmacia
 
         image:
           image: ../../assets/img/projects/porttica/tipology/7.webp
-          alt: Tipología PH 3R
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología 1BD + FLEX
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/8.webp
+          alt: Vista Sur - Alberca
+
+      - name: Tipología 2BD
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/9.webp
+          alt: Vista Sur - Alberca
+
+      - name: Tipología 2BD
+        variant: Vista Norte - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/10.webp
+          alt: Vista Norte - Alberca
+
+      - name: Tipología 2BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/11.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología 3BD
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/12.webp
+          alt: Vista Sur - Farmacia
+
+      - name: Tipología 3BD
+        variant: Vista Este - Boulevard
+        image:
+          image: ../../assets/img/projects/porttica/tipology/13.webp
+          alt: Vista Este - Boulevard
+
+      - name: Tipología PH - 2BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/14.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 2BD + FLEX
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/15.webp
+          alt: Vista Sur - Alberca
+
+      - name: Tipología PH - 2BD + FLEX
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/16.webp
+          alt: Vista Sur - Alberca
+
+      - name: Tipología PH - 2BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/17.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 2BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/18.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 3BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/19.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 3BD + FLEX
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/20.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 3BD + FLEX + ROOF
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/21.webp
+          alt: Vista Sur - Alberca
+
+      - name: Tipología PH - 3BD + FLEX + ROOF
+        variant: Vista Norte - Farmacia
+        image:
+          image: ../../assets/img/projects/porttica/tipology/22.webp
+          alt: Vista Norte - Farmacia
+
+      - name: Tipología PH - 3BD + FLEX + ROOF
+        variant: Vista Sur - Alberca
+        image:
+          image: ../../assets/img/projects/porttica/tipology/23.webp
+          alt: Vista Sur - Alberca
 
   # =========================
   # GALLERY
@@ -303,3 +399,19 @@ detail:
       - image: ../../assets/img/projects/porttica/gallery/12.webp
         alt: 'Vista exterior '
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/broissin.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/devas.svg
+        alt: Collaboradores del proyecto

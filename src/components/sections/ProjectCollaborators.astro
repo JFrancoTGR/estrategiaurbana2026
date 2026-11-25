@@ -21,19 +21,18 @@ const { index, items } = Astro.props;
   aria-labelledby='project-collaborators-title'
 >
   <div class='project-collaborators__inner page-shell'>
-
     <header class='project-collaborators__header'>
-  <span class='project-collaborators__index'>
-    {index}
-  </span>
+      <span class='project-collaborators__index'>
+        {index}
+      </span>
 
-  <h2
-    id='project-collaborators-title'
-    class='project-collaborators__title font-editorial'
-  >
-    Quienes forman parte del proyecto
-  </h2>
-</header>
+      <h2
+        id='project-collaborators-title'
+        class='project-collaborators__title font-editorial'
+      >
+        Quienes forman parte del proyecto
+      </h2>
+    </header>
 
     <ul class='project-collaborators__grid'>
       {
@@ -49,7 +48,6 @@ const { index, items } = Astro.props;
         ))
       }
     </ul>
-
   </div>
 </section>
 
@@ -81,33 +79,36 @@ const { index, items } = Astro.props;
    INDEX
   ========================= */
 
-.project-collaborators__index {
-  display: block;
+  .project-collaborators__index {
+    display: block;
 
-  margin-bottom: clamp(24px, 2.5vw, 32px);
+    margin-bottom: clamp(24px, 2.5vw, 32px);
 
-  font-family: var(--font-primary);
-  font-size: 0.6875rem;
-  font-weight: var(--font-weight-medium);
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
 
-  line-height: 1;
-  letter-spacing: 0.13em;
+    line-height: 1;
+    letter-spacing: 0.13em;
 
-  text-transform: uppercase;
+    text-transform: uppercase;
 
-  color: rgb(20 20 20 / 62%);
-}
+    color: rgb(20 20 20 / 62%);
+  }
 
   /* =========================
      GRID
   ========================= */
 
   .project-collaborators__grid {
-    display: grid;
+    --columns: 4;
+    --logo-gap: clamp(24px, 3vw, 48px);
 
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    gap: clamp(24px, 3vw, 48px);
+    gap: var(--logo-gap);
 
     margin: 0;
     padding: 0;
@@ -121,6 +122,9 @@ const { index, items } = Astro.props;
     align-items: center;
     justify-content: center;
 
+    flex: 0 0
+      calc((100% - (var(--columns) - 1) * var(--logo-gap)) / var(--columns));
+
     min-width: 0;
     aspect-ratio: 3 / 2;
 
@@ -130,7 +134,7 @@ const { index, items } = Astro.props;
   .project-collaborators__logo {
     display: block;
 
-    width: 100%;
+    width: 80%;
     height: 100%;
 
     object-fit: contain;
@@ -142,7 +146,7 @@ const { index, items } = Astro.props;
 
   @media (min-width: 768px) and (max-width: 1199px) {
     .project-collaborators__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      --columns: 3;
     }
   }
 
@@ -156,9 +160,8 @@ const { index, items } = Astro.props;
     }
 
     .project-collaborators__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      gap: 16px;
+      --columns: 2;
+      --logo-gap: 16px;
     }
 
     .project-collaborators__item {

@@ -179,6 +179,22 @@ const currentYear = new Date().getFullYear();
       <div class='site-footer__legal'>
         <a href={withBase('/aviso-de-privacidad')}> Aviso de privacidad </a>
       </div>
+
+      <button type='button' class='site-footer__back-to-top' data-back-to-top>
+        <span>Volver arriba</span>
+
+        <svg
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='1.5'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+        >
+          <path d='M12 20V4M5 11l7-7 7 7'></path>
+        </svg>
+      </button>
     </div>
   </div>
 </footer>
@@ -452,6 +468,56 @@ const currentYear = new Date().getFullYear();
   }
 
   /* ------------------------------
+      To top
+  ------------------------------ */
+
+  .site-footer__back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 44px;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    font-family: var(--font-primary);
+    font-size: 0.6875rem;
+    font-weight: var(--font-weight-medium);
+
+    color: rgb(240 240 240 / 72%);
+
+    cursor: pointer;
+
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  .site-footer__back-to-top svg {
+    width: 16px;
+    height: 16px;
+
+    transition: transform var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .site-footer__back-to-top:hover {
+      color: var(--color-white);
+    }
+
+    .site-footer__back-to-top:hover svg {
+      transform: translateY(-3px);
+    }
+  }
+
+  .site-footer__back-to-top:focus-visible {
+    outline: 1px solid var(--color-white);
+    outline-offset: 4px;
+  }
+
+  /* ------------------------------
      Tablet
   ------------------------------ */
 
@@ -500,6 +566,10 @@ const currentYear = new Date().getFullYear();
 
       gap: 8px 18px;
     }
+
+    .site-footer__back-to-top {
+      align-self: flex-end;
+    }
   }
 
   /* ------------------------------
@@ -510,6 +580,10 @@ const currentYear = new Date().getFullYear();
     .site-footer__navigation-link,
     .site-footer__social-link,
     .site-footer__legal a {
+      transition: none;
+    }
+    .site-footer__back-to-top,
+    .site-footer__back-to-top svg {
       transition: none;
     }
   }

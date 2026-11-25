@@ -308,3 +308,22 @@ detail:
       - image: ../../assets/img/projects/naos-resort-living/gallery/12.webp
         alt: 'Vista exterior de NAOS Resort Living'
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '06 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/kalinka.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/devas.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/domus.svg
+        alt: Collaboradores del proyecto

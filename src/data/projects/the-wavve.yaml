@@ -275,3 +275,22 @@ detail:
       - image: ../../assets/img/projects/the-wavve/gallery/12.webp
         alt: 'Vista exterior de The WAVVE'
         variant: standard
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/kalinka.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/taller-g.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/devas.svg
+        alt: Collaboradores del proyecto

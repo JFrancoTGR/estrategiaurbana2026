@@ -87,15 +87,17 @@ const { image, mark } = Astro.props;
 
     position: absolute;
     z-index: 1;
-    inset: 0;
+    inset: 0 0 auto;
 
-    /* background: linear-gradient(
+    height: var(--header-height);
+
+    background: linear-gradient(
       to bottom,
-      rgb(0 0 0 / 8%) 0%,
-      rgb(0 0 0 / 18%) 45%,
-      rgb(0 0 0 / 34%) 100%,
+      rgb(0 0 0 / 52%) 0%,
+      rgb(0 0 0 / 26%) 45%,
+      rgb(0 0 0 / 9%) 80%,
       transparent 100%
-    ); */
+    );
 
     pointer-events: none;
   }

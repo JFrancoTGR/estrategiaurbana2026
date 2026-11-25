@@ -383,3 +383,19 @@ detail:
       - image: ../../assets/img/projects/sennse-vasconcelos/gallery/12.webp
         alt: 'Vista exterior '
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/broissin.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/tepetl.svg
+        alt: Collaboradores del proyecto

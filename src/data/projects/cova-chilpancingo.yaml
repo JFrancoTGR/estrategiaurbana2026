@@ -282,3 +282,22 @@ detail:
       - image: ../../assets/img/projects/cova-chilpancingo/gallery/12.webp
         alt: 'Vista exterior '
         variant: wide
+
+  # =========================
+  # COLLABORATORS
+  # =========================
+
+  collaborators:
+    visible: true
+
+    index: '05 / Colaboradores'
+
+    items:
+      - image: ../../assets/img/projects/collaborators/hacer.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/kalinka.svg
+        alt: Collaboradores del proyecto
+
+      - image: ../../assets/img/projects/collaborators/tepetl.svg
+        alt: Collaboradores del proyecto
