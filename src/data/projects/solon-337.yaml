@@ -23,7 +23,7 @@ commercial:
   available: false
 
 delivered:
-  visible: true
+  visible: false
   order: 27
 
   units: 11

@@ -24,7 +24,7 @@ commercial:
 
 delivered:
   visible: true
-  order: 28
+  order: 26
 
   units: 21
   levels: 5
@@ -49,5 +49,5 @@ delivered:
     - image: ../../assets/img/projects/sudermann-222/gallery/05.webp
       alt: Detalle arquitectónico de Sudermann 222
 
-    - image: ../../assets/img/projects/sudermann-222/gallery/06.webp
-      alt: Detalle arquitectónico de Sudermann 222
+    # - image: ../../assets/img/projects/sudermann-222/gallery/06.webp
+    #   alt: Detalle arquitectónico de Sudermann 222
