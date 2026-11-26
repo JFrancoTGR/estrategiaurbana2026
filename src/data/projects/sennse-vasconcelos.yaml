@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 29
+  order: 4
 
 brand:
   logo:
@@ -86,11 +86,12 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: A un paso del
-      emphasis: Castillo de Chapultepec.
+      lead: Una dirección que conecta con la ciudad,
+      emphasis: una vista hacia su historia.
 
     body:
-      - Un desarrollo que ofrece, en sus niveles más altos, vista directa al Castillo de Chapultepec, uno de los puntos más emblemáticos de la Ciudad de México.
+      - Uun desarrollo residencial que reúne las ventajas de vivir en la Condesa y la cercanía al Bosque de Chapultepec, uno de los espacios verdes y culturales más importantes de la Ciudad de México.
+      - Desde sus niveles superiores, algunos departamentos cuentan con vista directa al Castillo de Chapultepec.
 
     image:
       image: ../../assets/img/projects/sennse-vasconcelos/intro.webp
@@ -107,16 +108,13 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Caracterizada por su cercanía al Bosque de Chapultepec,
-      emphasis: Parque España y Parque México.
+      lead: A unas cuadras del Bosque de Chapultepec,
+      emphasis: con mucho por recorrer y descubrir.
 
     body:
-      - Vasconcelos 154 está a unas cuadras del Bosque de Chapultepec, sobre el Circuito Interior, con acceso directo a Av. Chapultepec, Av. Insurgentes y Paseo de la Reforma.
-      - Alrededor del proyecto hay una oferta de restaurantes, bares y espacios culturales, además de comercio como El Palacio de Hierro.
-      - Gastronomía y vida nocturna -  Maizajo, Ling Ling, Wallace Whisky Bar, Restaurante Primos, Patagonia, Cafebrería El Péndulo.
-      - Cultura y espacios públicos -  Bosque de Chapultepec, Parque España, Parque México, Plaza de los Compositores, Galería RGR, Estela de Luz, Foro Shakespeare.
-      - Fitness y bienestar - Smart Fit Condesa.
-      - Comercio y servicios -  El Palacio de Hierro, Embajada de la Federación Rusa.
+      - SENNSE Vasconcelos se encuentra a poca distancia del Bosque de Chapultepec, Parque España y Parque México, espacios que forman parte de la identidad y la vida cotidiana de esta zona de la ciudad.
+      - Su ubicación sobre Circuito Interior facilita los traslados hacia distintos puntos de la ciudad, mientras que su entorno reúne una amplia oferta comercial, gastronómica y de servicios.
+      - Estas características mantienen el atractivo de la zona tanto para quienes buscan un lugar para vivir como para quienes buscan invertir.
 
   # =========================
   # AMENITIES

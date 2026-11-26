@@ -90,11 +90,11 @@ detail:
     index: '01 / Overview'
 
     title:
-      lead: Un desarrollo residencial
-      emphasis: con tres formas distintas de vivir, dentro de un mismo proyecto.
+      lead: Una colonia que invita a caminar,
+      emphasis: un proyecto que invita a quedarse.
 
     body:
-      - Garden house en planta baja, departamento en los niveles intermedios y penthouse en el último nivel - tres tipologías pensadas para etapas de vida distintas, no una sola fórmula repetida piso tras piso.
+      - Un conjunto residencial pensado para quienes han elegido la Condesa como su lugar para vivir. Conformado por tres torres, el proyecto permite disfrutar de todo lo que esta colonia tiene para ofrecer.
 
     image:
       image: ../../assets/img/projects/cova-chilpancingo/intro.webp
@@ -111,16 +111,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Caracterizada por su cercanía a Parque México,
-      emphasis: Andaz Condesa y el Hospital Ángeles Metropolitano.
+      lead: A unas cuadras de Parque México, en una colonia
+      emphasis: que siempre tiene algo nuevo que ofrecer.
 
     body:
-      - COVA Chilpancingo se ubica en Chilpancingo 54, en Hipódromo Condesa, Ciudad de México.
-      - Chilpancingo 54 está a unas cuadras de Parque México, sobre una zona con acceso directo a Insurgentes, Reforma y Circuito Interior.
-      - Alrededor del proyecto hay una oferta amplia de restaurantes, bares y espacios de bienestar, además de servicios de salud como el Hospital Ángeles Metropolitano y la Torre Médica Dalinde.
-      - Gastronomía y vida nocturna - Restaurante Castizo, Roberta Trattoria, Hookah Lounge, Mendl Delicatessen, Restaurante Patagonia, Maque Condesa, Ojo de Agua, Caimán Bar, El Pescadito Roma, Andaz Condesa, Terraza Central Roma Sur.
-      - Salud y bienestar - Hospital Ángeles Metropolitano, Torre Médica Dalinde, COMMANDO Condesa, Mukta Yoga.
-      - Cultural y espacios públicos - Parque México.
+      - La Condesa se distingue por su constante actividad cultural, comercial y social. Entre comercios locales, espacios recreativos y nuevas propuestas gastronómicas, siempre hay algo por descubrir.
+      - Su amplia oferta de servicios, facilidad de movilidad y la posibilidad de realizar gran parte de las actividades cotidianas a pie son características que mantienen su atractivo residencial y favorecen su potencial de plusvalía a largo plazo.
 
   # =========================
   # AMENITIES

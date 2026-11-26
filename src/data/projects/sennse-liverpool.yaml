@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 27
+  order: 3
 
 brand:
   logo:
@@ -111,12 +111,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Caracterizada por su cercanía a Soho House,
-      emphasis: Restaurante Rosetta y el Jardín Chapultepec.
+      lead: Entre Paseo de la Reforma y Avenida Chapultepec,
+      emphasis: en el corazón de la colonia Juárez.
 
     body:
-      - Ubicado en Liverpool 108, Colonia Juárez, el proyecto se sitúa en una de las zonas con mayor vida social y cultural de la Ciudad de México.
-      - La ubicación ofrece una combinación de conectividad, oferta gastronómica y espacios de recreación, consolidándose como un punto de referencia entre la Zona Rosa y la Roma-Condesa.
+      - Su cercanía a importantes corredores corporativos, comerciales y financieros permite acceder a una amplia oferta de servicios y alternativas de transporte.
+      - Estas características favorecen su atractivo tanto para quienes buscan vivienda propia como para quienes buscan invertir en una propiedad con potencial de renta y plusvalía.
 
   # =========================
   # AMENITIES

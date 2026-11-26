@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 25
+  order: 2
 
 brand:
   logo:
@@ -111,14 +111,12 @@ detail:
     index: '02 / Ubicación'
 
     title:
-      lead: Caracterizada por su cercanía a
-      emphasis:  Soho House, Restaurante Rosetta y el Jardín Chapultepec.
+      lead: Una colonia que se recorre a pie,
+      emphasis: con algo diferente en cada calle.
 
     body:
-      - Hamburgo 112 está a unas cuadras del Jardín Chapultepec y Puerto Prendes, en una de las zonas con mayor vida gastronómica y cultural de la Ciudad de México.
-      - Gastronomía y vida nocturna - Café Nin, Cicatriz Bar, Hanky Panky, Yuyu Bar, Cana Restaurante, Parker & Lenox, Amaya, Soho House, Taquería Orinoco, Niddo Restaurante, Puerto Prendes, Restaurante Rosetta, Plantasia Café, Cafebrería El Péndulo, Cityzen Rooftop Bar.
-      - Cultura y espacios públicos - Jardín Chapultepec, Fuente de Cibeles, Plaza Río de Janeiro, Reforma 222.
-      - Fitness y bienestar - Escuadrón Crossfit Reforma, Smart Fit Genova.
+      - Hamburgo 112 se encuentra en una zona donde la actividad comercial, cultural y gastronómica se extiende más allá de las grandes avenidas. Sus calles reúnen desde comercios tradicionales hasta nuevas propuestas de diseño y entretenimiento.
+      - La cercanía al corredor financiero de Reforma y a colonias como la Roma y la Condesa amplía las posibilidades de movilidad, servicios y actividades sin necesidad de realizar grandes desplazamientos.
 
   # =========================
   # AMENITIES

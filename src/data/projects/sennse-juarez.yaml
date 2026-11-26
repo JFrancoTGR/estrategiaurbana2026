@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 26
+  order: 1
 
 brand:
   logo:
@@ -118,8 +118,8 @@ detail:
     body:
       - Ubicado en Nápoles 86, Colonia Juárez, el proyecto se sitúa en una de las zonas con mayor actividad urbana y cultural de la Ciudad de México.
       - La ubicación ofrece una combinación de conectividad, vida gastronómica y acceso a espacios culturales y comerciales, consolidándose como un punto estratégico entre el Centro Histórico y las colonias Roma-Condesa.
-      - Gastronomía y vida nocturna - Soho House, Restaurante Rosetta, Niddo Restaurante, Café Nin, Máximo Bistrot, Hanky Panky, Taverna Prime.
-      - Cultura y espacios públicos - Ángel de la Independencia, Glorieta de Insurgentes, Jardín Pushkin, Fuente de Cibeles, Museo de Cera, MODO Museo del Objeto, Arena México, El Palacio de Hierro Durango.
+      - Restaurantes de autor, cafeterías, bares y una amplia oferta cultural y comercial. Calles arboladas, arquitectura histórica y espacios públicos que permiten disfrutar de la ciudad a pie.
+
 
   # =========================
   # AMENITIES

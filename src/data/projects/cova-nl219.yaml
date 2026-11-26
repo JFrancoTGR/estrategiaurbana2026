@@ -21,27 +21,15 @@ location:
       category: venta
 
     detail:
-      visible: true
+      visible: false
       zoom: 16
 
 commercial:
   available: false
 
-price:
-  from: 8000000
-  currency: MXN
-
-card:
-  image: ../../assets/img/projects/cova-nuevoleon/card.webp
-  alt: Vista exterior de COVA NUEVO LEON 219
-
-home:
-  visible: true
-  order: 6
-
 delivered:
   visible: true
-  order: 2
+  order: 9
 
   units: 30
   levels: 8
@@ -70,55 +58,4 @@ delivered:
       alt: Detalle arquitectónico de COVA NUEVO LEON 219
 
 detail:
-  visible: true
-
-  metrics:
-    - key: units
-      value: '30'
-      label: Departamentos
-      unit: unidades
-
-    - key: levels
-      value: '8'
-      label: Niveles
-      unit: niveles
-
-  hero:
-    image: ../../assets/img/projects/cova-nuevoleon/hero.webp
-    alt: Vista principal de COVA NUEVO LEON 219
-
-    title:
-      - COVA
-      - Nuevo León 219
-
-    eyebrow:
-      primary: Entregado
-      secondary: CDMX
-
-  intro:
-    index: '01 / Overview'
-
-    title:
-      lead: Conoce los aspectos principales de
-      emphasis: COVA Nuevo León 219.
-
-    body:
-      - Contenido editorial pendiente de definir para el overview de COVA Nuevo León 219.
-
-    image:
-      image: ../../assets/img/projects/cova-nuevoleon/intro.webp
-      alt: Vista arquitectónica de COVA Nuevo León 219
-
-    decoration:
-      image: ../../assets/img/projects/cova-nuevoleon/intro-decoration.svg
-
-  location:
-    index: '02 / Ubicación'
-
-    title:
-      lead: Sobre Avenida Nuevo León, dentro de
-      emphasis: Hipódromo Condesa.
-
-    body:
-      - COVA Nuevo León 219 se ubica sobre Avenida Nuevo León, en Hipódromo Condesa, Ciudad de México.
-      - Su emplazamiento lo integra a una de las zonas residenciales y urbanas más reconocibles de la ciudad.
+  visible: false

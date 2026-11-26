@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 21
+  order: 8
 
 brand:
   logo:

@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 34
+  order: 7
 
 brand:
   logo:
@@ -154,6 +154,21 @@ detail:
         title: Residence Kitchen
         #meta: Nivel 1
 
+      - image: ../../assets/img/projects/the-wavve/amenities/alberca-exterior-2.webp
+        alt: Alberca Exterior
+        title: Alberca Exterior
+        #meta: Nivel 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/playroom.webp
+        alt: Playroom
+        title: Playroom
+        #meta: Nivel 1
+
+      - image: ../../assets/img/projects/the-wavve/amenities/grills-2.webp
+        alt: Grills
+        title: Grills
+        #meta: Nivel 1
+
       - image: ../../assets/img/projects/the-wavve/amenities/padel.webp
         alt: Padel
         title: Padel
@@ -169,10 +184,7 @@ detail:
         title: Fitness Center
         #meta: Nivel 1
       
-      - image: ../../assets/img/projects/the-wavve/amenities/kids-playground.webp
-        alt: Kids Playground
-        title: Kids Playground
-        #meta: Nivel 1
+      
 
   # =========================
   # FLOORPLANS

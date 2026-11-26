@@ -37,7 +37,7 @@ card:
 
 home:
   visible: true
-  order: 16
+  order: 6
 
 brand:
   logo:

@@ -508,7 +508,7 @@ const projects = defineCollection({
          */
         if ((homeMapVisible || detailMapVisible) && !hasCoordinates) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: 'custom',
             path: ['location', 'coordinates'],
             message:
               'Todo proyecto visible en un mapa debe tener location.coordinates.',
@@ -524,7 +524,7 @@ const projects = defineCollection({
           (!location.address || location.address.length === 0)
         ) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: 'custom',
             path: ['location', 'address'],
             message:
               'Un proyecto con detail.visible=true debe tener location.address.',
@@ -537,7 +537,7 @@ const projects = defineCollection({
          */
         if (detail?.visible === true && !location.map) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: 'custom',
             path: ['location', 'map'],
             message:
               'Un proyecto con detail.visible=true debe definir location.map.',
@@ -551,7 +551,7 @@ const projects = defineCollection({
          */
         if (detail?.visible === true && !hasCoordinates) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: 'custom',
             path: ['location', 'coordinates'],
             message:
               'Un proyecto con detail.visible=true debe tener location.coordinates.',
@@ -564,7 +564,7 @@ const projects = defineCollection({
          */
         if (detailMapVisible && detail?.visible !== true) {
           ctx.addIssue({
-            code: z.ZodIssueCode.custom,
+            code: 'custom',
             path: ['location', 'map', 'detail', 'visible'],
             message:
               'location.map.detail.visible=true requiere detail.visible=true.',
