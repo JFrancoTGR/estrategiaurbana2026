@@ -1,0 +1,74 @@
+/* ---------------------------------
+   Estrategia Urbana / SweetAlert2
+--------------------------------- */
+
+.swal2-container.eu-alert-container {
+  z-index: 10000;
+}
+
+.swal2-popup.eu-alert-popup {
+  border-radius: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+}
+
+.swal2-title.eu-alert-title {
+  padding: 16px 0 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(1.875rem, 5vw, 2.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.swal2-html-container.eu-alert-content {
+  margin: 18px 0 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+.swal2-actions .eu-alert-confirm {
+  padding: 13px 24px;
+
+  border: 1px solid var(--color-red);
+  border-radius: 0;
+
+  background-color: var(--color-red);
+  color: var(--color-white);
+
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color var(--duration-fast) var(--ease-premium),
+    background-color var(--duration-fast) var(--ease-premium);
+}
+
+.swal2-actions .eu-alert-confirm:hover {
+  background-color: transparent;
+  color: var(--color-red);
+}
+
+.swal2-actions .eu-alert-confirm:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 4px;
+}
+
+.eu-alert-popup .swal2-loader {
+  border-color: var(--color-red) transparent var(--color-red) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swal2-actions .eu-alert-confirm {
+    transition: none;
+  }
+}
