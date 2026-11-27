@@ -5,52 +5,16 @@
  */
 import { euAlert } from './alerts';
 import type { SweetAlertOptions } from 'sweetalert2';
+import {
+  getRecaptchaToken,
+  isRecaptchaConfigured,
+} from '../services/recaptcha';
 
 const ATTRIBUTION_STORAGE_KEY = 'eu_website_last_utm';
 const ATTRIBUTION_MAX_AGE_MS = 30 * 60 * 1000;
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
 const RECAPTCHA_ACTION = 'eu_contact_intake';
-
-interface RecaptchaAPI {
-  ready: (callback: () => void) => void;
-  execute: (siteKey: string, options: { action: string }) => Promise<string>;
-}
-
-declare global {
-  interface Window {
-    grecaptcha?: RecaptchaAPI;
-  }
-}
-
-let recaptchaLoader: Promise<RecaptchaAPI> | null = null;
-
-function loadRecaptcha(siteKey: string): Promise<RecaptchaAPI> {
-  if (window.grecaptcha) {
-    return Promise.resolve(window.grecaptcha);
-  }
-
-  if (!recaptchaLoader) {
-    recaptchaLoader = new Promise<RecaptchaAPI>((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(siteKey)}`;
-      script.async = true;
-      script.onerror = () => reject(new Error('reCAPTCHA no está disponible.'));
-      script.onload = () => {
-        const captcha = window.grecaptcha;
-        if (!captcha) {
-          reject(new Error('No fue posible inicializar reCAPTCHA.'));
-          return;
-        }
-        captcha.ready(() => resolve(captcha));
-      };
-      document.head.appendChild(script);
-    }).catch((error: unknown) => {
-      recaptchaLoader = null;
-      throw error;
-    });
-  }
-  return recaptchaLoader;
-}
+const HTTP_TIMEOUT_MS = 35000;
 
 function getText(data: FormData, key: string): string {
   const value = data.get(key);
@@ -167,8 +131,7 @@ export function initContactForm(form: HTMLFormElement): () => void {
   const status = form.querySelector<HTMLElement>('[data-eu-contact-status]');
   const endpoint = import.meta.env.PUBLIC_EU_CONTACT_ENDPOINT as
     string | undefined;
-  const siteKey = import.meta.env.PUBLIC_EU_RECAPTCHA_SITE_KEY as
-    string | undefined;
+
   let sending = false;
   let controller: AbortController | null = null;
   let disposed = false;
@@ -219,18 +182,20 @@ export function initContactForm(form: HTMLFormElement): () => void {
       return;
     }
 
-    if (!endpoint || !siteKey) {
+    if (!endpoint || !isRecaptchaConfigured) {
       status.textContent = 'El formulario no está disponible temporalmente.';
 
       await showContactAlert({
         icon: 'info',
         title: 'Servicio temporalmente no disponible',
         text: 'Por favor, inténtalo nuevamente en unos momentos.',
-      });
 
-      if (!disposed && form.isConnected) {
-        submit.focus({ preventScroll: true });
-      }
+        didClose: () => {
+          if (!disposed && form.isConnected) {
+            submit.focus({ preventScroll: true });
+          }
+        },
+      });
 
       return;
     }
@@ -267,8 +232,10 @@ export function initContactForm(form: HTMLFormElement): () => void {
     sending = true;
     submit.disabled = true;
     status.textContent = 'Enviando tu solicitud…';
-    controller = new AbortController();
-    const signal = controller.signal;
+    const requestController = new AbortController();
+    controller = requestController;
+    const signal = requestController.signal;
+    let httpTimedOut = false;
 
     try {
       // No esperamos el cierre del modal: el envío continúa en paralelo.
@@ -285,13 +252,7 @@ export function initContactForm(form: HTMLFormElement): () => void {
         },
       });
 
-      // El token se genera al enviar, no durante la carga inicial.
-      const recaptcha = await loadRecaptcha(siteKey);
-      if (disposed || signal.aborted) return;
-
-      const recaptchaToken = await recaptcha.execute(siteKey, {
-        action: RECAPTCHA_ACTION,
-      });
+      const recaptchaToken = await getRecaptchaToken(RECAPTCHA_ACTION);
       if (disposed || signal.aborted) return;
 
       const payload: Record<string, unknown> = {
@@ -312,17 +273,33 @@ export function initContactForm(form: HTMLFormElement): () => void {
         ...readUTMs(),
       };
 
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        signal,
-      });
+      const httpTimeoutId = window.setTimeout(() => {
+        httpTimedOut = true;
+        requestController.abort();
+      }, HTTP_TIMEOUT_MS);
 
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const result = (await response.json()) as { success?: boolean };
-      if (result.success !== true)
-        throw new Error('No se confirmó el registro.');
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const result = (await response.json()) as {
+          success?: boolean;
+        };
+
+        if (result.success !== true) {
+          throw new Error('No se confirmó el registro.');
+        }
+      } finally {
+        window.clearTimeout(httpTimeoutId);
+      }
 
       if (disposed || signal.aborted || !form.isConnected) return;
 
@@ -336,13 +313,24 @@ export function initContactForm(form: HTMLFormElement): () => void {
         icon: 'success',
         title: '¡Gracias por contactarnos!',
         text: successMessage,
+
+        didClose: () => {
+          if (!disposed && form.isConnected) {
+            submit.disabled = false;
+            submit.focus({ preventScroll: true });
+          }
+        },
       });
     } catch (error) {
+      const errorMessage = httpTimedOut
+        ? 'La solicitud está tardando más de lo esperado. No pudimos confirmar su recepción.'
+        : 'Por favor, inténtalo nuevamente en unos momentos.';
       if (
         disposed ||
-        signal.aborted ||
-        (error instanceof Error && error.name === 'AbortError') ||
-        !form.isConnected
+        !form.isConnected ||
+        (!httpTimedOut &&
+          (signal.aborted ||
+            (error instanceof Error && error.name === 'AbortError')))
       ) {
         return;
       }
@@ -353,7 +341,14 @@ export function initContactForm(form: HTMLFormElement): () => void {
       await showContactAlert({
         icon: 'error',
         title: 'No pudimos enviar tu mensaje',
-        text: 'Por favor, inténtalo nuevamente en unos momentos.',
+        text: errorMessage,
+
+        didClose: () => {
+          if (!disposed && form.isConnected) {
+            submit.disabled = false;
+            submit.focus({ preventScroll: true });
+          }
+        },
       });
     } finally {
       sending = false;

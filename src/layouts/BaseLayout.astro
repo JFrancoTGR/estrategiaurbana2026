@@ -132,6 +132,9 @@ const pageTransition = {
 
     <slot name='fixed-ui' />
 
+    <!-- Infraestructura global de reCAPTCHA -->
+    <div id='eu-recaptcha-root' transition:persist='eu-recaptcha-root'></div>
+
     <script>
       import { destroyMotion, initMotion } from '../scripts/motion';
 
