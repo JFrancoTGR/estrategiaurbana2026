@@ -46,7 +46,7 @@ if (!project) {
   throw new Error(`No se encontró el proyecto "${projectId}".`);
 }
 
-const { detail, location } = project.data;
+const { detail, location, seo } = project.data;
 
 if (!detail || detail.visible !== true) {
   throw new Error(
@@ -57,6 +57,12 @@ if (!detail || detail.visible !== true) {
 if (!location.address) {
   throw new Error(
     `El proyecto "${projectId}" no tiene una dirección definida.`,
+  );
+}
+
+if (!seo) {
+  throw new Error(
+    `El proyecto "${projectId}" no tiene metadatos SEO definidos.`,
   );
 }
 
@@ -113,8 +119,10 @@ const projectLocationMap =
 ---
 
 <BaseLayout
-  title={`${project.data.name} | Estrategia Urbana`}
-  description={`Conoce ${project.data.name}, desarrollo de Estrategia Urbana.`}
+  title={seo.title}
+  description={seo.description}
+  ogImage={`/seo/${project.id}.jpg`}
+  ogImageAlt={`${project.data.name} | Estrategia Urbana`}
   headerTheme='overlay'
 >
   <ProjectSubnav slot='fixed-ui' mode='fixed' navigation={projectNavigation} />

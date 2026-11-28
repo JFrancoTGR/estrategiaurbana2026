@@ -2,6 +2,10 @@ name: NAOS RESORT LIVING
 
 status: en-licencias
 
+seo:
+  title: "NAOS Resort Living | Residencias frente al mar. Tu vida con estilo resort."
+  description: "Descubre NAOS Resort Living en Baja California, con residencias de 1, 2 y 3 recámaras, vistas panorámicas al mar, acceso a la playa y amenidades tipo resort."
+  
 commercial:
   available: true
 

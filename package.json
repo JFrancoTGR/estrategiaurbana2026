@@ -8,9 +8,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "build:staging": "cross-env ASTRO_SITE=https://estrategiaurbana.info ASTRO_BASE=/web2026/ astro build",
+    "build:staging": "cross-env SITE_ENV=staging astro build",
+    "build:production": "cross-env SITE_ENV=production astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "audit:seo": "node scripts/audit-seo.mjs",
+    "audit:seo:production": "node scripts/audit-seo.mjs --production"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

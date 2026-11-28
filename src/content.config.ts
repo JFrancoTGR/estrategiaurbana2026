@@ -17,6 +17,13 @@ const projects = defineCollection({
 
         status: z.enum(PROJECT_STATUS_VALUES),
 
+        seo: z
+          .object({
+            title: z.string().trim().min(1),
+            description: z.string().trim().min(1),
+          })
+          .optional(),
+
         commercial: z.object({
           available: z.boolean(),
         }),
@@ -502,6 +509,19 @@ const projects = defineCollection({
         const homeMapVisible = location.map?.home.visible === true;
 
         const detailMapVisible = location.map?.detail.visible === true;
+
+        /*
+         * Todo proyecto con página pública debe tener
+         * metadatos SEO propios.
+         */
+        if (detail?.visible === true && !project.seo) {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['seo'],
+            message:
+              'Un proyecto con detail.visible=true debe definir sus metadatos SEO.',
+          });
+        }
 
         /*
          * Cualquier mapa visible necesita coordenadas reales.

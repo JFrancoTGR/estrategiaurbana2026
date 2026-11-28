@@ -2,6 +2,10 @@ name: SENNSE LIVERPOOL
 
 status: en-construccion
 
+seo:
+  title: "SENNSE Liverpool | Departamentos en la colonia Juárez"
+  description: "Descubre SENNSE Liverpool, un desarrollo de 66 departamentos en 12 niveles, ubicado entre Paseo de la Reforma y Avenida Chapultepec, en CDMX."
+
 commercial:
   available: true
 

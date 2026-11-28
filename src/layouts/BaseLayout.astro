@@ -15,11 +15,20 @@ import '../styles/alerts.css';
 
 import Footer from '../components/global/Footer.astro';
 
+import SEOHead from '../components/seo/SEOHead.astro';
+import { SEO_CONFIG } from '../config/seo';
+
 import { withBase } from '../utils/paths';
 
 interface Props {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+
+  ogTitle?: string;
+  ogDescription?: string;
+
+  ogImage?: string;
+  ogImageAlt?: string;
 
   headerTheme?: 'overlay' | 'light';
 
@@ -27,8 +36,15 @@ interface Props {
 }
 
 const {
-  title = 'Título del sitio',
-  description = 'Descripción del sitio',
+  title,
+  description,
+
+  ogTitle,
+  ogDescription,
+
+  ogImage,
+  ogImageAlt,
+
   headerTheme = 'overlay',
   initialReveal = false,
 } = Astro.props;
@@ -58,7 +74,7 @@ const pageTransition = {
 
 <!doctype html>
 <html
-  lang='es'
+  lang={SEO_CONFIG.language}
   transition:name='page'
   transition:animate={pageTransition}
   data-initial-reveal={initialReveal ? 'true' : undefined}
@@ -68,9 +84,14 @@ const pageTransition = {
 
     <meta name='viewport' content='width=device-width, initial-scale=1' />
 
-    <title>{title}</title>
-
-    <meta name='description' content={description} />
+    <SEOHead
+      title={title}
+      description={description}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
+    />
 
     <link
       rel='icon'

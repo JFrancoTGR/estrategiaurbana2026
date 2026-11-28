@@ -2,6 +2,10 @@ name: PORTTICA
 
 status: en-construccion
 
+seo:
+  title: "PORTTICA | Departamentos en venta en Tijuana"
+  description: "Conoce PORTTICA, un desarrollo residencial en La Cacho, Tijuana, con departamentos de 1, 2 y 3 recámaras, alberca, gimnasio y espacios de coworking."
+
 commercial:
   available: true
 

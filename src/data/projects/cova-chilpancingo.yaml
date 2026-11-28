@@ -2,6 +2,10 @@ name: COVA CHILPANCINGO
 
 status: en-construccion
 
+seo:
+  title: "COVA Chilpancingo | Departamentos en Condesa, CDMX"
+  description: "Descubre COVA Chilpancingo, un conjunto residencial de tres torres en Hipódromo Condesa, con 39 departamentos a unas cuadras de Parque México."
+  
 commercial:
   available: true
 
